@@ -17,3 +17,6 @@ vc12/otclient.sdf
 vc12/otclient.v12.suo
 vc12/otclient.opensdf
 vc12/otclient.v12.suo
+*.suo
+*.pdb
+*.log
