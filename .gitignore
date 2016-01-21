@@ -1,0 +1,17 @@
+*.cmake
+*.tlog
+*.obj
+*.log
+*.pdb
+vc12/Release/zutria.exe
+*.log
+*.pdb
+*.idb
+*.log
+*.pdb
+*.log
+*.log
+*.log
+vc12/otclient.sdf
+*.suo
+vc12/otclient.v12.suo

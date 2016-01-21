@@ -1,0 +1,15 @@
+MainWindow
+  !text: tr('Spells')
+  size: 160 450
+
+  @onEnter: modules.game_spells.destroy()
+  @onEscape: modules.game_spells.destroy()
+
+  Label
+    id: spellsLabel
+    !text: tr('Player Spells')
+    width: 130
+    anchors.top: prev.top
+    anchors.left: prev.left
+    margin-top: 5
+    margin-left: 5

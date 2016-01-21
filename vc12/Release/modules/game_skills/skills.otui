@@ -1,0 +1,294 @@
+SkillFirstWidget < UIWidget
+
+SkillButton < UIButton
+  height: 21
+  margin-bottom: 2
+  &onClick: onSkillButtonClick
+
+AddSkillButton < UIButton
+  size: 16 16
+  image-color: #ffffffff  
+  border: 1 #DCD3D367
+  &onClick: onAddSkillButtonClick
+
+  $hover !disabled:
+    image-color: #ffffff99
+
+  $pressed:
+    image-color: #ffffff44
+
+  $disabled:
+    image-color: #ffffff55
+    
+  text-align: topcenter
+  image-source: /images/game/skills/black add
+  background-color: #ffffff44
+  anchors.right: parent.right
+
+IconSkill < UILabel
+  size: 16 16
+  text-align: topleft
+  anchors.left: parent.left
+  anchors.top: parent.top
+  
+IconSkillMana < IconSkill  
+  image-source: /images/game/skills/water
+
+IconSkillBlood < IconSkill  
+  image-source: /images/game/skills/blood
+  
+IconSkillExperience < IconSkill  
+  image-source: /images/game/skills/experience
+
+IconSkillLevel < IconSkill  
+  image-source: /images/game/skills/level
+
+IconSkillStrength < IconSkill  
+  image-source: /images/game/skills/strength
+  
+IconSkillWeight < IconSkill  
+  image-source: /images/game/skills/weight
+  
+IconSkillSpeed < IconSkill  
+  image-source: /images/game/skills/speed
+
+IconSkillShield < IconSkill  
+  image-source: /images/game/skills/shield  
+  
+IconSkillMagicAttack < IconSkill  
+  image-source: /images/game/skills/magic attack    
+  
+IconSkillMagicDeffense < IconSkill  
+  image-source: /images/game/skills/magic deffense    
+  
+IconSkillLightning < IconSkill  
+  image-source: /images/game/skills/lightning
+  
+IconSkillMagicPoints < IconSkill  
+  image-source: /images/game/skills/magic points
+  
+IconSkillCooldown < IconSkill  
+  image-source: /images/game/skills/cooldown
+
+IconSkillCloud < IconSkill  
+  image-source: /images/game/skills/cloud
+  
+IconSkillHands < IconSkill  
+  image-source: /images/game/skills/hands 
+
+IconSkillLevelPoints < IconSkill  
+  image-source: /images/game/skills/level points 
+  
+SkillNameLabel < GameLabel
+  id: name
+  text-align: topleft
+  width: 108
+  margin-left: 4
+  font: verdana-11px-antialised
+  anchors.top: parent.top
+  anchors.bottom: parent.bottom
+  anchors.left: prev.right
+  
+SkillValueLabel < GameLabel
+  id: value
+  margin-right: 3
+  text-align: topleft
+  font: verdana-11px-antialised
+  anchors.top: parent.top
+  anchors.bottom: parent.bottom
+  anchors.left: prev.right
+  anchors.right: next.left
+  
+SkillRightValueLabel < GameLabel
+  id: value
+  text-align: topright
+  margin-right: 5
+  font: verdana-11px-antialised
+  anchors.right: parent.right
+  anchors.top: parent.top
+  anchors.bottom: parent.bottom
+  anchors.left: prev.right
+  
+SkillPercentPanel < ProgressBar
+  id: percent
+  background-color: green
+  height: 6
+  margin-top: 17
+  margin-bottom: 5
+  anchors.left: parent.left
+  anchors.right: parent.right
+  anchors.top: parent.top
+  phantom: false
+  visible: true
+
+MiniWindow
+  id: skillWindow
+  !text: tr('Atributos')
+  height: 150
+  icon: /images/topbuttons/skills
+  @onClose: modules.game_skills.onMiniWindowClose()
+  &save: true
+
+  MiniWindowContents
+    padding-left: 5
+    padding-right: 5
+    layout: verticalBox
+
+    SkillButton
+      margin-top: 5
+      id: experience
+      height: 15
+      IconSkillExperience
+      SkillNameLabel
+        !text: tr('Experience')
+        color: #D3D3D3ff
+      SkillRightValueLabel      
+    
+    SkillButton
+      id: level    
+      IconSkillLevel
+      height: 23
+      SkillNameLabel
+        !text: tr('Level')
+        color: #D3D3D3ff
+      SkillRightValueLabel
+      SkillPercentPanel
+        background-color: red
+
+    HorizontalSeparator
+      margin-bottom: 6
+    
+    SkillButton
+      id: health
+      height: 15
+      IconSkillBlood
+      SkillNameLabel
+        !text: tr('Health Points')
+        color: #F0E68Cff
+      SkillValueLabel
+      AddSkillButton
+      
+    SkillButton
+      id: physicalAttack
+      height: 15
+      IconSkillStrength
+      SkillNameLabel
+        !text: tr('Physical attack')
+        color: #F0E68Cff
+      SkillValueLabel
+      AddSkillButton
+    
+    SkillButton
+      id: physicalDefense      
+      height: 15
+      IconSkillShield
+      SkillNameLabel
+        !text: tr('Physical defense')
+        color: #F0E68Cff
+      SkillValueLabel
+      AddSkillButton
+
+    SkillButton
+      id: capacity
+      height: 15
+      IconSkillWeight
+      SkillNameLabel
+        !text: tr('Capacity')
+        color: #F0E68Cff
+      SkillValueLabel
+      AddSkillButton      
+      
+    SkillButton
+      id: manaPoints
+      height: 15      
+      IconSkillMana
+      SkillNameLabel
+        !text: tr('Mana points')
+        color: #00FFFFff
+      SkillValueLabel
+      AddSkillButton       
+      
+    SkillButton
+      id: magicAttack      
+      height: 15
+      IconSkillMagicAttack
+      SkillNameLabel
+        !text: tr('Magic attack')
+        color: #00FFFFff
+      SkillValueLabel
+      AddSkillButton
+
+    SkillButton
+      id: magicDefense      
+      height: 15
+      IconSkillMagicDeffense
+      SkillNameLabel
+        !text: tr('Magic deffense')
+        color: #00FFFFff
+      SkillValueLabel
+      AddSkillButton
+    
+    SkillButton
+      id: magicPoints      
+      height: 15
+      IconSkillMagicPoints
+      SkillNameLabel
+        !text: tr('Magic points')
+        color: #00FFFFff
+      SkillValueLabel
+      AddSkillButton    
+      
+    SkillButton
+      id: playerSpeed
+      height: 15
+      IconSkillSpeed
+      SkillNameLabel
+        !text: tr('Player speed')
+        color: #00cc00ff
+      SkillValueLabel
+      AddSkillButton            
+    
+    SkillButton
+      id: attackSpeed      
+      height: 15
+      IconSkillHands
+      SkillNameLabel
+        !text: tr('Attack speed')
+        color: #00cc00ff
+      SkillValueLabel
+      AddSkillButton
+
+    SkillButton
+      id: cooldown      
+      height: 15
+      IconSkillCooldown
+      SkillNameLabel
+        !text: tr('Cooldown')
+        color: #00cc00ff
+      SkillValueLabel
+      AddSkillButton
+    
+    SkillButton
+      id: avoidance      
+      height: 15
+      IconSkillCloud
+      SkillNameLabel
+        !text: tr('Avoidance')
+        color: #00cc00ff
+      SkillValueLabel
+      AddSkillButton
+    
+    HorizontalSeparator
+      margin-top: 3
+      margin-bottom: 2
+    
+    SkillButton
+      id: levelPoints      
+      margin-top: 5
+      height: 15
+      IconSkillLevelPoints
+      SkillNameLabel
+        !text: tr('Level points')
+        color: #cc77ffff
+      SkillRightValueLabel 
+      
