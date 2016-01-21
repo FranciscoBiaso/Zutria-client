@@ -363,6 +363,9 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
             case Proto::GameServerChangeMapAwareRange:
                 parseChangeMapAwareRange(msg);
                 break;
+			case Proto::GameServerPlayerFirstStats:
+				parsePlayerFirstStats(msg);
+				break;
             default:
                 stdext::throw_exception(stdext::format("unhandled opcode %d", (int)opcode));
                 break;
@@ -1136,8 +1139,6 @@ void ProtocolGame::parsePlayerStats(const InputMessagePtr& msg)
 	double level = msg->getU16();
 	double levelPercent = msg->getU8();
 	double baseSpeed = msg->getU16();
-	double levelPoints = msg->getU8();
-
 
 	m_localPlayer->setHealth(health);
 	m_localPlayer->setMana(mana);
@@ -1145,7 +1146,6 @@ void ProtocolGame::parsePlayerStats(const InputMessagePtr& msg)
 	m_localPlayer->setBaseSpeed(baseSpeed);
 	m_localPlayer->setExperience(experience);
 	m_localPlayer->setLevel(level, levelPercent);
-	m_localPlayer->setLevelPoints(levelPoints);
 }
 
 void ProtocolGame::parsePlayerSkills(const InputMessagePtr& msg)
@@ -1162,6 +1162,8 @@ void ProtocolGame::parsePlayerSkills(const InputMessagePtr& msg)
 	int16_t attackSpeed = msg->getU16();
 	int16_t cooldown = msg->getU16();
 	int16_t avoidance = msg->getU16();
+	int16_t levelPoints = msg->getU16();
+	int16_t unusedMagicPoints = msg->getU8();
 	
 	m_localPlayer->setSkill(0, healthPoints);
 	m_localPlayer->setSkill(1, physicalAttack);
@@ -1175,6 +1177,7 @@ void ProtocolGame::parsePlayerSkills(const InputMessagePtr& msg)
 	m_localPlayer->setSkill(9, attackSpeed);
 	m_localPlayer->setSkill(10, cooldown);
 	m_localPlayer->setSkill(11, avoidance);    
+	m_localPlayer->setLevelPoints(levelPoints);
 }
 
 void ProtocolGame::parsePlayerState(const InputMessagePtr& msg)
@@ -1188,6 +1191,29 @@ void ProtocolGame::parsePlayerState(const InputMessagePtr& msg)
     m_localPlayer->setStates(states);
 }
 
+void ProtocolGame::parsePlayerFirstStats(const InputMessagePtr& msg)
+{
+	int16_t health = msg->getU16();
+	int16_t mana = msg->getU16();
+	int32_t freeCapacity = msg->getU32();
+	int32_t experience = msg->getU32();
+	int16_t levelInfo = msg->getU16();
+	int16_t levelPercent = msg->getU8();
+	int16_t baseSpeed = msg->getU16();
+	int16_t maxHealth = msg->getU16();
+	int16_t maxMana = msg->getU16();
+
+	m_localPlayer->setHealth(health);
+	m_localPlayer->setMana(mana);
+	m_localPlayer->setFreeCapacity(freeCapacity);
+	m_localPlayer->setExperience(experience);
+	m_localPlayer->setLevel(levelInfo, levelPercent);
+	m_localPlayer->setBaseSpeed(baseSpeed);
+	m_localPlayer->setSkill(skillsID::PLAYER_SKILL_HEALTH_POINTS, maxHealth);
+	m_localPlayer->setSkill(skillsID::PLAYER_SKILL_MANA_POINTS, maxMana);
+
+}
+
 void ProtocolGame::parsePlayerCancelAttack(const InputMessagePtr& msg)
 {
     uint seq = 0;
@@ -1196,7 +1222,6 @@ void ProtocolGame::parsePlayerCancelAttack(const InputMessagePtr& msg)
 
     g_game.processAttackCancel(seq);
 }
-
 
 void ProtocolGame::parsePlayerModes(const InputMessagePtr& msg)
 {
