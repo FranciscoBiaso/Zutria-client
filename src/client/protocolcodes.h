@@ -152,7 +152,8 @@ namespace Proto {
         GameServerMarketLeave               = 247, // 944
         GameServerMarketDetail              = 248, // 944
         GameServerMarketBrowse              = 249, // 944
-        GameServerModalDialog               = 250  // 960
+        GameServerModalDialog               = 250,  // 960
+		GameServerPlayerFirstStats          = 251
     };
 
     enum ClientOpcodes : uint8
