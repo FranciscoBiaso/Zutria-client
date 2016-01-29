@@ -1525,41 +1525,43 @@ void ProtocolGame::parseOpenOutfitWindow(const InputMessagePtr& msg)
     Outfit currentOutfit = getOutfit(msg);
     std::vector<std::tuple<int, std::string, int> > outfitList;
 
-    if(!g_game.getFeature(Otc::GameNewOutfitProtocol)) {
-        int outfitCount = msg->getU8();
-        for(int i = 0; i < outfitCount; i++) {
-            int outfitId = msg->getU16();
-            std::string outfitName = msg->getString();
-            int outfitAddons = msg->getU8();
+	g_game.changeOutfit(currentOutfit);
 
-            outfitList.push_back(std::make_tuple(outfitId, outfitName, outfitAddons));
-        }
-    } else {
-        int outfitStart, outfitEnd;
-       /* if(g_game.getFeature(Otc::GameLooktypeU16)) {
-            outfitStart = msg->getU16();
-            outfitEnd = msg->getU16();
-        } else {*/
-            outfitStart = msg->getU8();
-            outfitEnd = msg->getU8();
-        //}
+    //if(!g_game.getFeature(Otc::GameNewOutfitProtocol)) {
+    //    int outfitCount = msg->getU8();
+    //    for(int i = 0; i < outfitCount; i++) {
+    //        int outfitId = msg->getU16();
+    //        std::string outfitName = msg->getString();
+    //        int outfitAddons = msg->getU8();
 
-        for(int i = outfitStart; i <= outfitEnd; i++)
-            outfitList.push_back(std::make_tuple(i, "", 1));
-    }
+    //        outfitList.push_back(std::make_tuple(outfitId, outfitName, outfitAddons));
+    //    }
+    //} else {
+    //    int outfitStart, outfitEnd;
+    //   /* if(g_game.getFeature(Otc::GameLooktypeU16)) {
+    //        outfitStart = msg->getU16();
+    //        outfitEnd = msg->getU16();
+    //    } else {*/
+    //        outfitStart = msg->getU8();
+    //        outfitEnd = msg->getU8();
+    //    //}
 
-    std::vector<std::tuple<int, std::string> > mountList;
-    if(g_game.getFeature(Otc::GamePlayerMounts)) {
-        int mountCount = msg->getU8();
-        for(int i = 0; i < mountCount; ++i) {
-            int mountId = msg->getU16(); // mount type
-            std::string mountName = msg->getString(); // mount name
+    //    for(int i = outfitStart; i <= outfitEnd; i++)
+    //        outfitList.push_back(std::make_tuple(i, "", 1));
+    //}
 
-            mountList.push_back(std::make_tuple(mountId, mountName));
-        }
-    }
+    //std::vector<std::tuple<int, std::string> > mountList;
+    //if(g_game.getFeature(Otc::GamePlayerMounts)) {
+    //    int mountCount = msg->getU8();
+    //    for(int i = 0; i < mountCount; ++i) {
+    //        int mountId = msg->getU16(); // mount type
+    //        std::string mountName = msg->getString(); // mount name
 
-    g_game.processOpenOutfitWindow(currentOutfit, outfitList, mountList);
+    //        mountList.push_back(std::make_tuple(mountId, mountName));
+    //    }
+    //}
+
+    //g_game.processOpenOutfitWindow(currentOutfit, outfitList, mountList);
 }
 
 void ProtocolGame::parseVipAdd(const InputMessagePtr& msg)
@@ -1851,10 +1853,10 @@ Outfit ProtocolGame::getOutfit(const InputMessagePtr& msg)
         lookType = msg->getU8();
     if(lookType != 0) {
         outfit.setCategory(ThingCategoryCreature);
-        int head = msg->getU8();
-        int body = msg->getU8();
-        int legs = msg->getU8();
-        int feet = msg->getU8();
+        int head = msg->getU32();
+		int body = msg->getU32();
+		int legs = msg->getU32();
+		int feet = msg->getU32();
         int addons = 1;
        // if(g_game.getFeature(Otc::GamePlayerAddons))
          //   addons = msg->getU8();

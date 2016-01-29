@@ -2725,3 +2725,2688 @@ Loaded module 'game_spelllist'
 Loaded module 'game_cooldown'
 Loaded module 'game_modaldialog'
 Loaded module 'game_unjustifiedpoints'
+== application started at Jan 21 2016 03:45:20
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 06:22:38
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 06:30:08
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 07:01:55
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 07:11:50
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:818 847 7, stackpos:2
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:818 847 7, stackpos:2
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:819 847 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+Fechando a aplicação..
+== application started at Jan 21 2016 07:32:51
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 07:34:08
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 07:34:16
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 08:17:03
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 08:17:12
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 08:17:18
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:822 845 7, stackpos:2
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:823 845 7, stackpos:3
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:823 844 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: unable to remove creature
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:791 855 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:791 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:791 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:792 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:792 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:792 855 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:791 855 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: unable to remove creature
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:789 855 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:789 855 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:789 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:789 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:789 857 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:789 857 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:790 857 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:791 857 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:791 857 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:791 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:791 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:792 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:793 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:794 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:794 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:793 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:793 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:794 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:795 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:797 856 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:797 855 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:797 855 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:798 855 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:799 854 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:800 854 7, stackpos:2
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:801 853 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:801 853 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:802 853 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:803 853 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:803 853 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: got a thing with invalid stackpos
+at:
+	[C++]: ?getStackPos@Thing@@QAEHXZ
+ERROR: unable to remove thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: got a thing with invalid stackpos
+at:
+	[C++]: ?getStackPos@Thing@@QAEHXZ
+ERROR: unable to remove thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: unable to remove creature
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: got a thing with invalid stackpos
+at:
+	[C++]: ?getStackPos@Thing@@QAEHXZ
+ERROR: unable to remove thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: got a thing with invalid stackpos
+at:
+	[C++]: ?getStackPos@Thing@@QAEHXZ
+ERROR: unable to remove thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+Fechando a aplicação..
+== application started at Jan 21 2016 08:49:59
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:856 843 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:819 844 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:818 847 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: got a thing with invalid stackpos
+at:
+	[C++]: ?getStackPos@Thing@@QAEHXZ
+ERROR: unable to remove thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: got a thing with invalid stackpos
+at:
+	[C++]: ?getStackPos@Thing@@QAEHXZ
+ERROR: unable to remove thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: got a thing with invalid stackpos
+at:
+	[C++]: ?getStackPos@Thing@@QAEHXZ
+ERROR: unable to remove thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+Fechando a aplicação..
+== application started at Jan 21 2016 09:04:12
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 09:04:57
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 09:05:16
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 09:05:44
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 09:26:56
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 09:27:14
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 09:27:30
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+ERROR: protected lua call failed: LUA ERROR:
+/client_options/game.otui:44: [@onClick]:2: attempt to index field 'client_locales' (a nil value)
+stack traceback:
+	[C]: in function '__index'
+	/client_options/game.otui:44: [@onClick]:2: in function </client_options/game.otui:44: [@onClick]:1>
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:818 847 7, stackpos:2
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:816 847 7, stackpos:3
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:814 848 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no thing
+at:
+	[C++]: ?parseTileTransformThing@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no thing at pos:814 848 7, stackpos:1
+at:
+	[C++]: ?getMappedThing@ProtocolGame@@QAE?AV?$shared_object_ptr@VThing@@@stdext@@ABV?$shared_object_ptr@VInputMessage@@@3@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+Fechando a aplicação..
+== application started at Jan 21 2016 09:39:12
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 09:40:14
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 10:25:37
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 10:26:22
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 10:27:31
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 10:28:00
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 10:28:45
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 21 2016 10:33:52
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/corelib/ui/uicheckbox.lua:12: in function </corelib/ui/uicheckbox.lua:11>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/corelib/ui/uicheckbox.lua:12: in function </corelib/ui/uicheckbox.lua:11>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:174: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:178: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:178: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:178: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:178: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/corelib/ui/uicheckbox.lua:12: in function </corelib/ui/uicheckbox.lua:11>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:178: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:178: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:178: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:246: attempt to index global 'currentColorBox' (a nil value)
+stack traceback:
+	[C]: in function '__newindex'
+	/game_outfit/outfit.lua:246: in function </game_outfit/outfit.lua:240>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:175: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:178: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+Fechando a aplicação..
+== application started at Jan 21 2016 10:36:40
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+ERROR: no creature found to move
+at:
+	[C++]: ?parseCreatureMove@ProtocolGame@@AAEXABV?$shared_object_ptr@VInputMessage@@@stdext@@@Z
+Fechando a aplicação..
+== application started at Jan 21 2016 11:24:57
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 00:08:44
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/corelib/ui/uicheckbox.lua:12: in function </corelib/ui/uicheckbox.lua:11>
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/game_outfit/outfit.lua:174: in function 'randomize'
+	/game_outfit/outfitwindow.otui:167: [@onClick]:2: in function </game_outfit/outfitwindow.otui:167: [@onClick]:1>
+Fechando a aplicação..
+== application started at Jan 22 2016 00:22:10
+Zutria 0.6.3 rev 0 (devel) built on Jan 21 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 00:36:48
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 00:37:21
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 02:05:24
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 02:26:58
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+ERROR: protected lua call failed: LUA ERROR:
+/game_outfit/outfit.lua:288: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/game_outfit/outfit.lua:288: in function </game_outfit/outfit.lua:266>
+	[C]: in function 'setChecked'
+	/corelib/ui/uicheckbox.lua:12: in function </corelib/ui/uicheckbox.lua:11>
+Fechando a aplicação..
+== application started at Jan 22 2016 02:37:58
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 02:51:51
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 03:03:52
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 03:17:49
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 03:29:17
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 03:39:02
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 03:53:49
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 03:55:40
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 04:02:11
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 22:04:21
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 22:07:47
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 22 2016 22:18:51
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Jan 29 2016 16:05:19
+Zutria 0.6.3 rev 0 (devel) built on Jan 22 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..

@@ -32,6 +32,7 @@ Outfit::Outfit()
 
 Color Outfit::getColor(int color)
 {
+	/*
     if(color >= HSI_H_STEPS * HSI_SI_VALUES)
         color = 0;
 
@@ -119,8 +120,9 @@ Color Outfit::getColor(int color)
         blue = red - (loc3 - green) * (6 * loc1 - 5);
     }
     return Color(int(red * 255), int(green * 255), int(blue * 255));
+	*/
+	return Color((uint8)(color >> 24), (uint8)(color >> 16), (uint8)(color >> 8), (uint8)(color >> 0));
 }
-
 void Outfit::resetClothes()
 {
     setHead(0);

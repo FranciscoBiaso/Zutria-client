@@ -231,13 +231,25 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
 
     if(!useGray)
         fillColor = m_informationColor;
-
-    // calculate main rects
-    Rect backgroundRect = Rect(point.x-(13.5), point.y, 27, 4);
-    backgroundRect.bind(parentRect);
+	bool l_isPlayer = isPlayer();
+	Rect backgroundRect;
+	if (l_isPlayer)
+	{
+		// calculate main rects
+		backgroundRect = Rect(point.x - 32, point.y - 5, 64, 6);
+	}
+	else
+	{
+		backgroundRect = Rect(point.x - 13.5, point.y, 27, 4);
+	}
+	backgroundRect.bind(parentRect);
 
     Size nameSize = m_nameCache.getTextSize();
-    Rect textRect = Rect(point.x - nameSize.width() / 2.0, point.y-12, nameSize);
+	Rect textRect;
+	if (l_isPlayer)
+		textRect = Rect(point.x - nameSize.width() / 2.0, point.y - 17, nameSize);
+	else
+		textRect = Rect(point.x - nameSize.width() / 2.0, point.y - 12, nameSize);
     textRect.bind(parentRect);
 
     // distance them
@@ -248,7 +260,11 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
 
     // health rect is based on background rect, so no worries
     Rect healthRect = backgroundRect.expanded(-1);
-    healthRect.setWidth((m_healthPercent / 100.0) * 25);
+	if (l_isPlayer)
+		healthRect.setWidth((m_healthPercent / 100.0) * 62);
+	else
+		healthRect.setWidth((m_healthPercent / 100.0) * 25);
+
 
     // draw
     if(g_game.getFeature(Otc::GameBlueNpcNameColor) && isNpc() && m_healthPercent == 100 && !useGray)
@@ -604,18 +620,10 @@ void Creature::setName(const std::string& name)
 
 void Creature::setHealthPercent(uint8 healthPercent)
 {
-    if(healthPercent > 92)
-        m_informationColor = Color(0x00, 0xBC, 0x00);
-    else if(healthPercent > 60)
-        m_informationColor = Color(0x50, 0xA1, 0x50);
-    else if(healthPercent > 30)
-        m_informationColor = Color(0xA1, 0xA1, 0x00);
-    else if(healthPercent > 8)
-        m_informationColor = Color(0xBF, 0x0A, 0x0A);
-    else if(healthPercent > 3)
-        m_informationColor = Color(0x91, 0x0F, 0x0F);
-    else
-        m_informationColor = Color(0x85, 0x0C, 0x0C);
+	if (healthPercent >= 50)
+		m_informationColor = Color(255.0 * ((50-(healthPercent-50))/50.0f), 0xff, 0x00);
+	else
+		m_informationColor = Color(0xff, 255.0 * healthPercent / 50.0f, 0x00);
 
     m_healthPercent = healthPercent;
     callLuaField("	", healthPercent);
