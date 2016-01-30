@@ -64,6 +64,9 @@ int UIAnchor::getHookedPoint(const UIWidgetPtr& hookedWidget, const UIWidgetPtr&
         case Fw::AnchorHorizontalCenter:
             point = hookedWidgetRect.horizontalCenter();
             break;
+		case Fw::AnchorHorizontal35Percentage:
+			point = hookedWidgetRect.horizontal35Percentage();
+			break;
         case Fw::AnchorVerticalCenter:
             point = hookedWidgetRect.verticalCenter();
             break;
@@ -78,6 +81,7 @@ int UIAnchor::getHookedPoint(const UIWidgetPtr& hookedWidget, const UIWidgetPtr&
             case Fw::AnchorLeft:
             case Fw::AnchorRight:
             case Fw::AnchorHorizontalCenter:
+			case Fw::AnchorHorizontal35Percentage:
                 point -= parentWidget->getVirtualOffset().x;
                 break;
             case Fw::AnchorBottom:
@@ -203,11 +207,12 @@ bool UIAnchorLayout::updateWidget(const UIWidgetPtr& widget, const UIAnchorGroup
         int point = anchor->getHookedPoint(hookedWidget, parentWidget);
 
         switch(anchor->getAnchoredEdge()) {
-            case Fw::AnchorHorizontalCenter:
+			case Fw::AnchorHorizontalCenter:
+			case Fw::AnchorHorizontal35Percentage:
                 newRect.moveHorizontalCenter(point + widget->getMarginLeft() - widget->getMarginRight());
                 horizontalMoved = true;
                 break;
-            case Fw::AnchorLeft:
+			case Fw::AnchorLeft:
                 if(!horizontalMoved) {
                     newRect.moveLeft(point + widget->getMarginLeft());
                     horizontalMoved = true;

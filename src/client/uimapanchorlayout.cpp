@@ -46,7 +46,10 @@ int UIPositionAnchor::getHookedPoint(const UIWidgetPtr& hookedWidget, const UIWi
                 break;
             case Fw::AnchorHorizontalCenter:
                 point = hookedRect.horizontalCenter();
-                break;
+				break;
+			case Fw::AnchorHorizontal35Percentage:
+				point = hookedRect.horizontal35Percentage();
+				break;
             case Fw::AnchorVerticalCenter:
                 point = hookedRect.verticalCenter();
                 break;

@@ -215,7 +215,8 @@ namespace Fw
         AnchorLeft,
         AnchorRight,
         AnchorVerticalCenter,
-        AnchorHorizontalCenter
+        AnchorHorizontalCenter,
+		AnchorHorizontal35Percentage
     };
 
     enum FocusReason {

@@ -53,7 +53,8 @@ public:
     T top() const { return y1; }
     T right() const { return x2; }
     T bottom() const { return y2; }
-    T horizontalCenter() const { return x1 + (x2 - x1)/2; }
+	T horizontalCenter() const { return x1 + (x2 - x1) / 2; }
+	T horizontal35Percentage() const { return x1 + (x2 - x1) / 3; }
     T verticalCenter() const { return y1 + (y2 - y1)/2; }
     T x() const { return x1; }
     T y() const { return y1; }

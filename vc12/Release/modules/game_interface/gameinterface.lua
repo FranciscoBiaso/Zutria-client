@@ -3,8 +3,10 @@ WALK_STEPS_RETRY = 10
 gameRootPanel = nil
 gameMapPanel = nil
 gameRightPanel = nil
+gameMiniMapPanel = nil
 gameLeftPanel = nil
 gameBottomPanel = nil
+gameInventoryPanel = nil
 logoutButton = nil
 mouseGrabberWidget = nil
 countWindow = nil
@@ -50,6 +52,8 @@ function init()
   gameRightPanel = gameRootPanel:getChildById('gameRightPanel')
   gameLeftPanel = gameRootPanel:getChildById('gameLeftPanel')
   gameBottomPanel = gameRootPanel:getChildById('gameBottomPanel')
+  gameInventoryPanel = gameRootPanel:getChildById('gameInventoryPanel')
+  --gameMiniMapPanel = gameRootPanel:getChildById('gameMiniMapPanel')
   connect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
 
   logoutButton = modules.client_topmenu.addLeftButton('logoutButton', tr('Exit'),
@@ -795,6 +799,10 @@ function getBottomPanel()
   return gameBottomPanel
 end
 
+function getMiniMapPanel()
+  return nil
+end
+
 function onLeftPanelVisibilityChange(leftPanel, visible)
   if not visible and g_game.isOnline() then
     local children = leftPanel:getChildren()
@@ -809,58 +817,34 @@ function nextViewMode()
 end
 
 function setupViewMode(mode)
-  if mode == currentViewMode then return end
+    gameRootPanel:fill('parent')
 
-  if currentViewMode == 2 then
-    gameMapPanel:addAnchor(AnchorLeft, 'gameLeftPanel', AnchorRight)
-    gameMapPanel:addAnchor(AnchorRight, 'gameRightPanel', AnchorLeft)
-    gameMapPanel:addAnchor(AnchorBottom, 'gameBottomPanel', AnchorTop)
-    gameRootPanel:addAnchor(AnchorTop, 'topMenu', AnchorBottom)
-    gameLeftPanel:setOn(modules.client_options.getOption('showLeftPanel'))
-    gameLeftPanel:setImageColor('white')
-    gameRightPanel:setImageColor('white')
-    gameLeftPanel:setMarginTop(0)
-    gameRightPanel:setMarginTop(0)
-    gameBottomPanel:setImageColor('white')
-    modules.client_topmenu.getTopMenu():setImageColor('white')
-    g_game.changeMapAwareRange(18, 14)
-  end
-
-  if mode == 0 then
-    gameMapPanel:setKeepAspectRatio(true)
-    gameMapPanel:setLimitVisibleRange(false)
-    gameMapPanel:setZoom(11)
-    gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
-  elseif mode == 1 then
     gameMapPanel:setKeepAspectRatio(false)
     gameMapPanel:setLimitVisibleRange(true)
     gameMapPanel:setZoom(11)
-    gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
-  elseif mode == 2 then
-    local limit = limitedZoom and not g_game.isGM()
-    gameMapPanel:setLimitVisibleRange(limit)
-    gameMapPanel:setZoom(11)
-    gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
-    gameMapPanel:fill('parent')
-    gameRootPanel:fill('parent')
+    gameMapPanel:setVisibleDimension({ width = 5, height = 5 })
+    gameMapPanel:fill('parent')    
+    gameMapPanel:setOn(true)    
+   
     gameLeftPanel:setImageColor('alpha')
-    gameRightPanel:setImageColor('alpha')
-    gameLeftPanel:setMarginTop(modules.client_topmenu.getTopMenu()
-      :getHeight() - gameLeftPanel:getPaddingTop())
-    gameRightPanel:setMarginTop(modules.client_topmenu.getTopMenu()
-      :getHeight() - gameRightPanel:getPaddingTop())
+    gameLeftPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() + 2 - gameLeftPanel:getPaddingTop())
     gameLeftPanel:setOn(true)
     gameLeftPanel:setVisible(true)
+    
+    gameInventoryPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() + 2 - gameLeftPanel:getPaddingTop())
+      
+    gameRightPanel:setMarginTop(5 - gameRightPanel:getPaddingTop())
+    gameRightPanel:setImageColor('alpha')
     gameRightPanel:setOn(true)
-    gameMapPanel:setOn(true)
-    gameBottomPanel:setImageColor('#ffffff88')
-    modules.client_topmenu.getTopMenu():setImageColor('#ffffff66')
-    if not limit then
-      g_game.changeMapAwareRange(24, 20)
-    end
-  end
+    gameRightPanel:setVisible(true)
+    
+    --gameMiniMapPanel:setImageColor('alpha')
+    --gameMiniMapPanel:setOn(true)
+    --gameMiniMapPanel:setVisible(true)
+    
+    gameBottomPanel:setImageColor('alpha')
+    --modules.client_topmenu.getTopMenu():setImageColor('#ffffff66')
 
-  currentViewMode = mode
 end
 
 function limitZoom()

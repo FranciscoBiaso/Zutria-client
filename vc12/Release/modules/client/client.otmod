@@ -16,3 +16,4 @@ Module
     - client_options		
     - client_stats
     - client_serverlist
+    - client_modulemanager

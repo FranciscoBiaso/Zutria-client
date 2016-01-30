@@ -63,8 +63,10 @@ Fw::AnchorEdge Fw::translateAnchorEdge(std::string anchorEdge)
         return Fw::AnchorBottom;
     else if(anchorEdge == "horizontalcenter")
         return Fw::AnchorHorizontalCenter;
-    else if(anchorEdge == "verticalcenter")
-        return Fw::AnchorVerticalCenter;
+	else if (anchorEdge == "verticalcenter")
+		return Fw::AnchorVerticalCenter;
+	else if (anchorEdge == "horizontal35percentage")
+		return Fw::AnchorHorizontal35Percentage;
     return Fw::AnchorNone;
 }
 

@@ -2,15 +2,50 @@
 GameSidePanel < UIMiniWindowContainer
   image-source: /images/ui/panel_side
   image-border: 4
-  padding: 4
-  width: 198
+  border: 1 #12121200
+  background-color: #12121200
+  padding: 2
+  margin: 2
+  width: 228
   layout:
     type: verticalBox
     //spacing: 1
 
+    
+GameMiniMapPanel < Panel
+  image-source: /images/ui/panel_bottom
+  image-border: 4
+  image-color: #bcbcbcdd
+  border: 1 #12121277
+  margin: 2
+  padding: 2
+  height: 172
+  width: 228
+  
+GameMagicPanel < Panel
+  image-source: /images/ui/panel_bottom
+  image-border: 4
+  image-color: #bcbcbc22
+  border: 1 #12121277
+  margin: 2
+  padding: 2
+  height: 172
+
+GameInventoryPanel < Panel
+  image-source: /images/ui/panel_bottom
+  image-border: 4
+  image-color: #bcbcbcdd
+  border: 1 #121212ff
+  margin-top: 40
+  padding: 2
+  margin: 2
+  height: 172
+  width: 228
+    
 GameBottomPanel < Panel
   image-source: /images/ui/panel_bottom
   image-border: 4
+  height: 172
 
 GameMapPanel < UIGameMap
   padding: 4
@@ -23,7 +58,6 @@ GameMapPanel < UIGameMap
 UIWidget
   id: gameRootPanel
   anchors.fill: parent
-  anchors.top: topMenu.bottom
 
   GameMapPanel
     id: gameMapPanel
@@ -35,16 +69,15 @@ UIWidget
 
   GameBottomPanel
     id: gameBottomPanel
-    anchors.left: gameLeftPanel.right
-    anchors.right: gameRightPanel.left
-    anchors.top: bottomSplitter.top
+    anchors.left: parent.left
+    anchors.right: parent.horizontal35percentage
     anchors.bottom: parent.bottom
 
   GameSidePanel
     id: gameLeftPanel
     anchors.left: parent.left
     anchors.top: parent.top
-    anchors.bottom: parent.bottom
+    anchors.bottom: gameBottomPanel.top
     focusable: false
     visible: true
     on: true
@@ -55,21 +88,33 @@ UIWidget
   GameSidePanel
     id: gameRightPanel
     anchors.right: parent.right
-    anchors.top: parent.top
+    anchors.top: gameInventoryPanel.bottom
+    anchors.bottom: gameMiniMapPanel.top
+    focusable: false
+    on: true
+    
+  GameMiniMapPanel
+    id: gameMiniMapPanel
+    anchors.right: parent.right
     anchors.bottom: parent.bottom
     focusable: false
     on: true
-
-  Splitter
-    id: bottomSplitter
-    anchors.left: gameLeftPanel.right
-    anchors.right: gameRightPanel.left
+  
+  GameInventoryPanel
+    id: gameInventoryPanel
+    anchors.top: parent.top
+    anchors.right: parent.right
+    focusable: false
+    on: true
+    
+  GameMagicPanel
+    id: gameMagicPanel
+    anchors.right: gameMiniMapPanel.left
+    anchors.left: gameBottomPanel.right
     anchors.bottom: parent.bottom
-    relative-margin: bottom
-    margin-bottom: 172
-    @canUpdateMargin: function(self, newMargin) if modules.client_options.getOption('dontStretchShrink') then return self:getMarginBottom() end return math.max(math.min(newMargin, self:getParent():getHeight() - 300), 100) end
-    @onGeometryChange: function(self) self:setMarginBottom(math.min(math.max(self:getParent():getHeight() - 300, 100), self:getMarginBottom())) end
-
+    focusable: false
+    on: true
+    
   UIWidget
     id: mouseGrabber
     focusable: false
