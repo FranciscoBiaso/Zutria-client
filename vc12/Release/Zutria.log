@@ -2267,3 +2267,626 @@ Loaded module 'game_cooldown'
 Loaded module 'game_modaldialog'
 Loaded module 'game_unjustifiedpoints'
 Fechando a aplicação..
+== application started at Feb 01 2016 01:03:00
+Zutria 0.6.3 rev 0 (devel) built on Jan 30 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'client_modulemanager'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Loaded module 'gamelib'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'client_modulemanager'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Loaded module 'gamelib'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'client_modulemanager'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+ERROR: lua function callback failed: LUA ERROR:
+/client_entergame/characterlist.lua:247: attempt to index upvalue 'characterList' (a nil value)
+stack traceback:
+	[C]: in function '__index'
+	/client_entergame/characterlist.lua:247: in function </client_entergame/characterlist.lua:247>
+ERROR: lua function callback failed: LUA ERROR:
+/client_modulemanager/modulemanager.lua:60: attempt to index upvalue 'moduleList' (a nil value)
+stack traceback:
+	[C]: in function '__index'
+	/client_modulemanager/modulemanager.lua:60: in function </client_modulemanager/modulemanager.lua:57>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uiminiwindow.lua:131: attempt to call method 'order' (a nil value)
+stack traceback:
+	[C]: in function 'order'
+	/corelib/ui/uiminiwindow.lua:131: in function </corelib/ui/uiminiwindow.lua:131>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uiminiwindow.lua:131: attempt to call method 'order' (a nil value)
+stack traceback:
+	[C]: in function 'order'
+	/corelib/ui/uiminiwindow.lua:131: in function </corelib/ui/uiminiwindow.lua:131>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uiminiwindow.lua:131: attempt to call method 'order' (a nil value)
+stack traceback:
+	[C]: in function 'order'
+	/corelib/ui/uiminiwindow.lua:131: in function </corelib/ui/uiminiwindow.lua:131>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uiminiwindow.lua:131: attempt to call method 'order' (a nil value)
+stack traceback:
+	[C]: in function 'order'
+	/corelib/ui/uiminiwindow.lua:131: in function </corelib/ui/uiminiwindow.lua:131>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uiminiwindow.lua:134: attempt to call method 'order' (a nil value)
+stack traceback:
+	[C]: in function 'order'
+	/corelib/ui/uiminiwindow.lua:134: in function </corelib/ui/uiminiwindow.lua:134>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uiminiwindow.lua:131: attempt to call method 'order' (a nil value)
+stack traceback:
+	[C]: in function 'order'
+	/corelib/ui/uiminiwindow.lua:131: in function </corelib/ui/uiminiwindow.lua:131>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uiminiwindow.lua:131: attempt to call method 'order' (a nil value)
+stack traceback:
+	[C]: in function 'order'
+	/corelib/ui/uiminiwindow.lua:131: in function </corelib/ui/uiminiwindow.lua:131>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uispinbox.lua:83: attempt to call method 'setMaximum' (a nil value)
+stack traceback:
+	[C]: in function 'setMaximum'
+	/corelib/ui/uispinbox.lua:83: in function </corelib/ui/uispinbox.lua:83>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uispinbox.lua:85: attempt to call method 'setMinimum' (a nil value)
+stack traceback:
+	[C]: in function 'setMinimum'
+	/corelib/ui/uispinbox.lua:85: in function </corelib/ui/uispinbox.lua:85>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uispinbox.lua:83: attempt to call method 'setMaximum' (a nil value)
+stack traceback:
+	[C]: in function 'setMaximum'
+	/corelib/ui/uispinbox.lua:83: in function </corelib/ui/uispinbox.lua:83>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uispinbox.lua:85: attempt to call method 'setMinimum' (a nil value)
+stack traceback:
+	[C]: in function 'setMinimum'
+	/corelib/ui/uispinbox.lua:85: in function </corelib/ui/uispinbox.lua:85>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uispinbox.lua:93: attempt to call method 'hideButtons' (a nil value)
+stack traceback:
+	[C]: in function 'hideButtons'
+	/corelib/ui/uispinbox.lua:93: in function </corelib/ui/uispinbox.lua:89>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uispinbox.lua:83: attempt to call method 'setMaximum' (a nil value)
+stack traceback:
+	[C]: in function 'setMaximum'
+	/corelib/ui/uispinbox.lua:83: in function </corelib/ui/uispinbox.lua:83>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uispinbox.lua:85: attempt to call method 'setMinimum' (a nil value)
+stack traceback:
+	[C]: in function 'setMinimum'
+	/corelib/ui/uispinbox.lua:85: in function </corelib/ui/uispinbox.lua:85>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:83: attempt to call method 'setHeaderRowStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setHeaderRowStyle'
+	/corelib/ui/uitable.lua:83: in function </corelib/ui/uitable.lua:82>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:79: attempt to call method 'setHeaderColumnStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setHeaderColumnStyle'
+	/corelib/ui/uitable.lua:79: in function </corelib/ui/uitable.lua:78>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:67: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/corelib/ui/uitable.lua:67: in function </corelib/ui/uitable.lua:66>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:75: attempt to call method 'setRowStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setRowStyle'
+	/corelib/ui/uitable.lua:75: in function </corelib/ui/uitable.lua:74>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:71: attempt to call method 'setColumnStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setColumnStyle'
+	/corelib/ui/uitable.lua:71: in function </corelib/ui/uitable.lua:70>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:83: attempt to call method 'setHeaderRowStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setHeaderRowStyle'
+	/corelib/ui/uitable.lua:83: in function </corelib/ui/uitable.lua:82>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:79: attempt to call method 'setHeaderColumnStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setHeaderColumnStyle'
+	/corelib/ui/uitable.lua:79: in function </corelib/ui/uitable.lua:78>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:67: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/corelib/ui/uitable.lua:67: in function </corelib/ui/uitable.lua:66>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:75: attempt to call method 'setRowStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setRowStyle'
+	/corelib/ui/uitable.lua:75: in function </corelib/ui/uitable.lua:74>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:71: attempt to call method 'setColumnStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setColumnStyle'
+	/corelib/ui/uitable.lua:71: in function </corelib/ui/uitable.lua:70>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:79: attempt to call method 'setHeaderColumnStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setHeaderColumnStyle'
+	/corelib/ui/uitable.lua:79: in function </corelib/ui/uitable.lua:78>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:67: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/corelib/ui/uitable.lua:67: in function </corelib/ui/uitable.lua:66>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:75: attempt to call method 'setRowStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setRowStyle'
+	/corelib/ui/uitable.lua:75: in function </corelib/ui/uitable.lua:74>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:83: attempt to call method 'setHeaderRowStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setHeaderRowStyle'
+	/corelib/ui/uitable.lua:83: in function </corelib/ui/uitable.lua:82>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:71: attempt to call method 'setColumnStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setColumnStyle'
+	/corelib/ui/uitable.lua:71: in function </corelib/ui/uitable.lua:70>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:67: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/corelib/ui/uitable.lua:67: in function </corelib/ui/uitable.lua:66>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:75: attempt to call method 'setRowStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setRowStyle'
+	/corelib/ui/uitable.lua:75: in function </corelib/ui/uitable.lua:74>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:71: attempt to call method 'setColumnStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setColumnStyle'
+	/corelib/ui/uitable.lua:71: in function </corelib/ui/uitable.lua:70>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:67: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/corelib/ui/uitable.lua:67: in function </corelib/ui/uitable.lua:66>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:75: attempt to call method 'setRowStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setRowStyle'
+	/corelib/ui/uitable.lua:75: in function </corelib/ui/uitable.lua:74>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:71: attempt to call method 'setColumnStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setColumnStyle'
+	/corelib/ui/uitable.lua:71: in function </corelib/ui/uitable.lua:70>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:67: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/corelib/ui/uitable.lua:67: in function </corelib/ui/uitable.lua:66>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:75: attempt to call method 'setRowStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setRowStyle'
+	/corelib/ui/uitable.lua:75: in function </corelib/ui/uitable.lua:74>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:71: attempt to call method 'setColumnStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setColumnStyle'
+	/corelib/ui/uitable.lua:71: in function </corelib/ui/uitable.lua:70>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:67: attempt to index a nil value
+stack traceback:
+	[C]: in function '__index'
+	/corelib/ui/uitable.lua:67: in function </corelib/ui/uitable.lua:66>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:75: attempt to call method 'setRowStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setRowStyle'
+	/corelib/ui/uitable.lua:75: in function </corelib/ui/uitable.lua:74>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uitable.lua:71: attempt to call method 'setColumnStyle' (a nil value)
+stack traceback:
+	[C]: in function 'setColumnStyle'
+	/corelib/ui/uitable.lua:71: in function </corelib/ui/uitable.lua:70>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uiminiwindow.lua:131: attempt to call method 'order' (a nil value)
+stack traceback:
+	[C]: in function 'order'
+	/corelib/ui/uiminiwindow.lua:131: in function </corelib/ui/uiminiwindow.lua:131>
+ERROR: lua function callback failed: LUA ERROR:
+/corelib/ui/uiminiwindow.lua:131: attempt to call method 'order' (a nil value)
+stack traceback:
+	[C]: in function 'order'
+	/corelib/ui/uiminiwindow.lua:131: in function </corelib/ui/uiminiwindow.lua:131>
+Fechando a aplicação..
+== application started at Feb 01 2016 01:07:13
+Zutria 0.6.3 rev 0 (devel) built on Jan 30 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'client_modulemanager'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Feb 01 2016 01:09:34
+Zutria 0.6.3 rev 0 (devel) built on Jan 30 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'client_modulemanager'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+ERROR: Unable to load texture '/images/game/slots/left-hand': unable to open file '/images/game/slots/left-hand.png': The system cannot find the path specified.
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Feb 01 2016 01:09:47
+Zutria 0.6.3 rev 0 (devel) built on Jan 30 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'client_modulemanager'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Feb 01 2016 01:10:55
+Zutria 0.6.3 rev 0 (devel) built on Jan 30 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'client_modulemanager'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Feb 01 2016 01:17:33
+Zutria 0.6.3 rev 0 (devel) built on Jan 30 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'client_modulemanager'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Feb 01 2016 01:20:33
+Zutria 0.6.3 rev 0 (devel) built on Jan 30 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'client_modulemanager'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
+Fechando a aplicação..
+== application started at Feb 01 2016 13:51:36
+Zutria 0.6.3 rev 0 (devel) built on Jan 30 2016 for arch x86
+Loaded module 'corelib'
+Loaded module 'game_things'
+Loaded module 'gamelib'
+Loaded module 'client'
+Loaded module 'client_styles'
+Loaded module 'client_topmenu'
+Loaded module 'client_background'
+Loaded module 'client_options'
+Loaded module 'client_stats'
+Loaded module 'client_entergame'
+Loaded module 'client_serverlist'
+Loaded module 'client_modulemanager'
+Loaded module 'game_interface'
+Loaded module 'game_hotkeys'
+Loaded module 'game_questlog'
+Loaded module 'game_textmessage'
+Loaded module 'game_console'
+Loaded module 'game_outfit'
+Loaded module 'game_healthinfo'
+Loaded module 'game_skills'
+Loaded module 'game_inventory'
+Loaded module 'game_combatcontrols'
+Loaded module 'game_containers'
+Loaded module 'game_viplist'
+Loaded module 'game_battle'
+Loaded module 'game_minimap'
+Loaded module 'game_npctrade'
+Loaded module 'game_textwindow'
+Loaded module 'game_playertrade'
+Loaded module 'game_bugreport'
+Loaded module 'game_playerdeath'
+Loaded module 'game_playermount'
+Loaded module 'game_ruleviolation'
+Loaded module 'game_market'
+Loaded module 'game_spelllist'
+Loaded module 'game_cooldown'
+Loaded module 'game_modaldialog'
+Loaded module 'game_unjustifiedpoints'
