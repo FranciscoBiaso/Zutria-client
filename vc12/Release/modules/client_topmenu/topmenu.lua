@@ -1,9 +1,9 @@
 -- private variables
-local topMenu
-local leftButtonsPanel
-local rightButtonsPanel
-local leftGameButtonsPanel
-local rightGameButtonsPanel
+topMenu = nil
+leftButtonsPanel = nil
+rightButtonsPanel = nil 
+leftGameButtonsPanel = nil
+rightGameButtonsPanel = nil
 
 -- private functions
 local function addButton(id, description, icon, callback, panel, toggle, front)
@@ -83,7 +83,7 @@ function offline()
 end
 
 function updateFps(fps)
-  text = 'FPS: ' .. fps
+  text = 'Frames/seg: ' .. fps
   fpsLabel:setText(text)
 end
 

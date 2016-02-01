@@ -1,5 +1,4 @@
 minimapWidget = nil
-minimapButton = nil
 minimapWindow = nil
 otmm = true
 preloaded = false
@@ -8,24 +7,19 @@ oldZoom = nil
 oldPos = nil
 
 function init()
-  minimapButton = modules.client_topmenu.addRightGameToggleButton('minimapButton', 
-    tr('Minimap') .. ' (Ctrl+M)', '/images/topbuttons/minimap', toggle)
-  minimapButton:setOn(true)
 
-  minimapWindow = g_ui.loadUI('minimap', modules.game_interface.getRightPanel())
+  minimapWindow = g_ui.loadUI('minimap', modules.game_interface.getMiniMapPanel())
   minimapWindow:setContentMinimumHeight(64)
 
   minimapWidget = minimapWindow:recursiveGetChildById('minimap')
+  minimapWidget:setColor('#444444ab')
 
   local gameRootPanel = modules.game_interface.getRootPanel()
   g_keyboard.bindKeyPress('Alt+Left', function() minimapWidget:move(1,0) end, gameRootPanel)
   g_keyboard.bindKeyPress('Alt+Right', function() minimapWidget:move(-1,0) end, gameRootPanel)
   g_keyboard.bindKeyPress('Alt+Up', function() minimapWidget:move(0,1) end, gameRootPanel)
-  g_keyboard.bindKeyPress('Alt+Down', function() minimapWidget:move(0,-1) end, gameRootPanel)
-  g_keyboard.bindKeyDown('Ctrl+M', toggle)
+  g_keyboard.bindKeyPress('Alt+Down', function() minimapWidget:move(0,-1) end, gameRootPanel)  
   g_keyboard.bindKeyDown('Ctrl+Shift+M', toggleFullMap)
-
-  minimapWindow:setup()
 
   connect(g_game, {
     onGameStart = online,
@@ -64,21 +58,6 @@ function terminate()
   g_keyboard.unbindKeyDown('Ctrl+Shift+M')
 
   minimapWindow:destroy()
-  minimapButton:destroy()
-end
-
-function toggle()
-  if minimapButton:isOn() then
-    minimapWindow:close()
-    minimapButton:setOn(false)
-  else
-    minimapWindow:open()
-    minimapButton:setOn(true)
-  end
-end
-
-function onMiniWindowClose()
-  minimapButton:setOn(false)
 end
 
 function preload()
@@ -143,15 +122,27 @@ end
 
 function toggleFullMap()
   if not fullmapView then
-    fullmapView = true
-    minimapWindow:hide()
+    fullmapView = true    
     minimapWidget:setParent(modules.game_interface.getRootPanel())
-    minimapWidget:fill('parent')
+    minimapWidget:breakAnchors()
+    minimapWidget:addAnchor(AnchorTop, 'gameLeftPanel', AnchorTop)
+    minimapWidget:addAnchor(AnchorLeft, 'gameLeftPanel', AnchorRight)
+    minimapWidget:addAnchor(AnchorRight, 'gameRightPanel', AnchorLeft)
+    minimapWidget:addAnchor(AnchorBottom, 'gameBottomPanel', AnchorTop)
     minimapWidget:setAlternativeWidgetsVisible(true)
+    minimapWidget:setColor('#444444ab')
+    minimapWidget:setBorderWidth(2)
+    minimapWidget:setBorderColor('#12121277')
+    minimapWidget:setPadding(2)
+    minimapWidget:setMargin(10)
   else
     fullmapView = false
     minimapWidget:setParent(minimapWindow:getChildById('contentsPanel'))
     minimapWidget:fill('parent')
+    minimapWidget:setBorderWidth(0)
+    minimapWidget:setPadding(0)
+    minimapWidget:setMargin(0)
+    minimapWidget:setBorderColor('#121212700')
     minimapWindow:show()
     minimapWidget:setAlternativeWidgetsVisible(false)
   end

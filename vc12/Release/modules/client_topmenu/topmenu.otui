@@ -1,5 +1,5 @@
 TopMenuPanel
-  id: topMenu
+  id: topMenuPanel
   anchors.top: parent.top
   anchors.left: parent.left
   anchors.right: parent.right

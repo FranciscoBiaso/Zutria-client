@@ -47,13 +47,13 @@ function init()
   mouseGrabberWidget = gameRootPanel:getChildById('mouseGrabber')
   mouseGrabberWidget.onMouseRelease = onMouseGrabberRelease
 
-  bottomSplitter = gameRootPanel:getChildById('bottomSplitter')
+  --bottomSplitter = gameRootPanel:getChildById('bottomSplitter')
   gameMapPanel = gameRootPanel:getChildById('gameMapPanel')
   gameRightPanel = gameRootPanel:getChildById('gameRightPanel')
   gameLeftPanel = gameRootPanel:getChildById('gameLeftPanel')
   gameBottomPanel = gameRootPanel:getChildById('gameBottomPanel')
   gameInventoryPanel = gameRootPanel:getChildById('gameInventoryPanel')
-  --gameMiniMapPanel = gameRootPanel:getChildById('gameMiniMapPanel')
+  gameMiniMapPanel = gameRootPanel:getChildById('gameMiniMapPanel')
   connect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
 
   logoutButton = modules.client_topmenu.addLeftButton('logoutButton', tr('Exit'),
@@ -190,18 +190,18 @@ function hide()
 end
 
 function save()
-  local settings = {}
-  settings.splitterMarginBottom = bottomSplitter:getMarginBottom()
-  g_settings.setNode('game_interface', settings)
+  -- local settings = {}
+  -- settings.splitterMarginBottom = bottomSplitter:getMarginBottom()
+  -- g_settings.setNode('game_interface', settings)
 end
 
 function load()
-  local settings = g_settings.getNode('game_interface')
-  if settings then
-    if settings.splitterMarginBottom then
-      bottomSplitter:setMarginBottom(settings.splitterMarginBottom)
-    end
-  end
+  -- local settings = g_settings.getNode('game_interface')
+  -- if settings then
+    -- if settings.splitterMarginBottom then
+      -- bottomSplitter:setMarginBottom(settings.splitterMarginBottom)
+    -- end
+  -- end
 end
 
 function onLoginAdvice(message)
@@ -341,7 +341,7 @@ function updateStretchShrink()
     gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
 
     -- Set gameMapPanel size to height = 11 * 32 + 2
-    bottomSplitter:setMarginBottom(bottomSplitter:getMarginBottom() + (gameMapPanel:getHeight() - 32 * 11) - 10)
+    --bottomSplitter:setMarginBottom(bottomSplitter:getMarginBottom() + (gameMapPanel:getHeight() - 32 * 11) - 10)
   end
 end
 
@@ -800,7 +800,7 @@ function getBottomPanel()
 end
 
 function getMiniMapPanel()
-  return nil
+  return gameMiniMapPanel
 end
 
 function onLeftPanelVisibilityChange(leftPanel, visible)
