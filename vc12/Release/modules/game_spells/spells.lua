@@ -1,44 +1,35 @@
-Spells = {}
-
-spellWindow = nil
-selectedSpell = nil
-spells = {}
+spellPanel = nil
 
 function init()
-  connect(g_game, { onOpenSpellWindow = Spells.create,
-                    onGameEnd = Spells.destroy })
-	spellWindow = g_ui.displayUI('spells')
-	spellWindow:show()
+  connect(g_game, { onGameStart = loadSpells,
+                    onGameEnd = unloadSpells })
+
+  g_ui.loadUI('spells', modules.game_interface.getSpellPanel())                    
+  spellPanel = modules.game_interface.getSpellPanel()
+  spellPanel:show()
+
 end
 
 function terminate()
-  disconnect(g_game, { onOpenSpellWindow = Spells.create,
-                       onGameEnd = Spells.destroy })
-  Spells.destroy()
-
-  Spells = nil
+  disconnect(g_game, { onGameStart = loadSpells,
+                       onGameEnd = unloadSpells })
+  spellPanel:destroy()
 end
 
-function Spells.create(spellList)
-  spells = spellList
-  Spells.destroy()
+function loadSpells()  
 
-  spellWindow = g_ui.displayUI('spells')
-	spellWindow:show()
-end
-
-function Spells.destroy()
-  if spellWindow then
-    spellWindow:destroy()
-    spellWindow = nil
-    selectedSpell = nil
-    spells = {}
+  for i=1,9,1 do  
+    button = g_ui.createWidget('spellGroup', spellPanel)
+    spellHotkeyText = button:recursiveGetChildById('spellHotkeyText')
+    spellHotkeyText:setText(i)    
+    if i ~= 1 then
+      button:breakAnchors()
+      button:addAnchor(AnchorLeft,'prev',AnchorRight)
+      button:addAnchor(AnchorBottom,'parent',AnchorBottom)
+    end
   end
+  
 end
 
-function Spells.selectSpell()
-  if table.empty(spells) then
-    return
-  end
-  -- TODO
+function unloadSpells()
 end

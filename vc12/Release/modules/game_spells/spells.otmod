@@ -4,6 +4,6 @@ Module
   author: BeniS 
   website: www.otclient.info
   sandboxed: true 
-  scripts: [ spells.lua ]
+  scripts: [ spells ]
   @onLoad: init()
   @onUnload: terminate()

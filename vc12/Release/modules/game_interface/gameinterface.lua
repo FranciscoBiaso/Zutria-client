@@ -7,6 +7,7 @@ gameMiniMapPanel = nil
 gameLeftPanel = nil
 gameBottomPanel = nil
 gameInventoryPanel = nil
+gameSpellPanel = nil
 logoutButton = nil
 mouseGrabberWidget = nil
 countWindow = nil
@@ -54,6 +55,7 @@ function init()
   gameBottomPanel = gameRootPanel:getChildById('gameBottomPanel')
   gameInventoryPanel = gameRootPanel:getChildById('gameInventoryPanel')
   gameMiniMapPanel = gameRootPanel:getChildById('gameMiniMapPanel')
+  gameSpellPanel = gameRootPanel:getChildById('gameSpellPanel')
   connect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
 
   logoutButton = modules.client_topmenu.addLeftButton('logoutButton', tr('Exit'),
@@ -801,6 +803,10 @@ end
 
 function getMiniMapPanel()
   return gameMiniMapPanel
+end
+
+function getSpellPanel()
+  return gameSpellPanel
 end
 
 function onLeftPanelVisibilityChange(leftPanel, visible)
