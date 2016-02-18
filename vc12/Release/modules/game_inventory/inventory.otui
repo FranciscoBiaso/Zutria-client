@@ -1,147 +1,242 @@
 InventoryItem < Item
-  $on:
-    image-source: /images/ui/item-blessed
+  image-auto-resize: true
+  image-color: #ffffffff
 
+InventoryBackgroundItemPanel < Panel  
+  size: 40 40
+  image-color: #ffffffff
+  image-source: /images/ui/item-blessed
+  padding: 4
+  
 HeadSlot < InventoryItem
-  id: slot1
   image-source: /images/game/slots/head
   &position: {x=65535, y=1, z=0}
-  $on:
-    image-source: /images/game/slots/head-blessed
 
 BodySlot < InventoryItem
-  id: slot4
   image-source: /images/game/slots/body
-  &position: {x=65535, y=4, z=0}
-  $on:
-    image-source: /images/game/slots/body-blessed
+  &position: {x=65535, y=2, z=0}
+
+BeltSlot < InventoryItem
+  image-source: /images/game/slots/belt
+  &position: {x=65535, y=3, z=0}
 
 LegSlot < InventoryItem
-  id: slot7
   image-source: /images/game/slots/legs
-  &position: {x=65535, y=7, z=0}
-  $on:
-    image-source: /images/game/slots/legs-blessed
+  &position: {x=65535, y=4, z=0}
 
 FeetSlot < InventoryItem
-  id: slot8
   image-source: /images/game/slots/feet
-  &position: {x=65535, y=8, z=0}
-  $on:
-    image-source: /images/game/slots/feet-blessed
+  &position: {x=65535, y=5, z=0}
 
 NeckSlot < InventoryItem
-  id: slot2
   image-source: /images/game/slots/neck
-  &position: {x=65535, y=2, z=0}
-  $on:
-    image-source: /images/game/slots/neck-blessed
-
-LeftSlot < InventoryItem
-  id: slot6
-  image-source: /images/game/slots/left-hand
   &position: {x=65535, y=6, z=0}
-  $on:
-    image-source: /images/game/slots/left-hand-blessed
+
+RobeSlot < InventoryItem
+  image-source: /images/game/slots/robe
+  &position: {x=65535, y=10, z=0}
+    
+LeftSlot < InventoryItem
+  image-source: /images/game/slots/left-hand
+  &position: {x=65535, y=11, z=0}
 
 FingerSlot < InventoryItem
-  id: slot9
   image-source: /images/game/slots/finger
-  &position: {x=65535, y=9, z=0}
-  $on:
-    image-source: /images/game/slots/finger-blessed
+  &position: {x=65535, y=8, z=0}
 
-BackSlot < InventoryItem
-  id: slot3
+GloovesSlot < InventoryItem
+  image-source: /images/game/slots/glove
+  &position: {x=65535, y=9, z=0}   
+
+BackpackSlot < InventoryItem
   image-source: /images/game/slots/back
-  &position: {x=65535, y=3, z=0}
-  $on:
-    image-source: /images/game/slots/back-blessed
+  &position: {x=65535, y=12, z=0}
+
+BagSlot < InventoryItem
+  image-source: /images/game/slots/bag
+  &position: {x=65535, y=13, z=0}
 
 RightSlot < InventoryItem
-  id: slot5
   image-source: /images/game/slots/right-hand
-  &position: {x=65535, y=5, z=0}
-  $on:
-    image-source: /images/game/slots/right-hand-blessed
+  &position: {x=65535, y=7, z=0}
 
+BraceletSlot < InventoryItem
+  image-source: /images/game/slots/bracelet
+  &position: {x=65535, y=14, z=0}
+
+ExtraSlot < InventoryItem
+  image-source: /images/game/slots/extra
+  &position: {x=65535, y=15, z=0}
+  
 AmmoSlot < InventoryItem
-  id: slot10
   image-source: /images/game/slots/ammo
   &position: {x=65535, y=10, z=0}
-  $on:
-    image-source: /images/game/slots/ammo-blessed
 
-PurseButton < Button
-  id: purseButton
-  size: 26 26
-  !tooltip: tr('Open purse')
-  icon-source: /images/game/slots/purse
-  icon-size: 24 24
-  icon-offset: 1 1
+InfoLabel < UILabel
+  color: #cdcdcdff
 
+ValueLabel < UILabel
+  color: #34cd34ff
+  
+infoBar < ProgressBar
+  background-color: #B6E866
+  height: 6
+  margin-left: 5
+  margin-right: 5
+  margin-top: 2
+  visible: true
+  
 MiniWindow
   id: inventoryWindow
-  !text: tr('Inventory')
-  icon: /images/topbuttons/inventory
-  height: 175
-  @onClose: modules.game_inventory.onMiniWindowClose()
+  !text: tr('Equipamentos')
+  color: #bcbcbcdd
   &save: true
+  icon: /images/topbuttons/skills
+  &save: true
+  border: 1 #121212ff  
+  margin-top: 3
+  height: 240
+  @onClose: onInventoryWindowClose()
 
-  MiniWindowContents
-    HeadSlot
+  MiniWindowContents 
+    InventoryBackgroundItemPanel  
+      id: slot1
       anchors.top: parent.top
       anchors.horizontalCenter: parent.horizontalCenter
       margin-top: 3
-
-    BodySlot
+      HeadSlot
+        id: itemSlot1
+        
+    InventoryBackgroundItemPanel 
+      id: slot2
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
-
-    LegSlot
+      BodySlot
+        id: itemSlot2
+      
+    InventoryBackgroundItemPanel 
+      id: slot3
+      anchors.left: prev.right
+      anchors.top: prev.bottom
+      margin-top: 3
+      margin-left: 3
+      BeltSlot
+        id: itemSlot3
+    
+    InventoryBackgroundItemPanel
+      id: slot4
+      anchors.top: slot2.bottom
+      anchors.horizontalCenter: slot2.horizontalCenter
+      margin-top: 3
+      LegSlot
+        id: itemSlot4
+    
+    InventoryBackgroundItemPanel  
+      id: slot5
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
+      FeetSlot
+        id: itemSlot5
 
-    FeetSlot
-      anchors.top: prev.bottom
-      anchors.horizontalCenter: prev.horizontalCenter
-      margin-top: 3
-
-    NeckSlot
+    InventoryBackgroundItemPanel
+      id: slot6
       anchors.top: slot1.top
       anchors.right: slot1.left
-      margin-top: 10
-      margin-right: 5
+      margin-right: 3
+      NeckSlot
+        id: itemSlot6
 
-    LeftSlot
+    InventoryBackgroundItemPanel
+      id: slot7
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
-
-    FingerSlot
+      RightSlot
+        id: itemSlot7
+    
+    InventoryBackgroundItemPanel
+      id: slot8
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
-
-    BackSlot
+      FingerSlot
+        id: itemSlot8
+    
+    InventoryBackgroundItemPanel
+      id: slot9
+      anchors.right: slot7.left
+      anchors.verticalCenter: slot7.verticalCenter
+      margin-right: 3
+      GloovesSlot
+        id: itemSlot9
+    
+    InventoryBackgroundItemPanel
+      id: slot10
       anchors.top: slot1.top
       anchors.left: slot1.right
-      margin-top: 10
+      margin-left: 3
+      RobeSlot
+        id: itemSlot10
+        
+    InventoryBackgroundItemPanel
+      id: slot11
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+      margin-top: 3
+      LeftSlot
+        id: itemSlot11
+
+    InventoryBackgroundItemPanel  
+      id: slot12
+      anchors.left: slot9.left
+      anchors.verticalCenter: slot5.verticalCenter
+      margin-left: 3
+      BackpackSlot
+        id: itemSlot12
+    
+    InventoryBackgroundItemPanel  
+      id: slot13
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+      margin-top: 3
+      BagSlot
+        id: itemSlot13
+    
+    InventoryBackgroundItemPanel 
+      id: slot14
+      anchors.left: slot11.right
+      anchors.verticalCenter: slot11.verticalCenter
+      margin-left: 3
+      BraceletSlot
+        id: itemSlot14
+      
+    InventoryBackgroundItemPanel 
+      id: slot15
+      anchors.horizontalCenter: prev.horizontalCenter
+      anchors.verticalCenter: slot12.verticalCenter
+      ExtraSlot
+        id: itemSlot15
+    
+    InfoLabel
+      id: capacityLabel
       margin-left: 5
-
-    RightSlot
+      margin-top: 8
+      anchors.left: slot13.right
+      anchors.top: slot13.top
+      text: "capacidade atual: "
+      
+    ValueLabel
+      id: capacityValueLabel
+      anchors.left: prev.right
+      anchors.right: parent.right
+      anchors.top: capacityLabel.top
+      text: 20
+      
+    infoBar
+      id: capacityBar
+      anchors.left: slot13.right
       anchors.top: prev.bottom
-      anchors.horizontalCenter: prev.horizontalCenter
-      margin-top: 3
-
-    AmmoSlot
-      anchors.top: prev.bottom
-      anchors.horizontalCenter: prev.horizontalCenter
-      margin-top: 3
-
-    PurseButton
-      margin-top: 3
-      anchors.top: prev.bottom
-      anchors.horizontalCenter: prev.horizontalCenter
+      anchors.right: parent.right
+      width: 150

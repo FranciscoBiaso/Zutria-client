@@ -106,21 +106,21 @@ namespace Otc
     };
 
     enum InventorySlot {
-        InventorySlotHead = 1,
-        InventorySlotNecklace,
+		InventorySlotHead = 1,
+		InventorySlotArmor,
+		InventorySlotBelt,
+		InventorySlotLegs,
+		InventorySlotFeet,
+		InventorySlotNecklace,
+		InventorySlotRight,
+		InventorySlotRing,
+		InventorySlotGlooves,
+		InventorySlotRobe,
+		InventorySlotLeft,
         InventorySlotBackpack,
-        InventorySlotArmor,
-        InventorySlotRight,
-        InventorySlotLeft,
-        InventorySlotLegs,
-        InventorySlotFeet,
-        InventorySlotRing,
-        InventorySlotAmmo,
-        InventorySlotPurse,
-        InventorySlotExt1,
-        InventorySlotExt2,
-        InventorySlotExt3,
-        InventorySlotExt4,
+		InventorySlotBag,
+		InventorySlotBracelet,
+        InventorySlotExtra,
         LastInventorySlot
     };
 

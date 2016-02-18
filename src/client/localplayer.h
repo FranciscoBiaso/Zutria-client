@@ -80,7 +80,7 @@ public:
     void setPremium(bool premium);
     void setRegenerationTime(double regenerationTime);
     void setOfflineTrainingTime(double offlineTrainingTime);
-    void setSpells(const std::vector<int>& spells);
+	void setSpells(std::list<std::tuple<unsigned char, unsigned char>>& spells);
     void setBlessings(int blessings);
 
     int getStates() { return m_states; }
@@ -106,9 +106,11 @@ public:
     double getRegenerationTime() { return m_regenerationTime; }
     double getOfflineTrainingTime() { return m_offlineTrainingTime; }
 	double getSkillValue(int skillId) { return m_skills[skillId]; }
-    std::vector<int> getSpells() { return m_spells; }
+	std::list<std::tuple<unsigned char, unsigned char>> getSpells() { return m_spells; }
     ItemPtr getInventoryItem(Otc::InventorySlot inventory) { return m_inventoryItems[inventory]; }
     int getBlessings() { return m_blessings; }
+	Color getManaInformationColor() const { return m_manaInformationColor; }
+	uint8 getSpellLevel(unsigned char spellId);
 
     bool hasSight(const Position& pos);
     bool isKnown() { return m_known; }
@@ -117,6 +119,7 @@ public:
     bool isServerWalking() { return m_serverWalking; }
     bool isPremium() { return m_premium; }
     bool isPendingGame() { return m_pending; }
+	bool hasSpell(uint8 spellName);
 
     LocalPlayerPtr asLocalPlayer() { return static_self_cast<LocalPlayer>(); }
     bool isLocalPlayer() { return true; }
@@ -159,12 +162,13 @@ private:
     Timer m_idleTimer;
 
 	double m_skills[NUMBER_OF_SKILLS];
-
+	Color m_informationColor;
+	
     std::array<int, Otc::LastSkill> m_skillsLevel;
     std::array<int, Otc::LastSkill> m_skillsBaseLevel;
     std::array<int, Otc::LastSkill> m_skillsLevelPercent;
-    std::vector<int> m_spells;
-
+	std::list<std::tuple<unsigned char, unsigned char>> m_spells;
+	
     int m_states;
     int m_vocation;
     int m_blessings;

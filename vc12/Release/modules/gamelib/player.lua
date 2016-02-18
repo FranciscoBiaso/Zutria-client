@@ -23,19 +23,23 @@ PlayerStates = {
 
 InventorySlotOther = 0
 InventorySlotHead = 1
-InventorySlotNeck = 2
-InventorySlotBack = 3
-InventorySlotBody = 4
-InventorySlotRight = 5
-InventorySlotLeft = 6
-InventorySlotLeg = 7
-InventorySlotFeet = 8
-InventorySlotFinger = 9
-InventorySlotAmmo = 10
-InventorySlotPurse = 11
+InventorySlotBody = 2
+InventorySlotBelt = 3
+InventorySlotLeg = 4
+InventorySlotFeet = 5
+InventorySlotNeck = 6
+InventorySlotRight = 7
+InventorySlotFinger = 8
+InventorySlotGlooves = 9
+InventorySlotRobe = 10
+InventorySlotLeft = 11
+InventorySlotBack = 12
+InventorySlotBag = 13
+InventorySlotBracelet = 14
+InventorySlotExtra = 15
 
 InventorySlotFirst = 1
-InventorySlotLast = 10
+InventorySlotLast = 15
 
 function Player:isPartyLeader()
   local shield = self:getShield()

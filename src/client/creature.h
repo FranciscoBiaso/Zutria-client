@@ -144,7 +144,7 @@ protected:
 
     uint32 m_id;
     std::string m_name;
-    uint8 m_healthPercent;
+	uint8 m_healthPercent;
     Otc::Direction m_direction;
     Outfit m_outfit;
     Light m_light;
@@ -167,7 +167,8 @@ protected:
     stdext::boolean<false> m_showStaticSquare;
     stdext::boolean<true> m_removed;
     CachedText m_nameCache;
-    Color m_informationColor;
+	Color m_informationColor;
+	Color m_manaInformationColor;
     Color m_outfitColor;
     ScheduledEventPtr m_outfitColorUpdateEvent;
     Timer m_outfitColorTimer;

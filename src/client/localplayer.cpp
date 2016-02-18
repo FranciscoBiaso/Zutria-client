@@ -298,6 +298,14 @@ void LocalPlayer::terminateWalk()
     }
 }
 
+bool LocalPlayer::hasSpell(uint8 spellId)
+{
+	for (auto it = m_spells.begin(); it != m_spells.end(); ++it)
+		if (std::get<0>(*it) == spellId)
+			return true;
+	return false;
+}
+
 void LocalPlayer::onAppear()
 {
     Creature::onAppear();
@@ -337,9 +345,25 @@ void LocalPlayer::setSkill(int skillId, double newSkill)
 		m_skills[skillId] = newSkill;
 
 		if (skillId == PLAYER_SKILL_HEALTH_POINTS)
+		{
 			m_maxHealth = newSkill;
+
+			if (m_healthPercent >= 50)
+				m_informationColor = Color(255.0 * ((50 - (m_healthPercent - 50)) / 50.0f), 0xff, 0x00);
+			else
+				m_informationColor = Color(0xff, 255.0 * m_healthPercent / 50.0f, 0x00);
+		}
 		if (skillId == PLAYER_SKILL_MANA_POINTS)
+		{
+
+			float manaPercentage = (getMana() / newSkill) * 100.0;
+			if (manaPercentage >= 50)
+				m_manaInformationColor = Color(255.0 * ((50 - (manaPercentage - 50)) / 50.0f), 0, 0xff);
+			else
+				m_manaInformationColor = Color(0xff, 0x00, 255.0 * (manaPercentage / 50.0f));
+
 			m_maxMana = newSkill;
+		}
 		callLuaField("onSkillChange", skillId, newSkill, oldSkill);
     }
 }
@@ -420,6 +444,12 @@ void LocalPlayer::setLevelPoints(double levelPoints)
 
 void LocalPlayer::setMana(double mana)
 {
+	float manaPercentage = (mana / getSkillValue(skillsID::PLAYER_SKILL_MANA_POINTS)) * 100.0;
+	if (manaPercentage >= 50)
+		m_manaInformationColor = Color(255.0 * ((50 - (manaPercentage - 50)) / 50.0f), 0, 0xff);
+	else
+		m_manaInformationColor = Color(0xff, 0x00, 255.0 * (manaPercentage / 50.0f));
+
     if(m_mana != mana) {
         double oldMana = m_mana;
         m_mana = mana;
@@ -524,10 +554,10 @@ void LocalPlayer::setOfflineTrainingTime(double offlineTrainingTime)
     }
 }
 
-void LocalPlayer::setSpells(const std::vector<int>& spells)
+void LocalPlayer::setSpells(std::list<std::tuple<unsigned char, unsigned char>>& spells)
 {
     if(m_spells != spells) {
-        std::vector<int> oldSpells = m_spells;
+		std::list<std::tuple<unsigned char, unsigned char>> oldSpells = m_spells;
         m_spells = spells;
 
         callLuaField("onSpellsChange", spells, oldSpells);
@@ -547,4 +577,17 @@ void LocalPlayer::setBlessings(int blessings)
 bool LocalPlayer::hasSight(const Position& pos)
 {
     return m_position.isInRange(pos, g_map.getAwareRange().left - 1, g_map.getAwareRange().top - 1);
+}
+
+
+/* 
+	return -1 on fail;
+	return spell level on success;
+*/
+uint8 LocalPlayer::getSpellLevel(unsigned char spellId)
+{
+	for (auto i = m_spells.begin(); i != m_spells.end(); i++)
+		if (std::get<0>(*i) == spellId)
+			return std::get<1>(*i);
+	return -1;
 }

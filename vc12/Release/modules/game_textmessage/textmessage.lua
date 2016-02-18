@@ -34,7 +34,7 @@ MessageTypes = {
   [MessageModes.DamageDealed] = MessageSettings.status,
   [MessageModes.DamageReceived] = MessageSettings.status,
   [MessageModes.Heal] = MessageSettings.status,
-  [MessageModes.Exp] = MessageSettings.status,
+  [MessageModes.Exp] = MessageSettings.centerBlue,
 
   [MessageModes.DamageOthers] = MessageSettings.none,
   [MessageModes.HealOthers] = MessageSettings.none,
@@ -57,7 +57,9 @@ messagesPanel = nil
 
 function init()
   for messageMode, _ in pairs(MessageTypes) do
-    registerMessageMode(messageMode, displayMessage)
+    if messageMode ~= MessageModes.Look then
+      registerMessageMode(messageMode, displayMessage)
+    end
   end
 
   connect(g_game, 'onGameEnd', clearMessages)

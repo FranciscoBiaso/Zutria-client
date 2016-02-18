@@ -1,0 +1,69 @@
+SkillAddButton < UIButton
+  size: 12 12
+  anchors.left: parent.left
+  anchors.top: parent.top
+  image-source: /images/game/skills/green add
+  margin-top: 2
+  margin-left: 2
+  border: 1 #79797ff
+  
+SpellPanel < Panel
+  size: 42 48
+  border: 0 #121212ff
+  margin-left: 3
+  SpellLabel
+  SpellImage
+  
+SpellImage < Panel
+  id: spellImageId
+  image-source: /images/game/spells/spells
+  size: 32 32
+  border: 1 #121212ff
+  anchors.top: prev.bottom
+  anchors.horizontalcenter: parent.horizontalcenter
+  margin-top: 2
+
+SpellLabel < Label
+  id: spellLabel
+  size: 26 12
+  background-color: #45454500
+  border: 0 #121212ff
+  text: 0/0
+  text-align: center
+  anchors.top: parent.top
+  anchors.horizontalcenter: parent.horizontalcenter
+  margin-top: 1
+    
+MainWindow
+  id: treeSkills
+  !text: tr('Árvore de habilidades')
+  size: 350 440
+  @onEscape: toggle()
+  draggable: false
+  
+  TabBarRounded
+    id: treeSkillsTabBar
+    margin-left: 5
+    margin-top: 3
+    margin-right: 5
+    tab-spacing: 2
+    movable: true
+    height: 28
+    width: 200
+    anchors.left: parent.left
+    anchors.top: parent.top
+    
+  HorizontalSeparator
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+  
+  Panel
+    id: treeSkillsPanel
+    margin-top: 4
+    background-color: #45454509
+    border: 1 #12121212
+    anchors.horizontalcenter: parent.horizontalcenter
+    anchors.top: prev.bottom
+    anchors.bottom: parent.bottom
+    width: 225

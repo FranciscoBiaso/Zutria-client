@@ -1,4 +1,4 @@
-ï»¿Icons = {}
+Icons = {}
 Icons[PlayerStates.Poison] = { tooltip = tr('You are poisoned'), path = '/images/game/states/poisoned', id = 'condition_poisoned' }
 Icons[PlayerStates.Burn] = { tooltip = tr('You are burning'), path = '/images/game/states/burning', id = 'condition_burning' }
 Icons[PlayerStates.Energy] = { tooltip = tr('You are electrified'), path = '/images/game/states/electrified', id = 'condition_electrified' }
@@ -23,10 +23,12 @@ manaBar = nil
 experienceBar = nil
 soulLabel = nil
 capLabel = nil
+playerMaxHealth = nil
+playerMaxMana = nil
 
 
 
-healthTooltip = 'health points Ã© (current = %d).'
+healthTooltip = 'health points é (current = %d).'
 manaTooltip = 'mana points (current = %d).'
 experienceTooltip = 'You have %d%% to advance to level %d.'
 
@@ -35,20 +37,22 @@ function init()
                          onManaChange = onManaChange,
                          onLevelChange = onLevelChange,
                          onStatesChange = onStatesChange,
-                         onSoulChange = onSoulChange,
-                         onFreeCapacityChange = onFreeCapacityChange })
+                         onSkillChange = onSkillChange,
+                         })
 
   connect(g_game, { onGameEnd = offline })
 
-  healthInfoButton = modules.client_topmenu.addRightGameToggleButton('healthInfoButton', tr('Health Information'), '/images/topbuttons/healthinfo', toggle)
+  healthInfoButton = modules.client_topmenu.addRightGameToggleButton('healthInfoButton', tr('Informações do personagem'), '/images/topbuttons/healthinfo', toggle)
   healthInfoButton:setOn(true)
 
+  playerMaxHealth = 0
+  playerMaxMana = 0
+  
   healthInfoWindow = g_ui.loadUI('healthinfo', modules.game_interface.getRightPanel())
   healthInfoWindow:disableResize()
   healthBar = healthInfoWindow:recursiveGetChildById('healthBar')
   manaBar = healthInfoWindow:recursiveGetChildById('manaBar')
   experienceBar = healthInfoWindow:recursiveGetChildById('experienceBar')
-  soulLabel = healthInfoWindow:recursiveGetChildById('soulLabel')
   capLabel = healthInfoWindow:recursiveGetChildById('capLabel')
 
   -- load condition icons
@@ -62,8 +66,6 @@ function init()
     onManaChange(localPlayer, localPlayer:getMana(), localPlayer:getMaxMana())
     onLevelChange(localPlayer, localPlayer:getLevel(), localPlayer:getLevelPercent())
     onStatesChange(localPlayer, localPlayer:getStates(), 0)
-    onSoulChange(localPlayer, localPlayer:getSoul())
-    onFreeCapacityChange(localPlayer, localPlayer:getFreeCapacity())
   end
 
   healthInfoWindow:setup()
@@ -74,13 +76,25 @@ function terminate()
                             onManaChange = onManaChange,
                             onLevelChange = onLevelChange,
                             onStatesChange = onStatesChange,
-                            onSoulChange = onSoulChange,
-                            onFreeCapacityChange = onFreeCapacityChange })
+                            onSkillChange = onSkillChange,
+                            })
 
   disconnect(g_game, { onGameEnd = offline })
 
   healthInfoWindow:destroy()
   healthInfoButton:destroy()
+  playerMaxHealth = nil
+  playerMaxMana = nil
+end
+
+function onSkillChange(localPlayer, id, skill, oldskill)
+  if id == GameSkills.Health then
+    playerMaxHealth = skill
+    onHealthChange(localPlayer,localPlayer:getHealth(),skill)
+  elseif id == GameSkills.ManaPoints then
+    playerMaxMana = skill
+    onManaChange(localPlayer,localPlayer:getMana(),skill)
+  end
 end
 
 function toggle()
@@ -123,29 +137,21 @@ function onMiniWindowClose()
 end
 
 function onHealthChange(localPlayer, health, maxHealth)
-  healthBar:setText(health .. ' / ' .. maxHealth)
-  healthBar:setTooltip(tr(healthTooltip, health, maxHealth))
-  healthBar:setValue(health, 0, maxHealth)
+  healthBar:setText(health .. ' / ' .. playerMaxHealth)
+  healthBar:setTooltip(tr(healthTooltip, health, playerMaxHealth))
+  healthBar:setValue(health, 0, playerMaxHealth)
 end
 
 function onManaChange(localPlayer, mana, maxMana)
-  manaBar:setText(mana .. ' / ' .. maxMana)
-  manaBar:setTooltip(tr(manaTooltip, mana, maxMana))
-  manaBar:setValue(mana, 0, maxMana)
+  manaBar:setText(mana .. ' / ' .. playerMaxMana)
+  manaBar:setTooltip(tr(manaTooltip, mana, playerMaxMana))
+  manaBar:setValue(mana, 0, playerMaxMana)
 end
 
 function onLevelChange(localPlayer, value, percent)
   experienceBar:setText(percent .. '%')
   experienceBar:setTooltip(tr(experienceTooltip, percent, value+1))
   experienceBar:setPercent(percent)
-end
-
-function onSoulChange(localPlayer, soul)
-  soulLabel:setText(tr('Soul') .. ': ' .. soul)
-end
-
-function onFreeCapacityChange(player, freeCapacity)
-  capLabel:setText(tr('Cap') .. ': ' .. freeCapacity .. ' uzz')
 end
 
 function onStatesChange(localPlayer, now, old)

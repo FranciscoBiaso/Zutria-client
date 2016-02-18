@@ -199,10 +199,11 @@ public:
     float getOpacity() { return m_opacity; }
     bool isNotPreWalkable() { return m_attribs.has(ThingAttrNotPreWalkable); }
 
+
+	uint getSpriteIndex(int w, int h, int l, int x, int y, int z, int a);
 private:
     const TexturePtr& getTexture(int animationPhase);
     Size getBestTextureDimension(int w, int h, int count);
-    uint getSpriteIndex(int w, int h, int l, int x, int y, int z, int a);
     uint getTextureIndex(int l, int x, int y, int z);
 
     ThingCategory m_category;

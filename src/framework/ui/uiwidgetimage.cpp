@@ -26,6 +26,12 @@
 #include <framework/graphics/texturemanager.h>
 #include <framework/graphics/graphics.h>
 
+#include "client/spritemanager.h"
+#include "client/item.h"
+#include "framework/graphics/image.h"
+#include "client/player.h"
+#include "client/game.h"
+
 void UIWidget::initImage()
 {
     m_imageCoordsBuffer.enableHardwareCaching();
@@ -173,6 +179,51 @@ void UIWidget::drawImage(const Rect& screenCoords)
 
     g_painter->setColor(m_imageColor);
     g_painter->drawTextureCoords(m_imageCoordsBuffer, m_imageTexture);
+}
+
+
+void UIWidget::setImageSpriteById(unsigned char enumThingType, int id)
+{
+	ThingTypePtr thingType;
+	switch (enumThingType)
+	{
+		case 0x01://local player
+			thingType = g_game.getLocalPlayer()->getThingType();
+			break;
+		case 0x02:			
+			break;
+		case 0x03://item
+			thingType = Item::create(id)->getThingType();
+			break;
+	}
+
+	std::vector<int> sprites = thingType->getSprites();
+	ImagePtr spriteImage(new Image(Size(32 * thingType->getWidth(), 32 * thingType->getHeight())));
+	for (int w = 0; w < thingType->getWidth(); ++w) 
+		for (int h = 0; h < thingType->getHeight(); ++h) 
+			spriteImage->blit(Point(32 * (thingType->getWidth() - w - 1), 32 * (thingType->getHeight() - h - 1)),
+				g_sprites.getSpriteImage(sprites[thingType->getSpriteIndex(w, h, 0, 0, 0, 0, 0)]));
+
+	if (spriteImage)
+		m_imageTexture = new Texture(spriteImage);
+	else 
+		m_imageTexture = nullptr;
+	
+	setWidth(32 * thingType->getWidth());
+	setHeight(32 * thingType->getHeight());
+
+	if (m_imageTexture && (!m_rect.isValid() || m_imageAutoResize)) 
+	{
+		Size size = getSize();
+		Size imageSize = m_imageTexture->getSize();
+		if (size.width() <= 0 || m_imageAutoResize)
+			size.setWidth(imageSize.width());
+		if (size.height() <= 0 || m_imageAutoResize)
+			size.setHeight(imageSize.height());
+		setSize(size);
+	}
+
+	m_imageMustRecache = true;
 }
 
 void UIWidget::setImageSource(const std::string& source)

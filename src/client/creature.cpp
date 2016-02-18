@@ -233,10 +233,13 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
         fillColor = m_informationColor;
 	bool l_isPlayer = isPlayer();
 	Rect backgroundRect;
+	Rect manabackgroundRect;
 	if (l_isPlayer)
 	{
 		// calculate main rects
 		backgroundRect = Rect(point.x - 32, point.y - 5, 64, 6);
+		manabackgroundRect = Rect(point.x - 32, point.y - 5 + 7, 64, 4);
+		manabackgroundRect.bind(parentRect);
 	}
 	else
 	{
@@ -265,17 +268,34 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
 	else
 		healthRect.setWidth((m_healthPercent / 100.0) * 25);
 
+	Rect manaRect = manabackgroundRect.expanded(-1);
+	LocalPlayerPtr localPlayer;
+	if (l_isPlayer)
+	{
+		localPlayer = g_game.getLocalPlayer();
+		manaRect.setWidth((localPlayer->getMana() / localPlayer->getMaxMana()) * 62);
+	}
+	
 
     // draw
     if(g_game.getFeature(Otc::GameBlueNpcNameColor) && isNpc() && m_healthPercent == 100 && !useGray)
         fillColor = Color(0x66, 0xcc, 0xff);
 
     if(drawFlags & Otc::DrawBars && (!isNpc() || !g_game.getFeature(Otc::GameHideNpcNames))) {
-        g_painter->setColor(Color::black);
-        g_painter->drawFilledRect(backgroundRect);
+		g_painter->setColor(Color("#343434ff"));
+		g_painter->drawFilledRect(backgroundRect);
+		if (l_isPlayer)
+		{
+			g_painter->drawFilledRect(manabackgroundRect);
+		}
 
         g_painter->setColor(fillColor);
-        g_painter->drawFilledRect(healthRect);
+		g_painter->drawFilledRect(healthRect);
+		if (l_isPlayer)
+		{
+			g_painter->setColor(localPlayer->getManaInformationColor());
+			g_painter->drawFilledRect(manaRect);
+		}
     }
 
     if(drawFlags & Otc::DrawNames) {

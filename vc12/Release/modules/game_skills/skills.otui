@@ -91,8 +91,8 @@ SkillNameLabel < GameLabel
   
 SkillValueLabel < GameLabel
   id: value
-  margin-right: 3
-  text-align: topleft
+  margin-right: 12
+  text-align: topright
   font: verdana-11px-antialised
   anchors.top: parent.top
   anchors.bottom: parent.bottom
@@ -128,6 +128,9 @@ MiniWindow
   icon: /images/topbuttons/skills
   @onClose: modules.game_skills.onMiniWindowClose()
   &save: true
+  border: 1 #121212ff
+  color: #bcbcbcdd
+  margin-top: 3
 
   MiniWindowContents
     padding-left: 5
@@ -140,7 +143,7 @@ MiniWindow
       height: 15
       IconSkillExperience
       SkillNameLabel
-        !text: tr('Experience')
+        !text: tr('Experiência')
         color: #D3D3D3ff
       SkillRightValueLabel      
     
@@ -149,7 +152,7 @@ MiniWindow
       IconSkillLevel
       height: 23
       SkillNameLabel
-        !text: tr('Level')
+        !text: tr('Nível')
         color: #D3D3D3ff
       SkillRightValueLabel
       SkillPercentPanel
@@ -163,7 +166,7 @@ MiniWindow
       height: 15
       IconSkillBlood
       SkillNameLabel
-        !text: tr('Health Points')
+        !text: tr('Pontos de vida')
         color: #F0E68Cff
       SkillValueLabel
       AddSkillButton
@@ -173,7 +176,7 @@ MiniWindow
       height: 15
       IconSkillStrength
       SkillNameLabel
-        !text: tr('Physical attack')
+        !text: tr('Ataque físico')
         color: #F0E68Cff
       SkillValueLabel
       AddSkillButton
@@ -183,7 +186,7 @@ MiniWindow
       height: 15
       IconSkillShield
       SkillNameLabel
-        !text: tr('Physical defense')
+        !text: tr('Defesa física')
         color: #F0E68Cff
       SkillValueLabel
       AddSkillButton
@@ -193,7 +196,7 @@ MiniWindow
       height: 15
       IconSkillWeight
       SkillNameLabel
-        !text: tr('Capacity')
+        !text: tr('Capacidade')
         color: #F0E68Cff
       SkillValueLabel
       AddSkillButton      
@@ -203,7 +206,7 @@ MiniWindow
       height: 15      
       IconSkillMana
       SkillNameLabel
-        !text: tr('Mana points')
+        !text: tr('Pontos de mana')
         color: #00FFFFff
       SkillValueLabel
       AddSkillButton       
@@ -213,7 +216,7 @@ MiniWindow
       height: 15
       IconSkillMagicAttack
       SkillNameLabel
-        !text: tr('Magic attack')
+        !text: tr('Ataque mágico')
         color: #00FFFFff
       SkillValueLabel
       AddSkillButton
@@ -223,7 +226,7 @@ MiniWindow
       height: 15
       IconSkillMagicDeffense
       SkillNameLabel
-        !text: tr('Magic deffense')
+        !text: tr('Defesa mágica')
         color: #00FFFFff
       SkillValueLabel
       AddSkillButton
@@ -243,7 +246,7 @@ MiniWindow
       height: 15
       IconSkillSpeed
       SkillNameLabel
-        !text: tr('Player speed')
+        !text: tr('Vel. de mov.')
         color: #00cc00ff
       SkillValueLabel
       AddSkillButton            
@@ -253,7 +256,7 @@ MiniWindow
       height: 15
       IconSkillHands
       SkillNameLabel
-        !text: tr('Attack speed')
+        !text: tr('Vel. de ataque')
         color: #00cc00ff
       SkillValueLabel
       AddSkillButton
@@ -273,7 +276,7 @@ MiniWindow
       height: 15
       IconSkillCloud
       SkillNameLabel
-        !text: tr('Avoidance')
+        !text: tr('Esquiva')
         color: #00cc00ff
       SkillValueLabel
       AddSkillButton
@@ -288,7 +291,7 @@ MiniWindow
       height: 15
       IconSkillLevelPoints
       SkillNameLabel
-        !text: tr('Level points')
+        !text: tr('Pontos de nível')
         color: #cc77ffff
       SkillRightValueLabel 
       

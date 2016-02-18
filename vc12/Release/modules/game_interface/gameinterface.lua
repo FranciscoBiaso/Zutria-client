@@ -6,7 +6,6 @@ gameRightPanel = nil
 gameMiniMapPanel = nil
 gameLeftPanel = nil
 gameBottomPanel = nil
-gameInventoryPanel = nil
 gameSpellPanel = nil
 logoutButton = nil
 mouseGrabberWidget = nil
@@ -53,7 +52,6 @@ function init()
   gameRightPanel = gameRootPanel:getChildById('gameRightPanel')
   gameLeftPanel = gameRootPanel:getChildById('gameLeftPanel')
   gameBottomPanel = gameRootPanel:getChildById('gameBottomPanel')
-  gameInventoryPanel = gameRootPanel:getChildById('gameInventoryPanel')
   gameMiniMapPanel = gameRootPanel:getChildById('gameMiniMapPanel')
   gameSpellPanel = gameRootPanel:getChildById('gameSpellPanel')
   connect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
@@ -836,11 +834,9 @@ function setupViewMode(mode)
     gameLeftPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() + 2 - gameLeftPanel:getPaddingTop())
     gameLeftPanel:setOn(true)
     gameLeftPanel:setVisible(true)
-    
-    gameInventoryPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() + 2 - gameLeftPanel:getPaddingTop())
-      
-    gameRightPanel:setMarginTop(5 - gameRightPanel:getPaddingTop())
+        
     gameRightPanel:setImageColor('alpha')
+    gameRightPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() + 2 - gameLeftPanel:getPaddingTop())    
     gameRightPanel:setOn(true)
     gameRightPanel:setVisible(true)
     

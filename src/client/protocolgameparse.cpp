@@ -366,6 +366,9 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
 			case Proto::GameServerPlayerFirstStats:
 				parsePlayerFirstStats(msg);
 				break;
+			case Proto::GameServerPlayerSpells:
+				parsePlayerSpells(msg);
+				break;
             default:
                 stdext::throw_exception(stdext::format("unhandled opcode %d", (int)opcode));
                 break;
@@ -1120,14 +1123,8 @@ void ProtocolGame::parsePlayerInfo(const InputMessagePtr& msg)
     if(g_game.getFeature(Otc::GamePremiumExpiration))
         int premiumEx = msg->getU32(); // premium expiration used for premium advertisement
 
-    int spellCount = msg->getU16();
-    std::vector<int> spells;
-    for(int i=0;i<spellCount;++i)
-        spells.push_back(msg->getU8()); // spell id
-
     m_localPlayer->setPremium(premium);
     m_localPlayer->setVocation(vocation);
-    m_localPlayer->setSpells(spells);
 }
 
 void ProtocolGame::parsePlayerStats(const InputMessagePtr& msg)
@@ -1210,8 +1207,23 @@ void ProtocolGame::parsePlayerFirstStats(const InputMessagePtr& msg)
 	m_localPlayer->setLevel(levelInfo, levelPercent);
 	m_localPlayer->setBaseSpeed(baseSpeed);
 	m_localPlayer->setSkill(skillsID::PLAYER_SKILL_HEALTH_POINTS, maxHealth);
-	m_localPlayer->setSkill(skillsID::PLAYER_SKILL_MANA_POINTS, maxMana);
+	m_localPlayer->setSkill(skillsID::PLAYER_SKILL_MANA_POINTS, maxMana);	
+}
 
+void ProtocolGame::parsePlayerSpells(const InputMessagePtr& msg)
+{
+	uint8 countSpells = msg->getU8();
+	std::list<std::tuple<unsigned char, unsigned char>> spells;
+	unsigned char spellId;
+	unsigned char level;
+	for (int i = 0; i < countSpells; i++)
+	{
+		spellId = msg->getU8();
+		level = msg->getU8();
+		spells.push_back(std::make_tuple(spellId, level));
+
+	}
+	m_localPlayer->setSpells(spells);
 }
 
 void ProtocolGame::parsePlayerCancelAttack(const InputMessagePtr& msg)
@@ -1453,7 +1465,7 @@ void ProtocolGame::parseTextMessage(const InputMessagePtr& msg)
 			//text = msg->getString();
 			//break;
         default:
-            text = msg->getString();
+			text = msg->getString();
             break;
     }
 

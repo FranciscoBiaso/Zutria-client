@@ -423,6 +423,7 @@ protected:
     EdgeGroup<int> m_imageBorder;
 
 public:
+	void setImageSpriteById(unsigned char thingType,int id);
     void setImageSource(const std::string& source);
     void setImageClip(const Rect& clipRect) { m_imageClipRect = clipRect; updateImageCache(); }
     void setImageOffsetX(int x) { m_imageRect.setX(x); updateImageCache(); }

@@ -1,84 +1,70 @@
 InventorySlotStyles = {
   [InventorySlotHead] = "HeadSlot",
-  [InventorySlotNeck] = "NeckSlot",
-  [InventorySlotBack] = "BackSlot",
   [InventorySlotBody] = "BodySlot",
-  [InventorySlotRight] = "RightSlot",
-  [InventorySlotLeft] = "LeftSlot",
+  [InventorySlotBelt] = "BeltSlot",
   [InventorySlotLeg] = "LegSlot",
   [InventorySlotFeet] = "FeetSlot",
+  [InventorySlotNeck] = "NeckSlot",
+  [InventorySlotRight] = "RightSlot",
   [InventorySlotFinger] = "FingerSlot",
-  [InventorySlotAmmo] = "AmmoSlot"
+  [InventorySlotGlooves] = "GloovesSlot",
+  [InventorySlotRobe] = "RobeSlot",
+  [InventorySlotLeft] = "LeftSlot",
+  [InventorySlotBack] = "BackpackSlot",
+  [InventorySlotBag] = "BagSlot",
+  [InventorySlotBracelet] = "BraceletSlot",
+  [InventorySlotExtra] = "ExtraSlot",
 }
 
 inventoryWindow = nil
-inventoryPanel = nil
 inventoryButton = nil
-purseButton = nil
+inventoryPanel = nil
+
+local invetoryPanelVisibility = true
 
 function init()
   connect(LocalPlayer, {
     onInventoryChange = onInventoryChange,
-    onBlessingsChange = onBlessingsChange
+    onFreeCapacityChange = onFreeCapacityChange,
   })
   connect(g_game, { onGameStart = refresh })
-
-  g_keyboard.bindKeyDown('Ctrl+I', toggle)
-
-  inventoryButton = modules.client_topmenu.addRightGameToggleButton('inventoryButton', tr('Inventory') .. ' (Ctrl+I)', '/images/topbuttons/inventory', toggle)
+  
+  inventoryButton = modules.client_topmenu.addRightGameToggleButton('InventoryButton', tr('equipamentos') .. ' (I)', '/images/topbuttons/equipament', toggle)
   inventoryButton:setOn(true)
+  
+  g_keyboard.bindKeyDown('I', toggle)
 
   inventoryWindow = g_ui.loadUI('inventory', modules.game_interface.getRightPanel())
+  inventoryPanel = inventoryWindow:getChildById('contentsPanel') 
   inventoryWindow:disableResize()
-  inventoryPanel = inventoryWindow:getChildById('contentsPanel')
-
-  purseButton = inventoryPanel:getChildById('purseButton')
-  local function purseFunction()
-    local purse = g_game.getLocalPlayer():getInventoryItem(InventorySlotPurse)
-    if purse then
-      g_game.use(purse)
-    end
-  end
-  purseButton.onClick = purseFunction
+  
+  inventoryWindow:setup()
 
   refresh()
-  inventoryWindow:setup()
 end
 
 function terminate()
   disconnect(LocalPlayer, {
     onInventoryChange = onInventoryChange,
-    onBlessingsChange = onBlessingsChange
+    onFreeCapacityChange = onFreeCapacityChange,
   })
   disconnect(g_game, { onGameStart = refresh })
 
-  g_keyboard.unbindKeyDown('Ctrl+I')
+  g_keyboard.unbindKeyDown('I')
 
   inventoryWindow:destroy()
-  inventoryButton:destroy()
-end
-
-function toggleAdventurerStyle(hasBlessing)
-  for slot = InventorySlotFirst, InventorySlotLast do
-    local itemWidget = inventoryPanel:getChildById('slot' .. slot)
-    if itemWidget then
-      itemWidget:setOn(hasBlessing)
-    end
-  end
 end
 
 function refresh()
   local player = g_game.getLocalPlayer()
-  for i = InventorySlotFirst, InventorySlotPurse do
+  for i = InventorySlotFirst, InventorySlotLast, 1 do
+  
     if g_game.isOnline() then
       onInventoryChange(player, i, player:getInventoryItem(i))
     else
       onInventoryChange(player, i, nil)
     end
-    toggleAdventurerStyle(player and Bit.hasBit(player:getBlessings(), Blessings.Adventurer) or false)
   end
-
-  purseButton:setVisible(g_game.getFeature(GamePurseSlot))
 end
 
 function toggle()
@@ -91,34 +77,61 @@ function toggle()
   end
 end
 
-function onMiniWindowClose()
+function onInventoryWindowClose()
   inventoryButton:setOn(false)
 end
 
 -- hooked events
 function onInventoryChange(player, slot, item, oldItem)
-  if slot > InventorySlotPurse then return end
+  if slot > InventorySlotLast then return end
 
-  if slot == InventorySlotPurse then
-    if g_game.getFeature(GamePurseSlot) then
-      purseButton:setEnabled(item and true or false)
-    end
-    return
-  end
-
-  local itemWidget = inventoryPanel:getChildById('slot' .. slot)
+  itemPanel = inventoryPanel:getChildById('slot' .. slot)
+  itemWidget = itemPanel:getChildById('itemSlot' .. slot)
   if item then
+    itemPanel:setImageColor('#ffffffff')
     itemWidget:setStyle('InventoryItem')
+    itemWidget:setImageColor('#ffffffff')
     itemWidget:setItem(item)
   else
-    itemWidget:setStyle(InventorySlotStyles[slot])
+    itemPanel:setImageColor('#676767ff')
+    itemPanel:setBorderWidth(1)
+    itemWidget:setStyle(InventorySlotStyles[slot])  
+    itemWidget:setImageColor('#a9a9a9ff') 
+    itemWidget:setBorderWidth(0)
     itemWidget:setItem(nil)
   end
 end
 
-function onBlessingsChange(player, blessings, oldBlessings)
-  local hasAdventurerBlessing = Bit.hasBit(blessings, Blessings.Adventurer)
-  if hasAdventurerBlessing ~= Bit.hasBit(oldBlessings, Blessings.Adventurer) then
-    toggleAdventurerStyle(hasAdventurerBlessing)
+function DEC_HEX(IN)
+    local B,K,OUT,I,D=16,"0123456789ABCDEF","",0
+    while IN>0 do
+        I=I+1
+        IN,D=math.floor(IN/B),math.mod(IN,B)+1
+        OUT=string.sub(K,D,D)..OUT
+    end
+    if string.len(OUT) == 0 then
+      OUT = "00"
+    elseif string.len(OUT) <= 1 then
+      OUT = '0' .. OUT 
+    end
+    return OUT
+end
+
+function onFreeCapacityChange(player, freeCapacity)
+  capacityValueLabel = inventoryPanel:getChildById('capacityValueLabel')
+  totalCapacityValue = player:getSkillValue(3)/100
+  capPercentage = (freeCapacity/totalCapacityValue) * 100
+  capacityBar = inventoryPanel:getChildById('capacityBar')
+  
+  if capPercentage >= 50 then
+    capacityValueLabel:setColor('#' .. DEC_HEX(255.0 * (50-(capPercentage-50))/50.0) .. 'ff00ff')
+    capacityBar:setBackgroundColor('#' .. DEC_HEX(255.0 * (50-(capPercentage-50))/50.0) .. 'ff00ff')
+  else    
+    capacityValueLabel:setColor('#ff' .. DEC_HEX(255.0 * capPercentage / 50.0) .. '00ff')
+    capacityBar:setBackgroundColor('#ff' .. DEC_HEX(255.0 * capPercentage / 50.0) .. '00ff')
   end
+  capacityValueLabel:setText(freeCapacity .. ' izis')
+  
+  capacityBar:setPercent(100 - capPercentage)
+  
 end

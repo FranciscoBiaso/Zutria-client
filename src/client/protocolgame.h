@@ -192,6 +192,7 @@ private:
     void parsePlayerSkills(const InputMessagePtr& msg);
     void parsePlayerState(const InputMessagePtr& msg);
 	void parsePlayerFirstStats(const InputMessagePtr& msg);
+	void parsePlayerSpells(const InputMessagePtr& msg);
     void parsePlayerCancelAttack(const InputMessagePtr& msg);
     void parsePlayerModes(const InputMessagePtr& msg);
     void parseSpellCooldown(const InputMessagePtr& msg);

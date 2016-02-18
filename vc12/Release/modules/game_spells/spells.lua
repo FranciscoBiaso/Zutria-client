@@ -7,7 +7,7 @@ function init()
   g_ui.loadUI('spells', modules.game_interface.getSpellPanel())                    
   spellPanel = modules.game_interface.getSpellPanel()
   spellPanel:show()
-
+  loadSpells()
 end
 
 function terminate()

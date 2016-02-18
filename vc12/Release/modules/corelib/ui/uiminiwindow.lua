@@ -16,6 +16,20 @@ function UIMiniWindow:open(dontSave)
   signalcall(self.onOpen, self)
 end
 
+function UIMiniWindow:changeColorToAlpha(dontSave)
+  self:setImageColor('#ffffff66')
+  if not dontSave then
+    self:setSettings({alpha = true})
+  end
+end
+
+function UIMiniWindow:changeColorToBasic(dontSave)
+  self:setImageColor('#ffffffff')
+  if not dontSave then
+    self:setSettings({alpha = false})
+  end 
+end
+
 function UIMiniWindow:close(dontSave)
   if not self:isExplicitlyVisible() then return end
   self:setVisible(false)
@@ -77,6 +91,16 @@ function UIMiniWindow:setup()
         self:minimize()
       end
     end
+  
+  self:getChildById('colorButton').onClick =
+    function()
+      local color = self:getImageColor()      
+      if color.r == 255 and color.g == 255 and color.b == 255 and color.a == 255 then
+        self:changeColorToAlpha()
+      else
+        self:changeColorToBasic()
+      end
+    end
 
   self:getChildById('miniwindowTopBar').onDoubleClick =
     function()
@@ -119,6 +143,12 @@ function UIMiniWindow:setup()
       if selfSettings.closed then
         self:close(true)
       end
+      
+      if selfSettings.alpha then
+        self:changeColorToAlpha(true)
+      else        
+        self:changeColorToBasic(true)
+      end
     end
   end
 
@@ -143,6 +173,8 @@ function UIMiniWindow:onVisibilityChange(visible)
 end
 
 function UIMiniWindow:onDragEnter(mousePos)
+  modules.game_interface.getRightPanel():setImageColor('#34ab34ab')
+  modules.game_interface.getLeftPanel():setImageColor('#34ab34ab')
   local parent = self:getParent()
   if not parent then return false end
 
@@ -161,6 +193,8 @@ function UIMiniWindow:onDragEnter(mousePos)
 end
 
 function UIMiniWindow:onDragLeave(droppedWidget, mousePos)
+  modules.game_interface.getRightPanel():setImageColor('alpha')
+  modules.game_interface.getLeftPanel():setImageColor('alpha')
   if self.movedWidget then
     self.setMovedChildMargin(self.movedOldMargin or 0)
     self.movedWidget = nil
@@ -172,7 +206,7 @@ function UIMiniWindow:onDragLeave(droppedWidget, mousePos)
   self:saveParent(self:getParent())
 end
 
-function UIMiniWindow:onDragMove(mousePos, mouseMoved)
+function UIMiniWindow:onDragMove(mousePos, mouseMoved)  
   local oldMousePosY = mousePos.y - mouseMoved.y
   local children = rootWidget:recursiveGetChildrenByMarginPos(mousePos)
   local overAnyWidget = false
