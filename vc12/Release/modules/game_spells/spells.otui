@@ -4,14 +4,18 @@ cooldownBar < UILabel
   background-color: #989898ff
   margin-top: 2
   anchors.top: prev.bottom
+  anchors.left: prev.left
 
 spellIcon < UILabel
+  id: spellIcon
   size: 42 42
-  border: 1 #121212ff
+  border: 1 #565656ff
   image-color: #ffffff78
   image-source: /images/ui/panel_lightflat
   spellHotkeyText
-
+  anchors.horizontalcenter: parent.horizontalcenter
+  anchors.top: parent.top
+  margin-top: 3
   
 spellHotkeyText < UILabel
   id: spellHotkeyText
@@ -29,12 +33,13 @@ spellHotkeyText < UILabel
   text-align: center
   
 spellGroup < Panel
-  maring-right: 8
+  margin: 2
   anchors.bottom: parent.bottom
   anchors.left: parent.left
-  size: 50 50
+  size: 50 54
   spellIcon
   cooldownBar
+  border: 0 #676767ff
   
   
     

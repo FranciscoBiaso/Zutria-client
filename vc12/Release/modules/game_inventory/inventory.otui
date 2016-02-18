@@ -1,77 +1,14 @@
 InventoryItem < Item
   image-auto-resize: true
+  image-source: /images/game/slots/inventory
   image-color: #ffffffff
 
 InventoryBackgroundItemPanel < Panel  
   size: 40 40
   image-color: #ffffffff
   image-source: /images/ui/item-blessed
-  padding: 4
+  padding: 4  
   
-HeadSlot < InventoryItem
-  image-source: /images/game/slots/head
-  &position: {x=65535, y=1, z=0}
-
-BodySlot < InventoryItem
-  image-source: /images/game/slots/body
-  &position: {x=65535, y=2, z=0}
-
-BeltSlot < InventoryItem
-  image-source: /images/game/slots/belt
-  &position: {x=65535, y=3, z=0}
-
-LegSlot < InventoryItem
-  image-source: /images/game/slots/legs
-  &position: {x=65535, y=4, z=0}
-
-FeetSlot < InventoryItem
-  image-source: /images/game/slots/feet
-  &position: {x=65535, y=5, z=0}
-
-NeckSlot < InventoryItem
-  image-source: /images/game/slots/neck
-  &position: {x=65535, y=6, z=0}
-
-RobeSlot < InventoryItem
-  image-source: /images/game/slots/robe
-  &position: {x=65535, y=10, z=0}
-    
-LeftSlot < InventoryItem
-  image-source: /images/game/slots/left-hand
-  &position: {x=65535, y=11, z=0}
-
-FingerSlot < InventoryItem
-  image-source: /images/game/slots/finger
-  &position: {x=65535, y=8, z=0}
-
-GloovesSlot < InventoryItem
-  image-source: /images/game/slots/glove
-  &position: {x=65535, y=9, z=0}   
-
-BackpackSlot < InventoryItem
-  image-source: /images/game/slots/back
-  &position: {x=65535, y=12, z=0}
-
-BagSlot < InventoryItem
-  image-source: /images/game/slots/bag
-  &position: {x=65535, y=13, z=0}
-
-RightSlot < InventoryItem
-  image-source: /images/game/slots/right-hand
-  &position: {x=65535, y=7, z=0}
-
-BraceletSlot < InventoryItem
-  image-source: /images/game/slots/bracelet
-  &position: {x=65535, y=14, z=0}
-
-ExtraSlot < InventoryItem
-  image-source: /images/game/slots/extra
-  &position: {x=65535, y=15, z=0}
-  
-AmmoSlot < InventoryItem
-  image-source: /images/game/slots/ammo
-  &position: {x=65535, y=10, z=0}
-
 InfoLabel < UILabel
   color: #cdcdcdff
 
@@ -104,7 +41,7 @@ MiniWindow
       anchors.top: parent.top
       anchors.horizontalCenter: parent.horizontalCenter
       margin-top: 3
-      HeadSlot
+      InventoryItem
         id: itemSlot1
         
     InventoryBackgroundItemPanel 
@@ -112,7 +49,7 @@ MiniWindow
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
-      BodySlot
+      InventoryItem
         id: itemSlot2
       
     InventoryBackgroundItemPanel 
@@ -121,7 +58,7 @@ MiniWindow
       anchors.top: prev.bottom
       margin-top: 3
       margin-left: 3
-      BeltSlot
+      InventoryItem
         id: itemSlot3
     
     InventoryBackgroundItemPanel
@@ -129,7 +66,7 @@ MiniWindow
       anchors.top: slot2.bottom
       anchors.horizontalCenter: slot2.horizontalCenter
       margin-top: 3
-      LegSlot
+      InventoryItem
         id: itemSlot4
     
     InventoryBackgroundItemPanel  
@@ -137,7 +74,7 @@ MiniWindow
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
-      FeetSlot
+      InventoryItem
         id: itemSlot5
 
     InventoryBackgroundItemPanel
@@ -145,7 +82,7 @@ MiniWindow
       anchors.top: slot1.top
       anchors.right: slot1.left
       margin-right: 3
-      NeckSlot
+      InventoryItem
         id: itemSlot6
 
     InventoryBackgroundItemPanel
@@ -153,7 +90,7 @@ MiniWindow
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
-      RightSlot
+      InventoryItem
         id: itemSlot7
     
     InventoryBackgroundItemPanel
@@ -161,7 +98,7 @@ MiniWindow
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
-      FingerSlot
+      InventoryItem
         id: itemSlot8
     
     InventoryBackgroundItemPanel
@@ -169,7 +106,7 @@ MiniWindow
       anchors.right: slot7.left
       anchors.verticalCenter: slot7.verticalCenter
       margin-right: 3
-      GloovesSlot
+      InventoryItem
         id: itemSlot9
     
     InventoryBackgroundItemPanel
@@ -177,7 +114,7 @@ MiniWindow
       anchors.top: slot1.top
       anchors.left: slot1.right
       margin-left: 3
-      RobeSlot
+      InventoryItem
         id: itemSlot10
         
     InventoryBackgroundItemPanel
@@ -185,7 +122,7 @@ MiniWindow
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
-      LeftSlot
+      InventoryItem
         id: itemSlot11
 
     InventoryBackgroundItemPanel  
@@ -193,7 +130,7 @@ MiniWindow
       anchors.left: slot9.left
       anchors.verticalCenter: slot5.verticalCenter
       margin-left: 3
-      BackpackSlot
+      InventoryItem
         id: itemSlot12
     
     InventoryBackgroundItemPanel  
@@ -201,7 +138,7 @@ MiniWindow
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
-      BagSlot
+      InventoryItem
         id: itemSlot13
     
     InventoryBackgroundItemPanel 
@@ -209,14 +146,14 @@ MiniWindow
       anchors.left: slot11.right
       anchors.verticalCenter: slot11.verticalCenter
       margin-left: 3
-      BraceletSlot
+      InventoryItem
         id: itemSlot14
       
     InventoryBackgroundItemPanel 
       id: slot15
       anchors.horizontalCenter: prev.horizontalCenter
       anchors.verticalCenter: slot12.verticalCenter
-      ExtraSlot
+      InventoryItem
         id: itemSlot15
     
     InfoLabel

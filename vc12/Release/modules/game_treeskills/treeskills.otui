@@ -14,15 +14,15 @@ SpellPanel < Panel
   SpellLabel
   SpellImage
   
-SpellImage < Panel
+SpellImage < UISpellButton
   id: spellImageId
   image-source: /images/game/spells/spells
   size: 32 32
   border: 1 #121212ff
   anchors.top: prev.bottom
   anchors.horizontalcenter: parent.horizontalcenter
-  margin-top: 2
-
+  margin-top: 2  
+  
 SpellLabel < Label
   id: spellLabel
   size: 26 12

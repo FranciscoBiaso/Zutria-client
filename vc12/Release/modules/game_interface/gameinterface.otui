@@ -28,7 +28,7 @@ GameMagicPanel < Panel
   margin: 2
   padding: 2
   height: 62
-
+  
 GameBottomPanel < Panel
   image-source: /images/ui/panel_bottom
   image-border: 4

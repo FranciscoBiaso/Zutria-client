@@ -22,6 +22,7 @@ function init()
   treeSkillsTabBar:addTab("genéricas", nil, processChannelTabTreeSkills)
   
   treeSkillsPanel = treeSkillsWindow:getChildById('treeSkillsPanel') 
+  
 end
 
 function terminate()
@@ -62,17 +63,20 @@ function updateSpellPanel(spellPanel, spellPanelGridCell, localPlayer)
     spellLabel = spellPanel:getChildById('spellLabel')   
     if string.find(spellPanelGridCell,"arrow",1) == nil then -- spell image 
       spellImage:setImageClip(tab_spells[spellPanelGridCell][3] .. ' ' .. tab_spells[spellPanelGridCell][4] .. ' ' .. 32 .. ' ' .. 32)
+      spellImage:setDraggingImageClip(tab_spells[spellPanelGridCell][3],tab_spells[spellPanelGridCell][4])
       -- the player has the spell
       if localPlayer:hasSpell(tab_spells[spellPanelGridCell][5]) then
         spellLabel:setText(localPlayer:getSpellLevel(tab_spells[spellPanelGridCell][5]) .. "/" .. tab_spells[spellPanelGridCell][1])
         spellImage:setImageColor('#ffffffff')
         spellImage:setBorderColor('#989898ff')
+        spellImage:setPlayerHasSpell(true)
       else
         spellLabel:setText("0/" .. tab_spells[spellPanelGridCell][1])      
         spellImage:setImageColor('#565656ff')
       end
     else -- arrow image        
        spellPanel:removeChild(spellLabel)
+       spellLabel:destroy()
        spellImage:breakAnchors()
        spellImage:addAnchor(AnchorHorizontalCenter,'parent',AnchorHorizontalCenter)
        spellImage:addAnchor(AnchorVerticalCenter,'parent',AnchorVerticalCenter)   

@@ -1,26 +1,25 @@
-InventorySlotStyles = {
-  [InventorySlotHead] = "HeadSlot",
-  [InventorySlotBody] = "BodySlot",
-  [InventorySlotBelt] = "BeltSlot",
-  [InventorySlotLeg] = "LegSlot",
-  [InventorySlotFeet] = "FeetSlot",
-  [InventorySlotNeck] = "NeckSlot",
-  [InventorySlotRight] = "RightSlot",
-  [InventorySlotFinger] = "FingerSlot",
-  [InventorySlotGlooves] = "GloovesSlot",
-  [InventorySlotRobe] = "RobeSlot",
-  [InventorySlotLeft] = "LeftSlot",
-  [InventorySlotBack] = "BackpackSlot",
-  [InventorySlotBag] = "BagSlot",
-  [InventorySlotBracelet] = "BraceletSlot",
-  [InventorySlotExtra] = "ExtraSlot",
+--[1]name, [2]imageClip [3]position
+InventorySlots = {
+  {"HeadSlot",     {9  * 32, 0 * 32}, {x=65535, y=1,  z=0}},
+  {"BodySlot",     {3  * 32, 0 * 32}, {x=65535, y=2,  z=0}},
+  {"BeltSlot",     {2  * 32, 0 * 32}, {x=65535, y=3,  z=0}},
+  {"LegSlot",      {11 * 32, 0 * 32}, {x=65535, y=4,  z=0}},
+  {"FeetSlot",     {6  * 32, 0 * 32}, {x=65535, y=5,  z=0}},
+  {"NeckSlot",     {12 * 32, 0 * 32}, {x=65535, y=6,  z=0}},
+  {"RightSlot",    {0  * 32, 1 * 32}, {x=65535, y=7,  z=0}},
+  {"FingerSlot",   {7  * 32, 0 * 32}, {x=65535, y=8,  z=0}},
+  {"GloovesSlot",  {8  * 32, 0 * 32}, {x=65535, y=9,  z=0}},
+  {"RobeSlot",     {14 * 32, 0 * 32}, {x=65535, y=10, z=0}},
+  {"LeftSlot",     {1  * 32, 1 * 32}, {x=65535, y=11, z=0}},
+  {"BackpackSlot", {0  * 32, 0 * 32}, {x=65535, y=12, z=0}},
+  {"BagSlot",      {1  * 32, 0 * 32}, {x=65535, y=13, z=0}},
+  {"BraceletSlot", {4  * 32, 0 * 32}, {x=65535, y=14, z=0}},
+  {"ExtraSlot",    {5  * 32, 0 * 32}, {x=65535, y=15, z=0}},
 }
 
 inventoryWindow = nil
 inventoryButton = nil
 inventoryPanel = nil
-
-local invetoryPanelVisibility = true
 
 function init()
   connect(LocalPlayer, {
@@ -53,18 +52,24 @@ function terminate()
   g_keyboard.unbindKeyDown('I')
 
   inventoryWindow:destroy()
+  inventoryButton:destroy()
+  inventoryPanel:destroy()
 end
 
 function refresh()
   local player = g_game.getLocalPlayer()
-  for i = InventorySlotFirst, InventorySlotLast, 1 do
-  
+  for i = InventorySlotFirst, InventorySlotLast, 1 do  
     if g_game.isOnline() then
       onInventoryChange(player, i, player:getInventoryItem(i))
     else
       onInventoryChange(player, i, nil)
     end
+    slotPanel = inventoryPanel:getChildById('slot' .. i)
+    itemWidget = slotPanel:getChildById('itemSlot' .. i)
+    itemWidget:changePos(InventorySlots[i][3])
   end
+  
+  
 end
 
 function toggle()
@@ -85,17 +90,16 @@ end
 function onInventoryChange(player, slot, item, oldItem)
   if slot > InventorySlotLast then return end
 
-  itemPanel = inventoryPanel:getChildById('slot' .. slot)
-  itemWidget = itemPanel:getChildById('itemSlot' .. slot)
+  slotPanel = inventoryPanel:getChildById('slot' .. slot)
+  itemWidget = slotPanel:getChildById('itemSlot' .. slot)
   if item then
-    itemPanel:setImageColor('#ffffffff')
-    itemWidget:setStyle('InventoryItem')
-    itemWidget:setImageColor('#ffffffff')
+    slotPanel:setImageColor('#ffffffff')
+    itemWidget:setImageColor('#ffffff00')
     itemWidget:setItem(item)
   else
-    itemPanel:setImageColor('#676767ff')
-    itemPanel:setBorderWidth(1)
-    itemWidget:setStyle(InventorySlotStyles[slot])  
+    slotPanel:setImageColor('#676767ff')
+    slotPanel:setBorderWidth(1)
+    itemWidget:setImageClip(InventorySlots[slot][2][1] .. ' ' .. InventorySlots[slot][2][2] .. ' ' .. 32 .. ' ' .. 32)  
     itemWidget:setImageColor('#a9a9a9ff') 
     itemWidget:setBorderWidth(0)
     itemWidget:setItem(nil)

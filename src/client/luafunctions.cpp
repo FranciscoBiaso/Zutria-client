@@ -692,7 +692,7 @@ void Client::registerLuaFunctions()
     g_lua.bindClassMemberFunction<UIItem>("setItemId", &UIItem::setItemId);
     g_lua.bindClassMemberFunction<UIItem>("setItemCount", &UIItem::setItemCount);
     g_lua.bindClassMemberFunction<UIItem>("setItemSubType", &UIItem::setItemSubType);
-    g_lua.bindClassMemberFunction<UIItem>("setItemVisible", &UIItem::setItemVisible);
+	g_lua.bindClassMemberFunction<UIItem>("setItemVisible", &UIItem::setItemVisible);
     g_lua.bindClassMemberFunction<UIItem>("setItem", &UIItem::setItem);
     g_lua.bindClassMemberFunction<UIItem>("setVirtual", &UIItem::setVirtual);
     g_lua.bindClassMemberFunction<UIItem>("clearItem", &UIItem::clearItem);

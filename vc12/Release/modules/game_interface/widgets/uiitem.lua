@@ -19,6 +19,10 @@ function UIItem:onDragLeave(droppedWidget, mousePos)
   return true
 end
 
+function UIItem:changePos(pos)
+  self.position = pos
+end
+
 function UIItem:onDrop(widget, mousePos)
   if not self:canAcceptDrop(widget, mousePos) then return false end
 
