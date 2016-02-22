@@ -564,6 +564,24 @@ void LocalPlayer::setSpells(std::list<std::tuple<unsigned char, unsigned char>>&
     }
 }
 
+
+void LocalPlayer::setSpell(std::tuple<unsigned char, unsigned char> &spell)
+{
+	std::tuple<unsigned char, unsigned char> * ptr_spell = nullptr;
+	for (auto it = m_spells.begin(); it != m_spells.end(); it++)
+	{
+		if (std::get<0>(*it) == std::get<0>(spell))
+			ptr_spell = &(*it);
+	}
+	if (ptr_spell == nullptr)
+		m_spells.push_back(spell);
+	else
+		std::get<1>(*ptr_spell) = std::get<1>(spell);
+
+	callLuaField("onSpellChange", std::get<0>(spell), std::get<1>(spell));
+
+}
+
 void LocalPlayer::setBlessings(int blessings)
 {
     if(blessings != m_blessings) {

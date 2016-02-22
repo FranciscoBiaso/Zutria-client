@@ -213,6 +213,7 @@ public:
 
 	//interface
 	void addSkillPoint(int cid, uint8_t skillId, uint8_t valueToAdd);
+	void sendMsgTryToAddSpellLevel(uint8 spellId);
 
     // party related
     void partyInvite(int creatureId);

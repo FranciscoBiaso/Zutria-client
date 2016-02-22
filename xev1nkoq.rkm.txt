@@ -1,0 +1,49 @@
+﻿up-to-date files
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	modified:   src/client/luafunctions.cpp
+#	new file:   vc12/Release/data/images/game/skills/weight-dark.png
+#	deleted:    vc12/Release/data/images/game/slots/ammo-blessed.png
+#	deleted:    vc12/Release/data/images/game/slots/ammo.png
+#	deleted:    vc12/Release/data/images/game/slots/back-blessed.png
+#	deleted:    vc12/Release/data/images/game/slots/back.png
+#	deleted:    vc12/Release/data/images/game/slots/body-blessed.png
+#	deleted:    vc12/Release/data/images/game/slots/body.png
+#	deleted:    vc12/Release/data/images/game/slots/feet-blessed.png
+#	deleted:    vc12/Release/data/images/game/slots/feet.png
+#	deleted:    vc12/Release/data/images/game/slots/finger-blessed.png
+#	deleted:    vc12/Release/data/images/game/slots/finger.png
+#	deleted:    vc12/Release/data/images/game/slots/head-blessed.png
+#	deleted:    vc12/Release/data/images/game/slots/head.png
+#	new file:   vc12/Release/data/images/game/slots/inventory.png
+#	deleted:    vc12/Release/data/images/game/slots/left-hand-blessed.png
+#	deleted:    vc12/Release/data/images/game/slots/left-hand.png
+#	deleted:    vc12/Release/data/images/game/slots/legs-blessed.png
+#	deleted:    vc12/Release/data/images/game/slots/legs.png
+#	deleted:    vc12/Release/data/images/game/slots/neck-blessed.png
+#	deleted:    vc12/Release/data/images/game/slots/neck.png
+#	deleted:    vc12/Release/data/images/game/slots/purse.png
+#	deleted:    vc12/Release/data/images/game/slots/right-hand-blessed.png
+#	deleted:    vc12/Release/data/images/game/slots/right-hand.png
+#	new file:   vc12/Release/data/images/game/spells/spells.png
+#	new file:   vc12/Release/data/images/topbuttons/equipament.png
+#	new file:   vc12/Release/data/images/topbuttons/hand.png
+#	new file:   vc12/Release/modules/corelib/ui/uidragbutton.lua
+#	new file:   vc12/Release/modules/corelib/ui/uispellbutton.lua
+#	modified:   vc12/Release/modules/game_interface/gameinterface.otui
+#	modified:   vc12/Release/modules/game_interface/widgets/uiitem.lua
+#	modified:   vc12/Release/modules/game_inventory/inventory.lua
+#	modified:   vc12/Release/modules/game_inventory/inventory.otui
+#	modified:   vc12/Release/modules/game_spells/spells.otui
+#	modified:   vc12/Release/modules/game_treeskills/treeskills.lua
+#	modified:   vc12/Release/modules/game_treeskills/treeskills.otui
+#	modified:   vc12/Release/zutria.exe
+#	modified:   vc12/otclient.v12.suo
+#	modified:   vc12/otclient.vcxproj
+#
+

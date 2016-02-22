@@ -81,6 +81,7 @@ public:
     void setRegenerationTime(double regenerationTime);
     void setOfflineTrainingTime(double offlineTrainingTime);
 	void setSpells(std::list<std::tuple<unsigned char, unsigned char>>& spells);
+	void setSpell(std::tuple<unsigned char, unsigned char> &spell);
     void setBlessings(int blessings);
 
     int getStates() { return m_states; }

@@ -29,7 +29,7 @@
 
 AnimatedText::AnimatedText()
 {
-    m_cachedText.setFont(g_fonts.getFont("verdana-11px-rounded"));
+	m_cachedText.setFont(g_fonts.getFont("styled-32px"));
     m_cachedText.setAlign(Fw::AlignLeft);
 }
 
@@ -39,7 +39,7 @@ void AnimatedText::drawText(const Point& dest, const Rect& visibleRect)
     static float tftf = Otc::ANIMATED_TEXT_DURATION * Otc::ANIMATED_TEXT_DURATION;
 
     Point p = dest;
-    Size textSize = m_cachedText.getTextSize();
+	Size textSize = m_cachedText.getTextSize();
     float t = m_animationTimer.ticksElapsed();
     p.x += (24 - textSize.width() / 2);
 
@@ -89,7 +89,7 @@ bool AnimatedText::merge(const AnimatedTextPtr& other)
     if(other->getColor() != m_color)
         return false;
 
-    if(other->getCachedText().getFont() != m_cachedText.getFont())
+    if(other->getCachedText()->getFont() != m_cachedText.getFont())
         return false;
 
     if(m_animationTimer.ticksElapsed() > Otc::ANIMATED_TEXT_DURATION / 2.5)
@@ -97,7 +97,7 @@ bool AnimatedText::merge(const AnimatedTextPtr& other)
 
     try {
         int number = stdext::safe_cast<int>(m_cachedText.getText());
-        int otherNumber = stdext::safe_cast<int>(other->getCachedText().getText());
+        int otherNumber = stdext::safe_cast<int>(other->getCachedText()->getText());
 
         std::string text = stdext::format("%d", number + otherNumber);
         m_cachedText.setText(text);

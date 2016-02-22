@@ -219,7 +219,7 @@ function onLevelChange(localPlayer, level, percent, oldLevel)
      end
   end
 
-  setSkillPercent('level', percent, text)
+  --setSkillPercent('level', percent, text)
  -- if oldLevel < level then
   --  setSkillValue('levelPoints', level)
   --end

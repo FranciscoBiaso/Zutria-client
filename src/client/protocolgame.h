@@ -116,6 +116,7 @@ public:
     void sendBrowseField(const Position& position);
     void sendSeekInContainer(int cid, int index);
 	void sendAddSkillPoints(int creatureId, uint8_t skillName, uint8_t valueToAdd);
+	void sendMsgTryToAddSpellLevel(uint8 spellId);
 
     // otclient only
     void sendChangeMapAwareRange(int xrange, int yrange);
@@ -193,6 +194,7 @@ private:
     void parsePlayerState(const InputMessagePtr& msg);
 	void parsePlayerFirstStats(const InputMessagePtr& msg);
 	void parsePlayerSpells(const InputMessagePtr& msg);
+	void parsePlayerSpellLearned(const InputMessagePtr& msg);
     void parsePlayerCancelAttack(const InputMessagePtr& msg);
     void parsePlayerModes(const InputMessagePtr& msg);
     void parseSpellCooldown(const InputMessagePtr& msg);

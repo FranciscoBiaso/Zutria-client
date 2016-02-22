@@ -259,7 +259,7 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
     if(textRect.top() == parentRect.top())
         backgroundRect.moveTop(textRect.top() + 12);
     if(backgroundRect.bottom() == parentRect.bottom())
-        textRect.moveTop(backgroundRect.top() - 12);
+        textRect.moveTop(backgroundRect.top() - 32);
 
     // health rect is based on background rect, so no worries
     Rect healthRect = backgroundRect.expanded(-1);

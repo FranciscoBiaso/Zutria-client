@@ -24,7 +24,8 @@ MoveableTabBarButton < UIButton
 
   $checked:
     image-clip: 0 42 20 21
-    color: #dfdfdf
+    color: #ffdfdf
+    image-color: #12ff12ff
 
   $on !checked:
     color: #de6f6f

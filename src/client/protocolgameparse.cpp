@@ -369,6 +369,9 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
 			case Proto::GameServerPlayerSpells:
 				parsePlayerSpells(msg);
 				break;
+			case Proto::GameServerPlayerSpell:
+				parsePlayerSpellLearned(msg);
+				break;
             default:
                 stdext::throw_exception(stdext::format("unhandled opcode %d", (int)opcode));
                 break;
@@ -1226,6 +1229,14 @@ void ProtocolGame::parsePlayerSpells(const InputMessagePtr& msg)
 	m_localPlayer->setSpells(spells);
 }
 
+void ProtocolGame::parsePlayerSpellLearned(const InputMessagePtr& msg)
+{
+	uint8 spellId = msg->getU8();
+	uint8 spellLevel = msg->getU8();
+
+	m_localPlayer->setSpell(std::make_tuple(spellId, spellLevel));
+}
+
 void ProtocolGame::parsePlayerCancelAttack(const InputMessagePtr& msg)
 {
     uint seq = 0;
@@ -1415,9 +1426,9 @@ void ProtocolGame::parseTextMessage(const InputMessagePtr& msg)
             text = msg->getString();
             break;
         }
-        case Otc::MessageDamageDealed:
-        case Otc::MessageDamageReceived:
-        case Otc::MessageDamageOthers: {
+		case Otc::MessageDamageDealed:
+		case Otc::MessageDamageReceived:
+		case Otc::MessageDamageOthers: {
             Position pos = getPosition(msg);
             uint value[2];
             int color[2];
@@ -1434,32 +1445,31 @@ void ProtocolGame::parseTextMessage(const InputMessagePtr& msg)
             for(int i=0;i<2;++i) {
                 if(value[i] == 0)
                     continue;
-                AnimatedTextPtr animatedText = AnimatedTextPtr(new AnimatedText);
-                animatedText->setColor(color[i]);
-                animatedText->setText(stdext::to_string(value[i]));
-                g_map.addThing(animatedText, pos);
+				AnimatedTextPtr animatedText = AnimatedTextPtr(new AnimatedText);
+				animatedText->setColor(color[i]);
+				animatedText->setText(stdext::to_string(value[i]));
+				g_map.addThing(animatedText, pos);
             }
             break;
         }
-        case Otc::MessageHeal:
-        case Otc::MessageExp:
-        case Otc::MessageHealOthers:
-        case Otc::MessageExpOthers: {
+		case Otc::MessageHeal:
+		case Otc::MessageExp:
+		case Otc::MessageHealOthers:
+		case Otc::MessageExpOthers:{
             Position pos = getPosition(msg);
             uint value = msg->getU32();
             int color =  msg->getU8();
             text = msg->getString();
 
-            AnimatedTextPtr animatedText = AnimatedTextPtr(new AnimatedText);
-            animatedText->setColor(color);
-            animatedText->setText(stdext::to_string(value));
-            g_map.addThing(animatedText, pos);
+			AnimatedTextPtr animatedText = AnimatedTextPtr(new AnimatedText);
+			animatedText->setColor(color);
+			animatedText->setText(stdext::to_string(value));
+			g_map.addThing(animatedText, pos);
             break;
         }
         case Otc::MessageInvalid:
             stdext::throw_exception(stdext::format("unknown message mode %d", mode));
-            break;
-
+            break;	
 		//case Otc::MessageLevelUp:
 
 			//text = msg->getString();

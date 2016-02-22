@@ -94,11 +94,16 @@ function displayMessage(mode, text)
     modules.game_console.addText(text, msgtype, tr(msgtype.consoleTab))
     --TODO move to game_console
   end
-
+  
   if msgtype.screenTarget then
     local label = messagesPanel:recursiveGetChildById(msgtype.screenTarget)
+    if mode == MessageModes.LevelUp then
+      label:setFont('styled-32px')     
+    elseif mode == MessageModes.Status or mode == MessageModes.Failure then
+      label:setFont('styled-16px')   
+      label:setTextAlign(AlignLeft)
+    end
     label:setText(text)
-    label:setColor(msgtype.color)
     label:setVisible(true)
     removeEvent(label.hideEvent)
     label.hideEvent = scheduleEvent(function() label:setVisible(false) end, calculateVisibleTime(text))

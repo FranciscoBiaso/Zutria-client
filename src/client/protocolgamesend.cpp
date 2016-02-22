@@ -874,6 +874,14 @@ void ProtocolGame::sendAddSkillPoints(int creatureId, uint8_t skillId, uint8_t v
 	send(msg);
 }
 
+void ProtocolGame::sendMsgTryToAddSpellLevel(uint8 spellid)
+{
+	OutputMessagePtr msg(new OutputMessage);
+	msg->addU8(Proto::ClientTryToAddSpellLevel);
+	msg->addU8(spellid);
+	send(msg);
+}
+
 void ProtocolGame::sendChangeMapAwareRange(int xrange, int yrange)
 {
     if(!g_game.getFeature(Otc::GameChangeMapAwareRange))

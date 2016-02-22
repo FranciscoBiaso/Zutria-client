@@ -1,7 +1,7 @@
 Panel
   id: lookPanel
   fixed-size: false
-  width: 300
+  width: 700
   height: 200
   border: 0 #787878ff
   margin-top: 3
@@ -27,5 +27,6 @@ Panel
     text-align: top
     text: This is a sword
     color: green
+    font: styled-32px
     
     

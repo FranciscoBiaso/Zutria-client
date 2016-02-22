@@ -1,6 +1,6 @@
 SpeakTypesSettings = {
   none = {},
-  say = { speakType = MessageModes.Say, color = '#FFFF00' },
+  say = { speakType = MessageModes.Say, color = '#FFFFFF' },
   whisper = { speakType = MessageModes.Whisper, color = '#FFFF00' },
   yell = { speakType = MessageModes.Yell, color = '#FFFF00' },
   broadcast = { speakType = MessageModes.GamemasterBroadcast, color = '#F55E5E' },
@@ -1059,7 +1059,7 @@ function onTalk(name, level, mode, message, channelId, creaturePos)
       modules.game_textmessage.displayPrivateMessage(name .. ':\n' .. message)
     end
   else
-    local channel = tr('Default')
+    local channel = tr('Padrão')
     if not defaultMessage then
       channel = channels[channelId]
     end
@@ -1402,8 +1402,8 @@ function onClickIgnoreButton()
 end
 
 function online()
-  defaultTab = addTab(tr('Default'), true)
-  serverTab = addTab(tr('Server Log'), false)
+  defaultTab = addTab(tr('Padrão'), true)
+  serverTab = addTab(tr('Mensagens do servidor'), false)
 
   if g_game.getClientVersion() < 862 then
     g_keyboard.bindKeyDown('Ctrl+R', openPlayerReportRuleViolationWindow)

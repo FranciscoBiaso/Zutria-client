@@ -8,36 +8,40 @@ tab_vocations = {
 }
 
 tab_arrows = {
-  ["45 left arrow"]        = {0 * 32, 0 * 32},
-  ["45 right arrow"]       = {1 * 32, 0 * 32},
-  ["down arrow"]           = {2 * 32, 0 * 32},
-  ["90 left arrow"]        = {3 * 32, 0 * 32},
-  ["90 right arrow"]       = {4 * 32, 0 * 32},
+  {0 * 32, 0 * 32},  -- 1
+  {1 * 32, 0 * 32},  -- 2
+  {2 * 32, 0 * 32},  -- 3
+  {3 * 32, 0 * 32},  -- 4
+  {4 * 32, 0 * 32},  -- 5
 }
 
--- name = [1]level, [2]type, [3]xImagePosion, [4]yImagePosition, [5]spellId
--- [6]previousSpell
-tab_spells = {
-  ["escudo infernal"]            = {3, 1, 0 * 32,1 * 32, 1, "bola de fogo"},
-  ["espiral fogosa"]             = {3, 1, 1 * 32,1 * 32, 2, "bola de fogo"},
-  ["bola de fogo"]               = {3, 1, 2 * 32,1 * 32, 3, "nenhuma"},
-  ["espiral incendiária"]        = {3, 1, 3 * 32,1 * 32, 4, "espiral fogosa"},
-  ["runa de bolas de fogo"]      = {2, 1, 4 * 32,1 * 32, 5, "bola de fogo"},
-  ["teleporte de chamas"]        = {3, 1, 5 * 32,1 * 32, 6, "runa de bolas de fogo"},
-  ["runa de fogo vivo"]          = {3, 1, 6 * 32,1 * 32, 7, "teleporte de chamas"},
-  ["chuva fogosa de meteoro"]    = {2, 1, 7 * 32,1 * 32, 8, "espiral incendiária"},
-  ["cuspe do dragão"]            = {2, 1, 8 * 32,1 * 32, 9, "rajada fogosa"},
-  ["rajada fogosa"]              = {2, 1, 9 * 32,1 * 32, 10, "escudo infernal"},
+-- [1]name, [2]level, [3]ImagePosition, [4]previousSpell
+-- [5]Position in templateTableTreeSkills, [6]cooldown
+tab_spells_information = {
+--[[ 1 ]] {"escudo infernal"          ,3, {0 * 32,1 * 32}, "bola de fogo"            ,{-1,-1}, 1000},
+--[[ 2 ]] {"espiral fogosa"           ,3, {1 * 32,1 * 32}, "bola de fogo"            ,{-1,-1}, 5000},
+--[[ 3 ]] {"bola de fogo"             ,3, {2 * 32,1 * 32}, "nenhuma"                 ,{-1,-1}, 2000},
+--[[ 4 ]] {"espiral incendiária"      ,3, {3 * 32,1 * 32}, "espiral fogosa"          ,{-1,-1}, 1000},
+--[[ 5 ]] {"runa de bolas de fogo"    ,2, {4 * 32,1 * 32}, "bola de fogo"            ,{-1,-1}, 1000},
+--[[ 6 ]] {"teleporte de chamas"      ,3, {5 * 32,1 * 32}, "runa de bolas de fogo"   ,{-1,-1}, 1000},
+--[[ 7 ]] {"runa de fogo vivo"        ,3, {6 * 32,1 * 32}, "teleporte de chamas"     ,{-1,-1}, 1000},
+--[[ 8 ]] {"chuva fogosa de meteoro"  ,2, {7 * 32,1 * 32}, "espiral incendiária"     ,{-1,-1}, 1000},
+--[[ 9 ]] {"cuspe do dragão"          ,2, {8 * 32,1 * 32}, "rajada fogosa"           ,{-1,-1}, 1000},
+--[[ 10 ]]{"rajada fogosa"            ,2, {9 * 32,1 * 32}, "escudo infernal"         ,{-1,-1}, 1000},
 }
 
-tab_fire_spell_grid = {
-  {0,                   0, "bola de fogo",                  0,                         0}, 
-  {0,     "45 left arrow", "down arrow",     "45 right arrow",                         0}, 
-  {"escudo infernal",   0, "runa de bolas de fogo",         0,          "espiral fogosa"}, 
-  {"down arrow",        0, "down arrow",                    0,              "down arrow"}, 
-  {"rajada fogosa",     0, "teleporte de chamas",           0,     "espiral incendiária"}, 
-  {"down arrow",        0, "down arrow",                    0,              "down arrow"}, 
-  {"cuspe do dragão",   0, "runa de fogo vivo",             0, "chuva fogosa de meteoro"}, 
+function getTableSpells()
+  return tab_spells_information
+end
+
+tab_spells_model = {
+  {{0,0}, {0,0}, {2,3}, {0,0}, {0,0}}, 
+  {{0,0}, {1,1}, {1,3}, {1,2}, {0,0}}, 
+  {{2,1}, {0,0}, {2,5}, {0,0}, {2,2}}, 
+  {{1,3}, {0,0}, {1,3}, {0,0}, {1,3}},
+  {{2,10},{0,0}, {2,6}, {0,0}, {2,4}},
+  {{1,3}, {0,0}, {1,3}, {0,0}, {1,3}},
+  {{2,9}, {0,0}, {2,7}, {0,0}, {2,8}}, 
 }
 -- 0 empty square
 -- string "arrow x" - arrow key  / x = {8 combinations of arrows}

@@ -1073,6 +1073,14 @@ void Game::addSkillPoint(int cid, uint8_t skillId, uint8_t valueToAdd)
 	m_protocolGame->sendAddSkillPoints(cid, skillId, valueToAdd);
 }
 
+void Game::sendMsgTryToAddSpellLevel(uint8 spellId)
+{
+	if (!canPerformGameAction())
+		return;
+	m_protocolGame->sendMsgTryToAddSpellLevel(spellId);
+}
+
+
 void Game::partyInvite(int creatureId)
 {
     if(!canPerformGameAction())

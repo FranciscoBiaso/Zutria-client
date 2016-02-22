@@ -26,12 +26,9 @@ infoBar < ProgressBar
 MiniWindow
   id: inventoryWindow
   !text: tr('Equipamentos')
-  color: #bcbcbcdd
   &save: true
   icon: /images/topbuttons/skills
   &save: true
-  border: 1 #121212ff  
-  margin-top: 3
   height: 240
   @onClose: onInventoryWindowClose()
 

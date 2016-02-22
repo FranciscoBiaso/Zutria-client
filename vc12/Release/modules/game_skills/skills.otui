@@ -128,9 +128,6 @@ MiniWindow
   icon: /images/topbuttons/skills
   @onClose: modules.game_skills.onMiniWindowClose()
   &save: true
-  border: 1 #121212ff
-  color: #bcbcbcdd
-  margin-top: 3
 
   MiniWindowContents
     padding-left: 5
@@ -155,9 +152,7 @@ MiniWindow
         !text: tr('Nível')
         color: #D3D3D3ff
       SkillRightValueLabel
-      SkillPercentPanel
-        background-color: red
-
+    
     HorizontalSeparator
       margin-bottom: 6
     

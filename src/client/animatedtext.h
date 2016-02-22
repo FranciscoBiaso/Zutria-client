@@ -41,7 +41,7 @@ public:
     void setOffset(const Point& offset) { m_offset = offset; }
 
     Color getColor() { return m_color; }
-    const CachedText& getCachedText() const { return m_cachedText; }
+    CachedText * getCachedText() { return &m_cachedText; }
     Point getOffset() { return m_offset; }
     Timer getTimer() { return m_animationTimer; }
 

@@ -302,6 +302,7 @@ void Client::registerLuaFunctions()
     g_lua.bindSingletonFunction("g_game", "seekInContainer", &Game::seekInContainer, &g_game);
 	g_lua.bindSingletonFunction("g_game", "getLastWalkDir", &Game::getLastWalkDir, &g_game);
 	g_lua.bindSingletonFunction("g_game", "addSkillPoint", &Game::addSkillPoint, &g_game);
+	g_lua.bindSingletonFunction("g_game", "sendMsgTryToAddSpellLevel", &Game::sendMsgTryToAddSpellLevel, &g_game);
 
     g_lua.registerSingletonClass("g_shaders");
     g_lua.bindSingletonFunction("g_shaders", "createShader", &ShaderManager::createShader, &g_shaders);

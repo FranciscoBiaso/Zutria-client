@@ -8,7 +8,8 @@ function UISpellButton.create()
   button.panel = nil
   button.imageXClip = 0
   button.imageYClip = 0
-  button.playerHasSpell = false
+  button.spellId = nil
+  button.hasSpell = nil
   return button
 end
 
@@ -17,7 +18,7 @@ function UISpellButton:onMouseRelease(pos, button)
 end
 
 function UISpellButton:onDragEnter(mousePos)
-  if self.playerHasSpell == true then
+  if self.hasSpell then
     modules.game_interface.getSpellPanel():setImageColor('#ff000099')   
     self.movingReference = { x = mousePos.x - self:getX(), y = mousePos.y - self:getY()}
     
@@ -29,7 +30,7 @@ function UISpellButton:onDragEnter(mousePos)
     self.panel:setWidth(32)
     self.panel:setHeight(32)
     self.panel:show()  
-  return true
+    return true
   else
     return false
   end
@@ -40,14 +41,20 @@ function UISpellButton:onDragLeave(droppedWidget, mousePos)
   local pos = { x = mousePos.x, y = mousePos.y}
   spellGroupWidget = modules.game_interface.getSpellPanel():getChildByPos(pos)
   if spellGroupWidget ~= nil then
-    spellIcon = spellGroupWidget:getChildById('spellIcon')
+    spellIcon = spellGroupWidget:getChildById('spellIcon')    
     if spellIcon ~= nil then
       spellIcon:setImageSource('/images/game/spells/spells')
+      spellIcon:setImageColor('#ffffffff')
       spellIcon:setImageClip(self.imageXClip .. ' ' .. self.imageYClip .. ' ' .. 32 .. ' ' .. 32)
+      
+      --save the spell with the proper hotkey
+      hotKeyText = spellGroupWidget:recursiveGetChildById('spellHotkeyText'):getText()
+      modules.game_hotkeys.saveHotkey(hotKeyText, self.spellId)
     end
   end
   -- TODO: auto detect and reconnect anchors
-  self.panel:destroy()  
+  self.panel:destroy() 
+  self.panel = nil
 end
 
 function UISpellButton:onDragMove(mousePos, mouseMoved)    
@@ -56,11 +63,19 @@ function UISpellButton:onDragMove(mousePos, mouseMoved)
   self.panel:bindRectToParent()
 end
 
-function UISpellButton:setDraggingImageClip(xClip, yClip)
+function UISpellButton:setImageClipOfTempButton(xClip, yClip)
   self.imageXClip = xClip
   self.imageYClip = yClip
 end
 
-function UISpellButton:setPlayerHasSpell(value)
-  self.playerHasSpell = value
+function UISpellButton:setSpellId(spellId)
+  self.spellId = spellId
+end
+
+function UISpellButton:getSpellId()
+  return self.spellId
+end
+
+function UISpellButton:AddSpell()
+  self.hasSpell = true
 end

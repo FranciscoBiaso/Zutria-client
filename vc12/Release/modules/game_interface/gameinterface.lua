@@ -831,12 +831,12 @@ function setupViewMode(mode)
     gameMapPanel:setOn(true)    
    
     gameLeftPanel:setImageColor('alpha')
-    gameLeftPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() + 2 - gameLeftPanel:getPaddingTop())
+    gameLeftPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop() + 3)
     gameLeftPanel:setOn(true)
     gameLeftPanel:setVisible(true)
         
     gameRightPanel:setImageColor('alpha')
-    gameRightPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() + 2 - gameLeftPanel:getPaddingTop())    
+    gameRightPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop() + 3)    
     gameRightPanel:setOn(true)
     gameRightPanel:setVisible(true)
     

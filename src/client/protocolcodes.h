@@ -154,7 +154,8 @@ namespace Proto {
         GameServerMarketBrowse              = 249, // 944
         GameServerModalDialog               = 250,  // 960
 		GameServerPlayerFirstStats          = 251,
-		GameServerPlayerSpells              = 252
+		GameServerPlayerSpells              = 252,
+		GameServerPlayerSpell               = 253
     };
 
     enum ClientOpcodes : uint8
@@ -257,7 +258,8 @@ namespace Proto {
         ClientMarketCancel                  = 247, // 944
         ClientMarketAccept                  = 248, // 944
         ClientAnswerModalDialog             = 249, // 960
-		ClientAddSkillPoints				= 250
+		ClientAddSkillPoints				= 250,
+		ClientTryToAddSpellLevel				= 251
     };
 
     enum CreatureType {

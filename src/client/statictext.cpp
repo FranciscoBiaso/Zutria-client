@@ -123,7 +123,7 @@ void StaticText::compose()
     if(m_mode == Otc::MessageSay) {
         text += m_name;
         text += " diz:\n";
-		m_color = Color(199, 199, 255, 255);
+		m_color = Color(255, 255, 0, 255);
     } else if(m_mode == Otc::MessageWhisper) {
         text += m_name;
         text += " susurra:\n";
