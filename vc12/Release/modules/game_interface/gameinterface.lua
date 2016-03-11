@@ -66,6 +66,8 @@ function init()
   if g_game.isOnline() then
     show()
   end
+  
+  g_mouse.pushCursor('medieval')
 end
 
 function bindKeys()
@@ -120,11 +122,13 @@ function terminate()
 
   stopSmartWalk()
 
+  g_mouse.popCursor('medieval')
+  
   disconnect(g_game, {
     onGameStart = onGameStart,
     onGameEnd = onGameEnd,
     onLoginAdvice = onLoginAdvice
-  })
+  })  
 
   disconnect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
 

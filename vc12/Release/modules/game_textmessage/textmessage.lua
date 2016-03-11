@@ -10,7 +10,8 @@ MessageSettings = {
   bottomWhite     = { color = TextColors.white,  consoleTab='Server Log', screenTarget='statusLabel',       consoleOption='showEventMessagesInConsole' },
   status          = { color = TextColors.white,  consoleTab='Server Log', screenTarget='statusLabel',       consoleOption='showStatusMessagesInConsole' },
   statusSmall     = { color = TextColors.white,                           screenTarget='statusLabel' },
-  private         = { color = TextColors.lightblue,                       screenTarget='privateLabel' }
+  private         = { color = TextColors.lightblue,                       screenTarget='privateLabel' },
+  gameWindowGreen = { color = TextColors.green,                           screenTarget='statusLabel'}
 }
 
 MessageTypes = {
@@ -38,7 +39,7 @@ MessageTypes = {
 
   [MessageModes.DamageOthers] = MessageSettings.none,
   [MessageModes.HealOthers] = MessageSettings.none,
-  [MessageModes.ExpOthers] = MessageSettings.none,
+  [MessageModes.ExpOthers] = MessageSettings.gameWindowGreen,
 
   [MessageModes.TradeNpc] = MessageSettings.centerWhite,
   [MessageModes.Guild] = MessageSettings.centerWhite,
@@ -83,31 +84,25 @@ end
 function displayMessage(mode, text)
   if not g_game.isOnline() then return end
 
-  local msgtype = MessageTypes[mode]
-  if not msgtype then
-    return
-  end
 
-  if msgtype == MessageSettings.none then return end
-
-  if msgtype.consoleTab ~= nil and (msgtype.consoleOption == nil or modules.client_options.getOption(msgtype.consoleOption)) then
-    modules.game_console.addText(text, msgtype, tr(msgtype.consoleTab))
-    --TODO move to game_console
-  end
   
-  if msgtype.screenTarget then
-    local label = messagesPanel:recursiveGetChildById(msgtype.screenTarget)
+  --if msgtype.screenTarget then
+    local label = messagesPanel:recursiveGetChildById('statusLabel')
     if mode == MessageModes.LevelUp then
       label:setFont('styled-32px')     
     elseif mode == MessageModes.Status or mode == MessageModes.Failure then
       label:setFont('styled-16px')   
       label:setTextAlign(AlignLeft)
+    elseif mode == 27 then
+      label:setFont('styled-16px')   
+      label:setTextAlign(AlignLeft)
+      label:setColor('#00ff00') 
     end
-    label:setText(text)
+    label:setText(tostring(mode))
     label:setVisible(true)
     removeEvent(label.hideEvent)
     label.hideEvent = scheduleEvent(function() label:setVisible(false) end, calculateVisibleTime(text))
-  end
+  --end
 end
 
 function displayPrivateMessage(text)

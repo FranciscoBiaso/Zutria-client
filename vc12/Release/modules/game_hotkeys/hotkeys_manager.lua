@@ -1,9 +1,11 @@
 settings = nil
 cooldownTimeBy100 = nil
 cooldownBarReady = true
-   
+pushedCursor = false
+
 function init()
   connect(g_game, { onGameStart = loadHotKeys})
+  
   settings = g_settings.getNode('hotkeys') or {}    
 end
 
@@ -53,9 +55,17 @@ end
 
 function doKeyCombo(spellId)
   if not g_game.isOnline() then return end
-  if g_game.getLocalPlayer():hasSpell(spellId) then
-    modules.game_console.sendMessage(modules.game_treeskills.getTableSpells()[spellId][1])
-  end
+    -- is a spell instante
+    if  modules.game_treeskills.getTableSpells()[spellId][7] == 1 then
+      modules.game_console.sendMessage(modules.game_treeskills.getTableSpells()[spellId][1])
+    
+    -- is a spell actived by mouse
+    elseif modules.game_treeskills.getTableSpells()[spellId][7] == 2 then 
+      if pushedCursor == false then
+        g_mouse.pushCursor('spell')  
+        pushedCursor = true
+      end
+    end
 end
 
 function saveHotkey(key, spellId)  

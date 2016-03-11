@@ -37,9 +37,8 @@ function init()
   inventoryPanel = inventoryWindow:getChildById('contentsPanel') 
   inventoryWindow:disableResize()
   
-  inventoryWindow:setup()
-
   refresh()
+  inventoryWindow:setup()
 end
 
 function terminate()

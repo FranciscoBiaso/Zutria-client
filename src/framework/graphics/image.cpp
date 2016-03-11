@@ -198,6 +198,32 @@ bool Image::nextMipmap()
     return true;
 }
 
+
+void Image::flipVertical(void)
+{
+	for (int l = 0; l < getHeight()/2; l++)
+		for (int c = 0; c < getWidth(); c++)
+		{
+			swapPixel((l * getWidth() + c) * m_bpp, ((getHeight() - 1 -  l) * getWidth() + c) * m_bpp);
+		}
+}
+
+void Image::swapPixel(int i, int j)
+{
+	swapByte(i+0, j+0);
+	swapByte(i+1, j+1);
+	swapByte(i+2, j+2);
+	swapByte(i+3, j+3);
+}
+
+void Image::swapByte(int i, int j)
+{
+	uint8 tempPixel = m_pixels[i];
+	m_pixels[i] = m_pixels[j];
+	m_pixels[j] = tempPixel;
+}
+
+
 /*
  *
 

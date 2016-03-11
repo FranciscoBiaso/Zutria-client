@@ -67,7 +67,8 @@ public:
     void swapBuffers();
     void showMouse();
     void hideMouse();
-    void displayFatalError(const std::string& message);
+	void displayFatalError(const std::string& message);
+
 
     void setMouseCursor(int cursorId);
     void restoreMouseCursor();

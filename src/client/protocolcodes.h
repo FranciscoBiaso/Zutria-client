@@ -259,7 +259,7 @@ namespace Proto {
         ClientMarketAccept                  = 248, // 944
         ClientAnswerModalDialog             = 249, // 960
 		ClientAddSkillPoints				= 250,
-		ClientTryToAddSpellLevel				= 251
+		ClientTryToAddSpellLevel		    = 251,
     };
 
     enum CreatureType {

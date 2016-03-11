@@ -179,11 +179,12 @@ end
 function tryToUpSpellLevel()
   local groupSpellPanel = treeSkillsPanel:getChildByPos(g_window.getMousePosition())
   if groupSpellPanel then
-    spellImage = groupSpellPanel:getChildById('skillImage') 
+    local spellImage = groupSpellPanel:getChildById('skillImage') 
     --spellLabel = groupSpellPanel:getChildById('spellLabel') 
     groupSpellPanelTryed = groupSpellPanel
     if spellImage then
-      g_game.sendMsgTryToAddSpellLevel(spellImage:getSpellId())
+      -- lua starts array with 1, so lets decrement 1 to c++ interpret correctly
+      g_game.sendMsgTryToAddSpellLevel(spellImage:getSpellId() - 1)
     end
   end
 end

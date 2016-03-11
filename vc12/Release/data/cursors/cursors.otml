@@ -1,13 +1,19 @@
 Cursors
+  spell:
+    image: spell
+    hot-spot: 16 16
   target:
     image: targetcursor
-    hot-spot: 9 9
+    hot-spot: 16 16
   horizontal:
     image: horizontalcursor
-    hot-spot: 9 4
+    hot-spot: 16 16
   vertical:
     image: verticalcursor
-    hot-spot: 4 9
+    hot-spot: 16 16
   text:
     image: textcursor
-    hot-spot: 4 9
+    hot-spot: 12 8
+  medieval
+    image: medieval
+    hot-spot: 1 1

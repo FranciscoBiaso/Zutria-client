@@ -101,7 +101,7 @@ void Mouse::popCursor(const std::string& name)
 
 bool Mouse::isCursorChanged()
 {
-    return m_cursorStack.size() > 0;
+    return m_cursorStack.size() > 1;
 }
 
 bool Mouse::isPressed(Fw::MouseButton mouseButton)

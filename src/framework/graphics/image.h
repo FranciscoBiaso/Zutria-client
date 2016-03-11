@@ -41,6 +41,9 @@ public:
     void paste(const ImagePtr& other);
     void resize(const Size& size) { m_size = size; m_pixels.resize(size.area() * m_bpp, 0); }
     bool nextMipmap();
+	void flipVertical(void);
+	void swapPixel(int i, int j);
+	void swapByte(int i, int j);
 
     void setPixel(int x, int y, uint8 *pixel) { memcpy(&m_pixels[(y * m_size.width() + x) * m_bpp], pixel, m_bpp);}
     void setPixel(int x, int y, const Color& color) { uint32 tmp = color.rgba(); setPixel(x,y,(uint8*)&tmp); }

@@ -794,27 +794,76 @@ void WIN32Window::displayFatalError(const std::string& message)
 
 int WIN32Window::internalLoadMouseCursor(const ImagePtr& image, const Point& hotSpot)
 {
-    int width = image->getWidth();
-    int height = image->getHeight();
-    int numbits = width * height;
-    int numbytes = (width * height)/8;
+	DWORD dwWidth, dwHeight;
+	BITMAPV5HEADER bi;
+	HBITMAP hBitmap;
+	void *lpBits;
+	HCURSOR hAlphaCursor = NULL;
 
-    std::vector<uchar> andMask(numbytes, 0);
-    std::vector<uchar> xorMask(numbytes, 0);
+	dwWidth = image->getWidth();  // width of cursor
+	dwHeight = image->getHeight();  // height of cursor
 
-    for(int i=0;i<numbits;++i) {
-        uint32 rgba = stdext::readULE32(image->getPixelData() + i*4);
-        if(rgba == 0xffffffff) { //white
-            HSB_BIT_SET(xorMask, i);
-        } else if(rgba == 0x00000000) { //alpha
-            HSB_BIT_SET(andMask, i);
-        } // otherwise 0xff000000 => black
-    }
+	int numPixels = dwWidth * dwHeight;
 
-    HCURSOR cursor = CreateCursor(m_instance, hotSpot.x, hotSpot.y, width, height, &andMask[0], &xorMask[0]);
-    m_cursors.push_back(cursor);
-    return m_cursors.size()-1;
+	ZeroMemory(&bi, sizeof(BITMAPV5HEADER));
+	bi.bV5Size = sizeof(BITMAPV5HEADER);
+	bi.bV5Width = dwWidth;
+	bi.bV5Height = dwHeight;
+	bi.bV5Planes = 1;
+	bi.bV5BitCount = 32;
+	bi.bV5Compression = BI_BITFIELDS;
+	// The following mask specification specifies a supported 32 BPP
+	// alpha format for Windows XP.
+	bi.bV5RedMask = 0x00FF0000;
+	bi.bV5GreenMask = 0x0000FF00;
+	bi.bV5BlueMask = 0x000000FF;
+	bi.bV5AlphaMask = 0xFF000000;
+
+	HDC hdc;
+	hdc = GetDC(NULL);
+
+	// Create the DIB section with an alpha channel.
+	hBitmap = CreateDIBSection(hdc, (BITMAPINFO *)&bi, DIB_RGB_COLORS,
+		(void **)&lpBits, NULL, (DWORD)0);
+
+	ReleaseDC(NULL, hdc);
+
+	DWORD *lpdwPixel;
+	lpdwPixel = (DWORD *)lpBits;
+	image->flipVertical();
+	uint8 * pixelData = image->getPixelData();
+	for (int i = 0; i<numPixels; i++)
+	{
+		//            (alpha = pixeldata[3])   , (blue = pixeldata[2])    , (green = pixeldata[1])  , (red = pixeldata[0])             
+		uint32 rgba = (pixelData[(i*4) + 3] << 24) | (pixelData[(i*4) + 0] << 16) | (pixelData[(i*4) + 1] << 8) | (pixelData[(i*4) + 2] << 0);
+		// clear pixels
+		*lpdwPixel &= 0x00000000;
+		// set pixel color
+		*lpdwPixel |= rgba;		
+		lpdwPixel++;
+	}
+
+	// Create an empty mask bitmap.
+	HBITMAP hMonoBitmap = CreateBitmap(dwWidth, dwHeight, 1, 1, NULL);
+
+	ICONINFO ii;
+	ii.fIcon = FALSE;  // Change fIcon to TRUE to create an alpha icon
+	ii.xHotspot = hotSpot.x;
+	ii.yHotspot = hotSpot.y;
+	ii.hbmMask = hMonoBitmap;
+	ii.hbmColor = hBitmap;
+
+	// Create the alpha cursor with the alpha DIB section.
+	hAlphaCursor = CreateIconIndirect(&ii);
+
+	DeleteObject(hBitmap);
+	DeleteObject(hMonoBitmap);
+
+	HCURSOR cursor = hAlphaCursor;
+	m_cursors.push_back(cursor);
+	return m_cursors.size() - 1;	
 }
+
 
 void WIN32Window::setMouseCursor(int cursorId)
 {
