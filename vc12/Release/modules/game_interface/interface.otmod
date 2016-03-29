@@ -19,7 +19,7 @@ Module
     - game_viplist
     - game_battle
     - game_spells
-    - game_treeskills
+    - game_treespells
     - game_minimap
     - game_npctrade
     - game_textwindow
@@ -28,7 +28,6 @@ Module
     - game_playerdeath
     - game_playermount
     - game_ruleviolation
-    - game_market
     - game_spelllist
     - game_cooldown
     - game_modaldialog

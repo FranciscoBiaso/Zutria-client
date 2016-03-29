@@ -97,7 +97,7 @@ protected:
     void processPlayerModes(Otc::FightModes fightMode, Otc::ChaseModes chaseMode, bool safeMode, Otc::PVPModes pvpMode);
 
     // message related
-    void processTextMessage(Otc::MessageMode mode, const std::string& text);
+    void processTextMessage(Otc::MessageMode mode, uint8, uint8, const std::string& text);
     void processTalk(const std::string& name, int level, Otc::MessageMode mode, const std::string& text, int channelId, const Position& pos);
 
     // container related
@@ -199,7 +199,7 @@ public:
     // talk related
     void talk(const std::string& message);
     void talkChannel(Otc::MessageMode mode, int channelId, const std::string& message);
-    void talkPrivate(Otc::MessageMode mode, const std::string& receiver, const std::string& message);
+	void talkPrivate(Otc::MessageMode mode, const std::string& receiver, const std::string& message);
 
     // channel related
     void openPrivateChannel(const std::string& receiver);

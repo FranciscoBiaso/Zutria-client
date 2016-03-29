@@ -250,7 +250,7 @@ void MapView::draw(const Rect& rect)
             //if(pos.z != cameraPosition.z && !staticText->isYell())
             //    continue;
 
-            if(pos.z != cameraPosition.z && staticText->getMessageMode() == Otc::MessageNone)
+            if(pos.z != cameraPosition.z && staticText->getMessageMode() == Otc::MSG_NONE)
                 continue;
 
             Point p = transformPositionTo2D(pos, cameraPosition) - drawOffset;

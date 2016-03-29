@@ -1,75 +1,22 @@
-MessageSettings = {
-  none            = {},
-  consoleRed      = { color = TextColors.red,    consoleTab='Default' },
-  consoleOrange   = { color = TextColors.orange, consoleTab='Default' },
-  consoleBlue     = { color = TextColors.blue,   consoleTab='Default' },
-  centerRed       = { color = TextColors.red,    consoleTab='Server Log', screenTarget='lowCenterLabel' },
-  centerBlue      = { color = TextColors.blue,   consoleTab='Server Log', screenTarget='lowCenterLabel' },
-  centerGreen     = { color = TextColors.green,  consoleTab='Server Log', screenTarget='highCenterLabel',   consoleOption='showInfoMessagesInConsole' },
-  centerWhite     = { color = TextColors.white,  consoleTab='Server Log', screenTarget='middleCenterLabel', consoleOption='showEventMessagesInConsole' },
-  bottomWhite     = { color = TextColors.white,  consoleTab='Server Log', screenTarget='statusLabel',       consoleOption='showEventMessagesInConsole' },
-  status          = { color = TextColors.white,  consoleTab='Server Log', screenTarget='statusLabel',       consoleOption='showStatusMessagesInConsole' },
-  statusSmall     = { color = TextColors.white,                           screenTarget='statusLabel' },
-  private         = { color = TextColors.lightblue,                       screenTarget='privateLabel' },
-  gameWindowGreen = { color = TextColors.green,                           screenTarget='statusLabel'}
-}
-
-MessageTypes = {
-  [MessageModes.MonsterSay] = MessageSettings.consoleOrange,
-  [MessageModes.MonsterYell] = MessageSettings.consoleOrange,
-  [MessageModes.BarkLow] = MessageSettings.consoleOrange,
-  [MessageModes.BarkLoud] = MessageSettings.consoleOrange,
-  [MessageModes.Failure] = MessageSettings.statusSmall,
-  [MessageModes.Login] = MessageSettings.bottomWhite,
-  [MessageModes.Game] = MessageSettings.centerWhite,
-  [MessageModes.Status] = MessageSettings.status,
-  [MessageModes.Warning] = MessageSettings.centerRed,
-  [MessageModes.Look] = MessageSettings.centerGreen,
-  [MessageModes.Loot] = MessageSettings.centerGreen,
-  [MessageModes.Red] = MessageSettings.consoleRed,
-  [MessageModes.Blue] = MessageSettings.consoleBlue,
-  [MessageModes.PrivateFrom] = MessageSettings.consoleBlue,
-
-  [MessageModes.GamemasterBroadcast] = MessageSettings.consoleRed,
-
-  [MessageModes.DamageDealed] = MessageSettings.status,
-  [MessageModes.DamageReceived] = MessageSettings.status,
-  [MessageModes.Heal] = MessageSettings.status,
-  [MessageModes.Exp] = MessageSettings.centerBlue,
-
-  [MessageModes.DamageOthers] = MessageSettings.none,
-  [MessageModes.HealOthers] = MessageSettings.none,
-  [MessageModes.ExpOthers] = MessageSettings.gameWindowGreen,
-
-  [MessageModes.TradeNpc] = MessageSettings.centerWhite,
-  [MessageModes.Guild] = MessageSettings.centerWhite,
-  [MessageModes.Party] = MessageSettings.centerGreen,
-  [MessageModes.PartyManagement] = MessageSettings.centerWhite,
-  [MessageModes.TutorialHint] = MessageSettings.centerWhite,
-  [MessageModes.BeyondLast] = MessageSettings.centerWhite,
-  [MessageModes.Report] = MessageSettings.consoleRed,
-  [MessageModes.HotkeyUse] = MessageSettings.centerGreen,
-  [MessageModes.LevelUp] = MessageSettings.centerBlue,
-
-  [254] = MessageSettings.private
-}
-
 messagesPanel = nil
+local bit = require("bit")
 
 function init()
-  for messageMode, _ in pairs(MessageTypes) do
-    if messageMode ~= MessageModes.Look then
-      registerMessageMode(messageMode, displayMessage)
+  for msgName, msgMode in pairs(MessageModes) do
+    if msgMode ~= MessageModes.MSG_LOOK then
+      registerMessageMode(msgMode, displayMessage)
     end
   end
-
+  
   connect(g_game, 'onGameEnd', clearMessages)
   messagesPanel = g_ui.loadUI('textmessage', modules.game_interface.getRootPanel())
 end
 
 function terminate()
-  for messageMode, _ in pairs(MessageTypes) do
-    unregisterMessageMode(messageMode, displayMessage)
+  for msgName, msgMode in pairs(MessageModes) do
+    if msgMode ~= MessageModes.MSG_LOOK then
+      unregisterMessageMode(msgMode, displayMessage)
+    end
   end
 
   disconnect(g_game, 'onGameEnd', clearMessages)
@@ -81,48 +28,76 @@ function calculateVisibleTime(text)
   return math.max(#text * 100, 4000)
 end
 
-function displayMessage(mode, text)
+function displayMessage(targetGui, mode, color, text)
   if not g_game.isOnline() then return end
-
-
   
-  --if msgtype.screenTarget then
-    local label = messagesPanel:recursiveGetChildById('statusLabel')
-    if mode == MessageModes.LevelUp then
-      label:setFont('styled-32px')     
-    elseif mode == MessageModes.Status or mode == MessageModes.Failure then
-      label:setFont('styled-16px')   
-      label:setTextAlign(AlignLeft)
-    elseif mode == 27 then
-      label:setFont('styled-16px')   
-      label:setTextAlign(AlignLeft)
-      label:setColor('#00ff00') 
-    end
-    label:setText(tostring(mode))
-    label:setVisible(true)
-    removeEvent(label.hideEvent)
-    label.hideEvent = scheduleEvent(function() label:setVisible(false) end, calculateVisibleTime(text))
-  --end
+  labelBottomMap = nil
+  labelMiddleCenterMap = nil
+  
+  local msg_color = MessageColors[color]
+  
+  if bit.band(targetGui, MessageGUITarget.MSG_TARGET_CONSOLE) 
+     ==  MessageGUITarget.MSG_TARGET_CONSOLE then
+    --modules.game_console.addText(text, mode, 0, 'Padrão')
+    --TODO move to game_console
+  end
+  
+  if bit.band(targetGui, MessageGUITarget.MSG_TARGET_BOTTOM_CENTER_MAP)
+     == MessageGUITarget.MSG_TARGET_BOTTOM_CENTER_MAP then
+    labelBottomMap = messagesPanel:recursiveGetChildById('bottomLabel')
+    labelBottomMap:setColor(msg_color)
+    displayMessageLabel(labelBottomMap, text)
+  end
+  
+  if bit.band(targetGui, MessageGUITarget.MSG_TARGET_TOP_CENTER_MAP)
+     == MessageGUITarget.MSG_TARGET_TOP_CENTER_MAP then
+    labelMiddleCenterMap = messagesPanel:recursiveGetChildById('middleCenterLabel')
+    labelMiddleCenterMap:setColor(msg_color)
+    displayMessageLabel(labelMiddleCenterMap, text)
+  end
+ 
+end
+
+function displayMessageLabel(label, text)
+  label:setText(text)
+  label:setVisible(true)
+  removeEvent(label.hideEvent)
+  label.hideEvent = scheduleEvent(function() label:setVisible(false) end, calculateVisibleTime(text))
 end
 
 function displayPrivateMessage(text)
-  displayMessage(254, text)
+  displayMessage(MessageGUITarget.MSG_TARGET_TOP_CENTER_MAP,
+  MessageModes.MSG_PLAYER_PRIVATE_FROM,
+  MessageColors[7],
+  text)
 end
 
 function displayStatusMessage(text)
-  displayMessage(MessageModes.Status, text)
+  displayMessage(MessageGUITarget.MSG_TARGET_BOTTOM_CENTER_MAP,
+  MessageModes.MSG_INFORMATION, 
+  MessageColors.MSG_COLOR_WHITE,
+  text)
 end
 
 function displayFailureMessage(text)
-  displayMessage(MessageModes.Failure, text)
+  displayMessage(MessageGUITarget.MSG_TARGET_BOTTOM_CENTER_MAP,
+  MessageModes.MSG_INFORMATION, 
+  MessageColors.MSG_COLOR_ORGANE,
+  MessageModes.MSG_INFORMATION, text)
 end
 
 function displayGameMessage(text)
-  displayMessage(MessageModes.Game, text)
+  displayMessage(MessageGUITarget.MSG_TARGET_BOTTOM_CENTER_MAP,
+  MessageModes.MSG_INFORMATION, 
+  MessageColors.MSG_COLOR_WHITE,
+  text)
 end
 
 function displayBroadcastMessage(text)
-  displayMessage(MessageModes.Warning, text)
+  displayMessage(MessageGUITarget.MSG_TARGET_BOTTOM_CENTER_MAP,
+  MessageModes.MSG_BROADCAST, 
+  MessageColors.MSG_COLOR_WHITE,
+  text)
 end
 
 function clearMessages()

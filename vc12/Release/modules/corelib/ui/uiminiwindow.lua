@@ -17,7 +17,7 @@ function UIMiniWindow:open(dontSave)
 end
 
 function UIMiniWindow:changeColorToAlpha(dontSave)
-  self:setImageColor('#ffffff66')
+  self:setImageColor('#ffffff33')
   if not dontSave then
     self:setSettings({alpha = true})
   end

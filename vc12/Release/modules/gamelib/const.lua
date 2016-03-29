@@ -146,61 +146,35 @@ TextColors = {
   white     = '#ffffff', --'#bebebe'
 }
 
+MessageGUITarget = {
+	MSG_TARGET_CONSOLE = 1,
+	MSG_TARGET_TOP_CENTER_MAP = 2,
+	MSG_TARGET_BOTTOM_CENTER_MAP = 4
+}
+
 MessageModes = {
-  None                    = 0,
-  Say                     = 1,
-  Whisper                 = 2,
-  Yell                    = 3,
-  PrivateFrom             = 4,
-  PrivateTo               = 5,
-  ChannelManagement       = 6,
-  Channel                 = 7,
-  ChannelHighlight        = 8,
-  Spell                   = 9,
-  NpcFrom                 = 10,
-  NpcTo                   = 11,
-  GamemasterBroadcast     = 12,
-  GamemasterChannel       = 13,
-  GamemasterPrivateFrom   = 14,
-  GamemasterPrivateTo     = 15,
-  Login                   = 16,
-  Warning                 = 17,
-  Game                    = 18,
-  Failure                 = 19,
-  Look                    = 20,
-  DamageDealed            = 21,
-  DamageReceived          = 22,
-  Heal                    = 23,
-  Exp                     = 24,
-  DamageOthers            = 25,
-  HealOthers              = 26,
-  ExpOthers               = 27,
-  Status                  = 28,
-  Loot                    = 29,
-  TradeNpc                = 30,
-  Guild                   = 31,
-  PartyManagement         = 32,
-  Party                   = 33,
-  BarkLow                 = 34,
-  BarkLoud                = 35,
-  Report                  = 36,
-  HotkeyUse               = 37,
-  TutorialHint            = 38,
-  Thankyou                = 39,
-  Market                  = 40,
-  BeyondLast              = 41,
-  MonsterYell             = 42,
-  MonsterSay              = 43,
-  Red                     = 44,
-  Blue                    = 45,
-  RVRChannel              = 46,
-  RVRAnswer               = 47,
-  RVRContinue             = 48,
-  GameHighlight           = 49,
-  NpcFromStartBlock       = 50,
-  LevelUp                 = 51,
-  Last                    = 52,
-  Invalid                 = 255,
+	MSG_PLAYER_TALK = 1,
+	MSG_PLAYER_WHISPER = 2,
+	MSG_PLAYER_YELL = 3,
+	MSG_PLAYER_PRIVATE_FROM = 4,
+	MSG_PLAYER_PRIVATE_TO = 5,
+	MSG_BROADCAST = 6,
+	MSG_MONSTER_TALK = 7,
+	MSG_MONSTER_YELL = 8,
+	MSG_PLAYER_LEVELUP = 9,
+	MSG_INFORMATION = 10,
+	MSG_MUTED = 11,
+	MSG_LOOK = 12,
+}
+
+MessageColors = {
+	'#dd0000', '#ff0000', '#cc0000', -- red / dark red / light red [1/2/3]
+	'#00dd00', '#00ff00', '#00cc00', -- green [4/5/6]
+  '#0000dd', '#0000ff', '#0000cc', -- blue [7/8/9]
+	'#DB7222', '#ff6f00', '#ffa25a', -- orange [10/11/12]
+  '#ffef00', '#c7ba08', '#fff55f', -- yellow [13/14/15]
+	'#000000', -- black [16]
+  '#ffffff'  -- white [17]
 }
 
 OTSERV_RSA  = "1091201329673994292788609605089955415282375029027981291234687579" ..
@@ -309,7 +283,3 @@ GameSkillsName = {
   'cooldown',
   'avoidance'
 }
-
-
-
--- @}

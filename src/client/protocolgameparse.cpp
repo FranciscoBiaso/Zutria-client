@@ -1284,55 +1284,33 @@ void ProtocolGame::parseMultiUseCooldown(const InputMessagePtr& msg)
 
 void ProtocolGame::parseTalk(const InputMessagePtr& msg)
 {
-    if(g_game.getFeature(Otc::GameMessageStatements))
-        msg->getU32(); // channel statement guid
-
     std::string name = g_game.formatCreatureName(msg->getString());
 
     int level = 0;
-    if(g_game.getFeature(Otc::GameMessageLevel))
-        level = msg->getU16();
 
-    Otc::MessageMode mode = Proto::translateMessageModeFromServer(msg->getU8());
+	Otc::MessageMode mode = (Otc::MessageMode)msg->getU8();
     int channelId = 0;
     Position pos;
 
     switch(mode) {
-        case Otc::MessageSay:
-        case Otc::MessageWhisper:
-        case Otc::MessageYell:
-        case Otc::MessageMonsterSay:
-        case Otc::MessageMonsterYell:
-        case Otc::MessageNpcTo:
-        case Otc::MessageNpcFrom:
-        case Otc::MessageBarkLow:
-        case Otc::MessageBarkLoud:
-        case Otc::MessageSpell:
-        case Otc::MessageNpcFromStartBlock:
+		case Otc::MSG_PLAYER_TALK:
+		case Otc::MSG_PLAYER_WHISPER:
+		case Otc::MSG_PLAYER_YELL:
+		case Otc::MSG_MONSTER_TALK:
+		case Otc::MSG_MONSTER_YELL:
             pos = getPosition(msg);
             break;
-        case Otc::MessageChannel:
-        case Otc::MessageChannelManagement:
-        case Otc::MessageChannelHighlight:
-        case Otc::MessageGamemasterChannel:
-            channelId = msg->getU16();
-            break;
-        case Otc::MessagePrivateFrom:
-        case Otc::MessageGamemasterBroadcast:
-        case Otc::MessageGamemasterPrivateFrom:
-        case Otc::MessageRVRAnswer:
-        case Otc::MessageRVRContinue:
-            break;
-        case Otc::MessageRVRChannel:
-            msg->getU32();
+		case Otc::MSG_PLAYER_PRIVATE_TO:
+
+			channelId = msg->getU16(); 
             break;
         default:
-            stdext::throw_exception(stdext::format("unknown message mode %d", mode));
+            //stdext::throw_exception(stdext::format("unknown message mode %d", mode));
             break;
-    }
+	}
 
     std::string text = msg->getString();
-
+	
     g_game.processTalk(name, level, mode, text, channelId, pos);
 }
 
@@ -1416,71 +1394,12 @@ void ProtocolGame::parseRuleViolationLock(const InputMessagePtr& msg)
 
 void ProtocolGame::parseTextMessage(const InputMessagePtr& msg)
 {
-    int code = msg->getU8();
-    Otc::MessageMode mode = Proto::translateMessageModeFromServer(code);
-    std::string text;
+	uint8 targetGUI = msg->getU8();
+    uint8 mode = msg->getU8();
+	uint8 color = msg->getU8();
+    std::string text = msg->getString();
 
-    switch(mode) {
-        case Otc::MessageChannelManagement: {
-            int channel = msg->getU16();
-            text = msg->getString();
-            break;
-        }
-		case Otc::MessageDamageDealed:
-		case Otc::MessageDamageReceived:
-		case Otc::MessageDamageOthers: {
-            Position pos = getPosition(msg);
-            uint value[2];
-            int color[2];
-
-            // physical damage
-            value[0] = msg->getU32();
-            color[0] =  msg->getU8();
-
-            // magic damage
-            value[1] = msg->getU32();
-            color[1] = msg->getU8();
-            text = msg->getString();
-
-            for(int i=0;i<2;++i) {
-                if(value[i] == 0)
-                    continue;
-				AnimatedTextPtr animatedText = AnimatedTextPtr(new AnimatedText);
-				animatedText->setColor(color[i]);
-				animatedText->setText(stdext::to_string(value[i]));
-				g_map.addThing(animatedText, pos);
-            }
-            break;
-        }
-		case Otc::MessageHeal:
-		case Otc::MessageExp:
-		case Otc::MessageHealOthers:
-		case Otc::MessageExpOthers:{
-            Position pos = getPosition(msg);
-            uint value = msg->getU32();
-            int color =  msg->getU8();
-            text = msg->getString();
-
-			AnimatedTextPtr animatedText = AnimatedTextPtr(new AnimatedText);
-			animatedText->setColor(color);
-			animatedText->setText(stdext::to_string(value));
-			g_map.addThing(animatedText, pos);
-            break;
-        }
-        case Otc::MessageInvalid:
-            stdext::throw_exception(stdext::format("unknown message mode %d", mode));
-            break;	
-		//case Otc::MessageLevelUp:
-
-			//text = msg->getString();
-			//break;
-        default:
-			text = msg->getString();
-            break;
-    }
-
-
-    g_game.processTextMessage(mode, text);
+    g_game.processTextMessage((Otc::MessageMode)mode, targetGUI, color, text);
 }
 
 void ProtocolGame::parseCancelWalk(const InputMessagePtr& msg)

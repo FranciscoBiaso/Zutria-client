@@ -284,9 +284,9 @@ void Game::processPingBack()
     }, m_pingDelay);
 }
 
-void Game::processTextMessage(Otc::MessageMode mode, const std::string& text)
+void Game::processTextMessage(Otc::MessageMode mode, uint8 targetGUI, uint8 color, const std::string& text)
 {
-    g_lua.callGlobalField("g_game", "onTextMessage", mode, text);
+    g_lua.callGlobalField("g_game", "onTextMessage", targetGUI, mode, color, text);
 }
 
 void Game::processTalk(const std::string& name, int level, Otc::MessageMode mode, const std::string& text, int channelId, const Position& pos)
@@ -993,7 +993,7 @@ void Game::talk(const std::string& message)
 {
     if(!canPerformGameAction() || message.empty())
         return;
-    talkChannel(Otc::MessageSay, 0, message);
+    talkChannel(Otc::MSG_PLAYER_TALK, 0, message);
 }
 
 void Game::talkChannel(Otc::MessageMode mode, int channelId, const std::string& message)
@@ -1470,7 +1470,7 @@ void Game::setProtocolVersion(int version)
 
     m_protocolVersion = version;
 
-    Proto::buildMessageModesMap(version);
+    //Proto::buildMessageModesMap(version);
 
     g_lua.callGlobalField("g_game", "onProtocolVersionChange", version);
 }

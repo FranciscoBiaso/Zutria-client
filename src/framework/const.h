@@ -173,7 +173,7 @@ namespace Fw
         KeyNumpad7 = 148,
         KeyNumpad8 = 149,
         KeyNumpad9 = 150
-    };
+    };	
 
     enum LogLevel {
         LogDebug = 0,

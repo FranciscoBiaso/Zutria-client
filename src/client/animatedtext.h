@@ -36,9 +36,13 @@ public:
 
     void drawText(const Point& dest, const Rect& visibleRect);
 
-    void setColor(int color);
+	void setFont(std::string font);
+	void setColor32(uint32 color);
+	void setColor(int color);
     void setText(const std::string& text);
-    void setOffset(const Point& offset) { m_offset = offset; }
+	void setOffset(const Point& offset) { m_offset = offset; }
+	void setDuration(float duration){ m_durantion = duration; }
+	void addMessage(std::string creatureName, uint8 mode, const std::string& text);
 
     Color getColor() { return m_color; }
     CachedText * getCachedText() { return &m_cachedText; }
@@ -58,6 +62,7 @@ private:
     Timer m_animationTimer;
     CachedText m_cachedText;
     Point m_offset;
+	float m_durantion;
 };
 
 #endif

@@ -72,10 +72,6 @@ function UISpellButton:setSpellId(spellId)
   self.spellId = spellId
 end
 
-function UISpellButton:getSpellId()
-  return self.spellId
-end
-
-function UISpellButton:AddSpell()
+function UISpellButton:addSpell()
   self.hasSpell = true
 end

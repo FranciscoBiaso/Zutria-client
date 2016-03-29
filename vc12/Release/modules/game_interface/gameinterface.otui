@@ -23,7 +23,7 @@ GameMiniMapPanel < Panel
 GameMagicPanel < Panel
   image-source: /images/ui/panel_bottom
   image-border: 4
-  image-color: #bcbcbc22
+  image-color: #bcbcbcff
   border: 1 #12121277
   margin: 2
   padding: 2
@@ -31,8 +31,11 @@ GameMagicPanel < Panel
   
 GameBottomPanel < Panel
   image-source: /images/ui/panel_bottom
+  image-color: #ffffffff
+  border: 1 #12121277
   image-border: 4
   height: 172
+  margin-bottom: 3
 
 GameMapPanel < UIGameMap
   padding: 4
@@ -85,7 +88,7 @@ UIWidget
     id: gameMiniMapPanel
     anchors.right: parent.right
     anchors.bottom: parent.bottom
-    margin-bottom:6
+    margin-bottom:3
     focusable: false
     on: true  
     
@@ -94,8 +97,8 @@ UIWidget
     anchors.right: gameMiniMapPanel.left
     anchors.left: gameBottomPanel.right
     anchors.bottom: parent.bottom
-    margin-right: 10
-    margin-bottom:6
+    margin-right: 2
+    margin-bottom:3
     focusable: false
     on: true
   

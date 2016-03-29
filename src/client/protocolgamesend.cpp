@@ -493,18 +493,13 @@ void ProtocolGame::sendTalk(Otc::MessageMode mode, int channelId, const std::str
 
     OutputMessagePtr msg(new OutputMessage);
     msg->addU8(Proto::ClientTalk);
-    msg->addU8(Proto::translateMessageModeToServer(mode));
+    msg->addU8(mode);
 
     switch(mode) {
-    case Otc::MessagePrivateTo:
-    case Otc::MessageGamemasterPrivateTo:
-    case Otc::MessageRVRAnswer:
+	case Otc::MSG_PLAYER_PRIVATE_FROM:
         msg->addString(receiver);
         break;
-    case Otc::MessageChannel:
-    case Otc::MessageChannelHighlight:
-    case Otc::MessageChannelManagement:
-    case Otc::MessageGamemasterChannel:
+	case Otc::MSG_PLAYER_PRIVATE_TO:
         msg->addU16(channelId);
         break;
     default:

@@ -1,5 +1,5 @@
 TextMessageLabel < UILabel
-  font: verdana-11px-rounded
+  font: styled-32px
   text-align: center
   text-wrap: true
   text-auto-resize: true
@@ -7,39 +7,31 @@ TextMessageLabel < UILabel
   visible: false
 
 Panel
-  border: 0 #ff0000ff
-  anchors.fill: gameMapPanel
+  id: textMsgPanel
+  anchors.top: gameLeftPanel.top
+  anchors.left: gameLeftPanel.right
+  anchors.right: gameRightPanel.left
   anchors.bottom: gameBottomPanel.top
+  border: 1 #12121212
   focusable: false
 
-  Panel 
-    id: centerTextMessagePanel
-    layout:
-      type: verticalBox
-      fit-children: true
-    width: 560
-    anchors.horizontalCenter: parent.horizontalCenter
+  TextMessageLabel
+    id: middleCenterLabel
+    anchors.left: parent.left
     anchors.top: parent.top
-    margin-top: 300
-
-    TextMessageLabel
-      id: highCenterLabel
-    TextMessageLabel
-      id: middleCenterLabel
-    TextMessageLabel
-      id: lowCenterLabel
+    anchors.right: parent.right
+    margin-top: 150
+    margin-left: 150
+    margin-right: 150
+    border: 1 #12121212
+    backgroundColor: #12121223
 
   TextMessageLabel
-    id: privateLabel
-    anchors.top: parent.top
-    anchors.bottom: centerTextMessagePanel.top
-    anchors.horizontalCenter: parent.horizontalCenter
-    text-auto-resize: false
-    width: 275
-
-  TextMessageLabel
-    border: 0 #ff0000ff
-    id: statusLabel
-    anchors.bottom: parent.bottom
+    id: bottomLabel
     anchors.left: parent.left
     anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-left: 150
+    margin-right: 150
+    border: 1 #12121212
+    backgroundColor: #12121223

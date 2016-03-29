@@ -58,7 +58,7 @@ MainWindow
 
   TextList
     id: characters
-    background-color: #565656
+    background-color: #56565644
     anchors.top: parent.top
     anchors.left: parent.left
     anchors.right: characterListScrollBar.left

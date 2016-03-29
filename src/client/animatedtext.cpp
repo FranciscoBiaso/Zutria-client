@@ -31,21 +31,23 @@ AnimatedText::AnimatedText()
 {
 	m_cachedText.setFont(g_fonts.getFont("styled-32px"));
     m_cachedText.setAlign(Fw::AlignLeft);
+	m_durantion = Otc::ANIMATED_TEXT_DURATION;
 }
 
 void AnimatedText::drawText(const Point& dest, const Rect& visibleRect)
 {
-    static float tf = Otc::ANIMATED_TEXT_DURATION;
-    static float tftf = Otc::ANIMATED_TEXT_DURATION * Otc::ANIMATED_TEXT_DURATION;
+	static float tf = m_durantion;
+	static float tftf = m_durantion * m_durantion;
 
     Point p = dest;
 	Size textSize = m_cachedText.getTextSize();
     float t = m_animationTimer.ticksElapsed();
     p.x += (24 - textSize.width() / 2);
 
-    if(g_game.getFeature(Otc::GameDiagonalAnimatedText)) {
+	//diagonal text
+    /*if(1) {
         p.x -= (4 * t / tf) + (8 * t * t / tftf);
-    }
+    }*/
 
     p.y += 8 + (-48 * t) / tf;
     p += m_offset;
@@ -71,17 +73,45 @@ void AnimatedText::onAppear()
 
     // schedule removal
     auto self = asAnimatedText();
-    g_dispatcher.scheduleEvent([self]() { g_map.removeThing(self); }, Otc::ANIMATED_TEXT_DURATION);
+	if (m_durantion > 0 )
+		g_dispatcher.scheduleEvent([self]() { g_map.removeThing(self); }, m_durantion);
+	else
+		g_dispatcher.scheduleEvent([self]() { g_map.removeThing(self); }, Otc::ANIMATED_TEXT_DURATION);
+}
+
+
+void AnimatedText::setFont(std::string font)
+{
+	m_cachedText.setFont(g_fonts.getFont(font));
+}
+
+void AnimatedText::setColor32(uint32 color)
+{
+	uint8 a = (uint8)(color >> 0);
+	uint8 b = (uint8)(color >> 8);
+	uint8 g = (uint8)(color >> 16);
+	uint8 r = (uint8)(color >> 24);
+	m_color = Color(r, g, b, a);
 }
 
 void AnimatedText::setColor(int color)
 {
-    m_color = Color::from8bit(color);
+	m_color = Color::from8bit(color);
 }
 
 void AnimatedText::setText(const std::string& text)
 {
     m_cachedText.setText(text);
+}
+
+
+void AnimatedText::addMessage(std::string creatureName, uint8 mode, const std::string& text)
+{
+	std::string msg;
+	msg += creatureName + ":";
+	
+	msg += text;
+	m_cachedText.setText(msg);
 }
 
 bool AnimatedText::merge(const AnimatedTextPtr& other)

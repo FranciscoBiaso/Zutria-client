@@ -15,7 +15,7 @@ local function moveToolTip(first)
   if xdif < 10 then
     pos.x = pos.x - toolTipLabel:getWidth() - 3
   else
-    pos.x = pos.x + 10
+    pos.x = pos.x + 20
   end
   toolTipLabel:setPosition(pos)
 end
@@ -48,6 +48,8 @@ function g_tooltip.init()
   addEvent(function()
     toolTipLabel = g_ui.createWidget('UILabel', rootWidget)
     toolTipLabel:setId('toolTip')
+    toolTipLabel:setBorderColor('#757575')
+    toolTipLabel:setBorderWidth(1)
     toolTipLabel:setBackgroundColor('#111111cc')
     toolTipLabel:setTextAlign(AlignCenter)
     toolTipLabel:hide()

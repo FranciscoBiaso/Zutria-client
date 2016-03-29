@@ -590,7 +590,13 @@ void Client::registerLuaFunctions()
     g_lua.bindClassMemberFunction<StaticText>("setColor", &StaticText::setColor);
     g_lua.bindClassMemberFunction<StaticText>("getColor", &StaticText::getColor);
 
-    g_lua.registerClass<AnimatedText, Thing>();
+	g_lua.registerClass<AnimatedText, Thing>();
+	g_lua.bindClassStaticFunction<AnimatedText>("create", []{ return AnimatedTextPtr(new AnimatedText); });
+	g_lua.bindClassMemberFunction<AnimatedText>("setText", &AnimatedText::setText);
+	g_lua.bindClassMemberFunction<AnimatedText>("setColor32", &AnimatedText::setColor32);
+	g_lua.bindClassMemberFunction<AnimatedText>("setDuration", &AnimatedText::setDuration);
+	g_lua.bindClassMemberFunction<AnimatedText>("addMessage", &AnimatedText::addMessage);
+	g_lua.bindClassMemberFunction<AnimatedText>("setFont", &AnimatedText::setFont);
 
     g_lua.registerClass<Player, Creature>();
     g_lua.registerClass<Npc, Creature>();

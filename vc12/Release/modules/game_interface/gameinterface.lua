@@ -848,7 +848,7 @@ function setupViewMode(mode)
     --gameMiniMapPanel:setOn(true)
     --gameMiniMapPanel:setVisible(true)
     
-    gameBottomPanel:setImageColor('alpha')
+    --gameBottomPanel:setImageColor('alpha')
     --modules.client_topmenu.getTopMenu():setImageColor('#ffffff66')
 
 end

@@ -29,7 +29,7 @@
 
 StaticText::StaticText()
 {
-    m_mode = Otc::MessageNone;
+	m_mode = Otc::MSG_NONE;
     m_color = Color::white;
     m_cachedText.setFont(g_fonts.getFont("verdana-11px-rounded"));
     m_cachedText.setAlign(Fw::AlignCenter);
@@ -120,26 +120,10 @@ void StaticText::compose()
     //TODO: this could be moved to lua
     std::string text;
 
-    if(m_mode == Otc::MessageSay) {
+    if(m_mode == Otc::MSG_PLAYER_TALK) {
         text += m_name;
-        text += " diz:\n";
-		m_color = Color(255, 255, 0, 255);
-    } else if(m_mode == Otc::MessageWhisper) {
-        text += m_name;
-        text += " susurra:\n";
-		m_color = Color(39, 44, 53, 230);
-    } else if(m_mode == Otc::MessageYell) {
-        text += m_name;
-        text += " grita:\n";
-		m_color = Color(39, 44, 53, 230);
-    } else if(m_mode == Otc::MessageMonsterSay || m_mode == Otc::MessageMonsterYell || m_mode == Otc::MessageSpell
-              || m_mode == Otc::MessageBarkLow || m_mode == Otc::MessageBarkLoud) {
-		m_color = Color(196, 130, 130, 204);
-    } else if(m_mode == Otc::MessageNpcFrom || m_mode == Otc::MessageNpcFromStartBlock) {
-        text += m_name;
-        text += " diz:\n";
-        m_color = Color(95, 247, 247);
-    } else {
+        text += ":\n";
+    }else {
         g_logger.warning(stdext::format("Desconhecido tipo de fala: %d", m_mode));
     }
 

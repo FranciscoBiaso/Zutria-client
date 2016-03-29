@@ -1,6 +1,6 @@
 local messageModeCallbacks = {}
 
-function g_game.onTextMessage(messageMode, message)
+function g_game.onTextMessage(targetGUI, messageMode,messageColor, message)
   local callbacks = messageModeCallbacks[messageMode]
   if not callbacks or #callbacks == 0 then
     perror(string.format('Unhandled onTextMessage message mode %i: %s', messageMode, message))
@@ -8,7 +8,7 @@ function g_game.onTextMessage(messageMode, message)
   end
 
   for _, callback in pairs(callbacks) do
-    callback(messageMode, message)
+    callback(targetGUI, messageMode, messageColor, message)
   end
 end
 

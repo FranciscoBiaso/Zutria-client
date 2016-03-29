@@ -461,9 +461,6 @@
     <ClCompile Include="..\src\client\player.cpp">
       <Filter>Source Files\client</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\client\protocolcodes.cpp">
-      <Filter>Source Files\client</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\client\protocolgame.cpp">
       <Filter>Source Files\client</Filter>
     </ClCompile>
@@ -992,9 +989,6 @@
       <Filter>Header Files\client</Filter>
     </ClInclude>
     <ClInclude Include="..\src\client\position.h">
-      <Filter>Header Files\client</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\client\protocolcodes.h">
       <Filter>Header Files\client</Filter>
     </ClInclude>
     <ClInclude Include="..\src\client\protocolgame.h">

@@ -23,9 +23,9 @@ function loadHotKeys()
       g_keyboard.bindKeyPress(tostring(i), 
         function() 
           if cooldownBarReady then
-            cooldownBarReady = false
+            --cooldownBarReady = false
             doKeyCombo(spellId) 
-            displaySpellCooldown(tostring(i), spellId) 
+            --displaySpellCooldown(tostring(i), spellId) 
           end
         end)      
     end    
@@ -56,15 +56,17 @@ end
 function doKeyCombo(spellId)
   if not g_game.isOnline() then return end
     -- is a spell instante
-    if  modules.game_treeskills.getTableSpells()[spellId][7] == 1 then
-      modules.game_console.sendMessage(modules.game_treeskills.getTableSpells()[spellId][1])
+    local descriptionSpellTable = modules.game_treespells.getTableDescriptionSpells()
+    local spellTable = modules.game_treespells.getTableSpells()
+    if descriptionSpellTable[spellId][1] == 2 then
+      modules.game_console.sendMessage(spellTable[spellId][1])
     
     -- is a spell actived by mouse
-    elseif modules.game_treeskills.getTableSpells()[spellId][7] == 2 then 
-      if pushedCursor == false then
-        g_mouse.pushCursor('spell')  
-        pushedCursor = true
-      end
+    elseif descriptionSpellTable[spellId][1] == 2 then 
+      -- if pushedCursor == false then
+        -- g_mouse.pushCursor('spell')  
+        -- pushedCursor = true
+      -- end
     end
 end
 
@@ -82,11 +84,11 @@ function saveHotkey(key, spellId)
   
   g_keyboard.bindKeyPress(key, 
       function() 
-        if cooldownBarReady then
-          cooldownBarReady = false
+        --if cooldownBarReady then
+          --cooldownBarReady = false
           doKeyCombo(spellId) 
-          displaySpellCooldown(key, spellId) 
-        end
+          --displaySpellCooldown(key, spellId) 
+        --end
       end)  
     
   g_settings.setNode('hotkeys', settings)

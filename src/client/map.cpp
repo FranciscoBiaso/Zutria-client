@@ -365,7 +365,7 @@ void Map::cleanTile(const Position& pos)
     }
     for(auto it = m_staticTexts.begin();it != m_staticTexts.end();) {
         const StaticTextPtr& staticText = *it;
-        if(staticText->getPosition() == pos && staticText->getMessageMode() == Otc::MessageNone)
+        if(staticText->getPosition() == pos && staticText->getMessageMode() == Otc::MSG_NONE)
             it = m_staticTexts.erase(it);
         else
             ++it;
@@ -499,7 +499,7 @@ void Map::removeUnawareThings()
     // remove static texts from tiles that we are not aware anymore
     for(auto it = m_staticTexts.begin(); it != m_staticTexts.end();) {
         const StaticTextPtr& staticText = *it;
-        if(staticText->getMessageMode() == Otc::MessageNone && !isAwareOfPosition(staticText->getPosition()))
+        if(staticText->getMessageMode() == Otc::MSG_NONE && !isAwareOfPosition(staticText->getPosition()))
             it = m_staticTexts.erase(it);
         else
             ++it;
