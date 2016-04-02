@@ -7,6 +7,7 @@ gameMiniMapPanel = nil
 gameLeftPanel = nil
 gameBottomPanel = nil
 gameSpellPanel = nil
+gameBarsPanel = nil
 logoutButton = nil
 mouseGrabberWidget = nil
 countWindow = nil
@@ -54,6 +55,7 @@ function init()
   gameBottomPanel = gameRootPanel:getChildById('gameBottomPanel')
   gameMiniMapPanel = gameRootPanel:getChildById('gameMiniMapPanel')
   gameSpellPanel = gameRootPanel:getChildById('gameSpellPanel')
+  gameBarsPanel = gameRootPanel:getChildById('gameBarsPanel')
   connect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
 
   logoutButton = modules.client_topmenu.addLeftButton('logoutButton', tr('Exit'),
@@ -136,6 +138,15 @@ function terminate()
   gameRootPanel:destroy()
 end
 
+function updateStretchShrink()
+  -- if modules.client_options.getOption('dontStretchShrink') and not alternativeView then
+    -- gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
+
+    -- -- Set gameMapPanel size to height = 11 * 32 + 2
+    -- bottomSplitter:setMarginBottom(bottomSplitter:getMarginBottom() + (gameMapPanel:getHeight() - 32 * 11) - 10)
+  -- end
+end
+
 function onGameStart()
   show()
 
@@ -145,6 +156,9 @@ function onGameStart()
   else
     g_game.disableFeature(GameForceFirstAutoWalkStep)
   end
+    -- with you change setMapAwareRange values you need to change
+    -- AddMapDescription function values on server side
+  g_game.setMapAwareRange(9,7,9,7)
 end
 
 function onGameEnd()
@@ -158,7 +172,7 @@ function show()
   gameRootPanel:show()
   gameRootPanel:focus()
   gameMapPanel:followCreature(g_game.getLocalPlayer())
-  setupViewMode(0)
+  setupViewMode(0)  
   updateStretchShrink()
   logoutButton:setTooltip(tr('Logout'))
 
@@ -338,15 +352,6 @@ function smartWalk(dir)
     return true
   end
   return false
-end
-
-function updateStretchShrink()
-  if modules.client_options.getOption('dontStretchShrink') and not alternativeView then
-    gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
-
-    -- Set gameMapPanel size to height = 11 * 32 + 2
-    --bottomSplitter:setMarginBottom(bottomSplitter:getMarginBottom() + (gameMapPanel:getHeight() - 32 * 11) - 10)
-  end
 end
 
 function onMouseGrabberRelease(self, mousePosition, mouseButton)
@@ -803,6 +808,10 @@ function getBottomPanel()
   return gameBottomPanel
 end
 
+function getBarsPanel()
+  return gameBarsPanel
+end
+
 function getMiniMapPanel()
   return gameMiniMapPanel
 end
@@ -825,22 +834,25 @@ function nextViewMode()
 end
 
 function setupViewMode(mode)
-    gameRootPanel:fill('parent')
-
-    gameMapPanel:setKeepAspectRatio(false)
-    gameMapPanel:setLimitVisibleRange(true)
-    gameMapPanel:setZoom(11)
-    gameMapPanel:setVisibleDimension({ width = 5, height = 5 })
-    gameMapPanel:fill('parent')    
-    gameMapPanel:setOn(true)    
-   
+    --gameRootPanel:fill('parent')
+    --g_game.changeMapAwareRange(36, 28)
+  
+    gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
+    --gameMapPanel:fill('parent')    
+    --gameMapPanel:setOn(true)    
+    
+    
+    
+    gameMapPanel:setZoom(13) 
+    gameMapPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())
+    
     gameLeftPanel:setImageColor('alpha')
-    gameLeftPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop() + 3)
+    gameLeftPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop())
     gameLeftPanel:setOn(true)
     gameLeftPanel:setVisible(true)
         
     gameRightPanel:setImageColor('alpha')
-    gameRightPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop() + 3)    
+    gameRightPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop())    
     gameRightPanel:setOn(true)
     gameRightPanel:setVisible(true)
     

@@ -215,6 +215,9 @@ public:
 	void addSkillPoint(int cid, uint8_t skillId, uint8_t valueToAdd);
 	void sendMsgTryToAddSpellLevel(uint8 spellId);
 
+	//player send spell
+	void sendSpell(uint8 spellId);
+
     // party related
     void partyInvite(int creatureId);
     void partyJoin(int creatureId);
@@ -298,6 +301,7 @@ public:
 
     // otclient only
     void changeMapAwareRange(int xrange, int yrange);
+	void setMapAwareRange(int, int, int, int);
 
     // dynamic support for game features
     void enableFeature(Otc::GameFeature feature) { m_features.set(feature, true); }

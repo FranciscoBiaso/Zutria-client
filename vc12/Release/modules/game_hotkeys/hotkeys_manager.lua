@@ -57,9 +57,8 @@ function doKeyCombo(spellId)
   if not g_game.isOnline() then return end
     -- is a spell instante
     local descriptionSpellTable = modules.game_treespells.getTableDescriptionSpells()
-    local spellTable = modules.game_treespells.getTableSpells()
     if descriptionSpellTable[spellId][1] == 2 then
-      modules.game_console.sendMessage(spellTable[spellId][1])
+      g_game.sendSpell(spellId)
     
     -- is a spell actived by mouse
     elseif descriptionSpellTable[spellId][1] == 2 then 

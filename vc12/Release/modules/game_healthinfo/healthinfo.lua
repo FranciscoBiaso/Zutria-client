@@ -50,8 +50,11 @@ function init()
   
   healthInfoWindow = g_ui.loadUI('healthinfo', modules.game_interface.getRightPanel())
   healthInfoWindow:disableResize()
-  healthBar = healthInfoWindow:recursiveGetChildById('healthBar')
-  manaBar = healthInfoWindow:recursiveGetChildById('manaBar')
+  
+  local barsPanel = modules.game_interface.getBarsPanel()
+  healthBar = g_ui.createWidget('HealthBar',barsPanel)
+  manaBar = g_ui.createWidget('ManaBar',barsPanel)
+ 
   experienceBar = healthInfoWindow:recursiveGetChildById('experienceBar')
   capLabel = healthInfoWindow:recursiveGetChildById('capLabel')
 
@@ -139,7 +142,21 @@ end
 function onHealthChange(localPlayer, health, maxHealth)
   healthBar:setText(health .. ' / ' .. playerMaxHealth)
   healthBar:setTooltip(tr(healthTooltip, health, playerMaxHealth))
-  healthBar:setValue(health, 0, playerMaxHealth)
+  
+ local percentage = health / playerMaxHealth
+ percentage = percentage * 100
+ local color = '#'
+ if percentage>= 50 then
+		local redColor = 255.0 * (50-(percentage-50))/50.0
+    redColor = DEC_HEX(redColor)
+    color = color .. tostring(redColor) .. 'ff00'
+	else
+    local yellowColor = 255.0 * percentage / 50.0
+    yellowColor = DEC_HEX(yellowColor)
+    color = color .. 'ff' .. tostring(yellowColor) .. '00'
+  end
+  
+  healthBar:setValue(health, 0, playerMaxHealth, color)
 end
 
 function onManaChange(localPlayer, mana, maxMana)

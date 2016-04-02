@@ -29,7 +29,7 @@ function UIProgressBar:setMaximum(maximum)
   end
 end
 
-function UIProgressBar:setValue(value, minimum, maximum)
+function UIProgressBar:setValue(value, minimum, maximum, color)
   if minimum then
     self:setMinimum(minimum)
   end
@@ -38,7 +38,11 @@ function UIProgressBar:setValue(value, minimum, maximum)
     self:setMaximum(maximum)
   end
 
-  self.value = math.max(math.min(value, self.maximum), self.minimum)
+ self.value = math.max(math.min(value, self.maximum), self.minimum)
+  
+  if color then
+    self:setBackgroundColor(color)
+  end
   self:updateBackground()
 end
 

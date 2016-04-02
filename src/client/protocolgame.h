@@ -117,6 +117,7 @@ public:
     void sendSeekInContainer(int cid, int index);
 	void sendAddSkillPoints(int creatureId, uint8_t skillName, uint8_t valueToAdd);
 	void sendMsgTryToAddSpellLevel(uint8 spellId);
+	void sendSpell(uint8 spellId);
 
     // otclient only
     void sendChangeMapAwareRange(int xrange, int yrange);

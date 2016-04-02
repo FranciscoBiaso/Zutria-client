@@ -134,7 +134,7 @@ spells_description = {
 -- wizard
 --[[ 1 ]] {5,14,"Teleporta seu personagem para o local selecionado até uma distância máxima" ..
                 " de 4 unidades. No nível 2, incrementa a distância máxima para 6 unidades."},
---[[ 2 ]] {2,20,"É uma onda de fogo frontal. Tem uma distância máxima de 6 unidades." ..
+--[[ 2 ]] {2,20,"É uma onda de fogo frontal. Tem uma distância máxima de 5 unidades." ..
                 " Criaturas atingidas recebem danos por queimadura baseado no ataque mágico do lançador." ..
                 " No nível 2, incrementa o dano por queimadura e aumenta a área da magia."},
 --[[ 3 ]] {2,12,"Necessita de um alvo para ser lançada. Ao lançar, causa dano por queimadura " ..

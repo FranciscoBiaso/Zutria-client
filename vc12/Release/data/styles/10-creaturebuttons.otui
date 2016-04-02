@@ -37,7 +37,7 @@ CreatureButton < UICreatureButton
     color: #888888
     margin-left: 2
     phantom: true
-
+    
   LifeProgressBar
     id: lifeBar
     height: 5

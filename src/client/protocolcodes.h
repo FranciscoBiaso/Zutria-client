@@ -260,6 +260,7 @@ namespace Proto {
         ClientAnswerModalDialog             = 249, // 960
 		ClientAddSkillPoints				= 250,
 		ClientTryToAddSpellLevel		    = 251,
+		ClientPlayerSendSpell		        = 252,
     };
 
     enum CreatureType {

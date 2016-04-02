@@ -10,7 +10,7 @@ spellUpgradeButton < UIButton
   margin-top: 2
   margin-left: 5
   border: 1 #121212ff  
-  @onClick: modules.game_treeskills.tryToUpSpellLevel()
+  @onClick: modules.game_treespells.tryToUpSpellLevel()
   $hover !disabled:
     image-color: #cdcdcddf
   $pressed:
@@ -56,7 +56,7 @@ boxArrow < boxPanel
 spellImage < UISpellButton
   image-source: /images/game/spells/spells
   size: 32 32
-  border: 1 #121212ff
+  border: 1 #454545ff
   image-color: #656565ff
   anchors.top: prev.bottom
   anchors.horizontalcenter: parent.horizontalcenter

@@ -37,7 +37,7 @@ function loadSpells()
     end
     spellId = modules.game_hotkeys.getHotkeySpellId(tostring(i))
     if spellId then
-      tab_spells = modules.game_treeskills.getTableSpells()
+      tab_spells = modules.game_treespells.getTableSpells()
       if tab_spells[spellId] then
         spellIcon = button:getChildById('spellIcon')
         spellIcon:setImageSource('/images/game/spells/spells')

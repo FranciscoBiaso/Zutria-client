@@ -1081,6 +1081,14 @@ void Game::sendMsgTryToAddSpellLevel(uint8 spellId)
 }
 
 
+void Game::sendSpell(uint8 spellId)
+{
+	if (!canPerformGameAction())
+		return;
+	m_protocolGame->sendSpell(spellId);
+
+}
+
 void Game::partyInvite(int creatureId)
 {
     if(!canPerformGameAction())
@@ -1430,6 +1438,17 @@ void Game::changeMapAwareRange(int xrange, int yrange)
     if(!canPerformGameAction())
         return;
     m_protocolGame->sendChangeMapAwareRange(xrange, yrange);
+}
+
+void Game::setMapAwareRange(int left, int top, int right, int bottom)
+{
+	AwareRange range;
+	range.left = left;
+	range.top = top;
+	range.bottom = bottom;
+	range.right = right;
+
+	g_map.setAwareRange(range); 
 }
 
 bool Game::checkBotProtection()

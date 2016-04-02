@@ -264,7 +264,8 @@ void Client::registerLuaFunctions()
     g_lua.bindSingletonFunction("g_game", "requestItemInfo", &Game::requestItemInfo, &g_game);
     g_lua.bindSingletonFunction("g_game", "ping", &Game::ping, &g_game);
     g_lua.bindSingletonFunction("g_game", "setPingDelay", &Game::setPingDelay, &g_game);
-    g_lua.bindSingletonFunction("g_game", "changeMapAwareRange", &Game::changeMapAwareRange, &g_game);
+	g_lua.bindSingletonFunction("g_game", "changeMapAwareRange", &Game::changeMapAwareRange, &g_game);
+	g_lua.bindSingletonFunction("g_game", "setMapAwareRange", &Game::setMapAwareRange, &g_game);
     g_lua.bindSingletonFunction("g_game", "canPerformGameAction", &Game::canPerformGameAction, &g_game);
     g_lua.bindSingletonFunction("g_game", "canReportBugs", &Game::canReportBugs, &g_game);
     g_lua.bindSingletonFunction("g_game", "checkBotProtection", &Game::checkBotProtection, &g_game);
@@ -303,6 +304,7 @@ void Client::registerLuaFunctions()
 	g_lua.bindSingletonFunction("g_game", "getLastWalkDir", &Game::getLastWalkDir, &g_game);
 	g_lua.bindSingletonFunction("g_game", "addSkillPoint", &Game::addSkillPoint, &g_game);
 	g_lua.bindSingletonFunction("g_game", "sendMsgTryToAddSpellLevel", &Game::sendMsgTryToAddSpellLevel, &g_game);
+	g_lua.bindSingletonFunction("g_game", "sendSpell", &Game::sendSpell, &g_game);
 
     g_lua.registerSingletonClass("g_shaders");
     g_lua.bindSingletonFunction("g_shaders", "createShader", &ShaderManager::createShader, &g_shaders);

@@ -1,51 +1,47 @@
 MoveableTabBar < UIMoveableTabBar
-  size: 80 21
+  size: 80 20
 MoveableTabBarPanel < Panel
 MoveableTabBarButton < UIButton
-  size: 20 21
+  size: 20 20
   image-source: /images/ui/tabbutton_square
-  image-color: #dfdfdf
-  image-clip: 0 0 20 21
+  image-color: white
+  image-clip: 0 0 20 20
   image-border: 3
-  image-border-bottom: 0
-  icon-color: #dfdfdf
-  color: #dfdfdf
+  icon-color: white
+  color: #aaaaaa
   anchors.top: parent.top
   anchors.left: parent.left
   padding: 5
 
   $hover !checked:
-    image-clip: 0 21 20 21
-    color: #dfdfdf
+    image-clip: 0 20 20 20
+    color: white
 
   $disabled:
-    image-color: #dfdfdf88
-    icon-color: #dfdfdf
+    image-color: #ffffff66
+    icon-color: #888888
 
   $checked:
-    image-clip: 0 42 20 21
-    color: #ffdfdf
-    image-color: #12ff12ff
+    image-clip: 0 40 20 20
+    color: #D8E7F0
 
   $on !checked:
-    color: #de6f6f
+    color: #F55E5E
 
 TabBar < UITabBar
-  size: 80 21
+  size: 80 20
   Panel
     id: buttonsPanel
     anchors.fill: parent
 TabBarPanel < Panel
 TabBarButton < UIButton
-  size: 20 21
+  size: 20 20
   image-source: /images/ui/tabbutton_square
-  image-source: /images/ui/tabbutton_square
-  image-color: #dfdfdf
-  image-clip: 0 0 20 21
+  image-color: white
+  image-clip: 0 0 20 20
   image-border: 3
-  image-border-bottom: 0
-  icon-color: #dfdfdf
-  color: #dfdfdf
+  icon-color: white
+  color: #aaaaaa
   anchors.top: parent.top
   padding: 5
 
@@ -57,32 +53,24 @@ TabBarButton < UIButton
     margin-left: 5
 
   $hover !checked:
-    image-clip: 0 21 20 21
-    color: #dfdfdf
+    image-clip: 0 20 20 20
+    color: white
 
   $disabled:
-    image-color: #dfdfdf88
-    icon-color: #dfdfdf
+    image-color: #ffffff66
+    icon-color: #888888
 
   $checked:
-    image-clip: 0 42 20 21
-    color: #dfdfdf
+    image-clip: 0 40 20 20
+    color: #80c7f8
 
   $on !checked:
-    color: #dfdfdf
+    color: #F55E5E
 
 TabBarRounded < TabBar
 TabBarRoundedPanel < TabBarPanel
 TabBarRoundedButton < TabBarButton
   image-source: /images/ui/tabbutton_rounded
-  size: 22 23
-  image-clip: 0 0 22 23
-
-  $hover !checked:
-    image-clip: 0 23 22 23
-
-  $checked:
-    image-clip: 0 46 22 23
 
 TabBarVertical < UITabBar
   width: 96
@@ -119,7 +107,7 @@ TabBarVerticalButton < UIButton
     margin-top: 10
   $hover !checked:
     color: white
-    icon-color: #dfdfdf
+    icon-color: #cccccc
   $disabled:
     icon-color: #333333
   $checked:

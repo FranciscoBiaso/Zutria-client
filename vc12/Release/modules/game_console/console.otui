@@ -37,7 +37,7 @@ ConsoleTabBarPanel < MoveableTabBarPanel
     layout:
       type: verticalBox
       align-bottom: true
-    border-width: 1
+    border-width: 3
     border-color: #202327
     background: #00000066
     inverted-scroll: true
@@ -51,9 +51,10 @@ ConsoleTabBarPanel < MoveableTabBarPanel
     step: 14
     pixels-scroll: true
 
-ConsoleTabBarButton < MoveableTabBarButton
-  height: 28
+ConsoleTabBarButton < MoveableTabBarButton  
   padding: 15
+  margin-top:2
+  border: 0 #fff327
 
 Panel
   id: consolePanel
@@ -151,22 +152,11 @@ Panel
     padding: 1
     focusable: false
 
-  TabButton
-    id: sayModeButton
-    icon: /images/game/console/say
-    !tooltip: tr('Adjust volume')
-    &sayMode: 2
-    size: 20 20
-    anchors.left: parent.left
-    anchors.bottom: parent.bottom
-    margin-left: 6
-    margin-bottom: 6
-    @onClick: sayModeChange()
-
   TextEdit
     id: consoleTextEdit
     anchors.left: sayModeButton.right
     anchors.right: parent.right
+    anchors.left: parent.left
     anchors.bottom: parent.bottom
     margin-right: 6
     margin-left: 6

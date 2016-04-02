@@ -12,7 +12,7 @@ Panel
   anchors.left: gameLeftPanel.right
   anchors.right: gameRightPanel.left
   anchors.bottom: gameBottomPanel.top
-  border: 1 #12121212
+  border: 0 #12121212
   focusable: false
 
   TextMessageLabel
@@ -23,7 +23,7 @@ Panel
     margin-top: 150
     margin-left: 150
     margin-right: 150
-    border: 1 #12121212
+    border: 0 #12121212
     backgroundColor: #12121223
 
   TextMessageLabel
@@ -33,5 +33,5 @@ Panel
     anchors.bottom: parent.bottom
     margin-left: 150
     margin-right: 150
-    border: 1 #12121212
+    border: 0 #12121212
     backgroundColor: #12121223

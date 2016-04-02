@@ -105,21 +105,6 @@ function onInventoryChange(player, slot, item, oldItem)
   end
 end
 
-function DEC_HEX(IN)
-    local B,K,OUT,I,D=16,"0123456789ABCDEF","",0
-    while IN>0 do
-        I=I+1
-        IN,D=math.floor(IN/B),math.mod(IN,B)+1
-        OUT=string.sub(K,D,D)..OUT
-    end
-    if string.len(OUT) == 0 then
-      OUT = "00"
-    elseif string.len(OUT) <= 1 then
-      OUT = '0' .. OUT 
-    end
-    return OUT
-end
-
 function onFreeCapacityChange(player, freeCapacity)
   capacityValueLabel = inventoryPanel:getChildById('capacityValueLabel')
   totalCapacityValue = player:getSkillValue(3)/100

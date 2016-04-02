@@ -1,14 +1,14 @@
 HealthBar < ProgressBar
   id: healthBar
-  background-color: #ff4444
+  background-color: #66FF66FF
   anchors.top: parent.top
   anchors.left: parent.left
   anchors.right: parent.right
   margin: 1
 
 ManaBar < ProgressBar
-  id: manaBar
-  background-color: #4444ff
+  id: manaBar  
+  background-color: #6666FFFF
   anchors.top: prev.bottom
   anchors.left: parent.left
   anchors.right: parent.right
@@ -17,7 +17,6 @@ ManaBar < ProgressBar
 
 ExperienceBar < ProgressBar
   id: experienceBar
-  background-color: #B6E866
   anchors.top: prev.bottom
   anchors.left: parent.left
   anchors.right: parent.right
@@ -50,7 +49,7 @@ MiniWindow
   icon: /images/topbuttons/healthinfo
   id: healthInfoWindow
   !text: tr('Info. do personagem')
-  height: 104
+  height: 140
   @onClose: modules.game_healthinfo.onMiniWindowClose()
   &save: true
 

@@ -869,11 +869,20 @@ void ProtocolGame::sendAddSkillPoints(int creatureId, uint8_t skillId, uint8_t v
 	send(msg);
 }
 
-void ProtocolGame::sendMsgTryToAddSpellLevel(uint8 spellid)
+void ProtocolGame::sendMsgTryToAddSpellLevel(uint8 spellId)
 {
 	OutputMessagePtr msg(new OutputMessage);
 	msg->addU8(Proto::ClientTryToAddSpellLevel);
-	msg->addU8(spellid);
+	msg->addU8(spellId);
+	send(msg);
+}
+
+
+void ProtocolGame::sendSpell(uint8 spellId)
+{
+	OutputMessagePtr msg(new OutputMessage);
+	msg->addU8(Proto::ClientPlayerSendSpell);
+	msg->addU8(spellId);
 	send(msg);
 }
 

@@ -3,6 +3,7 @@ local treeSpellsWindow = nil
 local treeSpellsPanel  = nil
 local currentIterface = 0 --root or start interface
 local tempListOfSpells = nil
+local spellBoxTryed = nil
 
 function init()
   treeSpellsButton = modules.client_topmenu.addRightGameToggleButton('treeSkillsButton', tr('árvore de habilidades'), '/images/topbuttons/hand', toggle)
@@ -266,9 +267,8 @@ function createSpellLevelToolTip(spellId)
   local msg = ''
   local tempCountPoints = countPoints
   for i =1 , maxLevel, 1 do
-    if i > 1 then
-      tempCountPoints = countPoints - i * countPoints/20;
-    end
+    tempCountPoints = countPoints - (i-1) * math.floor(countPoints/7);
+    
     msg = msg .. 'Nível '.. i .. ' requer: ' .. 
       string.format("%02d",tempCountPoints) .. ' pontos'
     if i ~= maxLevel then
@@ -285,6 +285,26 @@ function onSpellsChange(localPlayer, spellsList)
   if treeSpellsPanel then
     updateTreeSpells(spellsList)    
   end
+end
+
+function onSpellChange(localPlayer, spellId, spellLevel)
+  spellId = spellId
+  if spellBoxTryed then
+    local spellImagePanel = spellBoxTryed:getChildById('IDSpellImage')
+    spellImagePanel:setImageColor('#ffffffff')
+    spellImagePanel:setBorderColor('#abababff')
+    if spellImagePanel:getSpellId() then
+      
+    else
+    end
+    spellImagePanel:addSpell() 
+    spellImagePanel:setSpellId(spellId)
+  
+  
+    local spellLabel = spellBoxTryed:getChildById('IDSpellLabel')
+    spellLabel:setText(spellLevel + 1 .. '/' .. spells[spellId][2])    
+  end
+  spellBoxTryed = nil
 end
 
 function updateTreeSpells(list)
@@ -309,5 +329,17 @@ function updateTreeSpells(list)
     end
     count = count + 1
   end  
+end
+
+function tryToUpSpellLevel()
+  local spellBox = treeSpellsPanel:getChildByPos(g_window.getMousePosition())
+  if spellBox then
+    spellBoxTryed = spellBox
+    local spellImagePanel = spellBox:getChildById('IDSpellImage')
+    if spellImagePanel and  spellImagePanel:getSpellId() then
+      -- lua starts array with 1, so lets decrement 1 to c++ interpret correctly
+      g_game.sendMsgTryToAddSpellLevel(spellImagePanel:getSpellId() - 1)
+    end
+  end
 end
 

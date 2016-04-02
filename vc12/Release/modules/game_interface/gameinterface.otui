@@ -14,8 +14,8 @@ GameMiniMapPanel < Panel
   image-source: /images/ui/panel_bottom
   image-border: 4
   image-color: #bcbcbcdd
-  border: 1 #12121277
-  margin: 2
+  border: 0 #12121277
+  margin: 0
   padding: 2
   height: 172
   width: 228
@@ -25,25 +25,42 @@ GameMagicPanel < Panel
   image-border: 4
   image-color: #bcbcbcff
   border: 1 #12121277
-  margin: 2
+  margin: 1
   padding: 2
   height: 62
+  
+GameBarsPanel < Panel
+  image-source: /images/ui/panel_bottom
+  image-border: 4
+  image-color: #bcbcbcff
+  border: 1 #12121277
+  margin: 1
+  padding: 5
+  height: 46
   
 GameBottomPanel < Panel
   image-source: /images/ui/panel_bottom
   image-color: #ffffffff
   border: 1 #12121277
   image-border: 4
+  margin: 1
   height: 172
-  margin-bottom: 3
 
 GameMapPanel < UIGameMap
   padding: 4
   image-source: /images/ui/panel_map
   image-border: 4
+  margin: 1
 
   $on:
     padding: 0
+    
+GameInfoPlayerPanel < Panel
+  image-source: /images/ui/panel_bottom
+  image-color: #ffffffff
+  border: 1 #12121277
+  image-border: 4
+  width: 45
 
 UIWidget
   id: gameRootPanel
@@ -51,8 +68,8 @@ UIWidget
 
   GameMapPanel
     id: gameMapPanel
-    anchors.left: gameLeftPanel.right
-    anchors.right: gameRightPanel.left
+    anchors.left: gameLeftPanel.left
+    anchors.right: gameRightPanel.right
     anchors.top: parent.top
     anchors.bottom: gameBottomPanel.top
     focusable: false
@@ -88,20 +105,33 @@ UIWidget
     id: gameMiniMapPanel
     anchors.right: parent.right
     anchors.bottom: parent.bottom
-    margin-bottom:3
     focusable: false
-    on: true  
+    draggable: false
     
   GameMagicPanel
     id: gameSpellPanel
-    anchors.right: gameMiniMapPanel.left
+    anchors.right: gameInfoPlayerPanel.left
     anchors.left: gameBottomPanel.right
     anchors.bottom: parent.bottom
-    margin-right: 2
-    margin-bottom:3
+    focusable: false
+    on: true
+    
+  GameBarsPanel
+    id: gameBarsPanel
+    anchors.right: gameInfoPlayerPanel.left
+    anchors.left: gameBottomPanel.right
+    anchors.bottom: gameSpellPanel.top
     focusable: false
     on: true
   
+  GameInfoPlayerPanel
+    id: gameInfoPlayerPanel
+    anchors.right: gameMiniMapPanel.left
+    anchors.bottom: parent.bottom
+    height: 172
+    focusable: false
+    on: true
+    
   UIWidget
     id: mouseGrabber
     focusable: false

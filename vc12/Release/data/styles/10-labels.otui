@@ -1,23 +1,23 @@
 Label < UILabel
   font: verdana-11px-antialised
-  color: #dfdfdf
+  color: #bbbbbb
 
   $disabled:
-    color: #dfdfdf88
+    color: #bbbbbb88
 
 FlatLabel < UILabel
   font: verdana-11px-antialised
-  color: #dfdfdf
+  color: #aaaaaa
   size: 86 20
   text-offset: 3 3
   image-source: /images/ui/panel_flat
   image-border: 1
 
   $disabled:
-    color: #dfdfdf88
+    color: #aaaaaa88
 
 MenuLabel < Label
 
 GameLabel < UILabel
   font: verdana-11px-antialised
-  color: #dfdfdf
+  color: #bbbbbb
