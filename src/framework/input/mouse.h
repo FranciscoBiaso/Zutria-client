@@ -25,15 +25,16 @@
 class Mouse
 {
 public:
-    void init();
+	void init();
     void terminate();
 
-    void loadCursors(std::string filename);
+	void loadCursors(std::string filename);
     void addCursor(const std::string& name, const std::string& file, const Point& hotSpot);
     bool pushCursor(const std::string& name);
     void popCursor(const std::string& name);
     bool isCursorChanged();
     bool isPressed(Fw::MouseButton mouseButton);
+	int getTopCursorId();
 
 private:
     void checkStackSize();

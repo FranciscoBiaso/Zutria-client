@@ -12,14 +12,14 @@ function UISpinBox.create()
   spinbox.step = 1
   spinbox.firstchange = true
   spinbox.mouseScroll = true
-  spinbox:setText("1")
-  spinbox:setValue(1)
+  spinbox:setText("0")
+  spinbox:setValue(0)
   return spinbox
 end
 
 function UISpinBox:onSetup()
-  g_mouse.bindAutoPress(self:getChildById('up'), function() self:up() end, 300)
-  g_mouse.bindAutoPress(self:getChildById('down'), function() self:down() end, 300)
+  g_mouse.bindAutoPress(self:getChildById('up'), function() self:up() signalcall(self.onButtonUp, self) end, 300)
+  g_mouse.bindAutoPress(self:getChildById('down'), function() self:down() signalcall(self.onButtonDown, self) end, 300)
 end
 
 function UISpinBox:onMouseWheel(mousePos, direction)
@@ -28,8 +28,10 @@ function UISpinBox:onMouseWheel(mousePos, direction)
   end
   if direction == MouseWheelUp then
     self:up()
+    signalcall(self.onScrollUp, self)
   elseif direction == MouseWheelDown then
     self:down()
+    signalcall(self.onScrollDown, self)
   end
   return true
 end

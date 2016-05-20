@@ -81,3 +81,32 @@ AddButton < UIButton
 
   $disabled:
     image-color: #ffffff55
+    
+TopArrowButton < UIButton
+  size: 21 12
+  image-source: /images/ui/arrow_vertical
+  image-clip: 21 0 21 12
+
+  $hover !disabled:
+    image-clip: 21 12 21 12
+
+  $pressed:
+    image-clip: 21 24 21 12
+
+  $disabled:
+    image-color: #ffffff55
+
+BottomArrowButton < UIButton
+  size: 21 12
+  image-source: /images/ui/arrow_vertical
+  image-clip: 0 0 21 12
+
+  $hover !disabled:
+    image-clip: 0 12 21 12
+
+  $pressed:
+    image-clip: 0 24 21 12
+
+  $disabled:
+    image-color: #ffffff55
+

@@ -109,6 +109,11 @@ bool Mouse::isPressed(Fw::MouseButton mouseButton)
     return g_window.isMouseButtonPressed(mouseButton);
 }
 
+int Mouse::getTopCursorId()
+{
+	return m_cursorStack.back();
+}
+
 void Mouse::checkStackSize()
 {
     if(m_cursorStack.size() > 5) {

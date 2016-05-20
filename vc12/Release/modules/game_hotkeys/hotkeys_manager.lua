@@ -55,13 +55,14 @@ end
 
 function doKeyCombo(spellId)
   if not g_game.isOnline() then return end
-    -- is a spell instante
+    -- is a spell instante or rune
     local descriptionSpellTable = modules.game_treespells.getTableDescriptionSpells()
-    if descriptionSpellTable[spellId][1] == 2 then
+    if descriptionSpellTable[spellId][1] == 2 or descriptionSpellTable[spellId][1] == 1 then
       g_game.sendSpell(spellId)
     
     -- is a spell actived by mouse
-    elseif descriptionSpellTable[spellId][1] == 2 then 
+    elseif descriptionSpellTable[spellId][1] == 5 then 
+      modules.game_interface.teste()
       -- if pushedCursor == false then
         -- g_mouse.pushCursor('spell')  
         -- pushedCursor = true

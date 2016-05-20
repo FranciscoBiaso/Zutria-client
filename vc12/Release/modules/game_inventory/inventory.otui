@@ -1,19 +1,22 @@
 InventoryItem < Item
-  image-auto-resize: true
+  size: 32 32
+  image-auto-resize: false
   image-source: /images/game/slots/inventory
-  image-color: #ffffffff
+  image-color: #ffffffff  
+  border: 1 #878787cc
 
 InventoryBackgroundItemPanel < Panel  
   size: 40 40
-  image-color: #ffffffff
+  image-color: #878787ff
   image-source: /images/ui/item-blessed
+  border: 1 #878787cc
   padding: 4  
   
 InfoLabel < UILabel
   color: #cdcdcdff
 
 ValueLabel < UILabel
-  color: #34cd34ff
+  color: #34aa34ff
   
 infoBar < ProgressBar
   background-color: #B6E866

@@ -237,8 +237,8 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
 	if (l_isPlayer)
 	{
 		// calculate main rects
-		backgroundRect = Rect(point.x - 32, point.y - 5, 64, 6);
-		manabackgroundRect = Rect(point.x - 32, point.y - 5 + 7, 64, 4);
+		backgroundRect = Rect(point.x - 13.5, point.y -1, 30, 4);
+		manabackgroundRect = Rect(point.x - 13.5, point.y -1 + 4 + 1, 30, 4);
 		manabackgroundRect.bind(parentRect);
 	}
 	else
@@ -250,9 +250,13 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
     Size nameSize = m_nameCache.getTextSize();
 	Rect textRect;
 	if (l_isPlayer)
-		textRect = Rect(point.x - nameSize.width() / 2.0, point.y - 17, nameSize);
+	{
+		textRect = Rect(point.x - nameSize.width() / 2.0, point.y - 12 - 1, nameSize);
+	}
 	else
+	{
 		textRect = Rect(point.x - nameSize.width() / 2.0, point.y - 12, nameSize);
+	}
     textRect.bind(parentRect);
 
     // distance them
@@ -264,7 +268,7 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
     // health rect is based on background rect, so no worries
     Rect healthRect = backgroundRect.expanded(-1);
 	if (l_isPlayer)
-		healthRect.setWidth((m_healthPercent / 100.0) * 62);
+		healthRect.setWidth((m_healthPercent / 100.0) * 28);
 	else
 		healthRect.setWidth((m_healthPercent / 100.0) * 25);
 
@@ -273,34 +277,37 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
 	if (l_isPlayer)
 	{
 		localPlayer = g_game.getLocalPlayer();
-		manaRect.setWidth((localPlayer->getMana() / localPlayer->getMaxMana()) * 62);
+		manaRect.setWidth((localPlayer->getMana() / localPlayer->getMaxMana()) * 28);
 	}
 	
 
     // draw
-    if(g_game.getFeature(Otc::GameBlueNpcNameColor) && isNpc() && m_healthPercent == 100 && !useGray)
-        fillColor = Color(0x66, 0xcc, 0xff);
+	if (isNpc())
+		fillColor = Color(0x99, 0xcc, 0xff);
+	else if (isMonster())
+		fillColor = Color(0xc0, 0xc0, 0xc0);
+	else
+		fillColor = Color(0xA0,0xA0,0xA0);
 
     if(drawFlags & Otc::DrawBars && (!isNpc() || !g_game.getFeature(Otc::GameHideNpcNames))) {
-		g_painter->setColor(Color("#343434ff"));
+		g_painter->setColor(Color("#010101ff"));
 		g_painter->drawFilledRect(backgroundRect);
 		if (l_isPlayer)
 		{
 			g_painter->drawFilledRect(manabackgroundRect);
 		}
 
-        g_painter->setColor(fillColor);
+		g_painter->setColor(Color(0xA5,0x2A,0x2A));
 		g_painter->drawFilledRect(healthRect);
 		if (l_isPlayer)
 		{
-			g_painter->setColor(localPlayer->getManaInformationColor());
+			g_painter->setColor(Color(0x40,0x27,0xBA));
 			g_painter->drawFilledRect(manaRect);
 		}
     }
 
     if(drawFlags & Otc::DrawNames) {
-        if(g_painter->getColor() != fillColor)
-            g_painter->setColor(fillColor);
+		g_painter->setColor(fillColor);
         m_nameCache.draw(textRect);
     }
 
@@ -640,10 +647,11 @@ void Creature::setName(const std::string& name)
 
 void Creature::setHealthPercent(uint8 healthPercent)
 {
-	if (healthPercent >= 50)
-		m_informationColor = Color(255.0 * ((50-(healthPercent-50))/50.0f), 0xff, 0x00);
-	else
-		m_informationColor = Color(0xff, 255.0 * healthPercent / 50.0f, 0x00);
+	//if (healthPercent >= 50)
+		//m_informationColor = Color(255.0 * ((50-(healthPercent-50))/50.0f), 0xff, 0x00);
+	//else
+		//m_informationColor = Color(0xff, 255.0 * healthPercent / 50.0f, 0x00);
+	m_informationColor = Color(0xA5, 0x2A, 0x2A);
 
     m_healthPercent = healthPercent;
     callLuaField("	", healthPercent);

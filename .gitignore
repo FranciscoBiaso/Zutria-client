@@ -9,3 +9,4 @@ vc12/otclient.sdf
 *.suo
 vc12/otclient.v12.suo
 vc12/otclient.opensdf
+*.VC.opendb

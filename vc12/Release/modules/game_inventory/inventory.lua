@@ -28,10 +28,10 @@ function init()
   })
   connect(g_game, { onGameStart = refresh })
   
-  inventoryButton = modules.client_topmenu.addRightGameToggleButton('InventoryButton', tr('equipamentos') .. ' (I)', '/images/topbuttons/equipament', toggle)
+  inventoryButton = modules.client_topmenu.addRightGameToggleButton('InventoryButton', tr('equipamentos') .. ' (ctrl + I)', '/images/topbuttons/equipament', toggle)
   inventoryButton:setOn(true)
   
-  g_keyboard.bindKeyDown('I', toggle)
+  g_keyboard.bindKeyDown('ctrl + I', toggle)
 
   inventoryWindow = g_ui.loadUI('inventory', modules.game_interface.getRightPanel())
   inventoryPanel = inventoryWindow:getChildById('contentsPanel') 
@@ -92,14 +92,16 @@ function onInventoryChange(player, slot, item, oldItem)
   slotPanel = inventoryPanel:getChildById('slot' .. slot)
   itemWidget = slotPanel:getChildById('itemSlot' .. slot)
   if item then
-    slotPanel:setImageColor('#ffffffff')
+    slotPanel:setImageColor('#66666655')
     itemWidget:setImageColor('#ffffff00')
     itemWidget:setItem(item)
   else
-    slotPanel:setImageColor('#676767ff')
+    slotPanel:setImageColor('#cccccccc')
     slotPanel:setBorderWidth(1)
+    slotPanel:setBorderColor('#010101ff')
     itemWidget:setImageClip(InventorySlots[slot][2][1] .. ' ' .. InventorySlots[slot][2][2] .. ' ' .. 32 .. ' ' .. 32)  
-    itemWidget:setImageColor('#a9a9a9ff') 
+       
+    itemWidget:setImageColor('#565656ff') 
     itemWidget:setBorderWidth(0)
     itemWidget:setItem(nil)
   end
@@ -112,10 +114,10 @@ function onFreeCapacityChange(player, freeCapacity)
   capacityBar = inventoryPanel:getChildById('capacityBar')
   
   if capPercentage >= 50 then
-    capacityValueLabel:setColor('#' .. DEC_HEX(255.0 * (50-(capPercentage-50))/50.0) .. 'ff00ff')
+    --capacityValueLabel:setColor('#' .. DEC_HEX(255.0 * (50-(capPercentage-50))/50.0) .. 'ff00ff')
     capacityBar:setBackgroundColor('#' .. DEC_HEX(255.0 * (50-(capPercentage-50))/50.0) .. 'ff00ff')
   else    
-    capacityValueLabel:setColor('#ff' .. DEC_HEX(255.0 * capPercentage / 50.0) .. '00ff')
+    --capacityValueLabel:setColor('#ff' .. DEC_HEX(255.0 * capPercentage / 50.0) .. '00ff')
     capacityBar:setBackgroundColor('#ff' .. DEC_HEX(255.0 * capPercentage / 50.0) .. '00ff')
   end
   capacityValueLabel:setText(freeCapacity .. ' izis')

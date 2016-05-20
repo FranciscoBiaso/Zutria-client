@@ -3,7 +3,7 @@ UIGameMap = extends(UIMap, "UIGameMap")
 function UIGameMap.create()
   local gameMap = UIGameMap.internalCreate()
   gameMap:setKeepAspectRatio(true)  
-  gameMap:setLimitVisibleRange(true)
+  gameMap:setLimitVisibleRange(false)
   gameMap:setDrawLights(true)  
   return gameMap
 end
@@ -91,8 +91,19 @@ function UIGameMap:onMouseRelease(mousePosition, mouseButton)
   if autoWalkTile then
     attackCreature = autoWalkTile:getTopCreature()
   end
-
-  local ret = modules.game_interface.processMouseAction(mousePosition, mouseButton, autoWalkPos, lookThing, useThing, creatureThing, attackCreature)
+  
+  local ret
+  local isNpc = false
+  if creatureThing then       
+    if creatureThing:isNpc() then
+      isNpc = true
+      modules.game_npc.setTalkginNPc(modules.game_npc.getNpcIdByName(creatureThing:getName()))
+      g_game.sendNpcLeftClick(creatureThing:getName())         
+    end
+  end
+  if not isNpc then
+    ret = modules.game_interface.processMouseAction(mousePosition, mouseButton, autoWalkPos, lookThing, useThing, creatureThing, attackCreature)  
+  end
   if ret then
     self.allowNextRelease = false
   end
@@ -115,4 +126,31 @@ function UIGameMap:canAcceptDrop(widget, mousePos)
 
   error('Widget ' .. self:getId() .. ' not in drop list.')
   return false
+end
+
+function UIGameMap:onMouseMove(mousePos, mouseMoved)
+  local tile = self:getTile(mousePos)
+  if not tile then return false end
+
+  local thing = tile:getTopThing()
+  local creature = tile:getTopCreature()
+  if not thing then return end
+  
+  if not creature then    
+    if g_mouse.getTopCursorId() == 6 then --npc
+      g_mouse.popCursor('medievalDoubt')
+    elseif g_mouse.getTopCursorId() == 7 then --monster
+      g_mouse.popCursor('sword')
+    elseif g_mouse.getTopCursorId() == 8 then --player
+      g_mouse.popCursor('player')
+    end
+  elseif creature:isNpc() and g_mouse.getTopCursorId() ~= 6 then
+    g_mouse.pushCursor('medievalDoubt') -- cursor id 6
+  elseif creature:isMonster() and  g_mouse.getTopCursorId() ~= 7 then
+    g_mouse.pushCursor('sword') -- cursor id 7 
+  elseif creature:isPlayer() and  g_mouse.getTopCursorId() ~= 8 then
+    g_mouse.pushCursor('player') -- cursor id 8 
+  end
+
+  return true  
 end

@@ -3,11 +3,16 @@ WALK_STEPS_RETRY = 10
 gameRootPanel = nil
 gameMapPanel = nil
 gameRightPanel = nil
-gameMiniMapPanel = nil
 gameLeftPanel = nil
 gameBottomPanel = nil
 gameSpellPanel = nil
-gameBarsPanel = nil
+gameHealthBarPanel = nil
+gameManaBarPanel = nil
+gameInfoPlayerPanel = nil
+gameHealthLabel = nil
+gameExperienceBar = nil
+gameManaLabel = nil
+gameBreathBarPanel = nil
 logoutButton = nil
 mouseGrabberWidget = nil
 countWindow = nil
@@ -20,6 +25,10 @@ smartWalkDirs = {}
 smartWalkDir = nil
 walkFunction = nil
 hookedMenuOptions = {}
+spellCursorActived = false
+
+local arrowsVisibility = {left = false,top = false,right = false,bottom = false}
+local arrowsVisible = true
 
 function init()
   g_ui.importStyle('styles/countwindow')
@@ -30,6 +39,7 @@ function init()
     onLoginAdvice = onLoginAdvice,
   }, true)
 
+  
   -- Call load AFTER game window has been created and 
   -- resized to a stable state, otherwise the saved 
   -- settings can get overridden by false onGeometryChange
@@ -47,17 +57,30 @@ function init()
 
   mouseGrabberWidget = gameRootPanel:getChildById('mouseGrabber')
   mouseGrabberWidget.onMouseRelease = onMouseGrabberRelease
+  --mouseGrabberWidget.onMouseMove = onMouseGrabberMove
 
   --bottomSplitter = gameRootPanel:getChildById('bottomSplitter')
   gameMapPanel = gameRootPanel:getChildById('gameMapPanel')
+  local gameBottomArrow = gameMapPanel:getChildById('gameBottomArrow')
+  gameBottomArrow:hide()
+  
+   g_keyboard.bindKeyDown('ctrl + h', hideShowArrows)
+   
   gameRightPanel = gameRootPanel:getChildById('gameRightPanel')
   gameLeftPanel = gameRootPanel:getChildById('gameLeftPanel')
   gameBottomPanel = gameRootPanel:getChildById('gameBottomPanel')
-  gameMiniMapPanel = gameRootPanel:getChildById('gameMiniMapPanel')
-  gameSpellPanel = gameRootPanel:getChildById('gameSpellPanel')
-  gameBarsPanel = gameRootPanel:getChildById('gameBarsPanel')
+  gameSpellPanel = gameRootPanel:getChildById('gameSpellPanel')    
+  gameSpellPanel:hide()
   connect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
-
+  
+  gameHealthBarPanel =  gameRootPanel:getChildById('gameHealthBarPanel')
+  gameManaBarPanel = gameRootPanel:getChildById('gameManaBarPanel') 
+  gameInfoPlayerPanel = gameRootPanel:getChildById('gameInfoPlayerPanel') 
+  gameHealthLabel = gameRootPanel:getChildById('gameHealthLabel')
+  gameManaLabel = gameRootPanel:getChildById('gameManaLabel')
+  gameExperienceBar = gameRootPanel:getChildById('gameExperienceBar')
+  gameBreathBarPanel = gameRootPanel:getChildById('gameBreathBarPanel')
+  
   logoutButton = modules.client_topmenu.addLeftButton('logoutButton', tr('Exit'),
     '/images/topbuttons/logout', tryLogout, true)
 
@@ -158,7 +181,7 @@ function onGameStart()
   end
     -- with you change setMapAwareRange values you need to change
     -- AddMapDescription function values on server side
-  g_game.setMapAwareRange(9,7,9,7)
+  g_game.setMapAwareRange(8,7,8,7)
 end
 
 function onGameEnd()
@@ -355,7 +378,7 @@ function smartWalk(dir)
 end
 
 function onMouseGrabberRelease(self, mousePosition, mouseButton)
-  if selectedThing == nil then return false end
+  if selectedThing == nil and targetSpellId == nil then return false end
   if mouseButton == MouseLeftButton then
     local clickedWidget = gameRootPanel:recursiveGetChildByPos(mousePosition, false)
     if clickedWidget then
@@ -363,12 +386,20 @@ function onMouseGrabberRelease(self, mousePosition, mouseButton)
         onUseWith(clickedWidget, mousePosition)
       elseif selectedType == 'trade' then
         onTradeWith(clickedWidget, mousePosition)
+      elseif selectedType == 'targetSpell' then
+        onUseTargetSpell(clickedWidget, mousePosition)
       end
     end
   end
 
   selectedThing = nil
-  g_mouse.popCursor('target')
+  targetSpellId = nil
+  if selectedType == 'targetSpell' then
+    g_mouse.popCursor('spell')
+    spellCursorActived = false
+  else
+    g_mouse.popCursor('target')
+  end
   self:ungrabMouse()
   return true
 end
@@ -389,6 +420,15 @@ function onUseWith(clickedWidget, mousePosition)
     local creature = clickedWidget:getCreature()
     if creature then
       g_game.useWith(selectedThing, creature)
+    end
+  end
+end
+
+function onUseTargetSpell(clickedWidget, mousePosition)
+  if clickedWidget:getClassName() == 'UIGameMap' then
+    local tile = clickedWidget:getTile(mousePosition)
+    if tile then   
+        g_game.useTargetSpell(targetSpellId, tile:getTopMultiUseThing())      
     end
   end
 end
@@ -808,16 +848,40 @@ function getBottomPanel()
   return gameBottomPanel
 end
 
-function getBarsPanel()
-  return gameBarsPanel
+function getHealthBarPanel()
+  return gameHealthBarPanel
 end
 
-function getMiniMapPanel()
-  return gameMiniMapPanel
+function getHealthLabelPanel()
+  return gameHealthLabel
+end
+
+function getManaLabelPanel()
+  return gameManaLabel
+end
+
+function getExperiencePanel()
+  return gameExperienceBar
+end
+
+function getManaBarPanel()
+  return gameManaBarPanel
+end
+
+function getBreathBarPanel()
+  return gameBreathBarPanel
+end
+
+function getConditionPanel()
+  return gameInfoPlayerPanel:getChildById('conditionPanel')
 end
 
 function getSpellPanel()
   return gameSpellPanel
+end
+
+function getChildSpellPanel()
+  return gameSpellPanel:getChildById('gameSpellPanelBox')
 end
 
 function onLeftPanelVisibilityChange(leftPanel, visible)
@@ -836,26 +900,30 @@ end
 function setupViewMode(mode)
     --gameRootPanel:fill('parent')
     --g_game.changeMapAwareRange(36, 28)
-  
+    
     gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
     --gameMapPanel:fill('parent')    
     --gameMapPanel:setOn(true)    
     
     
     
-    gameMapPanel:setZoom(13) 
-    gameMapPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())
+    gameMapPanel:setZoom(11) 
+    --gameMapPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())
     
-    gameLeftPanel:setImageColor('alpha')
     gameLeftPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop())
     gameLeftPanel:setOn(true)
     gameLeftPanel:setVisible(true)
         
-    gameRightPanel:setImageColor('alpha')
     gameRightPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop())    
     gameRightPanel:setOn(true)
     gameRightPanel:setVisible(true)
     
+    gameHealthBarPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
+    gameManaBarPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
+    
+    gameInfoPlayerPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
+    gameHealthLabel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
+    gameManaLabel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
     --gameMiniMapPanel:setImageColor('alpha')
     --gameMiniMapPanel:setOn(true)
     --gameMiniMapPanel:setVisible(true)
@@ -867,4 +935,78 @@ end
 
 function limitZoom()
   limitedZoom = true
+end
+
+function ShowHotkeyPanel()
+  gameSpellPanel:show()
+  local gameTopArrow = gameMapPanel:getChildById('gameTopArrow')
+  gameTopArrow:hide()
+  local gameBottomArrow = gameMapPanel:getChildById('gameBottomArrow')
+  gameBottomArrow:show()
+  arrowsVisibility.bottom = true
+  gameMapPanel:removeAnchor(AnchorBottom)
+  gameMapPanel:addAnchor(AnchorBottom, 'gameSpellPanel', AnchorTop)
+end
+
+function HideHotkeyPanel()
+  gameSpellPanel:hide()
+  local gameBottomArrow = gameMapPanel:getChildById('gameBottomArrow')
+  gameBottomArrow:hide()
+  local gameTopArrow = gameMapPanel:getChildById('gameTopArrow')
+  gameTopArrow:show()
+  arrowsVisibility.bottom = false
+  gameMapPanel:removeAnchor(AnchorBottom)
+  gameMapPanel:addAnchor(AnchorBottom, 'gameExperienceBar', AnchorTop)
+end
+
+function HideRightPanel()
+  gameRightPanel:hide()
+  gameManaBarPanel:removeAnchor(AnchorRight)
+  gameManaBarPanel:addAnchor(AnchorRight,'parent',AnchorRight)
+  gameBottomPanel:removeAnchor(AnchorRight)
+  gameBottomPanel:addAnchor(AnchorRight,'parent',AnchorRight)
+  local gameArrowRightTypeRight = gameMapPanel:getChildById('gameArrowRightTypeRight')
+  gameArrowRightTypeRight:hide()
+  local gameArrowRightTypeLeft = gameMapPanel:getChildById('gameArrowRightTypeLeft')
+  gameArrowRightTypeLeft:show()
+end
+
+function ShowRightPanel()  
+  gameRightPanel:show()
+  gameManaBarPanel:removeAnchor(AnchorRight)
+  gameManaBarPanel:addAnchor(AnchorRight,'gameRightPanel',AnchorLeft)
+  gameBottomPanel:removeAnchor(AnchorRight)
+  gameBottomPanel:addAnchor(AnchorRight,'gameRightPanel',AnchorLeft)
+  local gameArrowRightTypeLeft = gameMapPanel:getChildById('gameArrowRightTypeLeft')
+  gameArrowRightTypeLeft:hide()
+  local gameArrowRightTypeRight = gameMapPanel:getChildById('gameArrowRightTypeRight')
+  gameArrowRightTypeRight:show()
+end
+
+function HideLeftPanel()
+  gameLeftPanel:hide()
+  gameHealthBarPanel:removeAnchor(AnchorLeft)
+  gameHealthBarPanel:addAnchor(AnchorLeft,'parent',AnchorLeft)
+  gameBottomPanel:removeAnchor(AnchorLeft)
+  gameBottomPanel:addAnchor(AnchorLeft,'parent',AnchorLeft)
+  local gameArrowLeftTypeLeft = gameMapPanel:getChildById('gameArrowLeftTypeLeft')
+  gameArrowLeftTypeLeft:hide()
+  local gameArrowLeftTypeRight = gameMapPanel:getChildById('gameArrowLeftTypeRight')
+  gameArrowLeftTypeRight:show()
+end
+
+function ShowLeftPanel()
+  gameLeftPanel:show()
+  gameHealthBarPanel:removeAnchor(AnchorLeft)
+  gameHealthBarPanel:addAnchor(AnchorLeft,'gameLeftPanel', AnchorRight)
+  gameBottomPanel:removeAnchor(AnchorLeft)
+  gameBottomPanel:addAnchor(AnchorLeft,'gameLeftPanel',AnchorRight)
+  local gameArrowLeftTypeRight = gameMapPanel:getChildById('gameArrowLeftTypeRight')
+  gameArrowLeftTypeRight:hide()
+  local gameArrowLeftTypeLeft = gameMapPanel:getChildById('gameArrowLeftTypeLeft')
+  gameArrowLeftTypeLeft:show()
+end
+
+function hideShowArrows()
+  
 end

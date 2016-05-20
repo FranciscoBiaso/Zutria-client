@@ -30,7 +30,7 @@ function UIWindow:onDragEnter(mousePos)
 end
 
 function UIWindow:onDragLeave(droppedWidget, mousePos)
-  -- TODO: auto detect and reconnect anchors
+  -- TODO: auto detect and reconnect anchors  
 end
 
 function UIWindow:onDragMove(mousePos, mouseMoved)

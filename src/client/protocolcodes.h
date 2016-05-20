@@ -155,7 +155,9 @@ namespace Proto {
         GameServerModalDialog               = 250,  // 960
 		GameServerPlayerFirstStats          = 251,
 		GameServerPlayerSpells              = 252,
-		GameServerPlayerSpell               = 253
+		GameServerPlayerSpell               = 253,
+		GameServerPlayerBreath              = 254,
+		GameServerPlayerNpcWindow           = 255,
     };
 
     enum ClientOpcodes : uint8
@@ -261,6 +263,10 @@ namespace Proto {
 		ClientAddSkillPoints				= 250,
 		ClientTryToAddSpellLevel		    = 251,
 		ClientPlayerSendSpell		        = 252,
+		ClientPlayerSendBreath              = 253,
+		ClientUseTargetSpell                = 254,
+		ClientNpcLeftClick                  = 255,
+		ClientNpcButtonId                   = 256,
     };
 
     enum CreatureType {

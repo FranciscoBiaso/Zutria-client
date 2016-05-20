@@ -5,13 +5,16 @@ local currentIterface = 0 --root or start interface
 local tempListOfSpells = nil
 local spellBoxTryed = nil
 
-function init()
-  treeSpellsButton = modules.client_topmenu.addRightGameToggleButton('treeSkillsButton', tr('árvore de habilidades'), '/images/topbuttons/hand', toggle)
-  treeSpellsButton:setOn(false) 
-  
-  treeSpellsWindow = g_ui.loadUI('treespells', modules.game_interface.getRootPanel())
+function init()  
+  treeSpellsWindow = g_ui.loadUI('treespells', modules.game_interface.getMapPanel())
+  treeSpellsWindow:hide()
   treeSpellsPanel = treeSpellsWindow:getChildById('IDTreeSpellsPanel')  
 
+  
+  treeSpellsButton = modules.client_topmenu.addRightGameToggleButton('treeSpellsButton', tr('árvore de habilidades') .. ' (ctrl + a)', '/images/topbuttons/hand', toggle)
+  g_keyboard.bindKeyDown('ctrl + A', toggle)
+  treeSpellsButton:setOn(false) 
+  
   backInterfaceButton = treeSpellsWindow:getChildById('IDBackInterfaceButton')
   backInterfaceButton:setImageClip(interface_mini_buttons[1][1] .. ' ' .. interface_mini_buttons[1][2] 
                                    .. ' ' .. 16 .. ' ' .. 16)
@@ -210,6 +213,7 @@ function resetSize(w, h)
 end
 
 function changeInterfaceLayout(button)
+
   if currentIterface == 0 then
     currentIterface = currentIterface + 1
     local buttonType = button.type      
@@ -333,7 +337,7 @@ end
 
 function tryToUpSpellLevel()
   local spellBox = treeSpellsPanel:getChildByPos(g_window.getMousePosition())
-  if spellBox then
+  if spellBox then  
     spellBoxTryed = spellBox
     local spellImagePanel = spellBox:getChildById('IDSpellImage')
     if spellImagePanel and  spellImagePanel:getSpellId() then

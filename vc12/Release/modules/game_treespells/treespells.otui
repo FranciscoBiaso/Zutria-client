@@ -57,7 +57,7 @@ spellImage < UISpellButton
   image-source: /images/game/spells/spells
   size: 32 32
   border: 1 #454545ff
-  image-color: #656565ff
+  image-color: #454545ff
   anchors.top: prev.bottom
   anchors.horizontalcenter: parent.horizontalcenter
   margin-top: 2  

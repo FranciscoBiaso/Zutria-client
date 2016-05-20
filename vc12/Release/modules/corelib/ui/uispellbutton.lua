@@ -19,7 +19,7 @@ end
 
 function UISpellButton:onDragEnter(mousePos)
   if self.hasSpell then
-    modules.game_interface.getSpellPanel():setImageColor('#ff000099')   
+    modules.game_interface.getSpellPanel():setImageColor('#FFAAAAFF')   
     self.movingReference = { x = mousePos.x - self:getX(), y = mousePos.y - self:getY()}
     
     self.panel = g_ui.createWidget('UIButton',modules.game_interface.getRootPanel())
@@ -27,8 +27,8 @@ function UISpellButton:onDragEnter(mousePos)
     self.panel:setBorderWidth(1)
     self.panel:setBorderColor('#989898ff')
     self.panel:setImageClip(self.imageXClip .. ' ' .. self.imageYClip .. ' ' .. 32 .. ' ' .. 32)
-    self.panel:setWidth(32)
-    self.panel:setHeight(32)
+    self.panel:setWidth(30)
+    self.panel:setHeight(30)
     self.panel:show()  
     return true
   else
@@ -37,11 +37,11 @@ function UISpellButton:onDragEnter(mousePos)
 end
 
 function UISpellButton:onDragLeave(droppedWidget, mousePos)
-  modules.game_interface.getSpellPanel():setImageColor('#bcbcbc22') 
+  modules.game_interface.getSpellPanel():setImageColor('#ffffffff') 
   local pos = { x = mousePos.x, y = mousePos.y}
-  spellGroupWidget = modules.game_interface.getSpellPanel():getChildByPos(pos)
+  local spellGroupWidget = modules.game_interface.getChildSpellPanel():getChildByPos(pos)
   if spellGroupWidget ~= nil then
-    spellIcon = spellGroupWidget:getChildById('spellIcon')    
+    local spellIcon = spellGroupWidget:getChildById('spellIcon')    
     if spellIcon ~= nil then
       spellIcon:setImageSource('/images/game/spells/spells')
       spellIcon:setImageColor('#ffffffff')
@@ -51,6 +51,8 @@ function UISpellButton:onDragLeave(droppedWidget, mousePos)
       hotKeyText = spellGroupWidget:recursiveGetChildById('spellHotkeyText'):getText()
       modules.game_hotkeys.saveHotkey(hotKeyText, self.spellId)
     end
+    local spellPanel = spellGroupWidget:getParent()
+    spellPanel:onGeometryChange()
   end
   -- TODO: auto detect and reconnect anchors
   self.panel:destroy() 

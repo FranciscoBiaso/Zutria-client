@@ -1,19 +1,10 @@
-MiniMapMiniWindow
-  anchors.fill: parent
+MiniWindow
   id: minimapWindow
-  !text: tr('Minimap')
+  !text: tr('Mini mapa')
   height: 150
   icon: /images/topbuttons/minimap
-  &save: true
-
-  Label
-    text: ?
-    anchors.right: parent.right
-    anchors.top: parent.top
-    phantom: false
-    !tooltip: tr('Hold left mouse button to navigate\nScroll mouse middle button to zoom\nRight mouse button to create map marks\nPress Ctrl+Shift+M to view the entire game map')
-    margin-top: 5
-    size: 14 14
+  &save: true  
+  @onClose: onMinimapWindowClose()
 
   MiniWindowContents
     Minimap

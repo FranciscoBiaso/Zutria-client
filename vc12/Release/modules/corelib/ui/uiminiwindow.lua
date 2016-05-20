@@ -1,6 +1,7 @@
 -- @docclass
 UIMiniWindow = extends(UIWindow, "UIMiniWindow")
 currentColor = nil
+
 function UIMiniWindow.create()
   local miniwindow = UIMiniWindow.internalCreate()
   return miniwindow
@@ -173,10 +174,10 @@ function UIMiniWindow:onVisibilityChange(visible)
 end
 
 function UIMiniWindow:onDragEnter(mousePos)
-  modules.game_interface.getRightPanel():setImageColor('#ff000099')
-  modules.game_interface.getLeftPanel():setImageColor('#ff000099')
+  modules.game_interface.getRightPanel():setImageColor('#FFAAAAFF')
+  modules.game_interface.getLeftPanel():setImageColor('#FFAAAAFF')
   currentColor = self:getImageColor()
-  self:setImageColor('#00ff00dd')
+  self:setImageColor('#AAFFAAFF')
   local parent = self:getParent()
   if not parent then return false end
 
@@ -195,8 +196,8 @@ function UIMiniWindow:onDragEnter(mousePos)
 end
 
 function UIMiniWindow:onDragLeave(droppedWidget, mousePos)
-  modules.game_interface.getRightPanel():setImageColor('alpha')
-  modules.game_interface.getLeftPanel():setImageColor('alpha')
+  modules.game_interface.getRightPanel():setImageColor('#ffffffff')
+  modules.game_interface.getLeftPanel():setImageColor('#ffffffff')
   self:setImageColor(currentColor)
   if self.movedWidget then
     self.setMovedChildMargin(self.movedOldMargin or 0)

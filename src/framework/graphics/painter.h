@@ -80,9 +80,9 @@ public:
     virtual void setShaderProgram(PainterShaderProgram *shaderProgram) { m_shaderProgram = shaderProgram; }
     void setShaderProgram(const PainterShaderProgramPtr& shaderProgram) { setShaderProgram(shaderProgram.get()); }
 
-    virtual void scale(float x, float y) = 0;
+    virtual void scale(float x, float y, float z = 1.0f) = 0;
     void scale(float factor) { scale(factor, factor); }
-    virtual void translate(float x, float y) = 0;
+    virtual void translate(float x, float y, float z = 0.0f) = 0;
     void translate(const Point& p) { translate(p.x, p.y); }
     virtual void rotate(float angle) = 0;
     virtual void rotate(float x, float y, float angle) = 0;

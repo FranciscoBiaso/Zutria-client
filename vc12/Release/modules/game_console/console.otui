@@ -1,3 +1,9 @@
+BreathBar < VerticalProgressBar
+  id: breathBar
+  margin: 1
+  anchors.fill: parent
+  background-color: #CC6600
+  
 ConsoleLabel < UITextEdit
   font: verdana-11px-antialised
   height: 14
@@ -86,8 +92,8 @@ Panel
     margin-top: 3
     margin-right: 5
     tab-spacing: 2
-    movable: true
-
+    movable: true 
+  
   TabButton
     id: nextChannelButton
     icon: /images/game/console/rightarrow
@@ -162,4 +168,4 @@ Panel
     margin-left: 6
     margin-bottom: 6
     shift-navigation: true
-    max-length: 255
+    max-length: 255   

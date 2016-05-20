@@ -53,6 +53,7 @@ public:
     void setDrawProgram(PainterShaderProgram *drawProgram) { m_drawProgram = drawProgram; }
 
     bool hasShaders() { return true; }
+	
 
 private:
     PainterShaderProgram *m_drawProgram;

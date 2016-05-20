@@ -1,8 +1,8 @@
 cooldownBar < UIProgressBar
   id: cooldownBar
-  size: 42 6
-  border: 1 #121212ff
-  background-color: #989898ff
+  size: 32 4
+  border: 1 #020202ff
+  background-color: #676767FF
   margin-top: 2
   anchors.top: prev.bottom
   anchors.left: prev.left
@@ -11,24 +11,22 @@ cooldownBar < UIProgressBar
 
 spellIcon < UILabel
   id: spellIcon
-  size: 42 42
-  border: 1 #565656ff
+  size: 32 32
+  border: 1 #67676788
   image-color: #ffffff78
   image-source: /images/ui/panel_lightflat
   spellHotkeyText
   anchors.horizontalcenter: parent.horizontalcenter
   anchors.top: parent.top
-  margin-top: 3
   
 spellHotkeyText < UILabel
   id: spellHotkeyText
-  anchors.top: parent.top
-  anchors.right: parent.right
-  margin: 2
-  size: 12 12
-  border: 1 #989898ff
+  anchors.verticalcenter: parent.verticalcenter
+  anchors.horizontalcenter: parent.horizontalcenter  
+  size: 16 16
+  border: 1 #9898DD77
   font: verdana-11px-antialised
-  background-color: #121212ff
+  background-color: #12121288
   color: #cddedeff
   text: 1
   !tooltip: tr('tecla de atalho')
@@ -36,13 +34,12 @@ spellHotkeyText < UILabel
   text-align: center
   
 spellGroup < Panel
-  margin: 2
+  margin-top: 1
+  margin-right: 2
+  margin-left: 2
   anchors.bottom: parent.bottom
   anchors.left: parent.left
-  size: 50 54
+  anchors.verticalcenter: parent.verticalcenter
+  size: 32 37
   spellIcon
   cooldownBar
-  border: 0 #676767ff
-  
-  
-    

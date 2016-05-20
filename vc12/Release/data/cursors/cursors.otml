@@ -17,3 +17,12 @@ Cursors
   medieval
     image: medieval
     hot-spot: 1 1
+  medievalDoubt
+    image: medievaldoubt
+    hot-spot: 1 1
+  sword
+    image: sword
+    hot-spot: 1 1
+  player
+    image: player
+    hot-spot: 1 1

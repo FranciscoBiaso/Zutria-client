@@ -459,7 +459,7 @@ void Game::processOpenOutfitWindow(const Outfit& currentOufit, const std::vector
         virtualMountCreature->setOutfit(mountOutfit);
     }
 
-    //g_lua.callGlobalField("g_game", "onOpenOutfitWindow", virtualOutfitCreature, outfitList, virtualMountCreature, mountList);
+    g_lua.callGlobalField("g_game", "onOpenOutfitWindow", virtualOutfitCreature, outfitList, virtualMountCreature, mountList);
 }
 
 void Game::processOpenNpcTrade(const std::vector<std::tuple<ItemPtr, std::string, int, int, int> >& items)
@@ -859,6 +859,14 @@ void Game::useWith(const ItemPtr& item, const ThingPtr& toThing)
     m_protocolGame->sendUseItemWith(pos, item->getId(), item->getStackPos(), toThing->getPosition(), toThing->getId(), toThing->getStackPos());
 }
 
+void Game::useTargetSpell(uint itemId, const ThingPtr& toThing)
+{
+	if (!canPerformGameAction() || !toThing || itemId == 0)
+		return;
+
+	m_protocolGame->sendUseTargetSpell(itemId, toThing->getPosition(), toThing->getId(), toThing->getStackPos());
+}
+
 void Game::useInventoryItemWith(int itemId, const ThingPtr& toThing)
 {
     if(!canPerformGameAction() || !toThing)
@@ -1088,6 +1096,28 @@ void Game::sendSpell(uint8 spellId)
 	m_protocolGame->sendSpell(spellId);
 
 }
+
+void Game::sendBreath(uint8 breath)
+{
+	if (!canPerformGameAction())
+		return;
+	m_protocolGame->sendBreath(breath);
+}
+
+void Game::sendNpcLeftClick(std::string npcName)
+{
+	if (!canPerformGameAction())
+		return;
+	m_protocolGame->sendNpcLeftClick(npcName);
+}
+
+void Game::sendNpcButtonId(uint8 buttonId)
+{
+	if (!canPerformGameAction())
+		return;
+	m_protocolGame->sendNpcButtonId(buttonId);
+}
+
 
 void Game::partyInvite(int creatureId)
 {

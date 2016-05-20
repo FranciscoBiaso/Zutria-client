@@ -20,7 +20,7 @@ function UITable.create()
   table.rowBaseStyle = nil
   table.columns = {}
   table.columnWidth = {}
-  table.columBaseStyle = nil
+  table.columBaseStyle = {}
   table.headerRowBaseStyle = nil
   table.headerColumnBaseStyle = nil
   table.selectedRow = nil
@@ -212,10 +212,21 @@ function UITable:addRow(data, height)
   row.rowId = rowId
   row:setId('row'..rowId)
   row:updateBackgroundColor()
+  if row.rowId == 1 then
+    row:setMarginTop(5)
+  end
 
   self.columns[rowId] = {}
   for colId, column in pairs(data) do
-    local col = g_ui.createWidget(self.columBaseStyle, row)
+    local col = nil
+    if self.columBaseStyle[colId] then
+      col = g_ui.createWidget(self.columBaseStyle[colId], row)
+    else
+      col = g_ui.createWidget('NpcTableColumn', row)
+    end
+    if colId == 1 then
+      col:setMarginLeft(0)
+    end
     if column.width then
       col:setWidth(column.width)
     else
@@ -231,6 +242,18 @@ function UITable:addRow(data, height)
       col.sortvalue = column.sortvalue
     else
       col.sortvalue = column.text or 0
+    end
+    if column.sprId then
+      col.sprId = column.sprId
+      local npcButtonItem = col:getChildById('npcButtonItem')
+      local npcImage = npcButtonItem:getChildById('npcImage')
+      npcImage:setImageSpriteById(0x3, col.sprId)
+      --npcImage:setSpriteId(col.sprId)
+      npcButtonItem:setVisible(true)
+      npcImage:setVisible(true)
+      npcImage:setPhantom(true)
+    else
+      col.sprId = 0
     end
     table.insert(self.columns[rowId], col)
   end
@@ -351,6 +374,16 @@ function UITable:setTableData(tableData)
   self.dataSpace:applyStyle({ height = self:getHeight()-headerHeight-self:getMarginTop() })
 end
 
+function UITable:setCellData(rowId, colId, data)
+  local row = self.columns[rowId]
+  row[colId]:setText(tostring(data))
+end
+
+function UITable:getCellData(rowId, colId)
+  local row = self.columns[rowId]
+  return row[colId]:getText()
+end
+
 function UITable:setRowStyle(style, dontUpdate)
   self.rowBaseStyle = style
 
@@ -361,13 +394,19 @@ function UITable:setRowStyle(style, dontUpdate)
   end
 end
 
-function UITable:setColumnStyle(style, dontUpdate)
-  self.columBaseStyle = style
+function UITable:setColumnStyle(style, dontUpdate, colId)
+  if colId then
+    self.columBaseStyle[colId] = style  
+  end
 
   if not dontUpdate then
     for _, columns in pairs(self.columns) do
       for _, col in pairs(columns) do
-        col:setStyle(style)
+        if self.columBaseStyle[colId] then
+          col:setStyle(self.columBaseStyle[colId])
+        else
+          col:setStyle('NpcTableColumn')
+        end
       end
     end
   end

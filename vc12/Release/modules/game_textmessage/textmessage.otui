@@ -8,22 +8,22 @@ TextMessageLabel < UILabel
 
 Panel
   id: textMsgPanel
-  anchors.top: gameLeftPanel.top
-  anchors.left: gameLeftPanel.right
-  anchors.right: gameRightPanel.left
-  anchors.bottom: gameBottomPanel.top
+  anchors.top: gameMapPanel.top
+  anchors.left: gameMapPanel.left
+  anchors.right: gameMapPanel.right
+  anchors.bottom: gameMapPanel.bottom
   border: 0 #12121212
   focusable: false
 
   TextMessageLabel
     id: middleCenterLabel
+    font: styled-16px
     anchors.left: parent.left
     anchors.top: parent.top
     anchors.right: parent.right
     margin-top: 150
-    margin-left: 150
-    margin-right: 150
-    border: 0 #12121212
+    margin-left: 20
+    margin-right: 20
     backgroundColor: #12121223
 
   TextMessageLabel

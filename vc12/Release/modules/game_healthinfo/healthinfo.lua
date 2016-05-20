@@ -17,77 +17,75 @@ Icons[PlayerStates.Pz] = { tooltip = tr('You are within a protection zone'), pat
 Icons[PlayerStates.Bleeding] = { tooltip = tr('You are bleeding'), path = '/images/game/states/bleeding', id = 'condition_bleeding' }
 Icons[PlayerStates.Hungry] = { tooltip = tr('You are hungry'), path = '/images/game/states/hungry', id = 'condition_hungry' }
 
-healthInfoWindow = nil
-healthBar = nil
-manaBar = nil
-experienceBar = nil
-soulLabel = nil
-capLabel = nil
-playerMaxHealth = nil
-playerMaxMana = nil
+local healthInfoInterface = nil
+local healthBar = nil
+local manaBar = nil
+local experienceBar = nil
+local experienceBarPanel = nil
 
+local playerMaxHealth = 0
+local playerMaxMana = 0
+local healthLabelPanel = nil
+local manaLabelPanel = nil
 
-
-healthTooltip = 'health points é (current = %d).'
-manaTooltip = 'mana points (current = %d).'
-experienceTooltip = 'You have %d%% to advance to level %d.'
+local healthTooltip = 'Pontos de vida = %d.'
+local manaTooltip = 'Pontos de mana = %d.'
+local experienceTooltip = 'You have %d%% to advance to level %d.'
 
 function init()
-  connect(LocalPlayer, { onHealthChange = onHealthChange,
-                         onManaChange = onManaChange,
-                         onLevelChange = onLevelChange,
-                         onStatesChange = onStatesChange,
-                         onSkillChange = onSkillChange,
+   connect(LocalPlayer, { onHealthChange = onHealthChange,
+                          onManaChange = onManaChange,
+                          onLevelChange = onLevelChange,
+                          onStatesChange = onStatesChange,
+                          onSkillChange = onSkillChange,
                          })
-
-  connect(g_game, { onGameEnd = offline })
-
-  healthInfoButton = modules.client_topmenu.addRightGameToggleButton('healthInfoButton', tr('Informações do personagem'), '/images/topbuttons/healthinfo', toggle)
-  healthInfoButton:setOn(true)
-
-  playerMaxHealth = 0
-  playerMaxMana = 0
   
-  healthInfoWindow = g_ui.loadUI('healthinfo', modules.game_interface.getRightPanel())
-  healthInfoWindow:disableResize()
+  healthInfoInterface = g_ui.loadUI('healthinfo', modules.game_interface.getRightPanel())
   
-  local barsPanel = modules.game_interface.getBarsPanel()
-  healthBar = g_ui.createWidget('HealthBar',barsPanel)
-  manaBar = g_ui.createWidget('ManaBar',barsPanel)
- 
-  experienceBar = healthInfoWindow:recursiveGetChildById('experienceBar')
-  capLabel = healthInfoWindow:recursiveGetChildById('capLabel')
+  -- local barsPanel = modules.game_interface.getBarsPanel()
+  local healthBarPanel = modules.game_interface.getHealthBarPanel()
+  healthBar = g_ui.createWidget('HealthBar',healthBarPanel)
+  local manaBarPanel = modules.game_interface.getManaBarPanel()
+  manaBar = g_ui.createWidget('ManaBar',manaBarPanel)
+  local experienceBarPanel = modules.game_interface.getExperiencePanel()
+  experienceBar = g_ui.createWidget('ExperienceBar',experienceBarPanel)
 
-  -- load condition icons
-  for k,v in pairs(Icons) do
+   -- load condition icons
+   for k,v in pairs(Icons) do
     g_textures.preload(v.path)
-  end
+   end
 
   if g_game.isOnline() then
-    local localPlayer = g_game.getLocalPlayer()
-    onHealthChange(localPlayer, localPlayer:getHealth(), localPlayer:getMaxHealth())
-    onManaChange(localPlayer, localPlayer:getMana(), localPlayer:getMaxMana())
-    onLevelChange(localPlayer, localPlayer:getLevel(), localPlayer:getLevelPercent())
-    onStatesChange(localPlayer, localPlayer:getStates(), 0)
-  end
+     local localPlayer = g_game.getLocalPlayer()
+     onHealthChange(localPlayer, localPlayer:getHealth(), localPlayer:getMaxHealth())
+     onManaChange(localPlayer, localPlayer:getMana(), localPlayer:getMaxMana())
+     onLevelChange(localPlayer, localPlayer:getLevel(), localPlayer:getLevelPercent())
+     onStatesChange(localPlayer, localPlayer:getStates(), 0)
+   end
 
-  healthInfoWindow:setup()
+   
+   healthLabelPanel = modules.game_interface.getHealthLabelPanel()
+   manaLabelPanel = modules.game_interface.getManaLabelPanel()
+
 end
 
 function terminate()
-  disconnect(LocalPlayer, { onHealthChange = onHealthChange,
-                            onManaChange = onManaChange,
-                            onLevelChange = onLevelChange,
-                            onStatesChange = onStatesChange,
-                            onSkillChange = onSkillChange,
-                            })
+  disconnect(LocalPlayer, {   onHealthChange = onHealthChange,
+                              onManaChange = onManaChange,
+                              onLevelChange = onLevelChange,
+                              onStatesChange = onStatesChange,
+                              onSkillChange = onSkillChange,
+                             })
 
-  disconnect(g_game, { onGameEnd = offline })
-
-  healthInfoWindow:destroy()
-  healthInfoButton:destroy()
-  playerMaxHealth = nil
-  playerMaxMana = nil
+  healthBar:destroy()
+  manaBar:destroy()
+  experienceBar:destroy()
+  experienceBarPanel = nil
+  playerMaxHealth = 0
+  playerMaxMana = 0
+  healthLabelPanel:destroyChildren()
+  manaLabelPanel:destroyChildren()
+  healthInfoInterface = nil
 end
 
 function onSkillChange(localPlayer, id, skill, oldskill)
@@ -100,18 +98,8 @@ function onSkillChange(localPlayer, id, skill, oldskill)
   end
 end
 
-function toggle()
-  if healthInfoButton:isOn() then
-    healthInfoWindow:close()
-    healthInfoButton:setOn(false)
-  else
-    healthInfoWindow:open()
-    healthInfoButton:setOn(true)
-  end
-end
-
 function toggleIcon(bitChanged)
-  local content = healthInfoWindow:recursiveGetChildById('conditionPanel')
+  local content = modules.game_interface.getConditionPanel()
 
   local icon = content:getChildById(Icons[bitChanged].id)
   if icon then
@@ -130,43 +118,41 @@ function loadIcon(bitChanged)
   return icon
 end
 
-function offline()
-  healthInfoWindow:recursiveGetChildById('conditionPanel'):destroyChildren()
-end
-
 -- hooked events
 function onMiniWindowClose()
   healthInfoButton:setOn(false)
 end
 
 function onHealthChange(localPlayer, health, maxHealth)
-  healthBar:setText(health .. ' / ' .. playerMaxHealth)
   healthBar:setTooltip(tr(healthTooltip, health, playerMaxHealth))
   
- local percentage = health / playerMaxHealth
- percentage = percentage * 100
- local color = '#'
- if percentage>= 50 then
-		local redColor = 255.0 * (50-(percentage-50))/50.0
-    redColor = DEC_HEX(redColor)
-    color = color .. tostring(redColor) .. 'ff00'
-	else
-    local yellowColor = 255.0 * percentage / 50.0
-    yellowColor = DEC_HEX(yellowColor)
-    color = color .. 'ff' .. tostring(yellowColor) .. '00'
-  end
+  local percentage = health / playerMaxHealth
+  percentage = percentage * 100
+ -- local color = '#'
+ -- if percentage >= 50 then
+		-- local redColor = 255.0 * (50-(percentage-50))/50.0
+    -- redColor = DEC_HEX(redColor)
+    -- color = color .. tostring(redColor) .. 'ff00'
+	-- else
+    -- local yellowColor = 255.0 * percentage / 50.0
+    -- yellowColor = DEC_HEX(yellowColor)
+    -- color = color .. 'ff' .. tostring(yellowColor) .. '00'
+  -- end
   
-  healthBar:setValue(health, 0, playerMaxHealth, color)
+  healthBar:setValue(health, 0, playerMaxHealth)
+  
+  healthLabelPanel:setText(health .. '/' .. playerMaxHealth)
 end
 
 function onManaChange(localPlayer, mana, maxMana)
-  manaBar:setText(mana .. ' / ' .. playerMaxMana)
   manaBar:setTooltip(tr(manaTooltip, mana, playerMaxMana))
   manaBar:setValue(mana, 0, playerMaxMana)
+  
+  manaLabelPanel:setText(mana .. '/' .. playerMaxMana)  
 end
 
 function onLevelChange(localPlayer, value, percent)
-  experienceBar:setText(percent .. '%')
+  --experienceBar:setText(percent .. '%')
   experienceBar:setTooltip(tr(experienceTooltip, percent, value+1))
   experienceBar:setPercent(percent)
 end
@@ -183,20 +169,6 @@ function onStatesChange(localPlayer, now, old)
       toggleIcon(bitChanged)
     end
   end
-end
-
--- personalization functions
-function hideLabels()
-  local removeHeight = math.max(capLabel:getMarginRect().height, soulLabel:getMarginRect().height)
-  capLabel:setOn(false)
-  soulLabel:setOn(false)
-  healthInfoWindow:setHeight(math.max(healthInfoWindow.minimizedHeight, healthInfoWindow:getHeight() - removeHeight))
-end
-
-function hideExperience()
-  local removeHeight = experienceBar:getMarginRect().height
-  experienceBar:setOn(false)
-  healthInfoWindow:setHeight(math.max(healthInfoWindow.minimizedHeight, healthInfoWindow:getHeight() - removeHeight))
 end
 
 function setHealthTooltip(tooltip)

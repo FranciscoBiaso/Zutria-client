@@ -46,13 +46,13 @@ spells = {
 --[[ 2 ]] {"língua de fogo"        ,2, {1 * 32,1 * 32}, "bola de fogo"          },
 --[[ 3 ]] {"bola de fogo"          ,3, {2 * 32,1 * 32}, "nenhuma"               },
 --[[ 4 ]] {"onda sísmica"          ,2, {3 * 32,1 * 32}, "espiral fogosa"        },
---[[ 5 ]] {"explosão"              ,2, {4 * 32,1 * 32}, "bola de fogo"          },
+--[[ 5 ]] {"chuva de meteoros"     ,2, {4 * 32,1 * 32}, "bola de fogo"          },
 --[[ 6 ]] {"fogo vivo"             ,2, {5 * 32,1 * 32}, "runa de bolas de fogo" },
 --[[ 7 ]] {"descarga elétrica"     ,2, {0 * 32,2 * 32}, "teleporte de chamas"   },
 --[[ 8 ]] {"choque fulminante"     ,2, {1 * 32,2 * 32}, "espiral incendiária"   },
 --[[ 9 ]] {"onda elétrica"         ,2, {2 * 32,2 * 32}, "rajada fogosa"         },
 --[[ 10 ]]{"raio"                  ,2, {3 * 32,2 * 32}, "escudo infernal"       },
---[[ 11 ]]{"tornado mortal"        ,2, {4 * 32,2 * 32}, "escudo infernal"       },
+--[[ 11 ]]{"ciclone elétrico"      ,2, {4 * 32,2 * 32}, "escudo infernal"       },
 --[[ 12 ]]{"potência enérgica"     ,2, {5 * 32,2 * 32}, "escudo infernal"       },
 --[[ 13 ]]{"plasma"                ,2, {0 * 32,3 * 32}, "escudo infernal"       },
 --[[ 14 ]]{"onda tripla"           ,2, {1 * 32,3 * 32}, "escudo infernal"       },
@@ -64,7 +64,7 @@ spells = {
 --[[ 18 ]]{"cura vitalícia"        ,2, {2 * 32,6 * 32}, ""                      },
 --[[ 19 ]]{"veneno"                ,2, {0 * 32,7 * 32}, ""                      },
 --[[ 20 ]]{"folhagem tóxica"       ,2, {1 * 32,7 * 32}, ""                      },
---[[ 21 ]]{"barreira de planta"    ,2, {2 * 32,7 * 32}, ""                      },
+--[[ 21 ]]{"barreira de galhos"    ,2, {2 * 32,7 * 32}, ""                      },
 --[[ 22 ]]{"vínculo de vida"       ,2, {3 * 32,7 * 32}, ""                      },
 --[[ 23 ]]{"explosão de toxina"    ,2, {4 * 32,7 * 32}, ""                      },
 --[[ 24 ]]{"toxina mortal"         ,2, {5 * 32,7 * 32}, ""                      },
@@ -149,7 +149,7 @@ spells_description = {
                 " Criaturas atingidas recebem danos por queimadura baseado no ataque mágico do lançador." ..
                 " Os efeitos do fogo vivo são cumulativos." ..
                 " No nível 2, aumenta a área da magia."},
---[[ 7 ]] {1,14," Necessita de um alvo para ser lançada. A criatura atingida recebe um dano baseado" ..
+--[[ 7 ]] {2,14," Necessita de um alvo para ser lançada. A criatura atingida recebe um dano baseado" ..
                 " no ataque mágico do lançador. Perfura a defesa mágica em 3%. No nível 2, incrementa o dano da magia."},
 --[[ 8 ]] {1,20," Gera uma mini explosão de ondas elétricas. Criaturas atingidas recebem dano" ..
                 " baseado no ataque mágico do lançador. Perfura a defesa mágica em 6%. No nível 2, incrementa o dano da magia." },
@@ -243,8 +243,8 @@ wizard_spells = {
   {{2,1}, {1,4}, {2,3}, {1,5}, {2,13}, {1,4}, {2,7}, {1,5},  {2,12}}, 
   {{0,0}, {1,1}, {1,3}, {0,0}, {0,0},  {0,0}, {1,3},  {1,2},  {0,0}}, 
   {{2,5}, {0,0}, {2,2}, {1,5}, {2,14}, {1,4}, {2,9},  {0,0},  {2,8}}, 
-  {{1,3}, {0,0}, {1,3}, {0,0}, {0,0},  {0,0}, {1,3},  {0,0},  {1,3}},
-  {{2,6}, {0,0}, {2,4}, {1,5}, {2,15}, {1,4}, {2,11}, {0,0},  {2,10}},
+  {{1,3}, {0,0}, {1,3}, {0,0}, {1,3},  {0,0}, {1,3},  {0,0},  {1,3}},
+  {{2,6}, {0,0}, {2,4}, {0,0}, {2,15}, {0,0}, {2,11}, {0,0},  {2,10}},
 }
 
 druid_spells = {

@@ -33,10 +33,10 @@ void ShaderManager::init()
     if(!g_graphics.canUseShaders())
         return;
 
-    m_defaultItemShader = createFragmentShaderFromCode("Item", glslMainFragmentShader + glslTextureSrcFragmentShader);
-    setupItemShader(m_defaultItemShader);
+    //m_defaultItemShader = createFragmentShaderFromCode("Item", glslMainFragmentShader + glslTextureSrcFragmentShader);
+    //setupItemShader(m_defaultItemShader);
 
-    m_defaultMapShader = createFragmentShaderFromCode("Map", glslMainFragmentShader + glslTextureSrcFragmentShader);
+    m_defaultMapShader = createShader("DefaultMap", "shaders/default.vert","shaders/default.frag");
 
     PainterShaderProgram::release();
 }
@@ -48,7 +48,7 @@ void ShaderManager::terminate()
     m_shaders.clear();
 }
 
-PainterShaderProgramPtr ShaderManager::createShader(const std::string& name)
+PainterShaderProgramPtr ShaderManager::createShader(const std::string& name, std::string vertFile, std::string fragFile)
 {
     if(!g_graphics.canUseShaders()) {
         g_logger.error(stdext::format("unable to create shader '%s', shaders are not supported", name));
@@ -56,76 +56,78 @@ PainterShaderProgramPtr ShaderManager::createShader(const std::string& name)
     }
 
     PainterShaderProgramPtr shader(new PainterShaderProgram);
-    m_shaders[name] = shader;
-    return shader;
+	m_shaders[name] = shader;
+	if (!shader)
+		return nullptr;
+
+	vertFile = g_resources.guessFilePath(vertFile, "vert");
+
+	if (!shader->addShaderFromSourceFile(Shader::Vertex, vertFile))
+	{
+		g_logger.error(stdext::format("unable to load vertex shader '%s' from source file '%s'", name, vertFile));
+		return nullptr;
+	}
+	
+	fragFile = g_resources.guessFilePath(fragFile, "frag");
+
+	if (!shader->addShaderFromSourceFile(Shader::Fragment, fragFile)) {
+		g_logger.error(stdext::format("unable to load fragment shader '%s' from source file '%s'", name, fragFile));
+		return nullptr;
+	}
+
+	if (!shader->link()) {
+		g_logger.error(stdext::format("unable to link shader '%s' from file '%s'", name, vertFile + fragFile));
+		return nullptr;
+	}
+
+	m_shaders[name] = shader;
+
+	return shader;
 }
 
-PainterShaderProgramPtr ShaderManager::createFragmentShader(const std::string& name, std::string file)
-{
-    PainterShaderProgramPtr shader = createShader(name);
-    if(!shader)
-        return nullptr;
-
-    file = g_resources.guessFilePath(file, "frag");
-
-    shader->addShaderFromSourceCode(Shader::Vertex, glslMainWithTexCoordsVertexShader + glslPositionOnlyVertexShader);
-    if(!shader->addShaderFromSourceFile(Shader::Fragment, file)) {
-        g_logger.error(stdext::format("unable to load fragment shader '%s' from source file '%s'", name, file));
-        return nullptr;
-    }
-
-    if(!shader->link()) {
-        g_logger.error(stdext::format("unable to link shader '%s' from file '%s'", name, file));
-        return nullptr;
-    }
-
-    m_shaders[name] = shader;
-    return shader;
-}
-
-PainterShaderProgramPtr ShaderManager::createFragmentShaderFromCode(const std::string& name, const std::string& code)
-{
-    PainterShaderProgramPtr shader = createShader(name);
-    if(!shader)
-        return nullptr;
-
-    shader->addShaderFromSourceCode(Shader::Vertex, glslMainWithTexCoordsVertexShader + glslPositionOnlyVertexShader);
-    if(!shader->addShaderFromSourceCode(Shader::Fragment, code)) {
-        g_logger.error(stdext::format("unable to load fragment shader '%s'", name));
-        return nullptr;
-    }
-
-    if(!shader->link()) {
-        g_logger.error(stdext::format("unable to link shader '%s'", name));
-        return nullptr;
-    }
-
-    m_shaders[name] = shader;
-    return shader;
-}
-
-PainterShaderProgramPtr ShaderManager::createItemShader(const std::string& name, const std::string& file)
-{
-    PainterShaderProgramPtr shader = createFragmentShader(name, file);
-    if(shader)
-        setupItemShader(shader);
-    return shader;
-}
-
-PainterShaderProgramPtr ShaderManager::createMapShader(const std::string& name, const std::string& file)
-{
-    PainterShaderProgramPtr shader = createFragmentShader(name, file);
-    if(shader)
-        setupMapShader(shader);
-    return shader;
-}
-
-void ShaderManager::setupItemShader(const PainterShaderProgramPtr& shader)
-{
-    if(!shader)
-        return;
-    shader->bindUniformLocation(ITEM_ID_UNIFORM, "u_ItemId");
-}
+//paintershaderprogramptr shadermanager::createfragmentshaderfromcode(const std::string& name, const std::string& code)
+//{
+//    paintershaderprogramptr shader = createshader(name);
+//    if(!shader)
+//        return nullptr;
+//
+//    shader->addshaderfromsourcecode(shader::vertex, glslmainwithtexcoordsvertexshader + glslpositiononlyvertexshader);
+//    if(!shader->addshaderfromsourcecode(shader::fragment, code)) {
+//        g_logger.error(stdext::format("unable to load fragment shader '%s'", name));
+//        return nullptr;
+//    }
+//
+//    if(!shader->link()) {
+//        g_logger.error(stdext::format("unable to link shader '%s'", name));
+//        return nullptr;
+//    }
+//
+//    m_shaders[name] = shader;
+//    return shader;
+//}
+//
+//PainterShaderProgramPtr ShaderManager::createItemShader(const std::string& name, const std::string& file)
+//{
+//    PainterShaderProgramPtr shader = createFragmentShader(name, file);
+//    if(shader)
+//        setupItemShader(shader);
+//    return shader;
+//}
+//
+//PainterShaderProgramPtr ShaderManager::createMapShader(const std::string& name, const std::string& file)
+//{
+//    PainterShaderProgramPtr shader = createFragmentShader(name, file);
+//    if(shader)
+//        setupMapShader(shader);
+//    return shader;
+//}
+//
+//void ShaderManager::setupItemShader(const PainterShaderProgramPtr& shader)
+//{
+//    if(!shader)
+//        return;
+//    shader->bindUniformLocation(ITEM_ID_UNIFORM, "u_ItemId");
+//}
 
 void ShaderManager::setupMapShader(const PainterShaderProgramPtr& shader)
 {
@@ -143,4 +145,5 @@ PainterShaderProgramPtr ShaderManager::getShader(const std::string& name)
         return it->second;
     return nullptr;
 }
+
 

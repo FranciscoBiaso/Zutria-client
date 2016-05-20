@@ -303,7 +303,8 @@ void Application::registerLuaFunctions()
     g_lua.bindSingletonFunction("g_mouse", "pushCursor", &Mouse::pushCursor, &g_mouse);
     g_lua.bindSingletonFunction("g_mouse", "popCursor", &Mouse::popCursor, &g_mouse);
     g_lua.bindSingletonFunction("g_mouse", "isCursorChanged", &Mouse::isCursorChanged, &g_mouse);
-    g_lua.bindSingletonFunction("g_mouse", "isPressed", &Mouse::isPressed, &g_mouse);
+	g_lua.bindSingletonFunction("g_mouse", "isPressed", &Mouse::isPressed, &g_mouse);
+	g_lua.bindSingletonFunction("g_mouse", "getTopCursorId", &Mouse::getTopCursorId, &g_mouse);
 
     // Graphics
     g_lua.registerSingletonClass("g_graphics");

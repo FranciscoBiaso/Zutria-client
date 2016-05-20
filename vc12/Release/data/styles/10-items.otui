@@ -1,10 +1,12 @@
 Item < UIItem
   size: 34 34
   padding: 1
+  margin-right: 3
+  margin-bottom: 3
   image-source: /images/ui/item
   font: verdana-11px-rounded
   border-color: white
   color: white
 
   $disabled:
-    color: #646464
+    color: #454545

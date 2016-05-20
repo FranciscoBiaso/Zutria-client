@@ -60,8 +60,8 @@ public:
     void drawBoundingRect(const Rect& dest, int innerLineWidth);
 
     void setMatrixMode(MatrixMode matrixMode);
-    void setTransformMatrix(const Matrix3& projectionMatrix);
-    void setProjectionMatrix(const Matrix3& projectionMatrix);
+    void setTransformMatrix(const Matrix4& projectionMatrix);
+    void setProjectionMatrix(const Matrix4& projectionMatrix);
     void setTextureMatrix(const Matrix3& textureMatrix);
     void setColor(const Color& color);
     void setOpacity(float opacity);

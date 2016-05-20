@@ -1,13 +1,13 @@
 messagesPanel = nil
 local bit = require("bit")
-
+local topMenu = nil
 function init()
   for msgName, msgMode in pairs(MessageModes) do
     if msgMode ~= MessageModes.MSG_LOOK then
       registerMessageMode(msgMode, displayMessage)
     end
   end
-  
+  topMenu = modules.client_topmenu.getTopMenu()
   connect(g_game, 'onGameEnd', clearMessages)
   messagesPanel = g_ui.loadUI('textmessage', modules.game_interface.getRootPanel())
 end
@@ -22,6 +22,7 @@ function terminate()
   disconnect(g_game, 'onGameEnd', clearMessages)
   clearMessages()
   messagesPanel:destroy()
+  topMenu = nil
 end
 
 function calculateVisibleTime(text)
@@ -29,6 +30,7 @@ function calculateVisibleTime(text)
 end
 
 function displayMessage(targetGui, mode, color, text)
+
   if not g_game.isOnline() then return end
   
   labelBottomMap = nil
@@ -44,9 +46,12 @@ function displayMessage(targetGui, mode, color, text)
   
   if bit.band(targetGui, MessageGUITarget.MSG_TARGET_BOTTOM_CENTER_MAP)
      == MessageGUITarget.MSG_TARGET_BOTTOM_CENTER_MAP then
-    labelBottomMap = messagesPanel:recursiveGetChildById('bottomLabel')
-    labelBottomMap:setColor(msg_color)
-    displayMessageLabel(labelBottomMap, text)
+    --labelBottomMap = messagesPanel:recursiveGetChildById('bottomLabel')
+    --labelBottomMap:setColor(msg_color)
+    --displayMessageLabel(labelBottomMap, text)    
+    topMenu:setText(text)
+    topMenu:setColor(msg_color)
+    scheduleEvent(function()  topMenu:setText('') end, calculateVisibleTime(text))
   end
   
   if bit.band(targetGui, MessageGUITarget.MSG_TARGET_TOP_CENTER_MAP)

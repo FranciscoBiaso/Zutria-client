@@ -100,12 +100,13 @@ void PainterOGL::restoreSavedState()
     setShaderProgram(m_olderStates[m_oldStateIndex].shaderProgram);
     setTexture(m_olderStates[m_oldStateIndex].texture);
     setAlphaWriting(m_olderStates[m_oldStateIndex].alphaWriting);
+	
 }
 
 void PainterOGL::clear(const Color& color)
 {
     glClearColor(color.rF(), color.gF(), color.bF(), color.aF());
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void PainterOGL::clearRect(const Color& color, const Rect& rect)
@@ -113,7 +114,7 @@ void PainterOGL::clearRect(const Color& color, const Rect& rect)
     Rect oldClipRect = m_clipRect;
     setClipRect(rect);
     glClearColor(color.rF(), color.gF(), color.bF(), color.aF());
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     setClipRect(oldClipRect);
 }
 
@@ -182,13 +183,14 @@ void PainterOGL::setResolution(const Size& resolution)
     //                                    Projection Matrix
     //   Painter Coord     ------------------------------------------------        GL Coord
     //   -------------     | 2.0 / width  |      0.0      |      0.0      |     ---------------
-    //   |  x  y  1  |  *  |     0.0      | -2.0 / height |      0.0      |  =  |  x'  y'  1  |
+    //   |  x  y  z  |  *  |     0.0      | -2.0 / height |      0.0      |  =  |  x'  y'  z'  |
     //   -------------     |    -1.0      |      1.0      |      1.0      |     ---------------
-
-    Matrix3 projectionMatrix = { 2.0f/resolution.width(),  0.0f,                      0.0f,
-                                 0.0f,                    -2.0f/resolution.height(),  0.0f,
-                                -1.0f,                     1.0f,                      1.0f };
-
+	 
+    Matrix4 projectionMatrix = { 2.0f/resolution.width(),     0.0f,                        0.0f,    0.0f,   
+                                 0.0f,                        -2.0f/resolution.height(),   0.0f,    0.0f,
+                                 0.0f,                        0.0f,                       -1.0f,    0.0f,
+							    -1.0f,                        1.0f,                        0.0f,    1.0f };
+	// we don't need transpose this matrix it is already in the format.
     m_resolution = resolution;
 
     setProjectionMatrix(projectionMatrix);
@@ -196,23 +198,26 @@ void PainterOGL::setResolution(const Size& resolution)
         updateGlViewport();
 }
 
-void PainterOGL::scale(float x, float y)
+
+void PainterOGL::scale(float x, float y, float z)
 {
-    Matrix3 scaleMatrix = {
-           x,  0.0f,  0.0f,
-        0.0f,     y,  0.0f,
-        0.0f,  0.0f,  1.0f
+    Matrix4 scaleMatrix = {
+           x,  0.0f,  0.0f, 0.0f, 
+        0.0f,     y,  0.0f, 0.0f,
+        0.0f,  0.0f,  z,    0.0f,
+		0.0f,  0.0f,  0.0f, 1.0f
     };
 
     setTransformMatrix(m_transformMatrix * scaleMatrix.transposed());
 }
 
-void PainterOGL::translate(float x, float y)
+void PainterOGL::translate(float x, float y, float z)
 {
-    Matrix3 translateMatrix = {
-        1.0f,  0.0f,     x,
-        0.0f,  1.0f,     y,
-        0.0f,  0.0f,  1.0f
+    Matrix4 translateMatrix = {
+        1.0f,  0.0f,     0.0f, x,
+        0.0f,  1.0f,     0.0f, y,
+        0.0f,  0.0f,     1.0f, z,
+		0.0f,  0.0f,     0.0f, 1.0f
     };
 
     setTransformMatrix(m_transformMatrix * translateMatrix.transposed());
@@ -220,10 +225,11 @@ void PainterOGL::translate(float x, float y)
 
 void PainterOGL::rotate(float angle)
 {
-    Matrix3 rotationMatrix = {
-        std::cos(angle), -std::sin(angle),  0.0f,
-        std::sin(angle),  std::cos(angle),  0.0f,
-                   0.0f,             0.0f,  1.0f
+    Matrix4 rotationMatrix = {
+        std::cos(angle), -std::sin(angle),  0.0f, 0.0f,
+        std::sin(angle),  std::cos(angle),  0.0f, 0.0f,
+                   0.0f,             0.0f,  1.0f, 0.0f,
+				   0.0f,             0.0f,  0.0f, 1.0f,
     };
 
     setTransformMatrix(m_transformMatrix * rotationMatrix.transposed());

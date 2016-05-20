@@ -44,6 +44,17 @@ currentMessageIndex = 0
 ignoreNpcMessages = false
 defaultTab = nil
 ignoredChannels = {}
+intervalTimeBetweenMsgs = 0
+statTalkingTime = 0
+
+
+local breathReductionCount = 1.2
+local breathRegenerationCount = 5
+local breathRegenerationTimeStep = 500
+local maxBreath = 200 -- seconds of breath
+local currentBreath = maxBreath
+local regenerating = false
+local breathBar = nil
 
 local communicationSettings = {
   useIgnoreList = true,
@@ -66,6 +77,10 @@ function init()
     onGameStart = online,
     onGameEnd = offline
   })
+  
+  connect( LocalPlayer,{
+    onBreathChange = onBreathChange,
+    })
 
   consolePanel = g_ui.loadUI('console', modules.game_interface.getBottomPanel())
   consoleTextEdit = consolePanel:getChildById('consoleTextEdit')
@@ -74,6 +89,10 @@ function init()
   consoleTabBar:setContentWidget(consoleContentPanel)
   channels = {}
 
+  local breathPanel = modules.game_interface.getBreathBarPanel()
+  breathBar = g_ui.createWidget('BreathBar',breathPanel)
+  breathBar:setValue(currentBreath,0,maxBreath)
+  
   consolePanel.onKeyPress = function(self, keyCode, keyboardModifiers)
     if not (keyboardModifiers == KeyboardCtrlModifier and keyCode == KeyC) then return false end
 
@@ -92,7 +111,7 @@ function init()
   g_keyboard.bindKeyPress('Tab', function() consoleTabBar:selectNextTab() end, consolePanel)
   g_keyboard.bindKeyPress('Shift+Tab', function() consoleTabBar:selectPrevTab() end, consolePanel)
   g_keyboard.bindKeyDown('Enter', sendCurrentMessage, consolePanel)
-  g_keyboard.bindKeyPress('Ctrl+A', function() consoleTextEdit:clearText() end, consolePanel)
+  g_keyboard.bindKeyPress('Ctrl+X', function() consoleTextEdit:clearText() end, consolePanel)
 
   -- apply buttom functions after loaded
   consoleTabBar:setNavigation(consolePanel:getChildById('prevChannelButton'), consolePanel:getChildById('nextChannelButton'))
@@ -106,7 +125,7 @@ function init()
   load()
 
   if g_game.isOnline() then
-    online()
+     online()     
   end
 end
 
@@ -203,6 +222,10 @@ function terminate()
     onGameStart = online,
     onGameEnd = offline
   })
+  
+  disconnect( LocalPlayer,{
+    onBreathChange = onBreathChange,
+    })
 
   if g_game.isOnline() then clear() end
 
@@ -219,7 +242,8 @@ function terminate()
   if communicationWindow then
     communicationWindow:destroy()
   end
-
+  
+  breathBar:destroy()
   consoleTabBar = nil
   consoleContentPanel = nil
   consoleToggleChat = nil
@@ -600,8 +624,10 @@ function processMessageMenu(mousePos, mouseButton, creatureName, text, label, ta
   end
 end
 
-function sendCurrentMessage()
+function sendCurrentMessage()  
   local message = consoleTextEdit:getText()
+  if currentBreath < breathReductionCount * #message then return end
+
   if #message == 0 then return end
   consoleTextEdit:clearText()
 
@@ -679,7 +705,66 @@ function calculateVisibleTime(text)
   return math.max(#text * 100, 3000)
 end
 
+function breathRegeneration(cuBreath)
+  if cuBreath < maxBreath then  
+      regenerating = true
+      if cuBreath >= 0.8 * maxBreath then
+        cuBreath = cuBreath + breathRegenerationCount - breathRegenerationCount * 0.4
+      elseif cuBreath >= 0.6 * maxBreath then
+        cuBreath = cuBreath + breathRegenerationCount - breathRegenerationCount * 0.5
+      elseif cuBreath >= 0.4 * maxBreath then
+        cuBreath = cuBreath + breathRegenerationCount - breathRegenerationCount * 0.6
+      elseif cuBreath >= 0.2 * maxBreath then
+        cuBreath = cuBreath + breathRegenerationCount - breathRegenerationCount * 0.7
+      elseif cuBreath >= 0 * maxBreath then
+         cuBreath = cuBreath + breathRegenerationCount - breathRegenerationCount * 0.8
+      end
+      currentBreath = cuBreath
+      breathBar:setValue(currentBreath,0,maxBreath)
+      scheduleEvent(function() breathRegeneration(currentBreath) end, breathRegenerationTimeStep)
+  else
+    cuBreath = maxBreath
+    regenerating = false
+  end
+end
+
+function breathReduction(messageCount)
+  if currentBreath > 0 then  
+    currentBreath = currentBreath - breathReductionCount * messageCount
+  end  
+  
+  if currentBreath <= 0 then
+    currentBreath = 1
+    return 
+  end
+  
+  breathBar:setValue(currentBreath,0,maxBreath)
+end
+
 function onTalk(name, level, mode, message, channelId, creaturePos)
+  intervalTimeBetweenMsgs = os.clock() - statTalkingTime
+  statTalkingTime = os.clock()
+  
+  if intervalTimeBetweenMsgs < 0.2 then -- 200 mil seconds
+    breathReduction(#message * 20.0) -- + 300% factor  
+  elseif intervalTimeBetweenMsgs < 0.4 then -- 400 mil seconds
+    breathReduction(#message * 18.0) -- + 250% factor  
+  elseif intervalTimeBetweenMsgs < 0.6 then -- 600 mil seconds
+    breathReduction(#message * 15.0) -- + 200% factor  
+  elseif intervalTimeBetweenMsgs < 1.0 then
+    breathReduction(#message * 12.0) -- + 100% factor  
+  elseif intervalTimeBetweenMsgs < 2.0 then
+    breathReduction(#message * 6.0) -- + 100% factor  
+  elseif intervalTimeBetweenMsgs < 3.0 then
+    breathReduction(#message * 4.0) -- + 100% factor  
+  else
+   breathReduction(#message * 1.0) -- + 100% factor 
+  end
+  
+  if regenerating == false then
+    scheduleEvent(function() if g_game.isOnline() then breathRegeneration(currentBreath) end end, breathRegenerationTimeStep)
+  end  
+  
   if mode == MessageModes.MSG_BROADCAST then
     modules.game_textmessage.displayBroadcastMessage(name .. ': ' .. message)
     return
@@ -705,7 +790,7 @@ function onTalk(name, level, mode, message, channelId, creaturePos)
       mode == MessageModes.MSG_PLAYER_YELL) and creaturePos then
     local staticText = StaticText.create()
     local staticMessage = message    
-    staticText:setFont('styled-16px')
+    staticText:setFont('verdana-11px-rounded')
     staticText:setColor('#FFFFFF')
     staticText:addMessage(name, mode, staticMessage)
     -- local animatedText = AnimatedText.create()
@@ -718,11 +803,11 @@ function onTalk(name, level, mode, message, channelId, creaturePos)
     local channel = 'Padrão'
     -- i am talking, so lets talk white text
   local composedMessage = applyMessagePrefixies(name, level, message)
-    if name == localPlayer:getName() then
-      addText(composedMessage, '#ff8800', channel, name)  
-    else -- near player is talking, so lets see 
-      addText(composedMessage, '#ffffff', channel, name)  
-    end    
+    --if name == localPlayer:getName() then -- my msg i see blue
+      addText(composedMessage, '#A0A0A0', channel, name)  
+   -- else -- near player is talking, so lets see  white
+      --addText(composedMessage, '#808080', channel, name)  
+    --end    
   elseif (mode == MessageModes.MSG_MONSTER_TALK or 
          mode == MessageModes.MSG_MONSTER_YELL) and creaturePos then
     local animatedText = AnimatedText.create()
@@ -1063,8 +1148,18 @@ function online()
 end
 
 function offline()
-  if g_game.getClientVersion() < 862 then
-    --g_keyboard.unbindKeyDown('Ctrl+R')
-  end
   clear()
+  
+  if currentBreath < maxBreath then
+    g_game.sendBreath(currentBreath)
+  end
 end
+
+function onBreathChange(localPlayer, breath)
+  currentBreath = breath
+  if currentBreath < maxBreath and regenerating == false then
+    regenerating = true
+    scheduleEvent(function() breathRegeneration(currentBreath) end, 0)
+  end
+end
+

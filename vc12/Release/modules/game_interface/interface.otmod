@@ -33,5 +33,7 @@ Module
     - game_modaldialog
     - game_unjustifiedpoints
     - game_look
+    - game_npc
+    - game_shaders
   @onLoad: init()
   @onUnload: terminate()

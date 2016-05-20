@@ -1,0 +1,91 @@
+﻿uploading files
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   src/client/game.cpp
+#	modified:   src/client/game.h
+#	modified:   src/client/luafunctions.cpp
+#	modified:   src/client/map.cpp
+#	modified:   src/client/protocolcodes.h
+#	modified:   src/client/protocolgame.h
+#	modified:   src/client/protocolgamesend.cpp
+#	modified:   vc12/Release/data/images/game/spells/spells.png
+#	modified:   vc12/Release/data/images/ui/arrow_horizontal.png
+#	modified:   vc12/Release/data/images/ui/arrow_vertical.png
+#	modified:   vc12/Release/data/images/ui/button.png
+#	modified:   vc12/Release/data/images/ui/button_popupmenu.png
+#	modified:   vc12/Release/data/images/ui/button_rounded.png
+#	modified:   vc12/Release/data/images/ui/button_square.png
+#	modified:   vc12/Release/data/images/ui/button_top.png
+#	modified:   vc12/Release/data/images/ui/checkbox.png
+#	modified:   vc12/Release/data/images/ui/combobox.png
+#	modified:   vc12/Release/data/images/ui/combobox_rounded.png
+#	modified:   vc12/Release/data/images/ui/combobox_square.png
+#	modified:   vc12/Release/data/images/ui/icon_add.png
+#	modified:   vc12/Release/data/images/ui/item.png
+#	modified:   vc12/Release/data/images/ui/menubox.png
+#	modified:   vc12/Release/data/images/ui/miniwindow.png
+#	modified:   vc12/Release/data/images/ui/miniwindow_buttons.png
+#	modified:   vc12/Release/data/images/ui/panel_bottom.png
+#	modified:   vc12/Release/data/images/ui/panel_container.png
+#	modified:   vc12/Release/data/images/ui/panel_content.png
+#	modified:   vc12/Release/data/images/ui/panel_flat.png
+#	modified:   vc12/Release/data/images/ui/panel_lightflat.png
+#	modified:   vc12/Release/data/images/ui/panel_map.png
+#	modified:   vc12/Release/data/images/ui/panel_side.png
+#	modified:   vc12/Release/data/images/ui/panel_top.png
+#	modified:   vc12/Release/data/images/ui/scrollbar.png
+#	modified:   vc12/Release/data/images/ui/separator_horizontal.png
+#	modified:   vc12/Release/data/images/ui/separator_vertical.png
+#	modified:   vc12/Release/data/images/ui/spinbox.png
+#	modified:   vc12/Release/data/images/ui/spinbox_down.png
+#	modified:   vc12/Release/data/images/ui/spinbox_up.png
+#	modified:   vc12/Release/data/images/ui/tabbutton_rounded.png
+#	modified:   vc12/Release/data/images/ui/tabbutton_square.png
+#	modified:   vc12/Release/data/images/ui/textedit.png
+#	modified:   vc12/Release/data/images/ui/window.png
+#	modified:   vc12/Release/data/images/ui/window_headless.png
+#	modified:   vc12/Release/data/styles/10-buttons.otui
+#	modified:   vc12/Release/data/styles/10-checkboxes.otui
+#	modified:   vc12/Release/data/styles/10-comboboxes.otui
+#	modified:   vc12/Release/data/styles/10-creaturebuttons.otui
+#	modified:   vc12/Release/data/styles/10-creatures.otui
+#	modified:   vc12/Release/data/styles/10-items.otui
+#	modified:   vc12/Release/data/styles/10-labels.otui
+#	modified:   vc12/Release/data/styles/10-listboxes.otui
+#	modified:   vc12/Release/data/styles/10-progressbars.otui
+#	modified:   vc12/Release/data/styles/10-scrollbars.otui
+#	modified:   vc12/Release/data/styles/10-separators.otui
+#	modified:   vc12/Release/data/styles/10-textedits.otui
+#	modified:   vc12/Release/data/styles/10-windows.otui
+#	modified:   vc12/Release/data/styles/20-popupmenus.otui
+#	modified:   vc12/Release/data/styles/20-spinboxes.otui
+#	modified:   vc12/Release/data/styles/20-tabbars.otui
+#	modified:   vc12/Release/data/styles/20-tables.otui
+#	modified:   vc12/Release/data/styles/20-topmenu.otui
+#	modified:   vc12/Release/modules/corelib/ui/uiprogressbar.lua
+#	modified:   vc12/Release/modules/corelib/ui/uispellbutton.lua
+#	modified:   vc12/Release/modules/corelib/util.lua
+#	modified:   vc12/Release/modules/game_console/console.otui
+#	modified:   vc12/Release/modules/game_healthinfo/healthinfo.lua
+#	modified:   vc12/Release/modules/game_healthinfo/healthinfo.otui
+#	modified:   vc12/Release/modules/game_hotkeys/hotkeys_manager.lua
+#	modified:   vc12/Release/modules/game_interface/gameinterface.lua
+#	modified:   vc12/Release/modules/game_interface/gameinterface.otui
+#	modified:   vc12/Release/modules/game_interface/widgets/uigamemap.lua
+#	modified:   vc12/Release/modules/game_inventory/inventory.lua
+#	modified:   vc12/Release/modules/game_spells/spells.lua
+#	modified:   vc12/Release/modules/game_textmessage/textmessage.otui
+#	modified:   vc12/Release/modules/game_treespells/spellsinfo.lua
+#	modified:   vc12/Release/modules/game_treespells/treespells.lua
+#	modified:   vc12/Release/modules/game_treespells/treespells.otui
+#	modified:   vc12/Release/zutria.exe
+#	modified:   vc12/otclient.v12.suo
+#
+# Untracked files:
+#	vc12/Release/data/styles older/
+#
+

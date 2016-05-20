@@ -88,6 +88,13 @@ void Graphics::init()
 
     // blending is always enabled
     glEnable(GL_BLEND);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);				// Black Background
+	glClearDepth(1.0f);									// Depth Buffer Setup
+	glEnable(GL_DEPTH_TEST);							// Enables Depth Testing
+	glDepthFunc(GL_LEQUAL);								// The Type Of Depth Testing To Do
+	//glDepthMask(GL_TRUE);
+	//glDepthFunc(GL_LEQUAL);
+	//glDepthRange(0.0f, 1.0f);
 
     // determine max texture size
     int maxTextureSize = 0;

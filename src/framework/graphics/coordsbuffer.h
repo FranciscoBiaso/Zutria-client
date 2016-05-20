@@ -37,7 +37,7 @@ public:
 
     void clear() {
         m_textureCoordArray.clear();
-        m_vertexArray.clear();
+		m_vertexArray.clear();
         m_hardwareCached = false;
     }
 
@@ -45,6 +45,7 @@ public:
         m_vertexArray.addTriangle(a, b, c);
         m_hardwareCached = false;
     }
+
     void addRect(const Rect& dest) {
         m_vertexArray.addRect(dest);
         m_hardwareCached = false;
@@ -72,8 +73,8 @@ public:
     void updateCaches();
     bool isHardwareCached() { return m_hardwareCached; }
 
-    float *getVertexArray() { return m_vertexArray.vertices(); }
-    float *getTextureCoordArray() { return m_textureCoordArray.vertices(); }
+    const float *getVertexArray() { return m_vertexArray.vertices(); }
+    const float *getTextureCoordArray() { return m_textureCoordArray.vertices(); }
     int getVertexCount() { return m_vertexArray.vertexCount(); }
     int getTextureCoordCount() { return m_textureCoordArray.vertexCount(); }
 
@@ -84,8 +85,8 @@ private:
     HardwareBuffer *m_hardwareVertexArray;
     HardwareBuffer *m_hardwareTextureCoordArray;
     HardwareBuffer::UsagePattern m_hardwareCacheMode;
-    VertexArray m_vertexArray;
-    VertexArray m_textureCoordArray;
+	VertexArray3 m_vertexArray;
+	VertexArray2 m_textureCoordArray;
     bool m_hardwareCached;
     bool m_hardwareCaching;
 };

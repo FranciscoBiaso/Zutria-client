@@ -372,6 +372,12 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
 			case Proto::GameServerPlayerSpell:
 				parsePlayerSpellLearned(msg);
 				break;
+			case Proto::GameServerPlayerBreath:
+				parsePlayerBreath(msg);
+				break;
+			case Proto::GameServerPlayerNpcWindow:
+				parsePlayerNpcWindow(msg);
+				break;
             default:
                 stdext::throw_exception(stdext::format("unhandled opcode %d", (int)opcode));
                 break;
@@ -1237,6 +1243,30 @@ void ProtocolGame::parsePlayerSpellLearned(const InputMessagePtr& msg)
 	m_localPlayer->setSpell(std::make_tuple(spellId, spellLevel));
 }
 
+
+void ProtocolGame::parsePlayerBreath(const InputMessagePtr& msg)
+{
+	uint8 breath = msg->getU8();
+	m_localPlayer->setBreath(breath);
+}
+
+
+void ProtocolGame::parsePlayerNpcWindow(const InputMessagePtr& msg)
+{
+	uint16 windowId = msg->getU16();
+
+	switch (windowId)
+	{
+		case 1: //open npc window
+			m_localPlayer->openNpcWindow(windowId);
+		break;
+
+
+		default:
+		break;
+	}
+}
+
 void ProtocolGame::parsePlayerCancelAttack(const InputMessagePtr& msg)
 {
     uint seq = 0;
@@ -1468,41 +1498,41 @@ void ProtocolGame::parseOpenOutfitWindow(const InputMessagePtr& msg)
 
 	g_game.changeOutfit(currentOutfit);
 
-    //if(!g_game.getFeature(Otc::GameNewOutfitProtocol)) {
-    //    int outfitCount = msg->getU8();
-    //    for(int i = 0; i < outfitCount; i++) {
-    //        int outfitId = msg->getU16();
-    //        std::string outfitName = msg->getString();
-    //        int outfitAddons = msg->getU8();
+    if(!g_game.getFeature(Otc::GameNewOutfitProtocol)) {
+        int outfitCount = msg->getU8();
+        for(int i = 0; i < outfitCount; i++) {
+            int outfitId = msg->getU16();
+            std::string outfitName = msg->getString();
+            int outfitAddons = msg->getU8();
 
-    //        outfitList.push_back(std::make_tuple(outfitId, outfitName, outfitAddons));
-    //    }
-    //} else {
-    //    int outfitStart, outfitEnd;
-    //   /* if(g_game.getFeature(Otc::GameLooktypeU16)) {
-    //        outfitStart = msg->getU16();
-    //        outfitEnd = msg->getU16();
-    //    } else {*/
-    //        outfitStart = msg->getU8();
-    //        outfitEnd = msg->getU8();
-    //    //}
+            outfitList.push_back(std::make_tuple(outfitId, outfitName, outfitAddons));
+        }
+    } else {
+        int outfitStart, outfitEnd;
+       /* if(g_game.getFeature(Otc::GameLooktypeU16)) {
+            outfitStart = msg->getU16();
+            outfitEnd = msg->getU16();
+        } else {*/
+            outfitStart = msg->getU8();
+            outfitEnd = msg->getU8();
+        //}
 
-    //    for(int i = outfitStart; i <= outfitEnd; i++)
-    //        outfitList.push_back(std::make_tuple(i, "", 1));
-    //}
+        for(int i = outfitStart; i <= outfitEnd; i++)
+            outfitList.push_back(std::make_tuple(i, "", 1));
+    }
 
-    //std::vector<std::tuple<int, std::string> > mountList;
-    //if(g_game.getFeature(Otc::GamePlayerMounts)) {
-    //    int mountCount = msg->getU8();
-    //    for(int i = 0; i < mountCount; ++i) {
-    //        int mountId = msg->getU16(); // mount type
-    //        std::string mountName = msg->getString(); // mount name
+    std::vector<std::tuple<int, std::string> > mountList;
+    if(g_game.getFeature(Otc::GamePlayerMounts)) {
+        int mountCount = msg->getU8();
+        for(int i = 0; i < mountCount; ++i) {
+            int mountId = msg->getU16(); // mount type
+            std::string mountName = msg->getString(); // mount name
 
-    //        mountList.push_back(std::make_tuple(mountId, mountName));
-    //    }
-    //}
+            mountList.push_back(std::make_tuple(mountId, mountName));
+        }
+    }
 
-    //g_game.processOpenOutfitWindow(currentOutfit, outfitList, mountList);
+    g_game.processOpenOutfitWindow(currentOutfit, outfitList, mountList);
 }
 
 void ProtocolGame::parseVipAdd(const InputMessagePtr& msg)

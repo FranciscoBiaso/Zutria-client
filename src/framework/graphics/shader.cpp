@@ -54,18 +54,18 @@ Shader::~Shader()
 bool Shader::compileSourceCode(const std::string& sourceCode)
 {
 #ifndef OPENGL_ES
-    static const char *qualifierDefines =
-        "#define lowp\n"
-        "#define mediump\n"
-        "#define highp\n";
+	static const char *qualifierDefines =
+		"#version 330\n"
+		"#define lowp\n"
+		"#define mediump\n"
+		"#define highp\n";
 #else
-    static const char *qualifierDefines =
-        "#ifndef GL_FRAGMENT_PRECISION_HIGH\n"
-        "#define highp mediump\n"
-        "#endif\n"
-        "precision highp float;\n";
+	static const char *qualifierDefines =
+		"#ifndef GL_FRAGMENT_PRECISION_HIGH\n"
+		"#define highp mediump\n"
+		"#endif\n"
+		"precision highp float;\n";
 #endif
-
     std::string code = qualifierDefines;
     code.append(sourceCode);
     const char *c_source = code.c_str();

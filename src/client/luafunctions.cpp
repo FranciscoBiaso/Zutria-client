@@ -196,7 +196,8 @@ void Client::registerLuaFunctions()
     g_lua.bindSingletonFunction("g_game", "moveToParentContainer", &Game::moveToParentContainer, &g_game);
 	g_lua.bindSingletonFunction("g_game", "rotate", &Game::rotate, &g_game);
     g_lua.bindSingletonFunction("g_game", "use", &Game::use, &g_game);
-    g_lua.bindSingletonFunction("g_game", "useWith", &Game::useWith, &g_game);
+	g_lua.bindSingletonFunction("g_game", "useWith", &Game::useWith, &g_game);
+	g_lua.bindSingletonFunction("g_game", "useTargetSpell", &Game::useTargetSpell, &g_game);
     g_lua.bindSingletonFunction("g_game", "useInventoryItem", &Game::useInventoryItem, &g_game);
     g_lua.bindSingletonFunction("g_game", "useInventoryItemWith", &Game::useInventoryItemWith, &g_game);
     g_lua.bindSingletonFunction("g_game", "findItemInContainers", &Game::findItemInContainers, &g_game);
@@ -305,14 +306,15 @@ void Client::registerLuaFunctions()
 	g_lua.bindSingletonFunction("g_game", "addSkillPoint", &Game::addSkillPoint, &g_game);
 	g_lua.bindSingletonFunction("g_game", "sendMsgTryToAddSpellLevel", &Game::sendMsgTryToAddSpellLevel, &g_game);
 	g_lua.bindSingletonFunction("g_game", "sendSpell", &Game::sendSpell, &g_game);
+	g_lua.bindSingletonFunction("g_game", "sendBreath", &Game::sendSpell, &g_game);
+	g_lua.bindSingletonFunction("g_game", "sendNpcLeftClick", &Game::sendNpcLeftClick, &g_game);
+	g_lua.bindSingletonFunction("g_game", "sendNpcButtonId", &Game::sendNpcButtonId, &g_game);
 
     g_lua.registerSingletonClass("g_shaders");
     g_lua.bindSingletonFunction("g_shaders", "createShader", &ShaderManager::createShader, &g_shaders);
-    g_lua.bindSingletonFunction("g_shaders", "createFragmentShader", &ShaderManager::createFragmentShader, &g_shaders);
-    g_lua.bindSingletonFunction("g_shaders", "createFragmentShaderFromCode", &ShaderManager::createFragmentShaderFromCode, &g_shaders);
-    g_lua.bindSingletonFunction("g_shaders", "createItemShader", &ShaderManager::createItemShader, &g_shaders);
+  /*  g_lua.bindSingletonFunction("g_shaders", "createItemShader", &ShaderManager::createItemShader, &g_shaders);
     g_lua.bindSingletonFunction("g_shaders", "createMapShader", &ShaderManager::createMapShader, &g_shaders);
-    g_lua.bindSingletonFunction("g_shaders", "getDefaultItemShader", &ShaderManager::getDefaultItemShader, &g_shaders);
+    g_lua.bindSingletonFunction("g_shaders", "getDefaultItemShader", &ShaderManager::getDefaultItemShader, &g_shaders);*/
     g_lua.bindSingletonFunction("g_shaders", "getDefaultMapShader", &ShaderManager::getDefaultMapShader, &g_shaders);
     g_lua.bindSingletonFunction("g_shaders", "getShader", &ShaderManager::getShader, &g_shaders);
 
@@ -657,6 +659,7 @@ void Client::registerLuaFunctions()
 	g_lua.bindClassMemberFunction<LocalPlayer>("autoWalk", &LocalPlayer::autoWalk);
 	g_lua.bindClassMemberFunction<LocalPlayer>("getId", &LocalPlayer::getId);
 	g_lua.bindClassMemberFunction<LocalPlayer>("getSkillValue", &LocalPlayer::getSkillValue);
+	g_lua.bindClassMemberFunction<LocalPlayer>("getBreath", &LocalPlayer::getBreath);
 
     g_lua.registerClass<Tile>();
     g_lua.bindClassMemberFunction<Tile>("clean", &Tile::clean);

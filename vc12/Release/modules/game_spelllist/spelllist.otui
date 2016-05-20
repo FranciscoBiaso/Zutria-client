@@ -41,7 +41,7 @@ MainWindow
   !text: tr('Spell List')
   size: 550 400
   @onEscape: toggle()
-
+  
   TextList
     id: spellList
     vertical-scrollbar: spellsScrollBar

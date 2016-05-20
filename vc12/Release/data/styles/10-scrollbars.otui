@@ -35,7 +35,7 @@ VerticalScrollBar < UIScrollBar
     anchors.left: parent.left
     image-source: /images/ui/scrollbar
     image-clip: 0 0 13 13
-    image-color: #ffffffff
+    image-color: #ffffff76
     size: 13 13
     $hover:
       image-clip: 13 0 13 13
@@ -51,7 +51,7 @@ VerticalScrollBar < UIScrollBar
     size: 13 13
     image-source: /images/ui/scrollbar
     image-clip: 0 13 13 13
-    image-color: #ffffffff
+    image-color: #ffffff76
     $hover:
       image-clip: 13 13 13 13
     $pressed:
@@ -60,6 +60,7 @@ VerticalScrollBar < UIScrollBar
       image-color: #ffffff66
 
   ScrollBarSlider
+    image-color: #ffffff76
 
   ScrollBarValueLabel
 

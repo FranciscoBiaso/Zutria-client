@@ -1,0 +1,4 @@
+﻿- game_minimap module -
+1. mini map is now a MiniWindow.
+2. mini map panel don't exist anymore.
+3. mini map can be accessed by 'm' keyboard.

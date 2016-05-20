@@ -60,7 +60,7 @@ local function setupGraphicsEngines()
     if g_graphics.getPainterEngine() == 2 then
       enginesRadioGroup:selectWidget(ogl2)
     else
-      enginesRadioGroup:selectWidget(ogl1)
+     enginesRadioGroup:selectWidget(ogl1)
     end
 
     if g_app.getOs() ~= 'windows' then

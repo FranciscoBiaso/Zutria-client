@@ -23,6 +23,7 @@
 #include "painterogl2.h"
 #include "painterogl2_shadersources.h"
 #include <framework/platform/platformwindow.h>
+#include <framework/core/resourcemanager.h>
 
 PainterOGL2 *g_painterOGL2 = nullptr;
 
@@ -31,19 +32,19 @@ PainterOGL2::PainterOGL2()
     m_drawProgram = nullptr;
     resetState();
 
-    m_drawTexturedProgram = PainterShaderProgramPtr(new PainterShaderProgram);
-    assert(m_drawTexturedProgram);
-    m_drawTexturedProgram->addShaderFromSourceCode(Shader::Vertex, glslMainWithTexCoordsVertexShader + glslPositionOnlyVertexShader);
-    m_drawTexturedProgram->addShaderFromSourceCode(Shader::Fragment, glslMainFragmentShader + glslTextureSrcFragmentShader);
-    m_drawTexturedProgram->link();
+	m_drawTexturedProgram = PainterShaderProgramPtr(new PainterShaderProgram);
+	assert(m_drawTexturedProgram);
+	m_drawTexturedProgram->addShaderFromSourceCode(Shader::Vertex, glslMainWithTexCoordsVertexShader + glslPositionOnlyVertexShader);
+	m_drawTexturedProgram->addShaderFromSourceCode(Shader::Fragment, glslMainFragmentShader + glslTextureSrcFragmentShader);
+	m_drawTexturedProgram->link();
 
-    m_drawSolidColorProgram = PainterShaderProgramPtr(new PainterShaderProgram);
-    assert(m_drawSolidColorProgram);
-    m_drawSolidColorProgram->addShaderFromSourceCode(Shader::Vertex, glslMainVertexShader + glslPositionOnlyVertexShader);
-    m_drawSolidColorProgram->addShaderFromSourceCode(Shader::Fragment, glslMainFragmentShader + glslSolidColorFragmentShader);
-    m_drawSolidColorProgram->link();
+	m_drawSolidColorProgram = PainterShaderProgramPtr(new PainterShaderProgram);
+	assert(m_drawSolidColorProgram);
+	m_drawSolidColorProgram->addShaderFromSourceCode(Shader::Vertex, glslMainVertexShader + glslPositionOnlyVertexShader);
+	m_drawSolidColorProgram->addShaderFromSourceCode(Shader::Fragment, glslMainFragmentShader + glslSolidColorFragmentShader);
+	m_drawSolidColorProgram->link();
 
-    PainterShaderProgram::release();
+	PainterShaderProgram::release();
 }
 
 void PainterOGL2::bind()
@@ -105,12 +106,14 @@ void PainterOGL2::drawCoords(CoordsBuffer& coordsBuffer, DrawMode drawMode)
     // set vertex array
     if(hardwareCached) {
         coordsBuffer.getHardwareVertexArray()->bind();
-        m_drawProgram->setAttributeArray(PainterShaderProgram::VERTEX_ATTR, nullptr, 2);
+        m_drawProgram->setAttributeArray(PainterShaderProgram::VERTEX_ATTR, nullptr, 3);
         HardwareBuffer::unbind(HardwareBuffer::VertexBuffer);
     } else
-        m_drawProgram->setAttributeArray(PainterShaderProgram::VERTEX_ATTR, coordsBuffer.getVertexArray(), 2);
+        m_drawProgram->setAttributeArray(PainterShaderProgram::VERTEX_ATTR, coordsBuffer.getVertexArray(), 3);
 
     // draw the element in coords buffers
+
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);		
     if(drawMode == Triangles)
         glDrawArrays(GL_TRIANGLES, 0, vertexCount);
     else if(drawMode == TriangleStrip)
@@ -211,3 +214,4 @@ void PainterOGL2::drawBoundingRect(const Rect& dest, int innerLineWidth)
     m_coordsBuffer.addBoudingRect(dest, innerLineWidth);
     drawCoords(m_coordsBuffer);
 }
+

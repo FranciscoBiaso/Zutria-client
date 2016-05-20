@@ -1,27 +1,20 @@
-HealthBar < ProgressBar
+HealthBar < VerticalProgressBar
   id: healthBar
-  background-color: #66FF66FF
-  anchors.top: parent.top
-  anchors.left: parent.left
-  anchors.right: parent.right
+  anchors.fill: parent
+  image-source: /images/ui/greenvprogressbar
   margin: 1
 
-ManaBar < ProgressBar
+ManaBar < VerticalProgressBar
   id: manaBar  
-  background-color: #6666FFFF
-  anchors.top: prev.bottom
-  anchors.left: parent.left
-  anchors.right: parent.right
+  image-source: /images/ui/bluevprogressbar
   margin: 1
-  margin-top: 3
+  anchors.fill: parent
 
 ExperienceBar < ProgressBar
   id: experienceBar
-  anchors.top: prev.bottom
-  anchors.left: parent.left
-  anchors.right: parent.right
   margin: 1
-  margin-top: 3
+  anchors.fill: parent
+  background-color: #ffff00DD
 
 CapLabel < GameLabel
   id: capLabel
@@ -41,32 +34,7 @@ CapLabel < GameLabel
 
 ConditionWidget < UIWidget
   size: 18 18
-
+  
   $!first:
     margin-left: 2
 
-MiniWindow
-  icon: /images/topbuttons/healthinfo
-  id: healthInfoWindow
-  !text: tr('Info. do personagem')
-  height: 140
-  @onClose: modules.game_healthinfo.onMiniWindowClose()
-  &save: true
-
-  MiniWindowContents
-    HealthBar
-    ManaBar
-    ExperienceBar
-    Panel
-      id: conditionPanel
-      layout:
-        type: horizontalBox
-      height: 22
-      margin-top: 4
-      padding: 2
-      anchors.top: prev.bottom
-      anchors.left: parent.left
-      anchors.right: parent.right
-      border-width: 1
-      border-color: #00000077
-      background-color: #ffffff11

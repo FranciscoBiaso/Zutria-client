@@ -30,7 +30,7 @@
 StaticText::StaticText()
 {
 	m_mode = Otc::MSG_NONE;
-    m_color = Color::white;
+	m_color = Color(0x80,0x80,0x80);
     m_cachedText.setFont(g_fonts.getFont("verdana-11px-rounded"));
     m_cachedText.setAlign(Fw::AlignCenter);
 }

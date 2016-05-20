@@ -30,7 +30,7 @@ static const std::string glslMainVertexShader = "\n\
     }\n";
 
 static const std::string glslMainWithTexCoordsVertexShader = "\n\
-    attribute highp vec2 a_TexCoord;\n\
+    in highp vec2 a_TexCoord;\n\
     uniform highp mat3 u_TextureMatrix;\n\
     varying highp vec2 v_TexCoord;\n\
     highp vec4 calculatePosition();\n\
@@ -41,11 +41,11 @@ static const std::string glslMainWithTexCoordsVertexShader = "\n\
     }\n";
 
 static std::string glslPositionOnlyVertexShader = "\n\
-    attribute highp vec2 a_Vertex;\n\
-    uniform highp mat3 u_TransformMatrix;\n\
-    uniform highp mat3 u_ProjectionMatrix;\n\
+    in highp vec3 a_Vertex;\n\
+    uniform highp mat4 u_TransformMatrix;\n\
+    uniform highp mat4 u_ProjectionMatrix;\n\
     highp vec4 calculatePosition() {\n\
-        return vec4(u_ProjectionMatrix * u_TransformMatrix * vec3(a_Vertex.xy, 1.0), 1.0);\n\
+        return u_ProjectionMatrix * u_TransformMatrix * vec4(a_Vertex.xyz, 1.0);\n\
     }\n";
 
 static const std::string glslMainFragmentShader = "\n\

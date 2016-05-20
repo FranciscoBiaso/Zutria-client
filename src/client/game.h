@@ -179,6 +179,7 @@ public:
     void rotate(const ThingPtr& thing);
     void use(const ThingPtr& thing);
     void useWith(const ItemPtr& fromThing, const ThingPtr& toThing);
+	void useTargetSpell(uint itemId, const ThingPtr& toThing);
     void useInventoryItem(int itemId);
     void useInventoryItemWith(int itemId, const ThingPtr& toThing);
     ItemPtr findItemInContainers(uint itemId, int subType);
@@ -215,8 +216,11 @@ public:
 	void addSkillPoint(int cid, uint8_t skillId, uint8_t valueToAdd);
 	void sendMsgTryToAddSpellLevel(uint8 spellId);
 
-	//player send spell
+	//player send
 	void sendSpell(uint8 spellId);
+	void sendBreath(uint8 breath);
+	void sendNpcLeftClick(std::string npcName);
+	void sendNpcButtonId(uint8 buttonId);
 
     // party related
     void partyInvite(int creatureId);

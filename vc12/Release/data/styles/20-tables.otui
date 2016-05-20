@@ -13,7 +13,7 @@ TableRow < Label
   height: 10
   text-wrap: true
 
-TableColumn < Label
+TableColumn < UIButton
   width: 30
   text-wrap: true
 
@@ -23,4 +23,5 @@ TableHeaderRow < Label
   text-wrap: true
 
 TableHeaderColumn < Button
+  margin-left: 1
   width: 30

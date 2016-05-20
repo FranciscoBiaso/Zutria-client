@@ -582,6 +582,15 @@ void LocalPlayer::setSpell(std::tuple<unsigned char, unsigned char> &spell)
 
 }
 
+
+void LocalPlayer::setBreath(uint8 breath)
+{
+	if (m_breath != breath)
+		m_breath = breath;
+	callLuaField("onBreathChange", breath);
+
+}
+
 void LocalPlayer::setBlessings(int blessings)
 {
     if(blessings != m_blessings) {
@@ -590,6 +599,12 @@ void LocalPlayer::setBlessings(int blessings)
 
         callLuaField("onBlessingsChange", blessings, oldBlessings);
     }
+}
+
+// --
+void LocalPlayer::openNpcWindow(uint32 windowId)
+{
+	callLuaField("onOpenNpcWindow", windowId);
 }
 
 bool LocalPlayer::hasSight(const Position& pos)

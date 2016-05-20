@@ -55,8 +55,8 @@ public:
 
     bool link();
 
-    void setTransformMatrix(const Matrix3& transformMatrix);
-    void setProjectionMatrix(const Matrix3& projectionMatrix);
+    void setTransformMatrix(const Matrix4& transformMatrix);
+    void setProjectionMatrix(const Matrix4& projectionMatrix);
     void setTextureMatrix(const Matrix3& textureMatrix);
     void setColor(const Color& color);
     void setOpacity(float opacity);
@@ -71,8 +71,8 @@ private:
 
     Color m_color;
     float m_opacity;
-    Matrix3 m_transformMatrix;
-    Matrix3 m_projectionMatrix;
+    Matrix4 m_transformMatrix;
+    Matrix4 m_projectionMatrix;
     Matrix3 m_textureMatrix;
     Size m_resolution;
     float m_time;

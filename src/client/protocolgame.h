@@ -67,7 +67,8 @@ public:
     void sendAcceptTrade();
     void sendRejectTrade();
     void sendUseItem(const Position& position, int itemId, int stackpos, int index);
-    void sendUseItemWith(const Position& fromPos, int itemId, int fromStackPos, const Position& toPos, int toThingId, int toStackPos);
+	void sendUseItemWith(const Position& fromPos, int itemId, int fromStackPos, const Position& toPos, int toThingId, int toStackPos);
+	void sendUseTargetSpell(int itemId, const Position& toPos, int toThingId, int toStackPos);
     void sendUseOnCreature(const Position& pos, int thingId, int stackpos, uint creatureId);
     void sendRotateItem(const Position& pos, int thingId, int stackpos);
     void sendCloseContainer(int containerId);
@@ -118,6 +119,9 @@ public:
 	void sendAddSkillPoints(int creatureId, uint8_t skillName, uint8_t valueToAdd);
 	void sendMsgTryToAddSpellLevel(uint8 spellId);
 	void sendSpell(uint8 spellId);
+	void sendBreath(uint8 breath);
+	void sendNpcLeftClick(std::string npcName);
+	void sendNpcButtonId(uint8 buttonId);
 
     // otclient only
     void sendChangeMapAwareRange(int xrange, int yrange);
@@ -196,6 +200,8 @@ private:
 	void parsePlayerFirstStats(const InputMessagePtr& msg);
 	void parsePlayerSpells(const InputMessagePtr& msg);
 	void parsePlayerSpellLearned(const InputMessagePtr& msg);
+	void parsePlayerBreath(const InputMessagePtr& msg);
+	void parsePlayerNpcWindow(const InputMessagePtr& msg);
     void parsePlayerCancelAttack(const InputMessagePtr& msg);
     void parsePlayerModes(const InputMessagePtr& msg);
     void parseSpellCooldown(const InputMessagePtr& msg);

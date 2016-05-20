@@ -407,6 +407,17 @@ void ProtocolGame::sendUseItemWith(const Position& fromPos, int itemId, int from
     send(msg);
 }
 
+void ProtocolGame::sendUseTargetSpell(int itemId, const Position& toPos, int toThingId, int toStackPos)
+{
+	OutputMessagePtr msg(new OutputMessage);
+	msg->addU8(Proto::ClientUseTargetSpell);	
+	msg->addU16(itemId);
+	addPosition(msg, toPos);
+	msg->addU16(toThingId);
+	msg->addU8(toStackPos);
+	send(msg);
+}
+
 void ProtocolGame::sendUseOnCreature(const Position& pos, int thingId, int stackpos, uint creatureId)
 {
     OutputMessagePtr msg(new OutputMessage);
@@ -883,6 +894,31 @@ void ProtocolGame::sendSpell(uint8 spellId)
 	OutputMessagePtr msg(new OutputMessage);
 	msg->addU8(Proto::ClientPlayerSendSpell);
 	msg->addU8(spellId);
+	send(msg);
+}
+
+void ProtocolGame::sendBreath(uint8 breath)
+{
+	OutputMessagePtr msg(new OutputMessage);
+	msg->addU8(Proto::ClientPlayerSendBreath);
+	msg->addU8(breath);
+	send(msg);
+}
+
+void ProtocolGame::sendNpcLeftClick(std::string npcName)
+{
+	OutputMessagePtr msg(new OutputMessage);
+	msg->addU8(Proto::ClientNpcLeftClick);
+	msg->addString(npcName);
+	send(msg);
+}
+
+
+void ProtocolGame::sendNpcButtonId(uint8 buttonId)
+{
+	OutputMessagePtr msg(new OutputMessage);
+	msg->addU8(Proto::ClientNpcButtonId);
+	msg->addU8(buttonId);
 	send(msg);
 }
 

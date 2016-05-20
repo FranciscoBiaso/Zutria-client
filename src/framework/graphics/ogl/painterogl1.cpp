@@ -99,9 +99,9 @@ void PainterOGL1::drawCoords(CoordsBuffer& coordsBuffer, DrawMode drawMode)
         // set vertex array
         if(hardwareCached) {
             coordsBuffer.getHardwareVertexArray()->bind();
-            glVertexPointer(2, GL_FLOAT, 0, nullptr);
+            glVertexPointer(3, GL_FLOAT, 0, nullptr);
         } else
-            glVertexPointer(2, GL_FLOAT, 0, coordsBuffer.getVertexArray());
+            glVertexPointer(3, GL_FLOAT, 0, coordsBuffer.getVertexArray());
 
         if(hardwareCached)
             HardwareBuffer::unbind(HardwareBuffer::VertexBuffer);
@@ -114,9 +114,8 @@ void PainterOGL1::drawCoords(CoordsBuffer& coordsBuffer, DrawMode drawMode)
     }
 #ifndef OPENGL_ES
     else {
-        int verticesSize = vertexCount*2;
-        float *vertices = coordsBuffer.getVertexArray();
-        float *texCoords = coordsBuffer.getTextureCoordArray();
+        const float *vertices = coordsBuffer.getVertexArray();
+        const float *texCoords = coordsBuffer.getTextureCoordArray();
 
         // use glBegin/glEnd, this is not available in OpenGL ES
         // and is considered much slower then glDrawArrays,
@@ -125,11 +124,19 @@ void PainterOGL1::drawCoords(CoordsBuffer& coordsBuffer, DrawMode drawMode)
             glBegin(GL_TRIANGLES);
         else if(drawMode == TriangleStrip)
             glBegin(GL_TRIANGLE_STRIP);
-        for(int i=0;i<verticesSize;i+=2) {
-            if(textured)
-                glTexCoord2f(texCoords[i], texCoords[i+1]);
-            glVertex2f(vertices[i], vertices[i+1]);
+
+		
+		/*for (int k = 0; k < coordsBuffer.getTextureCoordCount(); k+=2)
+		{
+			if (textured)
+				glTexCoord2f(texCoords[k], texCoords[k + 1]);
+		}
+
+        for(int i=0;i<coordsBuffer.getVertexCount();i+=3) {
+            
+            glVertex3f(vertices[i], vertices[i+1], vertices[i + 2]);			
         }
+*/
         glEnd();
     }
 #endif
@@ -230,14 +237,14 @@ void PainterOGL1::setMatrixMode(PainterOGL1::MatrixMode matrixMode)
     updateGlMatrixMode();
 }
 
-void PainterOGL1::setTransformMatrix(const Matrix3& transformMatrix)
+void PainterOGL1::setTransformMatrix(const Matrix4& transformMatrix)
 {
     m_transformMatrix = transformMatrix;
     if(g_painter == this)
         updateGlTransformMatrix();
 }
 
-void PainterOGL1::setProjectionMatrix(const Matrix3& projectionMatrix)
+void PainterOGL1::setProjectionMatrix(const Matrix4& projectionMatrix)
 {
     m_projectionMatrix = projectionMatrix;
     if(g_painter == this)

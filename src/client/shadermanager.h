@@ -40,20 +40,19 @@ public:
     void init();
     void terminate();
 
-    PainterShaderProgramPtr createShader(const std::string& name);
-    PainterShaderProgramPtr createFragmentShader(const std::string& name, std::string file);
-    PainterShaderProgramPtr createFragmentShaderFromCode(const std::string& name, const std::string& code);
-
+	PainterShaderProgramPtr createShader(const std::string& name, std::string vertFile, std::string fragFile);
+  /*  PainterShaderProgramPtr createFragmentShaderFromCode(const std::string& name, const std::string& code);
+	
     PainterShaderProgramPtr createItemShader(const std::string& name, const std::string& file);
-    PainterShaderProgramPtr createMapShader(const std::string& name, const std::string& file);
+    PainterShaderProgramPtr createMapShader(const std::string& name, const std::string& file);*/
 
-    const PainterShaderProgramPtr& getDefaultItemShader() { return m_defaultItemShader; }
+   /* const PainterShaderProgramPtr& getDefaultItemShader() { return m_defaultItemShader; }*/
     const PainterShaderProgramPtr& getDefaultMapShader() { return m_defaultMapShader; }
 
     PainterShaderProgramPtr getShader(const std::string& name);
 
 private:
-    void setupItemShader(const PainterShaderProgramPtr& shader);
+    //void setupItemShader(const PainterShaderProgramPtr& shader);
     void setupMapShader(const PainterShaderProgramPtr& shader);
 
     PainterShaderProgramPtr m_defaultItemShader;

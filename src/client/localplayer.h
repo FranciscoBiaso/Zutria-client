@@ -82,7 +82,11 @@ public:
     void setOfflineTrainingTime(double offlineTrainingTime);
 	void setSpells(std::list<std::tuple<unsigned char, unsigned char>>& spells);
 	void setSpell(std::tuple<unsigned char, unsigned char> &spell);
+	void setBreath(uint8 breath);
     void setBlessings(int blessings);
+
+	// --
+	void openNpcWindow(uint32 windowId);
 
     int getStates() { return m_states; }
     int getSkillLevel(Otc::Skill skill) { return m_skillsLevel[skill]; }
@@ -112,6 +116,7 @@ public:
     int getBlessings() { return m_blessings; }
 	Color getManaInformationColor() const { return m_manaInformationColor; }
 	uint8 getSpellLevel(unsigned char spellId);
+	uint8 getBreath(){ return this->m_breath; }
 
     bool hasSight(const Position& pos);
     bool isKnown() { return m_known; }
@@ -173,6 +178,7 @@ private:
     int m_states;
     int m_vocation;
     int m_blessings;
+	uint8 m_breath;
 
     double m_health;
     double m_maxHealth;

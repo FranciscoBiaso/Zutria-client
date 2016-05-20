@@ -5,14 +5,22 @@ preloaded = false
 fullmapView = false
 oldZoom = nil
 oldPos = nil
+minimapButton = nil
 
 function init()
 
-  minimapWindow = g_ui.loadUI('minimap', modules.game_interface.getMiniMapPanel())
+  minimapWindow = g_ui.loadUI('minimap', modules.game_interface.getRightPanel())
   minimapWindow:setContentMinimumHeight(64)
+  minimapWindow:setContentMaximumHeight(184)
 
   minimapWidget = minimapWindow:recursiveGetChildById('minimap')
-  minimapWidget:setColor('#444444ab')
+  minimapWidget:setColor('#8686ab00')
+  
+  minimapButton = modules.client_topmenu.addRightGameToggleButton('minimap', tr('mini mapa') .. ' (ctrl + M)', '/images/topbuttons/minimap', toggle)
+  g_keyboard.bindKeyDown('ctrl + M', toggle)
+  minimapButton:setOn(true)
+  
+  minimapWindow:setup()
 
   local gameRootPanel = modules.game_interface.getRootPanel()
   g_keyboard.bindKeyPress('Alt+Left', function() minimapWidget:move(1,0) end, gameRootPanel)
@@ -57,7 +65,23 @@ function terminate()
   g_keyboard.unbindKeyDown('Ctrl+M')
   g_keyboard.unbindKeyDown('Ctrl+Shift+M')
 
+  minimapButton:destroy()
   minimapWindow:destroy()
+end
+
+function onMinimapWindowClose()
+  minimapButton:setOn(false)
+end
+
+
+function toggle()
+  if minimapButton:isOn() then
+    minimapWindow:close()
+    minimapButton:setOn(false)
+  else
+    minimapWindow:open()
+    minimapButton:setOn(true)
+  end
 end
 
 function preload()
