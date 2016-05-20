@@ -1,9 +1,9 @@
 Cursors
-  spell:
+  spell: 
     image: spell
     hot-spot: 16 16
   target:
-    image: targetcursor
+    image: target
     hot-spot: 16 16
   horizontal:
     image: horizontalcursor
@@ -11,18 +11,21 @@ Cursors
   vertical:
     image: verticalcursor
     hot-spot: 16 16
-  text:
-    image: textcursor
+  edit:
+    image: edit
     hot-spot: 12 8
-  medieval
-    image: medieval
+  default
+    image: default
     hot-spot: 1 1
-  medievalDoubt
-    image: medievaldoubt
+  npc
+    image: npc
     hot-spot: 1 1
-  sword
-    image: sword
+  battle
+    image: battle
     hot-spot: 1 1
   player
     image: player
+    hot-spot: 1 1
+  inspect
+    image: inspect
     hot-spot: 1 1
