@@ -92,7 +92,7 @@ function init()
     show()
   end
   
-  g_mouse.pushCursor('medieval')
+  g_mouse.pushCursor('default')
 end
 
 function bindKeys()
@@ -147,7 +147,7 @@ function terminate()
 
   stopSmartWalk()
 
-  g_mouse.popCursor('medieval')
+  g_mouse.popCursor('default')
   
   disconnect(g_game, {
     onGameStart = onGameStart,

@@ -129,6 +129,10 @@ function UIGameMap:canAcceptDrop(widget, mousePos)
 end
 
 function UIGameMap:onMouseMove(mousePos, mouseMoved)
+  if not g_mouse.isCursorChanged() then
+     g_mouse.pushCursor('default')
+  end
+
   local tile = self:getTile(mousePos)
   if not tile then return false end
 
@@ -138,18 +142,30 @@ function UIGameMap:onMouseMove(mousePos, mouseMoved)
   
   if not creature then    
     if g_mouse.getTopCursorId() == 6 then --npc
-      g_mouse.popCursor('medievalDoubt')
-    elseif g_mouse.getTopCursorId() == 7 then --monster
-      g_mouse.popCursor('sword')
+      g_mouse.popCursor('npc')
+    elseif g_mouse.getTopCursorId() == 7 then --battle
+      g_mouse.popCursor('battle')
     elseif g_mouse.getTopCursorId() == 8 then --player
       g_mouse.popCursor('player')
+    elseif g_mouse.getTopCursorId() == 9 then --inspect
+      g_mouse.popCursor('inspect')
     end
-  elseif creature:isNpc() and g_mouse.getTopCursorId() ~= 6 then
-    g_mouse.pushCursor('medievalDoubt') -- cursor id 6
-  elseif creature:isMonster() and  g_mouse.getTopCursorId() ~= 7 then
-    g_mouse.pushCursor('sword') -- cursor id 7 
-  elseif creature:isPlayer() and  g_mouse.getTopCursorId() ~= 8 then
-    g_mouse.pushCursor('player') -- cursor id 8 
+    
+    if thing:isPickupable() == true and not thing:isGround() and g_mouse.getTopCursorId() ~= 9 then
+      g_mouse.pushCursor('inspect') 
+    end
+  else
+    if g_mouse.getTopCursorId() == 9 then --inspect
+      g_mouse.popCursor('inspect')
+    end
+    
+    if creature:isNpc() and g_mouse.getTopCursorId() ~= 6 then
+      g_mouse.pushCursor('npc')
+    elseif creature:isMonster() and  g_mouse.getTopCursorId() ~= 7 then
+      g_mouse.pushCursor('battle') 
+    elseif creature:isPlayer() and  g_mouse.getTopCursorId() ~= 8 then
+      g_mouse.pushCursor('player') 
+    end
   end
 
   return true  

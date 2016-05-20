@@ -26,6 +26,7 @@ function terminate()
 end
 
 function calculateVisibleTime(text)
+  if not text then return 4000 end
   return math.max(#text * 100, 4000)
 end
 

@@ -61,9 +61,9 @@ function onPositionChange(localPlayer, newPos, oldPosition)
   lastShader = name
   local map = modules.game_interface.getMapPanel()
   map:setMapShader(g_shaders.getShader(name))
-  if newPos.x > oldPosition.x then
-    g_shaders.setFogOffset(name,1.0,0)
-  elseif newPos.x < oldPosition.x then
-     g_shaders.setFogOffset(name,0.6,1.0)
-  end
+  -- if newPos.x > oldPosition.x then
+    -- g_shaders.setFogOffset(name,1.0,0)
+  -- elseif newPos.x < oldPosition.x then
+     -- g_shaders.setFogOffset(name,0.6,1.0)
+  -- end
 end       

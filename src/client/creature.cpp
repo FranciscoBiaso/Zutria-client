@@ -287,7 +287,7 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
 	else if (isMonster())
 		fillColor = Color(0xc0, 0xc0, 0xc0);
 	else
-		fillColor = Color(0xA0,0xA0,0xA0);
+		fillColor = Color(0x40,0xCC,0x40);
 
     if(drawFlags & Otc::DrawBars && (!isNpc() || !g_game.getFeature(Otc::GameHideNpcNames))) {
 		g_painter->setColor(Color("#010101ff"));
