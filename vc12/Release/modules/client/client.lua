@@ -83,8 +83,8 @@ function init()
     if maximized then g_window.maximize() end
   end
 
-  g_window.setTitle(g_app.getName())
-  --g_window.setIcon('/zutria')
+  g_window.setTitle('Zutria')
+  g_window.setIcon('/data/images/ico/zutria')
 
   -- poll resize events
   g_window.poll()

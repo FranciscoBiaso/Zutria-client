@@ -42,7 +42,11 @@ namespace Proto {
 
     enum GameServerOpcodes : uint8
     {
-        GameServerLoginOrPendingState       = 10,
+        GameServerLoginOrPendingState       = 0,
+		GameServerCharacterList             = 1,
+		GameServerFullMap                   = 2,
+
+
         GameServerGMActions                 = 11,
         GameServerEnterGame                 = 15,
         GameServerUpdateNeeded              = 17,
@@ -67,7 +71,6 @@ namespace Proto {
         GameServerChangeMapAwareRange       = 51,
 
         // original tibia ONLY
-        GameServerFullMap                   = 100,
         GameServerMapTopRow                 = 101,
         GameServerMapRightRow               = 102,
         GameServerMapBottomRow              = 103,
@@ -162,9 +165,11 @@ namespace Proto {
 
     enum ClientOpcodes : uint8
     {
-        ClientEnterAccount                  = 1,
-        ClientPendingGame                   = 10,
-        ClientEnterGame                     = 15,
+        ClientEnterAccount                  = 0,
+		ClientEnterGame                     = 1,
+
+
+        ClientEnterGameNEW                  = 15,
         ClientLeaveGame                     = 20,
         ClientPing                          = 29,
         ClientPingBack                      = 30,
@@ -285,10 +290,6 @@ namespace Proto {
         NpcStartId = 0x80000000,
         NpcEndId = 0xffffffff
     };
-
-    void buildMessageModesMap(int version);
-    Otc::MessageMode translateMessageModeFromServer(uint8 mode);
-    uint8 translateMessageModeToServer(Otc::MessageMode mode);
 }
 
 #endif

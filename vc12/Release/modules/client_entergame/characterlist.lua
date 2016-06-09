@@ -13,7 +13,7 @@ local resendWaitEvent
 local function tryLogin(charInfo, tries)
   tries = tries or 1
 
-  if tries > 50 then
+  if tries > 3 then
     return
   end
 

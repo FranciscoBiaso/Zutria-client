@@ -28,7 +28,7 @@ CheckBox < UICheckBox
     color: #aaaaaa88
 
 ColorBox < UICheckBox
-  size: 16 16
+  size: 24 24
   image-color: #ffffffff
   image-source: /images/ui/colorbox
 

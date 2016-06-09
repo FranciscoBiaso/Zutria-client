@@ -431,35 +431,19 @@ void Game::processRemoveAutomapFlag(const Position& pos, int icon, const std::st
     g_lua.callGlobalField("g_game", "onRemoveAutomapFlag", pos, icon, message);
 }
 
-void Game::processOpenOutfitWindow(const Outfit& currentOufit, const std::vector<std::tuple<int, std::string, int> >& outfitList,
-                                   const std::vector<std::tuple<int, std::string> >& mountList)
+void Game::processOpenOutfitWindow(const Outfit& currentOufit, const std::vector<std::pair<std::uint8_t,std::uint8_t>>& outfitList)
 {
     // create virtual creature outfit
     CreaturePtr virtualOutfitCreature = CreaturePtr(new Creature);
     virtualOutfitCreature->setDirection(Otc::South);
 
     Outfit outfit = currentOufit;
-    outfit.setMount(0);
     virtualOutfitCreature->setOutfit(outfit);
 
     // creature virtual mount outfit
-    CreaturePtr virtualMountCreature = nullptr;
-    if(getFeature(Otc::GamePlayerMounts))
-    {
-        virtualMountCreature = CreaturePtr(new Creature);
-        virtualMountCreature->setDirection(Otc::South);
+    CreaturePtr virtualMountCreature = nullptr;   
 
-        Outfit mountOutfit;
-        mountOutfit.setId(0);
-
-        int mount = currentOufit.getMount();
-        if(mount > 0)
-            mountOutfit.setId(mount);
-
-        virtualMountCreature->setOutfit(mountOutfit);
-    }
-
-    g_lua.callGlobalField("g_game", "onOpenOutfitWindow", virtualOutfitCreature, outfitList, virtualMountCreature, mountList);
+    g_lua.callGlobalField("g_game", "onOpenOutfitWindow", virtualOutfitCreature, outfitList, virtualMountCreature);
 }
 
 void Game::processOpenNpcTrade(const std::vector<std::tuple<ItemPtr, std::string, int, int, int> >& items)
@@ -1543,151 +1527,6 @@ void Game::setClientVersion(int version)
 	enableFeature(Otc::GameSpellList);
 	//enableFeature(Otc::GameClientPing);
 	//enableFeature(Otc::GameSpritesAlphaChannel);
-    if(version >= 770) {
-        enableFeature(Otc::GameLooktypeU16);
-        enableFeature(Otc::GameMessageStatements);
-        enableFeature(Otc::GameLoginPacketEncryption);
-    }
-
-    if(version >= 780) {
-        enableFeature(Otc::GamePlayerAddons);
-        enableFeature(Otc::GamePlayerStamina);
-        enableFeature(Otc::GameNewFluids);
-        enableFeature(Otc::GameMessageLevel);
-        enableFeature(Otc::GamePlayerStateU16);
-        enableFeature(Otc::GameNewOutfitProtocol);
-    }
-
-    if(version >= 790) {
-        enableFeature(Otc::GameWritableDate);
-    }
-
-    if(version >= 840) {
-        enableFeature(Otc::GameProtocolChecksum);
-        enableFeature(Otc::GameAccountNames);
-        enableFeature(Otc::GameDoubleFreeCapacity);
-    }
-
-    if(version >= 841) {
-        enableFeature(Otc::GameChallengeOnLogin);
-        enableFeature(Otc::GameMessageSizeCheck);
-    }
-
-    if(version >= 854) {
-        enableFeature(Otc::GameCreatureEmblems);
-    }
-
-    if(version >= 860) {
-        enableFeature(Otc::GameAttackSeq);
-    }
-
-    if(version >= 862) {
-        enableFeature(Otc::GamePenalityOnDeath);
-    }
-
-    if(version >= 870) {
-        enableFeature(Otc::GameDoubleExperience);
-        enableFeature(Otc::GamePlayerMounts);
-        enableFeature(Otc::GameSpellList);
-    }
-
-    if(version >= 910) {
-        enableFeature(Otc::GameNameOnNpcTrade);
-        enableFeature(Otc::GameTotalCapacity);
-        enableFeature(Otc::GameSkillsBase);
-        enableFeature(Otc::GamePlayerRegenerationTime);
-        enableFeature(Otc::GameChannelPlayerList);
-        enableFeature(Otc::GameEnvironmentEffect);
-        enableFeature(Otc::GameItemAnimationPhase);
-    }
-
-    if(version >= 940) {
-        enableFeature(Otc::GamePlayerMarket);
-    }
-
-    if(version >= 953) {
-        enableFeature(Otc::GamePurseSlot);
-        enableFeature(Otc::GameClientPing);
-    }
-
-    if(version >= 960) {
-        enableFeature(Otc::GameSpritesU32);
-        enableFeature(Otc::GameOfflineTrainingTime);
-    }
-
-    if(version >= 963) {
-        enableFeature(Otc::GameAdditionalVipInfo);
-    }
-
-    if(version >= 980) {
-        enableFeature(Otc::GamePreviewState);
-        enableFeature(Otc::GameClientVersion);
-    }
-
-    if(version >= 981) {
-        enableFeature(Otc::GameLoginPending);
-        enableFeature(Otc::GameNewSpeedLaw);
-    }
-
-    if(version >= 984) {
-        enableFeature(Otc::GameContainerPagination);
-        enableFeature(Otc::GameBrowseField);
-    }
-
-    if(version >= 1000) {
-        enableFeature(Otc::GameThingMarks);
-        enableFeature(Otc::GamePVPMode);
-    }
-
-    if(version >= 1035) {
-        enableFeature(Otc::GameDoubleSkills);
-        enableFeature(Otc::GameBaseSkillU16);
-    }
-
-    if(version >= 1036) {
-        enableFeature(Otc::GameCreatureIcons);
-        enableFeature(Otc::GameHideNpcNames);
-    }
-
-    if(version >= 1038) {
-        enableFeature(Otc::GamePremiumExpiration);
-    }
-
-    if(version >= 1050) {
-        enableFeature(Otc::GameEnhancedAnimations);
-    }
-
-    if(version >= 1053) {
-        enableFeature(Otc::GameUnjustifiedPoints);
-    }
-
-    if(version >= 1054) {
-        enableFeature(Otc::GameExperienceBonus);
-    }
-
-    if(version >= 1055) {
-        enableFeature(Otc::GameDeathType);
-    }
-
-    if(version >= 1057) {
-        enableFeature(Otc::GameIdleAnimations);
-    }
-
-    if(version >= 1061) {
-        enableFeature(Otc::GameOGLInformation);
-    }
-
-    if(version >= 1071) {
-        enableFeature(Otc::GameContentRevision);
-    }
-
-    if(version >= 1072) {
-        enableFeature(Otc::GameAuthenticator);
-    }
-
-    if(version >= 1074) {
-        enableFeature(Otc::GameSessionKey);
-    }
 
     m_clientVersion = version;
 

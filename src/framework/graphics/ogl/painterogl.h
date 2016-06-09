@@ -30,8 +30,8 @@ class PainterOGL : public Painter
 public:
     struct PainterState {
         Size resolution;
-        Matrix4 transformMatrix;
-        Matrix4 projectionMatrix;
+        Matrix3 transformMatrix;
+        Matrix3 projectionMatrix;
         Matrix3 textureMatrix;
         Color color;
         float opacity;
@@ -58,8 +58,8 @@ public:
     void clear(const Color& color);
     void clearRect(const Color& color, const Rect& rect);
 
-    virtual void setTransformMatrix(const Matrix4& transformMatrix) { m_transformMatrix = transformMatrix; }
-    virtual void setProjectionMatrix(const Matrix4& projectionMatrix) { m_projectionMatrix = projectionMatrix; }
+    virtual void setTransformMatrix(const Matrix3& transformMatrix) { m_transformMatrix = transformMatrix; }
+    virtual void setProjectionMatrix(const Matrix3& projectionMatrix) { m_projectionMatrix = projectionMatrix; }
     virtual void setTextureMatrix(const Matrix3& textureMatrix) { m_textureMatrix = textureMatrix; }
     virtual void setCompositionMode(CompositionMode compositionMode);
     virtual void setBlendEquation(BlendEquation blendEquation);
@@ -71,16 +71,16 @@ public:
     void setTexture(const TexturePtr& texture) { setTexture(texture.get()); }
     void setResolution(const Size& resolution);
 
-    void scale(float x, float y, float z = 1.0f);
-    void translate(float x, float y, float z = 0.0f);
+    void scale(float x, float y);
+    void translate(float x, float y);
     void rotate(float angle);
     void rotate(float x, float y, float angle);
 
     void pushTransformMatrix();
     void popTransformMatrix();
 
-    Matrix4 getTransformMatrix() { return m_transformMatrix; }
-    Matrix4 getProjectionMatrix() { return m_projectionMatrix; }
+    Matrix3 getTransformMatrix() { return m_transformMatrix; }
+    Matrix3 getProjectionMatrix() { return m_projectionMatrix; }
     Matrix3 getTextureMatrix() { return m_textureMatrix; }
     BlendEquation getBlendEquation() { return m_blendEquation; }
     PainterShaderProgram *getShaderProgram() { return m_shaderProgram; }
@@ -89,8 +89,7 @@ public:
     void resetBlendEquation() { setBlendEquation(BlendEquation_Add); }
     void resetTexture() { setTexture(nullptr); }
     void resetAlphaWriting() { setAlphaWriting(false); }
-	// translating camera -1 unitys in - Z_Opengl direction
-	void resetTransformMatrix() { setTransformMatrix(Matrix4());  translate(0, 0, -1); }
+	void resetTransformMatrix() { setTransformMatrix(Matrix3()); }
 
 protected:
     void updateGlTexture();
@@ -102,9 +101,9 @@ protected:
 
     CoordsBuffer m_coordsBuffer;
 
-    std::vector<Matrix4> m_transformMatrixStack;
-    Matrix4 m_transformMatrix;
-    Matrix4 m_projectionMatrix;
+    std::vector<Matrix3> m_transformMatrixStack;
+    Matrix3 m_transformMatrix;
+    Matrix3 m_projectionMatrix;
     Matrix3 m_textureMatrix;
 
     BlendEquation m_blendEquation;

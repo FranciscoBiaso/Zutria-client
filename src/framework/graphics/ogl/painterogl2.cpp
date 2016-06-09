@@ -106,10 +106,10 @@ void PainterOGL2::drawCoords(CoordsBuffer& coordsBuffer, DrawMode drawMode)
     // set vertex array
     if(hardwareCached) {
         coordsBuffer.getHardwareVertexArray()->bind();
-        m_drawProgram->setAttributeArray(PainterShaderProgram::VERTEX_ATTR, nullptr, 3);
+        m_drawProgram->setAttributeArray(PainterShaderProgram::VERTEX_ATTR, nullptr, 2);
         HardwareBuffer::unbind(HardwareBuffer::VertexBuffer);
     } else
-        m_drawProgram->setAttributeArray(PainterShaderProgram::VERTEX_ATTR, coordsBuffer.getVertexArray(), 3);
+        m_drawProgram->setAttributeArray(PainterShaderProgram::VERTEX_ATTR, coordsBuffer.getVertexArray(), 2);
 
     // draw the element in coords buffers
 

@@ -62,83 +62,78 @@ void PainterOGL1::unbind()
 
 void PainterOGL1::drawCoords(CoordsBuffer& coordsBuffer, DrawMode drawMode)
 {
-    int vertexCount = coordsBuffer.getVertexCount();
-    if(vertexCount == 0)
-        return;
+	int vertexCount = coordsBuffer.getVertexCount();
+	if (vertexCount == 0)
+		return;
 
-    bool textured = coordsBuffer.getTextureCoordCount() != 0 && m_texture;
+	bool textured = coordsBuffer.getTextureCoordCount() != 0 && m_texture;
 
-    // skip drawing of empty textures
-    if(textured && m_texture->isEmpty())
-        return;
+	// skip drawing of empty textures
+	if (textured && m_texture->isEmpty())
+		return;
 
-    if(textured != m_textureEnabled) {
-        m_textureEnabled = textured;
-        updateGlTextureState();
-    }
+	if (textured != m_textureEnabled) {
+		m_textureEnabled = textured;
+		updateGlTextureState();
+	}
 
-    // GDI Generic driver has this bug
-    if(g_graphics.hasScissorBug())
-        updateGlClipRect();
+	// GDI Generic driver has this bug
+	if (g_graphics.hasScissorBug())
+		updateGlClipRect();
 
-    // use vertex arrays if possible, much faster
-    if(g_graphics.canUseDrawArrays()) {
-        // update coords buffer hardware caches if enabled
-        coordsBuffer.updateCaches();
-        bool hardwareCached = coordsBuffer.isHardwareCached();
+	// use vertex arrays if possible, much faster
+	if (g_graphics.canUseDrawArrays()) {
+		// update coords buffer hardware caches if enabled
+		coordsBuffer.updateCaches();
+		bool hardwareCached = coordsBuffer.isHardwareCached();
 
-        // only set texture coords arrays when needed
-        if(textured) {
-            if(hardwareCached) {
-                coordsBuffer.getHardwareTextureCoordArray()->bind();
-                glTexCoordPointer(2, GL_FLOAT, 0, nullptr);
-            } else
-                glTexCoordPointer(2, GL_FLOAT, 0, coordsBuffer.getTextureCoordArray());
-        }
-
-        // set vertex array
-        if(hardwareCached) {
-            coordsBuffer.getHardwareVertexArray()->bind();
-            glVertexPointer(3, GL_FLOAT, 0, nullptr);
-        } else
-            glVertexPointer(3, GL_FLOAT, 0, coordsBuffer.getVertexArray());
-
-        if(hardwareCached)
-            HardwareBuffer::unbind(HardwareBuffer::VertexBuffer);
-
-        // draw the element in coords buffers
-        if(drawMode == Triangles)
-            glDrawArrays(GL_TRIANGLES, 0, vertexCount);
-        else if(drawMode == TriangleStrip)
-            glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexCount);
-    }
-#ifndef OPENGL_ES
-    else {
-        const float *vertices = coordsBuffer.getVertexArray();
-        const float *texCoords = coordsBuffer.getTextureCoordArray();
-
-        // use glBegin/glEnd, this is not available in OpenGL ES
-        // and is considered much slower then glDrawArrays,
-        // but this code is executed in really old graphics cards
-        if(drawMode == Triangles)
-            glBegin(GL_TRIANGLES);
-        else if(drawMode == TriangleStrip)
-            glBegin(GL_TRIANGLE_STRIP);
-
-		
-		/*for (int k = 0; k < coordsBuffer.getTextureCoordCount(); k+=2)
-		{
-			if (textured)
-				glTexCoord2f(texCoords[k], texCoords[k + 1]);
+		// only set texture coords arrays when needed
+		if (textured) {
+			if (hardwareCached) {
+				coordsBuffer.getHardwareTextureCoordArray()->bind();
+				glTexCoordPointer(2, GL_FLOAT, 0, nullptr);
+			}
+			else
+				glTexCoordPointer(2, GL_FLOAT, 0, coordsBuffer.getTextureCoordArray());
 		}
 
-        for(int i=0;i<coordsBuffer.getVertexCount();i+=3) {
-            
-            glVertex3f(vertices[i], vertices[i+1], vertices[i + 2]);			
-        }
-*/
-        glEnd();
-    }
+		// set vertex array
+		if (hardwareCached) {
+			coordsBuffer.getHardwareVertexArray()->bind();
+			glVertexPointer(2, GL_FLOAT, 0, nullptr);
+		}
+		else
+			glVertexPointer(2, GL_FLOAT, 0, coordsBuffer.getVertexArray());
+
+		if (hardwareCached)
+			HardwareBuffer::unbind(HardwareBuffer::VertexBuffer);
+
+		// draw the element in coords buffers
+		if (drawMode == Triangles)
+			glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+		else if (drawMode == TriangleStrip)
+			glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexCount);
+	}
+#ifndef OPENGL_ES
+	else {
+		int verticesSize = vertexCount * 2;
+		float *vertices = coordsBuffer.getVertexArray();
+		float *texCoords = coordsBuffer.getTextureCoordArray();
+
+		// use glBegin/glEnd, this is not available in OpenGL ES
+		// and is considered much slower then glDrawArrays,
+		// but this code is executed in really old graphics cards
+		if (drawMode == Triangles)
+			glBegin(GL_TRIANGLES);
+		else if (drawMode == TriangleStrip)
+			glBegin(GL_TRIANGLE_STRIP);
+		for (int i = 0; i<verticesSize; i += 2) {
+			if (textured)
+				glTexCoord2f(texCoords[i], texCoords[i + 1]);
+			glVertex2f(vertices[i], vertices[i + 1]);
+		}
+		glEnd();
+	}
 #endif
 }
 
@@ -237,14 +232,14 @@ void PainterOGL1::setMatrixMode(PainterOGL1::MatrixMode matrixMode)
     updateGlMatrixMode();
 }
 
-void PainterOGL1::setTransformMatrix(const Matrix4& transformMatrix)
+void PainterOGL1::setTransformMatrix(const Matrix3& transformMatrix)
 {
     m_transformMatrix = transformMatrix;
     if(g_painter == this)
         updateGlTransformMatrix();
 }
 
-void PainterOGL1::setProjectionMatrix(const Matrix4& projectionMatrix)
+void PainterOGL1::setProjectionMatrix(const Matrix3& projectionMatrix)
 {
     m_projectionMatrix = projectionMatrix;
     if(g_painter == this)

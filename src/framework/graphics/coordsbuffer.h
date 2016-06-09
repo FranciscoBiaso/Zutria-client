@@ -73,8 +73,8 @@ public:
     void updateCaches();
     bool isHardwareCached() { return m_hardwareCached; }
 
-    const float *getVertexArray() { return m_vertexArray.vertices(); }
-    const float *getTextureCoordArray() { return m_textureCoordArray.vertices(); }
+    float *getVertexArray() { return m_vertexArray.vertices(); }
+    float *getTextureCoordArray() { return m_textureCoordArray.vertices(); }
     int getVertexCount() { return m_vertexArray.vertexCount(); }
     int getTextureCoordCount() { return m_textureCoordArray.vertexCount(); }
 
@@ -85,8 +85,8 @@ private:
     HardwareBuffer *m_hardwareVertexArray;
     HardwareBuffer *m_hardwareTextureCoordArray;
     HardwareBuffer::UsagePattern m_hardwareCacheMode;
-	VertexArray3 m_vertexArray;
-	VertexArray2 m_textureCoordArray;
+	VertexArray m_vertexArray;
+	VertexArray m_textureCoordArray;
     bool m_hardwareCached;
     bool m_hardwareCaching;
 };

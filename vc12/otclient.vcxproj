@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{17A8F78F-1FFB-4128-A3B3-59CC6C19D89A}</ProjectGuid>
     <RootNamespace>otclient</RootNamespace>
-    <ProjectName>zutria</ProjectName>
+    <ProjectName>zutriaClient</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -341,6 +341,7 @@
     <ClInclude Include="..\src\client\outfit.h" />
     <ClInclude Include="..\src\client\player.h" />
     <ClInclude Include="..\src\client\position.h" />
+    <ClInclude Include="..\src\client\protocolcodes.h" />
     <ClInclude Include="..\src\client\protocolgame.h" />
     <ClInclude Include="..\src\client\shadermanager.h" />
     <ClInclude Include="..\src\client\spritemanager.h" />

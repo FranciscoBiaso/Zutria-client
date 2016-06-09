@@ -102,8 +102,8 @@ GameServerOpcodes = {
 }
 
 ClientOpcodes = {
-    ClientEnterAccount                  = 1,
-    ClientEnterGame                     = 10,
+    ClientEnterAccount                  = 0,
+    ClientEnterGame                     = 1,
     ClientLeaveGame                     = 20,
     ClientPing                          = 29,
     ClientPingBack                      = 30,

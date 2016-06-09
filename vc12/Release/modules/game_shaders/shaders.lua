@@ -6,7 +6,7 @@ MAP_SHADERS = {
  -- { name = 'Grayscale', frag ='shaders/grayscale.frag' },
  -- { name = 'Pulse', frag = 'shaders/pulse.frag' },
  -- { name = 'Old Tv', frag = 'shaders/oldtv.frag' },
- { name = 'ff', vert = 'shaders/default.vert', frag = 'shaders/ff.frag', tex1 = 'images/clouds.png' },
+ --{ name = 'ff', vert = 'shaders/default.vert', frag = 'shaders/ff.frag', tex1 = 'images/clouds.png' },
   --{ name = 'Fog2', frag = 'shaders/fog2.frag', tex1 = 'images/clouds3.png' },
  --{ name = 'Party', frag = 'shaders/party.frag',vert = 'shaders/fog.vert' },
 --  { name = 'Radial Blur', frag ='shaders/radialblur.frag' },
@@ -17,7 +17,7 @@ MAP_SHADERS = {
 
 local lastShader
 local areas = {                    
-{from = {x = -0, y = -0, z = 7}, to = {x = 0, y = 0, z = 7}, name = 'ff'},
+{from = {x = -0, y = -0, z = 7}, to = {x = 0, y = 0, z = 7}, name = 'Default'},
 }
 
 function isInRange(position, fromPosition, toPosition)
@@ -37,7 +37,7 @@ function init()
    end
 
    connect(LocalPlayer, {
-     onPositionChange = onPositionChange,
+     --onPositionChange = onPositionChange,
    })
    
    local map = modules.game_interface.getMapPanel()

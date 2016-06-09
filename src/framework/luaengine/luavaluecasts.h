@@ -74,6 +74,9 @@ int push_luavalue(const char* cstr);
 int push_luavalue(const std::string& str);
 bool luavalue_cast(int index, std::string& str);
 
+//pair
+int push_luavalue(const std::pair<uint8_t, uint8_t> & pair);
+
 // lua cpp function
 int push_luavalue(const LuaCppFunction& func);
 

@@ -130,8 +130,7 @@ protected:
     void processRemoveAutomapFlag(const Position& pos, int icon, const std::string& message);
 
     // outfit
-    void processOpenOutfitWindow(const Outfit& currentOufit, const std::vector<std::tuple<int, std::string, int> >& outfitList,
-                                 const std::vector<std::tuple<int, std::string> >& mountList);
+	void processOpenOutfitWindow(const Outfit& currentOufit, const std::vector<std::pair<std::uint8_t,std::uint8_t>>& );
 
     // npc trade
     void processOpenNpcTrade(const std::vector<std::tuple<ItemPtr, std::string, int, int, int> >& items);

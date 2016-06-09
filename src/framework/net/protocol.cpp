@@ -72,12 +72,12 @@ bool Protocol::isConnecting()
 void Protocol::send(const OutputMessagePtr& outputMessage)
 {
     // encrypt
-    if(m_xteaEncryptionEnabled)
-        xteaEncrypt(outputMessage);
+    //if(m_xteaEncryptionEnabled)
+    //    xteaEncrypt(outputMessage);
 
-    // write checksum
-    if(m_checksumEnabled)
-        outputMessage->writeChecksum();
+    //// write checksum
+    //if(m_checksumEnabled)
+    //    outputMessage->writeChecksum();
 
     // wirte message size
     outputMessage->writeMessageSize();
@@ -96,10 +96,10 @@ void Protocol::recv()
 
     // first update message header size
     int headerSize = 2; // 2 bytes for message size
-    if(m_checksumEnabled)
-        headerSize += 4; // 4 bytes for checksum
-    if(m_xteaEncryptionEnabled)
-        headerSize += 2; // 2 bytes for XTEA encrypted message size
+    //if(m_checksumEnabled)
+    //    headerSize += 4; // 4 bytes for checksum
+    //if(m_xteaEncryptionEnabled)
+    //    headerSize += 2; // 2 bytes for XTEA encrypted message size
     m_inputMessage->setHeaderSize(headerSize);
 
     // read the first 2 bytes which contain the message size
@@ -121,24 +121,25 @@ void Protocol::internalRecvHeader(uint8* buffer, uint16 size)
 void Protocol::internalRecvData(uint8* buffer, uint16 size)
 {
     // process data only if really connected
-    if(!isConnected()) {
+    if(!isConnected()) 
+	{
         g_logger.traceError("received data while disconnected");
         return;
     }
 
     m_inputMessage->fillBuffer(buffer, size);
 
-    if(m_checksumEnabled && !m_inputMessage->readChecksum()) {
-        g_logger.traceError("got a network message with invalid checksum");
-        return;
-    }
+    //if(m_checksumEnabled && !m_inputMessage->readChecksum()) {
+    //    g_logger.traceError("got a network message with invalid checksum");
+    //    return;
+    //}
 
-    if(m_xteaEncryptionEnabled) {
-        if(!xteaDecrypt(m_inputMessage)) {
-            g_logger.traceError("failed to decrypt message");
-            return;
-        }
-    }
+    //if(m_xteaEncryptionEnabled) {
+    //    if(!xteaDecrypt(m_inputMessage)) {
+    //        g_logger.traceError("failed to decrypt message");
+    //        return;
+    //    }
+    //}
     onRecv(m_inputMessage);
 }
 

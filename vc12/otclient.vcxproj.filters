@@ -1054,6 +1054,9 @@
     <ClInclude Include="..\src\framework\resource.h">
       <Filter>Header Files\framework</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\client\protocolcodes.h">
+      <Filter>Header Files\client</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Release\data\images\ico\zutria.ico">

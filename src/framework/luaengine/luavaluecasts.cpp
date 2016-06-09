@@ -86,6 +86,17 @@ bool luavalue_cast(int index, std::string& str)
     return true;
 }
 
+//pair
+int push_luavalue(const std::pair<uint8_t, uint8_t> & pair)
+{
+	g_lua.createTable(0, 2);
+	g_lua.pushInteger(pair.first);
+	g_lua.setField("first");
+	g_lua.pushInteger(pair.second);
+	g_lua.setField("second");
+	return 1;
+}
+
 // lua cpp function
 int push_luavalue(const LuaCppFunction& func)
 {

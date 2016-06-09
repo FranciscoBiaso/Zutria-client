@@ -743,27 +743,7 @@ end
 
 function onTalk(name, level, mode, message, channelId, creaturePos)
   intervalTimeBetweenMsgs = os.clock() - statTalkingTime
-  statTalkingTime = os.clock()
-  
-  if intervalTimeBetweenMsgs < 0.2 then -- 200 mil seconds
-    breathReduction(#message * 20.0) -- + 300% factor  
-  elseif intervalTimeBetweenMsgs < 0.4 then -- 400 mil seconds
-    breathReduction(#message * 18.0) -- + 250% factor  
-  elseif intervalTimeBetweenMsgs < 0.6 then -- 600 mil seconds
-    breathReduction(#message * 15.0) -- + 200% factor  
-  elseif intervalTimeBetweenMsgs < 1.0 then
-    breathReduction(#message * 12.0) -- + 100% factor  
-  elseif intervalTimeBetweenMsgs < 2.0 then
-    breathReduction(#message * 6.0) -- + 100% factor  
-  elseif intervalTimeBetweenMsgs < 3.0 then
-    breathReduction(#message * 4.0) -- + 100% factor  
-  else
-   breathReduction(#message * 1.0) -- + 100% factor 
-  end
-  
-  if regenerating == false then
-    scheduleEvent(function() if g_game.isOnline() then breathRegeneration(currentBreath) end end, breathRegenerationTimeStep)
-  end  
+  statTalkingTime = os.clock()  
   
   if mode == MessageModes.MSG_BROADCAST then
     modules.game_textmessage.displayBroadcastMessage(name .. ': ' .. message)
@@ -788,6 +768,26 @@ function onTalk(name, level, mode, message, channelId, creaturePos)
   if (mode == MessageModes.MSG_PLAYER_TALK or 
       mode == MessageModes.MSG_PLAYER_WHISPER or
       mode == MessageModes.MSG_PLAYER_YELL) and creaturePos then
+  if intervalTimeBetweenMsgs < 0.2 then -- 200 mil seconds
+    breathReduction(#message * 20.0) -- + 300% factor  
+  elseif intervalTimeBetweenMsgs < 0.4 then -- 400 mil seconds
+    breathReduction(#message * 18.0) -- + 250% factor  
+  elseif intervalTimeBetweenMsgs < 0.6 then -- 600 mil seconds
+    breathReduction(#message * 15.0) -- + 200% factor  
+  elseif intervalTimeBetweenMsgs < 1.0 then
+    breathReduction(#message * 12.0) -- + 100% factor  
+  elseif intervalTimeBetweenMsgs < 2.0 then
+    breathReduction(#message * 6.0) -- + 100% factor  
+  elseif intervalTimeBetweenMsgs < 3.0 then
+    breathReduction(#message * 4.0) -- + 100% factor  
+  else
+   breathReduction(#message * 1.0) -- + 100% factor 
+  end
+  
+  if regenerating == false then
+    scheduleEvent(function() if g_game.isOnline() then breathRegeneration(currentBreath) end end, breathRegenerationTimeStep)
+  end
+  
     local staticText = StaticText.create()
     local staticMessage = message    
     staticText:setFont('verdana-11px-rounded')
@@ -812,9 +812,9 @@ function onTalk(name, level, mode, message, channelId, creaturePos)
          mode == MessageModes.MSG_MONSTER_YELL) and creaturePos then
     local animatedText = AnimatedText.create()
     animatedText:setText(message)  
-    animatedText:setColor32(0xFF8000FF)  
+    animatedText:setColor32(0xFFE5CCAA)  
     animatedText:setDuration(calculateVisibleTime(message))   
-    animatedText:setFont('styled-16px')      
+    animatedText:setFont('verdana-11px-rounded')      
     g_map.addThing(animatedText, creaturePos, -1)   
   end
     

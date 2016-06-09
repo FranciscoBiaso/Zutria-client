@@ -669,12 +669,15 @@ void Creature::setDirection(Otc::Direction direction)
 void Creature::setOutfit(const Outfit& outfit)
 {
     Outfit oldOutfit = m_outfit;
-    if(outfit.getCategory() != ThingCategoryCreature) {
+    if(outfit.getCategory() != ThingCategoryCreature) 
+	{
         if(!g_things.isValidDatId(outfit.getAuxId(), outfit.getCategory()))
             return;
         m_outfit.setAuxId(outfit.getAuxId());
         m_outfit.setCategory(outfit.getCategory());
-    } else {
+    }
+	else 
+	{
         if(outfit.getId() > 0 && !g_things.isValidDatId(outfit.getId(), ThingCategoryCreature))
             return;
         m_outfit = outfit;

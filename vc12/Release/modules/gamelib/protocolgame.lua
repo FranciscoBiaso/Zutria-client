@@ -1,6 +1,10 @@
 local opcodeCallbacks = {}
 local extendedCallbacks = {}
 
+function ProtocolGame:seeopcode(oc)
+  return false
+end
+
 function ProtocolGame:onOpcode(opcode, msg)
   for i, callback in pairs(opcodeCallbacks) do
     if i == opcode then

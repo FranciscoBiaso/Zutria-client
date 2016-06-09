@@ -181,7 +181,7 @@ function onGameStart()
   end
     -- with you change setMapAwareRange values you need to change
     -- AddMapDescription function values on server side
-  g_game.setMapAwareRange(8,7,8,7)
+  g_game.setMapAwareRange(8,6,9,7)
 end
 
 function onGameEnd()
@@ -557,7 +557,7 @@ function createThingMenu(menuPosition, lookThing, useThing, creatureThing)
     menu:addSeparator()
 
     if creatureThing:isLocalPlayer() then
-      menu:addOption(tr('Set Outfit'), function() g_game.requestOutfit() end)
+      menu:addOption(tr('configurar personagem'), function() g_game.requestOutfit() end)
 
       if g_game.getFeature(GamePlayerMounts) then
         if not localPlayer:isMounted() then
@@ -901,7 +901,7 @@ function setupViewMode(mode)
     --gameRootPanel:fill('parent')
     --g_game.changeMapAwareRange(36, 28)
     
-    gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
+    gameMapPanel:setVisibleDimension({ width = 16, height = 11 })
     --gameMapPanel:fill('parent')    
     --gameMapPanel:setOn(true)    
     

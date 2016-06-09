@@ -173,73 +173,68 @@ void PainterOGL::setAlphaWriting(bool enable)
 
 void PainterOGL::setResolution(const Size& resolution)
 {
-    // The projection matrix converts from Painter's coordinate system to GL's coordinate system
-    //    * GL's viewport is 2x2, Painter's is width x height
-    //    * GL has +y -> -y going from bottom -> top, Painter is the other way round
-    //    * GL has [0,0] in the center, Painter has it in the top-left
-    //
-    // This results in the Projection matrix below.
-    //
-    //                                    Projection Matrix
-    //   Painter Coord     ------------------------------------------------        GL Coord
-    //   -------------     | 2.0 / width  |      0.0      |      0.0      |     ---------------
-    //   |  x  y  z  |  *  |     0.0      | -2.0 / height |      0.0      |  =  |  x'  y'  z'  |
-    //   -------------     |    -1.0      |      1.0      |      1.0      |     ---------------
-	 
-    Matrix4 projectionMatrix = { 2.0f/resolution.width(),     0.0f,                        0.0f,    0.0f,   
-                                 0.0f,                        -2.0f/resolution.height(),   0.0f,    0.0f,
-                                 0.0f,                        0.0f,                       -1.0f,    0.0f,
-							    -1.0f,                        1.0f,                        0.0f,    1.0f };
-	// we don't need transpose this matrix it is already in the format.
-    m_resolution = resolution;
+	// The projection matrix converts from Painter's coordinate system to GL's coordinate system
+	//    * GL's viewport is 2x2, Painter's is width x height
+	//    * GL has +y -> -y going from bottom -> top, Painter is the other way round
+	//    * GL has [0,0] in the center, Painter has it in the top-left
+	//
+	// This results in the Projection matrix below.
+	//
+	//                                    Projection Matrix
+	//   Painter Coord     ------------------------------------------------        GL Coord
+	//   -------------     | 2.0 / width  |      0.0      |      0.0      |     ---------------
+	//   |  x  y  1  |  *  |     0.0      | -2.0 / height |      0.0      |  =  |  x'  y'  1  |
+	//   -------------     |    -1.0      |      1.0      |      1.0      |     ---------------
 
-    setProjectionMatrix(projectionMatrix);
-    if(g_painter == this)
-        updateGlViewport();
+	Matrix3 projectionMatrix = { 2.0f / resolution.width(),  0.0f,                      0.0f,
+					 			 0.0f,                    -2.0f / resolution.height(),  0.0f,
+								-1.0f,                     1.0f,                      1.0f };
+
+	m_resolution = resolution;
+
+	setProjectionMatrix(projectionMatrix);
+	if (g_painter == this)
+		updateGlViewport();
 }
 
-
-void PainterOGL::scale(float x, float y, float z)
+void PainterOGL::scale(float x, float y)
 {
-    Matrix4 scaleMatrix = {
-           x,  0.0f,  0.0f, 0.0f, 
-        0.0f,     y,  0.0f, 0.0f,
-        0.0f,  0.0f,  z,    0.0f,
-		0.0f,  0.0f,  0.0f, 1.0f
-    };
+	Matrix3 scaleMatrix = {
+		x,  0.0f,  0.0f,
+		0.0f,     y,  0.0f,
+		0.0f,  0.0f,  1.0f
+	};
 
-    setTransformMatrix(m_transformMatrix * scaleMatrix.transposed());
+	setTransformMatrix(m_transformMatrix * scaleMatrix.transposed());
 }
 
-void PainterOGL::translate(float x, float y, float z)
+void PainterOGL::translate(float x, float y)
 {
-    Matrix4 translateMatrix = {
-        1.0f,  0.0f,     0.0f, x,
-        0.0f,  1.0f,     0.0f, y,
-        0.0f,  0.0f,     1.0f, z,
-		0.0f,  0.0f,     0.0f, 1.0f
-    };
+	Matrix3 translateMatrix = {
+		1.0f,  0.0f,     x,
+		0.0f,  1.0f,     y,
+		0.0f,  0.0f,  1.0f
+	};
 
-    setTransformMatrix(m_transformMatrix * translateMatrix.transposed());
+	setTransformMatrix(m_transformMatrix * translateMatrix.transposed());
 }
 
 void PainterOGL::rotate(float angle)
 {
-    Matrix4 rotationMatrix = {
-        std::cos(angle), -std::sin(angle),  0.0f, 0.0f,
-        std::sin(angle),  std::cos(angle),  0.0f, 0.0f,
-                   0.0f,             0.0f,  1.0f, 0.0f,
-				   0.0f,             0.0f,  0.0f, 1.0f,
-    };
+	Matrix3 rotationMatrix = {
+		std::cos(angle), -std::sin(angle),  0.0f,
+		std::sin(angle),  std::cos(angle),  0.0f,
+		0.0f,             0.0f,  1.0f
+	};
 
-    setTransformMatrix(m_transformMatrix * rotationMatrix.transposed());
+	setTransformMatrix(m_transformMatrix * rotationMatrix.transposed());
 }
 
 void PainterOGL::rotate(float x, float y, float angle)
 {
-    translate(-x, -y);
-    rotate(angle);
-    translate(x, y);
+	translate(-x, -y);
+	rotate(angle);
+	translate(x, y);
 }
 
 void PainterOGL::pushTransformMatrix()

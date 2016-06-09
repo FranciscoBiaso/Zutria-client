@@ -52,80 +52,19 @@ void ProtocolGame::sendLoginPacket(uint challengeTimestamp, uint8 challengeRando
 {
     OutputMessagePtr msg(new OutputMessage);
 
-    msg->addU8(Proto::ClientPendingGame);
-    msg->addU16(g_game.getOs());
-    msg->addU16(g_game.getProtocolVersion());
+    msg->addU8(Proto::ClientEnterGame);
 
-    if(g_game.getFeature(Otc::GameClientVersion))
-        msg->addU32(g_game.getClientVersion());
+	msg->addU32(stdext::from_string<uint32>(m_accountName));
+    msg->addString(m_accountPassword);
+    msg->addString(m_characterName);
 
-    if(g_game.getFeature(Otc::GameContentRevision))
-        msg->addU16(g_things.getContentRevision());
-
-    if(g_game.getFeature(Otc::GamePreviewState))
-        msg->addU8(0);
-
-    int offset = msg->getMessageSize();
-    // first RSA byte must be 0
-    msg->addU8(0);
-
-    if(g_game.getFeature(Otc::GameLoginPacketEncryption)) {
-        // xtea key
-        generateXteaKey();
-        msg->addU32(m_xteaKey[0]);
-        msg->addU32(m_xteaKey[1]);
-        msg->addU32(m_xteaKey[2]);
-        msg->addU32(m_xteaKey[3]);
-        msg->addU8(0); // is gm set?
-    }
-
-    if(g_game.getFeature(Otc::GameSessionKey)) {
-        msg->addString(m_sessionKey);
-        msg->addString(m_characterName);
-    } else {
-        if(g_game.getFeature(Otc::GameAccountNames))
-            msg->addString(m_accountName);
-        else
-            msg->addU32(stdext::from_string<uint32>(m_accountName));
-
-        msg->addString(m_characterName);
-        msg->addString(m_accountPassword);
-
-        if(g_game.getFeature(Otc::GameAuthenticator))
-            msg->addString(m_authenticatorToken);
-    }
-
-    if(g_game.getFeature(Otc::GameChallengeOnLogin)) {
-        msg->addU32(challengeTimestamp);
-        msg->addU8(challengeRandom);
-    }
-
-    std::string extended = callLuaField<std::string>("getLoginExtendedData");
-    if(!extended.empty())
-        msg->addString(extended);
-
-    // complete the bytes for rsa encryption with zeros
-    int paddingBytes = g_crypt.rsaGetSize() - (msg->getMessageSize() - offset);
-    assert(paddingBytes >= 0);
-    msg->addPaddingBytes(paddingBytes);
-
-    // encrypt with RSA
-    if(g_game.getFeature(Otc::GameLoginPacketEncryption))
-        msg->encryptRsa();
-
-    if(g_game.getFeature(Otc::GameProtocolChecksum))
-        enableChecksum();
-
-    send(msg);
-
-    if(g_game.getFeature(Otc::GameLoginPacketEncryption))
-        enableXteaEncryption();
+	send(msg);
 }
 
 void ProtocolGame::sendEnterGame()
 {
     OutputMessagePtr msg(new OutputMessage);
-    msg->addU8(Proto::ClientEnterGame);
+    msg->addU8(Proto::ClientEnterGameNEW);
     send(msg);
 }
 
@@ -720,6 +659,8 @@ void ProtocolGame::sendChangeOutfit(const Outfit& outfit)
 	msg->addU32(outfit.getBody());
 	msg->addU32(outfit.getLegs());
 	msg->addU32(outfit.getFeet());
+	msg->addU8(outfit.getAddons());
+	
    // if(g_game.getFeature(Otc::GamePlayerAddons))
     //    msg->addU8(outfit.getAddons());
    // if(g_game.getFeature(Otc::GamePlayerMounts))

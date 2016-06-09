@@ -77,7 +77,7 @@ bool PainterShaderProgram::link()
     return false;
 }
 
-void PainterShaderProgram::setTransformMatrix(const Matrix4& transformMatrix)
+void PainterShaderProgram::setTransformMatrix(const Matrix3& transformMatrix)
 {
     if(transformMatrix == m_transformMatrix)
         return;
@@ -87,7 +87,7 @@ void PainterShaderProgram::setTransformMatrix(const Matrix4& transformMatrix)
     m_transformMatrix = transformMatrix;
 }
 
-void PainterShaderProgram::setProjectionMatrix(const Matrix4& projectionMatrix)
+void PainterShaderProgram::setProjectionMatrix(const Matrix3& projectionMatrix)
 {
     if(projectionMatrix == m_projectionMatrix)
         return;
