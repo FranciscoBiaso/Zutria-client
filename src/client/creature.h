@@ -63,6 +63,7 @@ public:
     void setShield(uint8 shield);
     void setEmblem(uint8 emblem);
     void setIcon(uint8 icon);
+	void setSquareTexture(const std::string& filename);
     void setSkullTexture(const std::string& filename);
     void setShieldTexture(const std::string& filename, bool blink);
     void setEmblemTexture(const std::string& filename);
@@ -154,6 +155,7 @@ protected:
     uint8 m_shield;
     uint8 m_emblem;
     uint8 m_icon;
+	TexturePtr m_squareTexture;
     TexturePtr m_skullTexture;
     TexturePtr m_shieldTexture;
     TexturePtr m_emblemTexture;

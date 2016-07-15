@@ -155,7 +155,7 @@ function EnterGame.doLogin()
   G.password = enterGame:getChildById('accountPasswordTextEdit'):getText()
 	
   G.authenticatorToken = ''
-  G.host = '127.0.0.1'
+  G.host = '189.83.36.108'
   G.port = 7171
   local clientVersion = 760
 	

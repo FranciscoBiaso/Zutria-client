@@ -60,6 +60,9 @@ Creature::Creature() : Thing()
     m_footStep = 0;
     m_speedFormula.fill(-1);
     m_outfitColor = Color::white;
+
+
+	callLuaField("onCreate");
 }
 
 void Creature::draw(const Point& dest, float scaleFactor, bool animate, LightView *lightView)
@@ -71,14 +74,16 @@ void Creature::draw(const Point& dest, float scaleFactor, bool animate, LightVie
 
     if(m_showTimedSquare && animate) {
         g_painter->setColor(m_timedSquareColor);
-        g_painter->drawBoundingRect(Rect(dest + (animationOffset - getDisplacement() + 2)*scaleFactor, Size(28, 28)*scaleFactor), std::max<int>((int)(2*scaleFactor), 1));
+        //g_painter->drawBoundingRect(Rect(dest + (animationOffset - getDisplacement() + 2)*scaleFactor, Size(28, 28)*scaleFactor), std::max<int>((int)(2*scaleFactor), 1));
+		g_painter->drawTexturedRect(Rect(dest + (animationOffset + 2)*scaleFactor, Size(28, 28)*scaleFactor), m_squareTexture);
         g_painter->setColor(Color::white);
     }
 
     if(m_showStaticSquare && animate) {
         g_painter->setColor(m_staticSquareColor);
-        g_painter->drawBoundingRect(Rect(dest + (animationOffset - getDisplacement())*scaleFactor, Size(Otc::TILE_PIXELS, Otc::TILE_PIXELS)*scaleFactor), std::max<int>((int)(2*scaleFactor), 1));
-        g_painter->setColor(Color::white);
+       // g_painter->drawBoundingRect(Rect(dest + (animationOffset - getDisplacement())*scaleFactor, Size(Otc::TILE_PIXELS, Otc::TILE_PIXELS)*scaleFactor), std::max<int>((int)(2*scaleFactor), 1));		
+		g_painter->drawTexturedRect(Rect(dest + (animationOffset  + 2)*scaleFactor, Size(28, 28)*scaleFactor), m_squareTexture);
+		g_painter->setColor(Color::white);
     }
 
     internalDrawOutfit(dest + animationOffset * scaleFactor, scaleFactor, animate, animate, m_direction);
@@ -762,6 +767,12 @@ void Creature::setIcon(uint8 icon)
 {
     m_icon = icon;
     callLuaField("onIconChange", m_icon);
+}
+
+
+void Creature::setSquareTexture(const std::string& filename)
+{
+	m_squareTexture = g_textures.getTexture(filename);
 }
 
 void Creature::setSkullTexture(const std::string& filename)

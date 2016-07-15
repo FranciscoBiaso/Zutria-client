@@ -344,26 +344,6 @@ void LocalPlayer::setSkill(int skillId, double newSkill)
 	if (oldSkill != newSkill) {
 		m_skills[skillId] = newSkill;
 
-		if (skillId == PLAYER_SKILL_HEALTH_POINTS)
-		{
-			m_maxHealth = newSkill;
-
-			if (m_healthPercent >= 50)
-				m_informationColor = Color(255.0 * ((50 - (m_healthPercent - 50)) / 50.0f), 0xff, 0x00);
-			else
-				m_informationColor = Color(0xff, 255.0 * m_healthPercent / 50.0f, 0x00);
-		}
-		if (skillId == PLAYER_SKILL_MANA_POINTS)
-		{
-
-			float manaPercentage = (getMana() / newSkill) * 100.0;
-			if (manaPercentage >= 50)
-				m_manaInformationColor = Color(255.0 * ((50 - (manaPercentage - 50)) / 50.0f), 0, 0xff);
-			else
-				m_manaInformationColor = Color(0xff, 0x00, 255.0 * (manaPercentage / 50.0f));
-
-			m_maxMana = newSkill;
-		}
 		callLuaField("onSkillChange", skillId, newSkill, oldSkill);
     }
 }
@@ -372,13 +352,26 @@ void LocalPlayer::setBaseSkill(Otc::Skill skill, int baseLevel)
 {
 }
 
+
+void LocalPlayer::setMaxHealth(double maxHealth)
+{
+	m_maxHealth = maxHealth;
+	callLuaField("onHealthChange", getHealth(), maxHealth);
+}
+
 void LocalPlayer::setHealth(double health)
 {
     if(m_health != health) {
         double oldHealth = m_health;
         m_health = health;
 
-        callLuaField("onHealthChange", health, oldHealth);
+
+		if (m_healthPercent >= 50)
+			m_informationColor = Color(255.0 * ((50 - (m_healthPercent - 50)) / 50.0f), 0xff, 0x00);
+		else
+			m_informationColor = Color(0xff, 255.0 * m_healthPercent / 50.0f, 0x00);
+
+        callLuaField("onHealthChange", health, getMaxHealth());
 
         // cannot walk while dying
         if(health == 0) {
@@ -444,7 +437,7 @@ void LocalPlayer::setLevelPoints(double levelPoints)
 
 void LocalPlayer::setMana(double mana)
 {
-	float manaPercentage = (mana / getSkillValue(skillsID::PLAYER_SKILL_MANA_POINTS)) * 100.0;
+	float manaPercentage = (mana / getSkillValue(skillsID::PLAYER_ATTR_INTELLIGENCE)) * 100.0;
 	if (manaPercentage >= 50)
 		m_manaInformationColor = Color(255.0 * ((50 - (manaPercentage - 50)) / 50.0f), 0, 0xff);
 	else
@@ -456,6 +449,21 @@ void LocalPlayer::setMana(double mana)
 
         callLuaField("onManaChange", mana, oldMana);
     }
+}
+
+void LocalPlayer::setMaxMana(double maxMana)
+{
+
+	m_maxMana = maxMana;
+
+	callLuaField("onManaChange", getMana(), maxMana);
+
+	float manaPercentage = (getMana() / getMaxMana()) * 100.0;
+	if (manaPercentage >= 50)
+		m_manaInformationColor = Color(255.0 * ((50 - (manaPercentage - 50)) / 50.0f), 0, 0xff);
+	else
+		m_manaInformationColor = Color(0xff, 0x00, 255.0 * (manaPercentage / 50.0f));
+
 }
 
 void LocalPlayer::setMagicLevel(double magicLevel, double magicLevelPercent)

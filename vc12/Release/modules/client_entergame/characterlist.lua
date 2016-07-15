@@ -13,7 +13,7 @@ local resendWaitEvent
 local function tryLogin(charInfo, tries)
   tries = tries or 1
 
-  if tries > 3 then
+  if tries > 50 then
     return
   end
 
@@ -29,7 +29,7 @@ local function tryLogin(charInfo, tries)
 
   g_game.loginWorld(G.account, G.password, charInfo.worldName, charInfo.worldHost, charInfo.worldPort, charInfo.characterName, G.authenticatorToken, G.sessionKey)
 
-  loadBox = displayCancelBox(tr('Por favor espere'), tr('Conectando ao mundo ' .. charInfo.worldName .. ' ...'))
+  loadBox = displayCancelBox(tr('Please wait'), tr('Connecting to game server...'))
   connect(loadBox, { onCancel = function()
                                   loadBox = nil
                                   g_game.cancelLogin()

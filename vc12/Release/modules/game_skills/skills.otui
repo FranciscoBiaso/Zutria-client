@@ -157,121 +157,111 @@ MiniWindow
       margin-bottom: 6
     
     SkillButton
-      id: health
+      id: vitality
       height: 15
       IconSkillBlood
       SkillNameLabel
-        !text: tr('Pontos de vida')
+        !text: tr('vitalidade')
         color: #F0E68Cff
       SkillValueLabel
       AddSkillButton
       
     SkillButton
-      id: physicalAttack
+      id: force
       height: 15
       IconSkillStrength
       SkillNameLabel
-        !text: tr('Ataque físico')
+        !text: tr('força')
         color: #F0E68Cff
       SkillValueLabel
       AddSkillButton
     
     SkillButton
-      id: physicalDefense      
+      id: agility      
       height: 15
       IconSkillShield
       SkillNameLabel
-        !text: tr('Defesa física')
+        !text: tr('agilidade')
         color: #F0E68Cff
       SkillValueLabel
       AddSkillButton
 
     SkillButton
-      id: capacity
+      id: intelligence
       height: 15
       IconSkillWeight
       SkillNameLabel
-        !text: tr('Capacidade')
+        !text: tr('inteligência')
         color: #F0E68Cff
       SkillValueLabel
       AddSkillButton      
       
     SkillButton
-      id: manaPoints
+      id: concentration
       height: 15      
       IconSkillMana
       SkillNameLabel
-        !text: tr('Pontos de mana')
+        !text: tr('concentração')
         color: #00FFFFff
       SkillValueLabel
       AddSkillButton       
       
     SkillButton
-      id: magicAttack      
+      id: stamina      
       height: 15
       IconSkillMagicAttack
       SkillNameLabel
-        !text: tr('Ataque mágico')
+        !text: tr('energia')
         color: #00FFFFff
       SkillValueLabel
       AddSkillButton
 
     SkillButton
-      id: magicDefense      
+      id: distance      
       height: 15
       IconSkillMagicDeffense
       SkillNameLabel
-        !text: tr('Defesa mágica')
+        !text: tr('distância')
         color: #00FFFFff
       SkillValueLabel
       AddSkillButton
     
     SkillButton
-      id: magicPoints      
+      id: melee      
       height: 15
       IconSkillMagicPoints
       SkillNameLabel
-        !text: tr('Magic points')
+        !text: tr('corpo a corpo')
         color: #00FFFFff
       SkillValueLabel
       AddSkillButton    
       
     SkillButton
-      id: playerSpeed
+      id: mentality
       height: 15
       IconSkillSpeed
       SkillNameLabel
-        !text: tr('Vel. de mov.')
+        !text: tr('mentalidade')
         color: #00cc00ff
       SkillValueLabel
       AddSkillButton            
     
     SkillButton
-      id: attackSpeed      
+      id: trainer      
       height: 15
       IconSkillHands
       SkillNameLabel
-        !text: tr('Vel. de ataque')
+        !text: tr('adestradora')
         color: #00cc00ff
       SkillValueLabel
       AddSkillButton
 
     SkillButton
-      id: cooldown      
+      id: defense      
       height: 15
       IconSkillCooldown
       SkillNameLabel
-        !text: tr('Cooldown')
-        color: #00cc00ff
-      SkillValueLabel
-      AddSkillButton
-    
-    SkillButton
-      id: avoidance      
-      height: 15
-      IconSkillCloud
-      SkillNameLabel
-        !text: tr('Esquiva')
+        !text: tr('defensora')
         color: #00cc00ff
       SkillValueLabel
       AddSkillButton

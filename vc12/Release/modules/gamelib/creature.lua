@@ -118,6 +118,10 @@ function getIconImagePath(iconId)
   return path
 end
 
+function Creature:onCreate(shieldId)
+   self:setSquareTexture('/images/game/states/square')
+end
+
 function Creature:onSkullChange(skullId)
   local imagePath = getSkullImagePath(skullId)
   if imagePath then

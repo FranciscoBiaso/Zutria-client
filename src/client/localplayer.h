@@ -29,18 +29,18 @@
 
 enum skillsID
 {
-	PLAYER_SKILL_HEALTH_POINTS = 0,
-	PLAYER_SKILL_PHYSICAL_ATTACK = 1,
-	PLAYER_SKILL_PHYSICAL_DEFENSE = 2,
-	PLAYER_SKILL_CAPACITY = 3,
-	PLAYER_SKILL_MANA_POINTS = 4,
-	PLAYER_SKILL_MAGIC_ATTACK,
-	PLAYER_SKILL_MAGIC_DEFENSE,
-	PLAYER_SKILL_MAGIC_POINTS,
-	PLAYER_SKILL_SPEED,
-	PLAYER_SKILL_ATTACK_SPEED,
-	PLAYER_SKILL_COOLDOWN,
-	PLAYER_SKILL_AVOIDANCE
+	PLAYER_ATTR_VITALITY = 0,
+	PLAYER_ATTR_FORCE = 1,
+	PLAYER_ATTR_AGILITY = 2,
+	PLAYER_ATTR_INTELLIGENCE = 3,
+	PLAYER_ATTR_CONCENTRATION = 4,
+	PLAYER_ATTR_STAMINA,
+
+	PLAYER_ATTR_DISTANCE,
+	PLAYER_ATTR_MELEE,
+	PLAYER_ATTR_MENTALITY,
+	PLAYER_ATTR_TRAINER,
+	PLAYER_ATTR_DEFENSE
 };
 
 // @bindclass
@@ -63,12 +63,16 @@ public:
     void setSkill(int skillId, double value);
     void setBaseSkill(Otc::Skill skill, int baseLevel);
     void setHealth(double health);
+	void setMaxHealth(double);
+
     void setFreeCapacity(double freeCapacity);
     void setTotalCapacity(double totalCapacity);
     void setExperience(double experience);
 	void setLevel(double level, double levelPercent);
 	void setLevelPoints(double levelPoints);
 	void setMana(double mana);
+	void setMaxMana(double);
+
     void setMagicLevel(double magicLevel, double magicLevelPercent);
     void setBaseMagicLevel(double baseMagicLevel);
     void setSoul(double soul);

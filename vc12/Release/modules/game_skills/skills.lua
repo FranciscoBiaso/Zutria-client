@@ -8,6 +8,7 @@ function init()
     onSkillChange = onSkillChange,
     onLevelPointsChange = onLevelPointsChange,
   })
+  
   connect(g_game, {
     onGameStart = refresh,
     onGameEnd = offline,    
@@ -170,32 +171,9 @@ function onAddSkillButtonClick(button)
   local widgetParent = button:getParent()
   local idLabel = widgetParent:getId()
   local playerId = player:getId()
+   
+   g_game.addSkillPoint(playerId, GameSkills[idLabel], 1)
   
-  if idLabel == 'health' then
-    g_game.addSkillPoint(playerId, GameSkills.Health, 1) 
-  elseif idLabel == 'physicalAttack' then
-    g_game.addSkillPoint(playerId, GameSkills.PhysicalAttack, 1) 
-  elseif idLabel == 'physicalDefense' then
-    g_game.addSkillPoint(playerId, GameSkills.PhysicalDefense, 1)
-  elseif idLabel == 'capacity' then
-    g_game.addSkillPoint(playerId, GameSkills.Capacity, 1)
-  elseif idLabel == 'manaPoints' then
-    g_game.addSkillPoint(playerId, GameSkills.ManaPoints, 1)
-  elseif idLabel == 'magicAttack' then
-    g_game.addSkillPoint(playerId, GameSkills.MagicAttack, 1)
-  elseif idLabel == 'magicDefense' then
-    g_game.addSkillPoint(playerId, GameSkills.MagicDefense, 1)
-  elseif idLabel == 'magicPoints' then
-    g_game.addSkillPoint(playerId, GameSkills.MagicPoints, 1)
-  elseif idLabel == 'playerSpeed' then
-    g_game.addSkillPoint(playerId, GameSkills.PlayerSpeed, 1)
-  elseif idLabel == 'attackSpeed' then
-    g_game.addSkillPoint(playerId, GameSkills.AttackSpeed, 1)
-  elseif idLabel == 'cooldown' then
-    g_game.addSkillPoint(playerId, GameSkills.Cooldown, 1)
-  elseif idLabel == 'avoidance' then
-    g_game.addSkillPoint(playerId, GameSkills.Avoidance, 1)
-  end
 end
 
 function onExperienceChange(localPlayer, value)
@@ -231,7 +209,7 @@ function onSpeedChange(localPlayer, speed)
 end
 
 function onSkillChange(localPlayer, id, skill, oldskill)
-    setSkillValue(GameSkillsName[id + 1], skill)
+    setSkillValue(GameSkills[id + 1], skill)    
 end
 
 function onLevelPointsChange(localPlayer, levelPoints)

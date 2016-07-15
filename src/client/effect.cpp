@@ -50,8 +50,8 @@ void Effect::onAppear()
     m_phaseDuration = EFFECT_TICKS_PER_FRAME;
 
     // hack to fix some animation phases duration, currently there is no better solution
-    if(m_id == 33)
-        m_phaseDuration <<= 2;
+    //if(m_id == 33)
+    //    m_phaseDuration <<= 2;
 
     // schedule removal
     auto self = asEffect();

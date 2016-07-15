@@ -255,31 +255,31 @@ DeathType = {
 }
 
 GameSkills = {
-  Health = 0,
-  PhysicalAttack = 1,
-  PhysicalDefense = 2,
-  Capacity = 3,
-  ManaPoints = 4,
-  MagicAttack = 5,
-  MagicDefense = 6,
-  MagicPoints = 7,
-  PlayerSpeed = 8,
-  AttackSpeed = 9,
-  Cooldown = 10,
-  Avoidance = 11
-}
-
-GameSkillsName = {
-  'health',
-  'physicalAttack',
-  'physicalDefense',
-  'capacity',
-  'manaPoints',
-  'magicAttack',
-  'magicDefense',
-  'magicPoints',
-  'playerSpeed',
-  'attackSpeed',
-  'cooldown',
-  'avoidance'
+   'vitality',
+   'force',
+   'agility',
+   'intelligence',
+   'concentration',  
+   'stamina',
+  
+   'distance',
+   'melee',
+   'mentality',
+   'trainer',
+   'defense',
+   
+  ['vitality'] = 0,
+  ['force']  = 1,
+  ['agility']  = 2,
+  ['intelligence']  = 3,
+  ['concentration']  = 4,  
+  ['stamina']  = 5,
+  
+  ['distance']  = 6,
+  ['melee']  = 7,
+  ['mentality']  = 8,
+  ['trainer']  = 9,
+  ['defense']  = 10,
+    
+  
 }

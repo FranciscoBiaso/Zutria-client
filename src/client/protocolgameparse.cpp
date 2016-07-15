@@ -212,6 +212,9 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
 				case Proto::GameServerEditList:
 					parseEditList(msg);
 					break;
+				case Proto::GameServerTextsEffect:
+					parseAnimatedTexts(msg);
+					break;
 				// PROTOCOL>=1038
 				case Proto::GameServerPremiumTrigger:
 					parsePremiumTrigger(msg);
@@ -500,7 +503,6 @@ void ProtocolGame::parseLoginError(const InputMessagePtr& msg)
 void ProtocolGame::parseLoginAdvice(const InputMessagePtr& msg)
 {
     std::string message = msg->getString();
-
     g_game.processLoginAdvice(message);
 }
 
@@ -508,7 +510,6 @@ void ProtocolGame::parseLoginWait(const InputMessagePtr& msg)
 {
     std::string message = msg->getString();
     int time = msg->getU8();
-
     g_game.processLoginWait(message, time);
 }
 
@@ -915,6 +916,25 @@ void ProtocolGame::parseAnimatedText(const InputMessagePtr& msg)
     g_map.addThing(animatedText, position);
 }
 
+void ProtocolGame::parseAnimatedTexts(const InputMessagePtr& msg)
+{
+	Position position = getPosition(msg);
+	int colorOne = msg->getU8();
+	int colorTwo = msg->getU8();
+	std::string textOne = msg->getString();
+	std::string textTwo = msg->getString();
+
+	AnimatedTextPtr animatedTextOne = AnimatedTextPtr(new AnimatedText);
+	animatedTextOne->setColor(colorOne);
+	animatedTextOne->setText(textOne);
+	g_map.addThing(animatedTextOne, position);
+
+	AnimatedTextPtr animatedTextTwo = AnimatedTextPtr(new AnimatedText);
+	animatedTextTwo->setColor(colorTwo);
+	animatedTextTwo->setText(textTwo);
+	g_map.addThing(animatedTextTwo, position);
+}
+
 void ProtocolGame::parseDistanceMissile(const InputMessagePtr& msg)
 {
     Position fromPos = getPosition(msg);
@@ -1139,33 +1159,35 @@ void ProtocolGame::parsePlayerStats(const InputMessagePtr& msg)
 
 void ProtocolGame::parsePlayerSkills(const InputMessagePtr& msg)
 {
-	int16_t healthPoints = msg->getU16();
-	int16_t physicalAttack = msg->getU16();
-	int16_t physicalDefense = msg->getU16();
-	int16_t capacity = msg->getU32();
-	int16_t manaPoints = msg->getU16();
-	int16_t magicAttack = msg->getU16();
-	int16_t magicDefense = msg->getU16();
-	int16_t magicPoints = msg->getU16();
-	int16_t speed = msg->getU16();
-	int16_t attackSpeed = msg->getU16();
-	int16_t cooldown = msg->getU16();
-	int16_t avoidance = msg->getU16();
+	int16_t vitality = msg->getU16();
+	int16_t force = msg->getU16();
+	int16_t agility = msg->getU16();
+	int16_t intelligence = msg->getU16();
+	int16_t concentration = msg->getU16();
+	int16_t stamina = msg->getU16();
+
+	int16_t distance = msg->getU16();
+	int16_t melee = msg->getU16();
+	int16_t mentality = msg->getU16();
+	int16_t trainer = msg->getU16();
+	int16_t defense = msg->getU16();
+
 	int16_t levelPoints = msg->getU16();
 	int16_t unusedMagicPoints = msg->getU8();
 	
-	m_localPlayer->setSkill(0, healthPoints);
-	m_localPlayer->setSkill(1, physicalAttack);
-	m_localPlayer->setSkill(2, physicalDefense);
-	m_localPlayer->setSkill(3, capacity);
-	m_localPlayer->setSkill(4, manaPoints);
-	m_localPlayer->setSkill(5, magicAttack);
-	m_localPlayer->setSkill(6, magicDefense);
-	m_localPlayer->setSkill(7, magicPoints);
-	m_localPlayer->setSkill(8, speed);
-	m_localPlayer->setSkill(9, attackSpeed);
-	m_localPlayer->setSkill(10, cooldown);
-	m_localPlayer->setSkill(11, avoidance);    
+	m_localPlayer->setSkill(0, vitality);
+	m_localPlayer->setSkill(1, force);
+	m_localPlayer->setSkill(2, agility);
+	m_localPlayer->setSkill(3, intelligence);
+	m_localPlayer->setSkill(4, concentration);
+	m_localPlayer->setSkill(5, stamina);
+
+	m_localPlayer->setSkill(6, distance);
+	m_localPlayer->setSkill(7, melee);
+	m_localPlayer->setSkill(8, mentality);
+	m_localPlayer->setSkill(9, trainer);
+	m_localPlayer->setSkill(10, defense);
+
 	m_localPlayer->setLevelPoints(levelPoints);
 }
 
@@ -1198,8 +1220,8 @@ void ProtocolGame::parsePlayerFirstStats(const InputMessagePtr& msg)
 	m_localPlayer->setExperience(experience);
 	m_localPlayer->setLevel(levelInfo, levelPercent);
 	m_localPlayer->setBaseSpeed(baseSpeed);
-	m_localPlayer->setSkill(skillsID::PLAYER_SKILL_HEALTH_POINTS, maxHealth);
-	m_localPlayer->setSkill(skillsID::PLAYER_SKILL_MANA_POINTS, maxMana);	
+	m_localPlayer->setMaxHealth(maxHealth);
+	m_localPlayer->setMaxMana(maxMana);	
 }
 
 void ProtocolGame::parsePlayerSpells(const InputMessagePtr& msg)
@@ -1461,7 +1483,8 @@ void ProtocolGame::parseFloorChangeDown(const InputMessagePtr& msg)
     pos.z++;
 
     int skip = 0;
-    if(pos.z == Otc::UNDERGROUND_FLOOR) {
+    if(pos.z == Otc::UNDERGROUND_FLOOR) 
+	{
         int j, i;
         for(i = pos.z, j = -1; i <= pos.z + Otc::AWARE_UNDEGROUND_FLOOR_RANGE; ++i, --j)
             skip = setFloorDescription(msg, pos.x - range.left, pos.y - range.top, i, range.horizontal(), range.vertical(), j, skip);

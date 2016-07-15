@@ -111,6 +111,7 @@ namespace Proto {
         GameServerCreatureType              = 149,
         GameServerEditText                  = 150,
         GameServerEditList                  = 151,
+		GameServerTextsEffect               = 152,
         GameServerBlessings                 = 156,
         GameServerPreset                    = 157,
         GameServerPremiumTrigger            = 158, // 1038

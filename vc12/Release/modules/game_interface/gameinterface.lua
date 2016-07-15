@@ -163,7 +163,7 @@ end
 
 function updateStretchShrink()
   -- if modules.client_options.getOption('dontStretchShrink') and not alternativeView then
-    -- gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
+   gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
 
     -- -- Set gameMapPanel size to height = 11 * 32 + 2
     -- bottomSplitter:setMarginBottom(bottomSplitter:getMarginBottom() + (gameMapPanel:getHeight() - 32 * 11) - 10)
@@ -181,7 +181,7 @@ function onGameStart()
   end
     -- with you change setMapAwareRange values you need to change
     -- AddMapDescription function values on server side
-  g_game.setMapAwareRange(8,6,9,7)
+  --g_game.setMapAwareRange(8,6,9,7)
 end
 
 function onGameEnd()
@@ -898,10 +898,10 @@ function nextViewMode()
 end
 
 function setupViewMode(mode)
-    --gameRootPanel:fill('parent')
+    gameRootPanel:fill('parent')
     --g_game.changeMapAwareRange(36, 28)
     
-    gameMapPanel:setVisibleDimension({ width = 16, height = 11 })
+    gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
     --gameMapPanel:fill('parent')    
     --gameMapPanel:setOn(true)    
     

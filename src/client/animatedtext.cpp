@@ -30,7 +30,7 @@
 AnimatedText::AnimatedText()
 {
 	//damage / xp / etc
-	m_cachedText.setFont(g_fonts.getFont("styled-32px"));
+	m_cachedText.setFont(g_fonts.getFont("verdana-11px-rounded"));
     m_cachedText.setAlign(Fw::AlignLeft);
 	m_durantion = Otc::ANIMATED_TEXT_DURATION;
 }

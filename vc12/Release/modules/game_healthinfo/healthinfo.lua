@@ -23,8 +23,6 @@ local manaBar = nil
 local experienceBar = nil
 local experienceBarPanel = nil
 
-local playerMaxHealth = 0
-local playerMaxMana = 0
 local healthLabelPanel = nil
 local manaLabelPanel = nil
 
@@ -36,8 +34,7 @@ function init()
    connect(LocalPlayer, { onHealthChange = onHealthChange,
                           onManaChange = onManaChange,
                           onLevelChange = onLevelChange,
-                          onStatesChange = onStatesChange,
-                          onSkillChange = onSkillChange,
+                          onStatesChange = onStatesChange,                          
                          })
   
   healthInfoInterface = g_ui.loadUI('healthinfo', modules.game_interface.getRightPanel())
@@ -71,31 +68,18 @@ end
 
 function terminate()
   disconnect(LocalPlayer, {   onHealthChange = onHealthChange,
-                              onManaChange = onManaChange,
+                              onManaChange = onManaChange,                              
                               onLevelChange = onLevelChange,
-                              onStatesChange = onStatesChange,
-                              onSkillChange = onSkillChange,
+                              onStatesChange = onStatesChange,                              
                              })
 
   healthBar:destroy()
   manaBar:destroy()
   experienceBar:destroy()
   experienceBarPanel = nil
-  playerMaxHealth = 0
-  playerMaxMana = 0
   healthLabelPanel:destroyChildren()
   manaLabelPanel:destroyChildren()
   healthInfoInterface = nil
-end
-
-function onSkillChange(localPlayer, id, skill, oldskill)
-  if id == GameSkills.Health then
-    playerMaxHealth = skill
-    onHealthChange(localPlayer,localPlayer:getHealth(),skill)
-  elseif id == GameSkills.ManaPoints then
-    playerMaxMana = skill
-    onManaChange(localPlayer,localPlayer:getMana(),skill)
-  end
 end
 
 function toggleIcon(bitChanged)
@@ -124,9 +108,9 @@ function onMiniWindowClose()
 end
 
 function onHealthChange(localPlayer, health, maxHealth)
-  healthBar:setTooltip(tr(healthTooltip, health, playerMaxHealth))
+  healthBar:setTooltip(tr(healthTooltip, health, maxHealth))
   
-  local percentage = health / playerMaxHealth
+  local percentage = health / maxHealth
   percentage = percentage * 100
  -- local color = '#'
  -- if percentage >= 50 then
@@ -139,16 +123,17 @@ function onHealthChange(localPlayer, health, maxHealth)
     -- color = color .. 'ff' .. tostring(yellowColor) .. '00'
   -- end
   
-  healthBar:setValue(health, 0, playerMaxHealth)
+  healthBar:setValue(health, 0, maxHealth)
   
-  healthLabelPanel:setText(health .. '/' .. playerMaxHealth)
+  healthLabelPanel:setText(health .. '/' .. maxHealth)
 end
 
+
 function onManaChange(localPlayer, mana, maxMana)
-  manaBar:setTooltip(tr(manaTooltip, mana, playerMaxMana))
-  manaBar:setValue(mana, 0, playerMaxMana)
+  manaBar:setTooltip(tr(manaTooltip, mana, maxMana))
+  manaBar:setValue(mana, 0, maxMana)
   
-  manaLabelPanel:setText(mana .. '/' .. playerMaxMana)  
+  manaLabelPanel:setText(mana .. '/' .. maxMana)  
 end
 
 function onLevelChange(localPlayer, value, percent)

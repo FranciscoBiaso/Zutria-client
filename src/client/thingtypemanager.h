@@ -34,7 +34,7 @@ class ThingTypeManager
 public:
     void init();
     void terminate();
-
+	
     bool loadDat(std::string file);
     bool loadOtml(std::string file);
     void loadOtb(const std::string& file);
