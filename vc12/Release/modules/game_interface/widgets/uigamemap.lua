@@ -4,7 +4,7 @@ function UIGameMap.create()
   local gameMap = UIGameMap.internalCreate()
   gameMap:setKeepAspectRatio(true)  
   gameMap:setLimitVisibleRange(false)
-  gameMap:setDrawLights(true)  
+  gameMap:setDrawLights(true)    
   return gameMap
 end
 
@@ -57,11 +57,12 @@ function UIGameMap:onMousePress()
 end
 
 function UIGameMap:onMouseRelease(mousePosition, mouseButton)
+
   if not self.allowNextRelease then
     return true
   end
 
-  local autoWalkPos = self:getPosition(mousePosition)
+  local autoWalkPos = self:getTilePosition(mousePosition)
 
   -- happens when clicking outside of map boundaries
   if not autoWalkPos then return false end
@@ -79,7 +80,6 @@ function UIGameMap:onMouseRelease(mousePosition, mouseButton)
   local creatureThing
   local multiUseThing
   local attackCreature
-
   local tile = self:getTile(mousePosition)
   if tile then
     lookThing = tile:getTopLookThing()
@@ -129,6 +129,13 @@ function UIGameMap:canAcceptDrop(widget, mousePos)
 end
 
 function UIGameMap:onMouseMove(mousePos, mouseMoved)
+
+
+  mapPanel = modules.game_interface.getMapPanel()
+  
+  local pos = { x= mousePos.x - mapPanel:getPosition().x, y = mousePos.y - mapPanel:getPosition().y}
+  mapPanel:setText(pos.x .. ' ' .. pos.y)
+  
   if not g_mouse.isCursorChanged() then
      g_mouse.pushCursor('default')
   end

@@ -1,5 +1,5 @@
 EnterGameWindow < MainWindow
-  !text: tr('Entrar no jogo')
+  !text: tr('Login')
   size: 236 168
 
 EnterGameButton < Button
@@ -21,6 +21,8 @@ ServerListButton < UIButton
 
 EnterGameWindow
   id: enterGame
+  width: 274
+  height: 207
   &authenticatorEnabled: false
   &authenticatorHeight: 44
   &stayLoggedBoxEnabled: false
@@ -29,7 +31,7 @@ EnterGameWindow
 
   MenuLabel
     !text: tr('Conta:')
-    anchors.left: parent.left
+    anchors.horizontalcenter: parent.horizontalcenter
     anchors.top: parent.top
     text-auto-resize: true
 
@@ -39,10 +41,11 @@ EnterGameWindow
     anchors.right: parent.right
     anchors.top: prev.bottom
     margin-top: 2
+    focusable: true
 
   MenuLabel
     !text: tr('Senha:')
-    anchors.left: prev.left
+    anchors.horizontalcenter: parent.horizontalcenter
     anchors.top: prev.bottom
     margin-top: 8
     text-auto-resize: true
@@ -54,17 +57,11 @@ EnterGameWindow
     anchors.top: prev.bottom
     margin-top: 2
 
-  HorizontalSeparator
-    anchors.left: parent.left
-    anchors.right: parent.right
-    anchors.top: prev.bottom
-    margin-top: 6
-
   EnterGameButton
-    !text: tr('Ok')
-    anchors.right: parent.right
+    !text: tr('entrar')
+    anchors.horizontalcenter: parent.horizontalcenter
     anchors.top: prev.bottom
-    margin-top: 4
+    margin-top: 20
     @onClick: EnterGame.doLogin()
 
   Label

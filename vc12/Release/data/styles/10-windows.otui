@@ -1,19 +1,48 @@
 Window < UIWindow
   font: verdana-11px-antialised
-  size: 200 200
+  size: 254 367
   opacity: 1
-  color: #878787ff
-  text-offset: 0 4
+  color: #a88f71ff
+  text-offset: 0 3
   text-align: top
-  image-source: /images/ui/window
-  image-border: 5
-  image-border-top: 22
-  opacity: 1
-  padding-top: 30
-  padding-left: 16
-  padding-right: 16
-  padding-bottom: 16
-
+  image-source: /images/ui/styled/window
+  image-border-top: 29
+  image-border-left: 29
+  image-border-right: 29
+  image-border-bottom: 30
+  padding-top: 42
+  padding-left: 39
+  padding-right: 39
+  padding-bottom: 39
+  UIWidget
+    margin-left: -40
+    margin-top: -41
+    anchors.left: parent.left
+    anchors.top: parent.top
+    image-source: /images/ui/styled/window_c_lefttop
+    size: 93 92
+  UIWidget
+    margin-right: -40
+    margin-top: -41
+    anchors.right: parent.right
+    anchors.top: parent.top
+    image-source: /images/ui/styled/window_c_righttop
+    size: 93 92
+  UIWidget
+    margin-right: -40
+    margin-bottom: -39
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    image-source: /images/ui/styled/window_c_rightbottom
+    size: 93 92
+  UIWidget
+    margin-left: -40
+    margin-bottom: -39
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    image-source: /images/ui/styled/window_c_leftbottom
+    size: 93 92
+  
   $disabled:
     color: #aaaaaa88
 

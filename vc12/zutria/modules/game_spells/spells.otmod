@@ -1,0 +1,9 @@
+Module
+  name: game_spells
+  description: Display a players spells with their appropriate information 
+  author: BeniS 
+  website: www.otclient.info
+  sandboxed: true 
+  scripts: [ spells ]
+  @onLoad: init()
+  @onUnload: terminate()

@@ -1,0 +1,26 @@
+Panel
+  id: lookPanel
+  fixed-size: true
+  width: 400
+  height: 200
+  border: 0 #787878ff
+  margin-top: 3
+  anchors.left: gameLeftPanel.right
+  anchors.top: gameLeftPanel.top
+  background-color: #777777cd
+  border: 1 #121212dd  
+    
+  UILabel
+    id: lookLabel
+    margin-left: 5
+    margin-top: 8
+    anchors.left: parent.left
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right:parent.right
+    text-align: top
+    text: This is a sword
+    color: green
+    font: styled-32px
+    
+    

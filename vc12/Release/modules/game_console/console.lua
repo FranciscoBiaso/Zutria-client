@@ -80,18 +80,24 @@ function init()
   
   connect( LocalPlayer,{
     onBreathChange = onBreathChange,
-    })
+  })
 
-  consolePanel = g_ui.loadUI('console', modules.game_interface.getBottomPanel())
-  consoleTextEdit = consolePanel:getChildById('consoleTextEdit')
-  consoleContentPanel = consolePanel:getChildById('consoleContentPanel')
+  g_ui.loadUI('console')
+    
+  consoleTextEdit = modules.game_interface.getGameTextChatPanel()
+  
+  consolePanel = modules.game_interface.getGameChatPanel()
+  consoleContentPanel = consolePanel:getChildById('consoleContentPanel')  
+  
   consoleTabBar = consolePanel:getChildById('consoleTabBar')
+  
   consoleTabBar:setContentWidget(consoleContentPanel)
+  consoleTabBar:setTabSpacing(4)
   channels = {}
 
   local breathPanel = modules.game_interface.getBreathBarPanel()
   breathBar = g_ui.createWidget('BreathBar',breathPanel)
-  breathBar:setValue(currentBreath,0,maxBreath)
+  breathBar:setValue(currentBreath, 0, maxBreath)
   
   consolePanel.onKeyPress = function(self, keyCode, keyboardModifiers)
     if not (keyboardModifiers == KeyboardCtrlModifier and keyCode == KeyC) then return false end
@@ -106,22 +112,22 @@ function init()
     return true
   end
 
-  g_keyboard.bindKeyPress('Shift+Up', function() navigateMessageHistory(1) end, consolePanel)
-  g_keyboard.bindKeyPress('Shift+Down', function() navigateMessageHistory(-1) end, consolePanel)
-  g_keyboard.bindKeyPress('Tab', function() consoleTabBar:selectNextTab() end, consolePanel)
-  g_keyboard.bindKeyPress('Shift+Tab', function() consoleTabBar:selectPrevTab() end, consolePanel)
-  g_keyboard.bindKeyDown('Enter', sendCurrentMessage, consolePanel)
-  g_keyboard.bindKeyPress('Ctrl+X', function() consoleTextEdit:clearText() end, consolePanel)
+  g_keyboard.bindKeyPress('Shift+Up', function() navigateMessageHistory(1) end, consoleTextEdit)
+  g_keyboard.bindKeyPress('Shift+Down', function() navigateMessageHistory(-1) end, consoleTextEdit)
+  g_keyboard.bindKeyPress('Tab', function() consoleTabBar:selectNextTab() end, consoleTextEdit)
+  g_keyboard.bindKeyPress('Shift+Tab', function() consoleTabBar:selectPrevTab() end, consoleTextEdit)
+  g_keyboard.bindKeyDown('Enter', sendCurrentMessage, consoleTextEdit)
+  g_keyboard.bindKeyPress('Ctrl+X', function() consoleTextEdit:clearText() end, consoleTextEdit)
 
   -- apply buttom functions after loaded
   consoleTabBar:setNavigation(consolePanel:getChildById('prevChannelButton'), consolePanel:getChildById('nextChannelButton'))
-  consoleTabBar.onTabChange = onTabChange
+ --consoleTabBar.onTabChange = onTabChange
 
   -- tibia like hotkeys
-  g_keyboard.bindKeyDown('Ctrl+O', g_game.requestChannels)
+ -- g_keyboard.bindKeyDown('Ctrl+O', g_game.requestChannels)
   g_keyboard.bindKeyDown('Ctrl+E', removeCurrentTab)
 
-  consoleToggleChat = consolePanel:getChildById('toggleChat')
+ -- consoleToggleChat = consolePanel:getChildById('toggleChat')
   load()
 
   if g_game.isOnline() then
@@ -350,13 +356,13 @@ function removeTab(tab)
     return
   end
 
-  if tab.channelId then
+  --if tab.channelId then
     -- notificate the server that we are leaving the channel
-    for k, v in pairs(channels) do
-      if (k == tab.channelId) then channels[k] = nil end
-    end
-    g_game.leaveChannel(tab.channelId)
-  end
+  --  for k, v in pairs(channels) do
+   --   if (k == tab.channelId) then channels[k] = nil end
+  --  end
+  --  g_game.leaveChannel(tab.channelId)
+ -- end
 
   consoleTabBar:removeTab(tab)
 end
@@ -396,7 +402,11 @@ end
 
 function addPrivateText(text, textColor, name, isPrivateCommand, creatureName)
   local privateTab = getTab(name)
-  if not privateTab then return end
+  
+  if privateTab == nil then
+    privateTab = addChannel(name, name)
+  end
+  
   addTabText(text, textColor, privateTab, creatureName)
 end
 
@@ -422,15 +432,20 @@ function getHighlightedText(text)
 end
 
 function addTabText(text, textColor, tab, creatureName)
-  if not tab or tab.locked or not text or #text == 0 then return end
 
+  if not tab or tab.locked or not text or #text == 0 then return end
+  
   if modules.client_options.getOption('showTimestampsInConsole') then
     text = os.date('%H:%M') .. ' ' .. text
   end
 
   local panel = consoleTabBar:getTabPanel(tab)
+  
   local consoleBuffer = panel:getChildById('consoleBuffer')
+  
   local label = g_ui.createWidget('ConsoleLabel', consoleBuffer)
+  
+  
   label:setId('consoleLabel' .. consoleBuffer:getChildCount())
   label:setText(text)
   label:setColor(textColor)
@@ -650,13 +665,16 @@ function sendMessage(message, tab)
   end
 
   local tabName = tab:getText()
+  
   if tab == defaultTab then
     g_game.talk(message)  
   else
-    g_game.talkPrivate(MessageModes.MSG_PLAYER_PRIVATE_FROM, tabName, message)
-    local player = g_game.getLocalPlayer()
-    message = applyMessagePrefixies(g_game.getCharacterName(), player:getLevel(), message)    
-    addPrivateText(message, '#00ff00', tabname, false, g_game.getCharacterName())
+    g_game.talkPrivate(MessageModes.MSG_PLAYER_PRIVATE_FROM, tabName, message)   
+    -- add msg to console buffer of sender player
+    
+    local localPlayer = g_game.getLocalPlayer()
+    local composedMessage = applyMessagePrefixies(localPlayer:getName(), localPlayer:getLevel(), message)
+    addPrivateText(composedMessage, '#886f51ff', tabName, false, tabName)    
   end
 end
 
@@ -765,28 +783,29 @@ function onTalk(name, level, mode, message, channelId, creaturePos)
     end
   end 
 
+  local composedMessage = applyMessagePrefixies(name, level, message)
   if (mode == MessageModes.MSG_PLAYER_TALK or 
       mode == MessageModes.MSG_PLAYER_WHISPER or
       mode == MessageModes.MSG_PLAYER_YELL) and creaturePos then
-  if intervalTimeBetweenMsgs < 0.2 then -- 200 mil seconds
-    breathReduction(#message * 20.0) -- + 300% factor  
-  elseif intervalTimeBetweenMsgs < 0.4 then -- 400 mil seconds
-    breathReduction(#message * 18.0) -- + 250% factor  
-  elseif intervalTimeBetweenMsgs < 0.6 then -- 600 mil seconds
-    breathReduction(#message * 15.0) -- + 200% factor  
-  elseif intervalTimeBetweenMsgs < 1.0 then
-    breathReduction(#message * 12.0) -- + 100% factor  
-  elseif intervalTimeBetweenMsgs < 2.0 then
-    breathReduction(#message * 6.0) -- + 100% factor  
-  elseif intervalTimeBetweenMsgs < 3.0 then
-    breathReduction(#message * 4.0) -- + 100% factor  
-  else
-   breathReduction(#message * 1.0) -- + 100% factor 
+    if intervalTimeBetweenMsgs < 0.2 then -- 200 mil seconds
+      breathReduction(#message * 3.5) -- + 300% factor  
+    elseif intervalTimeBetweenMsgs < 0.4 then -- 400 mil seconds
+      breathReduction(#message * 3.0) -- + 250% factor  
+    elseif intervalTimeBetweenMsgs < 0.6 then -- 600 mil seconds
+      breathReduction(#message * 2.5) -- + 200% factor  
+    elseif intervalTimeBetweenMsgs < 1.0 then
+      breathReduction(#message * 2.0) -- + 100% factor  
+    elseif intervalTimeBetweenMsgs < 2.0 then
+      breathReduction(#message * 1.5) -- + 100% factor  
+    elseif intervalTimeBetweenMsgs < 3.0 then
+      breathReduction(#message * 1.3) -- + 100% factor  
+    else
+     breathReduction(#message * 1.0) -- + 100% factor 
   end
   
-  if regenerating == false then
-    scheduleEvent(function() if g_game.isOnline() then breathRegeneration(currentBreath) end end, breathRegenerationTimeStep)
-  end
+    if regenerating == false then
+      scheduleEvent(function() if g_game.isOnline() then breathRegeneration(currentBreath) end end, breathRegenerationTimeStep)
+    end
   
     local staticText = StaticText.create()
     local staticMessage = message    
@@ -800,16 +819,14 @@ function onTalk(name, level, mode, message, channelId, creaturePos)
     -- animatedText:setDuration(calculateVisibleTime(message))   
     -- animatedText:setFont('verdana-11px-rounded')      
     g_map.addThing(staticText, creaturePos, -1)
-    local channel = 'Padrão'
-    -- i am talking, so lets talk white text
-  local composedMessage = applyMessagePrefixies(name, level, message)
-    --if name == localPlayer:getName() then -- my msg i see blue
-      addText(composedMessage, '#A0A0A0', channel, name)  
-   -- else -- near player is talking, so lets see  white
-      --addText(composedMessage, '#808080', channel, name)  
-    --end    
-  elseif (mode == MessageModes.MSG_MONSTER_TALK or 
-         mode == MessageModes.MSG_MONSTER_YELL) and creaturePos then
+      -- i am talking, so lets talk white text
+    if name == localPlayer:getName() then -- my msg
+      addText(composedMessage, '#c8efb1ff', 'Padrão', name)  
+    else -- near player is talking, so lets see  white
+      addText(composedMessage, '#e8efe1ff', 'Padrão', name)  
+    end    
+  elseif  mode == MessageModes.MSG_MONSTER_TALK or 
+      mode == MessageModes.MSG_MONSTER_YELL and creaturePos then
     local animatedText = AnimatedText.create()
     animatedText:setText(message)  
     animatedText:setColor32(0xFFE5CCAA)  
@@ -818,10 +835,8 @@ function onTalk(name, level, mode, message, channelId, creaturePos)
     g_map.addThing(animatedText, creaturePos, -1)   
   end
     
-
- 
   if mode == MessageModes.MSG_PLAYER_PRIVATE_FROM then
-    addPrivateText(composedMessage, '#00ff00', name, false, name)
+    addPrivateText(composedMessage, '#88cd51ff', name, false, name)
     if modules.client_options.getOption('showPrivateMessagesOnScreen') then
       modules.game_textmessage.displayPrivateMessage(name .. ':\n' .. message)
     end

@@ -391,7 +391,7 @@ void ThingType::draw(const Point& dest, float scaleFactor, int layer, int xPatte
     }
 
     Rect screenRect(dest + (textureOffset - m_displacement - (m_size.toPoint() - Point(1, 1)) * 32) * scaleFactor,
-                    textureRect.size() * scaleFactor);
+                    (textureRect.size().toPoint() * scaleFactor).toSize());
 
     bool useOpacity = m_opacity < 1.0f;
 

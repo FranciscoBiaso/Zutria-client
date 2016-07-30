@@ -12,9 +12,9 @@ ManaBar < VerticalProgressBar
 
 ExperienceBar < ProgressBar
   id: experienceBar
-  margin: 1
+  margin: 0
   anchors.fill: parent
-  background-color: #ffff00DD
+  background-color: #ddcc11dd
 
 CapLabel < GameLabel
   id: capLabel

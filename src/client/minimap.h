@@ -101,8 +101,8 @@ private:
     Rect calcMapRect(const Rect& screenRect, const Position& mapCenter, float scale);
     bool hasBlock(const Position& pos) { return m_tileBlocks[pos.z].find(getBlockIndex(pos)) != m_tileBlocks[pos.z].end(); }
     MinimapBlock& getBlock(const Position& pos) { return m_tileBlocks[pos.z][getBlockIndex(pos)]; }
-    Point getBlockOffset(const Point& pos) { return Point(pos.x - pos.x % MMBLOCK_SIZE,
-                                                          pos.y - pos.y % MMBLOCK_SIZE); }
+    Point getBlockOffset(const Point& pos) { return Point(pos.x - (int)pos.x % MMBLOCK_SIZE,
+                                                          pos.y - (int)pos.y % MMBLOCK_SIZE); }
     Position getIndexPosition(int index, int z) { return Position((index % (65536 / MMBLOCK_SIZE))*MMBLOCK_SIZE,
                                                                   (index / (65536 / MMBLOCK_SIZE))*MMBLOCK_SIZE, z); }
     uint getBlockIndex(const Position& pos) { return ((pos.y / MMBLOCK_SIZE) * (65536 / MMBLOCK_SIZE)) + (pos.x / MMBLOCK_SIZE); }

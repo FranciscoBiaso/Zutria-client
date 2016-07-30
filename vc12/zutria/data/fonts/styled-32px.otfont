@@ -1,0 +1,7 @@
+Font
+  name: styled-32px
+  texture: styled-32px
+  height: 32
+  glyph-size: 32 32
+  spacing: -14 10
+  y-offset: 0

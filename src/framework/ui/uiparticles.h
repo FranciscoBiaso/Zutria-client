@@ -37,12 +37,12 @@ public:
 
     void onStyleApply(const std::string& styleName, const OTMLNodePtr& styleNode);
 
-    void setReferencePos(const PointF& point) { m_referencePos = point; }
-    PointF getReferencePos() { return m_referencePos; }
+    void setReferencePos(const Point& point) { m_referencePos = point; }
+    Point getReferencePos() { return m_referencePos; }
 
 private:
     std::vector<ParticleEffectPtr> m_effects;
-    PointF m_referencePos;
+    Point m_referencePos;
 };
 
 #endif

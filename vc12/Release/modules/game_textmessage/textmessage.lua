@@ -27,7 +27,7 @@ end
 
 function calculateVisibleTime(text)
   if not text then return 4000 end
-  return math.max(#text * 100, 4000)
+  return math.max(#tostring(text) * 100, 4000)
 end
 
 function displayMessage(targetGui, mode, color, text)

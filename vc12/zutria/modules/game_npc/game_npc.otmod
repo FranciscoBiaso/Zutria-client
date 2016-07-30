@@ -1,0 +1,9 @@
+Module
+  name: game_npc
+  description: --
+  author: Francisco 
+  website: --
+  sandboxed: true 
+  scripts: [ game_npc, npcs ]
+  @onLoad: init()
+  @onUnload: terminate()

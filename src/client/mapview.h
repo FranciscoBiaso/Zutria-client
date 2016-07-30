@@ -69,7 +69,7 @@ public:
     void setVisibleDimension(const Size& visibleDimension);
     Size getVisibleDimension() { return m_visibleDimension; }
     int getTileSize() { return m_tileSize; }
-    Point getVisibleCenterOffset() { return m_visibleCenterOffset; }
+	Point getVisibleCenterOffset() { return m_visibleCenterOffset; }
     int getCachedFirstVisibleFloor() { return m_cachedFirstVisibleFloor; }
     int getCachedLastVisibleFloor() { return m_cachedLastVisibleFloor; }
 
@@ -126,7 +126,7 @@ private:
     Rect calcFramebufferSource(const Size& destSize);
     int calcFirstVisibleFloor();
     int calcLastVisibleFloor();
-    Point transformPositionTo2D(const Position& position, const Position& relativePosition) {
+	Point transformPositionTo2D(const Position& position, const Position& relativePosition) {
         return Point((m_virtualCenterOffset.x + (position.x - relativePosition.x) - (relativePosition.z - position.z)) * m_tileSize,
                      (m_virtualCenterOffset.y + (position.y - relativePosition.y) - (relativePosition.z - position.z)) * m_tileSize);
     }
@@ -139,9 +139,9 @@ private:
     Size m_drawDimension;
     Size m_visibleDimension;
     Size m_optimizedSize;
-    Point m_virtualCenterOffset;
-    Point m_visibleCenterOffset;
-    Point m_moveOffset;
+	Point m_virtualCenterOffset;
+	Point m_visibleCenterOffset;
+	Point m_moveOffset;
     Position m_customCameraPosition;
     stdext::boolean<true> m_mustUpdateVisibleTilesCache;
     stdext::boolean<true> m_mustDrawVisibleTilesCache;

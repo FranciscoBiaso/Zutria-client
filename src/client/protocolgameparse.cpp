@@ -924,15 +924,11 @@ void ProtocolGame::parseAnimatedTexts(const InputMessagePtr& msg)
 	std::string textOne = msg->getString();
 	std::string textTwo = msg->getString();
 
-	AnimatedTextPtr animatedTextOne = AnimatedTextPtr(new AnimatedText);
-	animatedTextOne->setColor(colorOne);
-	animatedTextOne->setText(textOne);
-	g_map.addThing(animatedTextOne, position);
+	AnimatedTextPtr animatedText = AnimatedTextPtr(new AnimatedText);
+	animatedText->setColors(colorOne,colorTwo);
+	animatedText->setTexts(textOne,textTwo);
 
-	AnimatedTextPtr animatedTextTwo = AnimatedTextPtr(new AnimatedText);
-	animatedTextTwo->setColor(colorTwo);
-	animatedTextTwo->setText(textTwo);
-	g_map.addThing(animatedTextTwo, position);
+	g_map.addThing(animatedText, position);
 }
 
 void ProtocolGame::parseDistanceMissile(const InputMessagePtr& msg)
@@ -1173,8 +1169,8 @@ void ProtocolGame::parsePlayerSkills(const InputMessagePtr& msg)
 	int16_t defense = msg->getU16();
 
 	int16_t levelPoints = msg->getU16();
-	int16_t unusedMagicPoints = msg->getU8();
-	
+	int16_t unusedMagicPoints = msg->getU8();	
+
 	m_localPlayer->setSkill(0, vitality);
 	m_localPlayer->setSkill(1, force);
 	m_localPlayer->setSkill(2, agility);

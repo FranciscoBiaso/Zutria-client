@@ -171,7 +171,7 @@ std::string BinaryTree::getString(uint16 len)
     return ret;
 }
 
-Point BinaryTree::getPoint()
+Point BinaryTree::gePoint()
 {
     Point ret;
     ret.x = getU8();

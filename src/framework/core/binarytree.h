@@ -48,7 +48,7 @@ public:
     uint32 getU32();
     uint64 getU64();
     std::string getString(uint16 len = 0);
-    Point getPoint();
+    Point gePoint();
 
     BinaryTreeVec getChildren();
     bool canRead() { unserialize(); return m_pos < m_buffer.size(); }

@@ -92,8 +92,8 @@ void GravityAffector::updateParticle(const ParticlePtr& particle, float elapsedT
     if(!m_active)
         return;
 
-    PointF velocity = particle->getVelocity();
-    velocity += PointF(m_gravity * elapsedTime * std::cos(m_angle), m_gravity * elapsedTime * std::sin(m_angle));
+    Point velocity = particle->getVelocity();
+    velocity += Point(m_gravity * elapsedTime * std::cos(m_angle), m_gravity * elapsedTime * std::sin(m_angle));
     particle->setVelocity(velocity);
 }
 
@@ -122,15 +122,15 @@ void AttractionAffector::updateParticle(const ParticlePtr& particle, float elaps
     if(!m_active)
         return;
 
-    PointF pPosition = particle->getPosition();
-    PointF d = PointF(m_position.x - pPosition.x, pPosition.y - m_position.y);
+    Point pPosition = particle->getPosition();
+    Point d = Point(m_position.x - pPosition.x, pPosition.y - m_position.y);
     if(d.length() == 0)
         return;
 
-    PointF direction = PointF(1, 1);
+    Point direction = Point(1, 1);
     if(m_repelish)
-        direction = PointF(-1, -1);
+        direction = Point(-1, -1);
 
-    PointF pVelocity = particle->getVelocity() + (d / d.length() * m_acceleration * elapsedTime) * direction;
+    Point pVelocity = particle->getVelocity() + (d / d.length() * m_acceleration * elapsedTime) * direction;
     particle->setVelocity(pVelocity - pVelocity * m_reduction/100.0 * elapsedTime);
 }

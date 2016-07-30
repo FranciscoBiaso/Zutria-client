@@ -203,22 +203,25 @@ void UIMap::updateVisibleDimension()
 
 void UIMap::updateMapSize()
 {
-    Rect clippingRect = getPaddingRect();
-    Size mapSize;
-    if(m_keepAspectRatio) {
-        Rect mapRect = clippingRect.expanded(-1);
-        mapSize = Size(m_aspectRatio*m_zoom, m_zoom);
-        mapSize.scale(mapRect.size(), Fw::KeepAspectRatio);
-    } else {
-        mapSize = clippingRect.expanded(-1).size();
-    }
+	Rect clippingRect = getPaddingRect();
+	Size mapSize;
+	if (m_keepAspectRatio) {
+		Rect mapRect = clippingRect.expanded(-1);
+		mapSize = Size(m_aspectRatio*m_zoom, m_zoom);
+		mapSize.scale(mapRect.size(), Fw::KeepAspectRatio);
+	}
+	else {
+		mapSize = clippingRect.expanded(-1).size();
+	}
 
-    m_mapRect.resize(mapSize);
-    m_mapRect.moveCenter(clippingRect.center());
-    m_mapView->optimizeForSize(mapSize);
+	m_mapRect.resize(mapSize);
+	m_mapRect.moveCenter(clippingRect.center());
+	m_mapView->optimizeForSize(mapSize);
 
-    if(!m_keepAspectRatio)
-        updateVisibleDimension();
+	if (!m_keepAspectRatio)
+		updateVisibleDimension();
+
+	callLuaField("onUpdateMapSize", getHeight(), m_mapRect.height(), getWidth(), m_mapRect.width());
 }
 
 /* vim: set ts=4 sw=4 et: */

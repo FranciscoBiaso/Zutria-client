@@ -83,7 +83,7 @@ public:
     void setUniformValue(const char *name, const Matrix2& mat) { glUniformMatrix2fv(glGetUniformLocation(m_programId, name), 1, GL_FALSE, mat.data()); }
     void setUniformValue(const char *name, const Matrix3& mat) { glUniformMatrix3fv(glGetUniformLocation(m_programId, name), 1, GL_FALSE, mat.data()); }
 	void setUniformValue(const char *name, const Matrix4& mat) { glUniformMatrix4fv(glGetUniformLocation(m_programId, name), 1, GL_FALSE, mat.data()); }
-    // TODO: Point, PointF, Color, Size, SizeF ?
+    // TODO: Point, Point, Color, Size, SizeF ?
 
     bool isLinked() { return m_linked; }
     uint getProgramId() { return m_programId; }

@@ -111,7 +111,7 @@ void Map::loadOtbm(const std::string& fileName)
 
                     HousePtr house = nullptr;
                     uint32 flags = TILESTATE_NONE;
-                    Position pos = basePos + nodeTile->getPoint();
+                    Position pos = basePos + nodeTile->gePoint();
 
                     if(type == OTBM_HOUSETILE) {
                         uint32 hId = nodeTile->getU32();

@@ -14,6 +14,9 @@ GameMiniMapPanel < Panel
   
 GameMagicPanel < StyledPanel
 
+GameHelpPanel < StyledPanel
+  height: 0
+
 GameBottomPanel < Panel
   image-source: /images/ui/panel_bottom
   image-color: #ffffffff
@@ -22,20 +25,118 @@ GameBottomPanel < Panel
   margin-right: 1
   margin-left: 1
   margin-top: 1
-  height: 172
-
-GameMapPanel < UIGameMap
-  padding: 4
-  image-source: /images/ui/panel_map
-  image-border: 4
-  margin: 1
-
-  $on:
-    padding: 0
-    
-GameInfoPlayerPanel < StyledPanel
   height: 28
+
+GameTextChat < TextEdit  
+  shift-navigation: true
+  max-length: 255
+
+ConsoleTabBar < MoveableTabBar  
+  
+GameChatPanel < Panel
+  height: 168
+  width: 460
+  image-color: #ffffffff
+  background-color: #12121212
+  focusable: true
+  border: 1 #886f5144
+  padding: 1
+  
+  ConsoleTabBar
+    id: consoleTabBar
+    background-color: #ffffff00
+    anchors.left: prevChannelButton.right
+    anchors.top: parent.top
+    anchors.right: nextChannelButton.left
+    margin-right: 3
+    margin-left: 3
+    margin-top: 3
+    margin-bottom: 2
+    border: 1 #886f5112 
+    
+  ChatStyledPanel
+    id: consoleContentPanel
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    height: 139  
+    focusable: false
+    phantom: false
+    
+  TabButton
+    id: prevChannelButton
+    icon: /images/game/console/leftarrow
+    anchors.left: parent.left
+    anchors.top: parent.top
+    icon-color: #abababff
+    margin-left: 5
+    margin-top: 5
+    enabled: true
+  
+  TabButton
+    id: nextChannelButton
+    icon: /images/game/console/rightarrow
+    anchors.right: next.left
+    icon-color: #abababff
+    anchors.top: parent.top
+    margin-right: 3
+    margin-top: 3
+    enabled: true
+  
+  TabButton
+    id: channelsButton
+    !tooltip: tr('lista de amigos') .. ' (Ctrl+O)'
+    icon: /images/game/console/friend
+    icon-color: #bababaff
+    anchors.right: next.left
+    anchors.top: parent.top
+    margin-right: 3
+    margin-top: 3
+    @onClick: g_game.requestChannels()
+    visible: true
+    enabled: true
+
+  TabButton
+    id: closeChannelButton
+    !tooltip: tr('Fechar chat') .. ' (shift + enter)'
+    icon: /images/game/console/closechannel
+    anchors.right: parent.right
+    anchors.top: parent.top    
+    margin-right: 5
+    margin-top: 3
+    @onClick: toggleGameConsoleBuffer()
+    visible: true
+    icon-color: #ff7e7eff
+
+  TabButton
+    id: clearChannelButton
+    !tooltip: tr('Clear current message window')
+    icon: /images/game/console/clearchannel
+    anchors.right: next.left
+    anchors.top: parent.top
+    margin-right: 5
+    margin-top: 6
+    @onClick: |
+      local consoleTabBar = self:getParent():getChildById('consoleTabBar')
+      clearChannel(consoleTabBar)
+    visible: false
+
+  TabButton
+    id: ignoreButton
+    !tooltip: tr('Ignore players')
+    anchors.right: parent.right
+    anchors.top: parent.top
+    margin-right: 5
+    margin-top: 6
+    @onClick: onClickIgnoreButton()
+    visible: false
+  
+GameMapPanel < GamMap
+  
+GameInfoPlayerPanel < StyledPanel
+  height: 26
   margin: 1
+  margin-left: 0
   
 SpellPanelBox < Panel
 
@@ -43,97 +144,79 @@ GameHealthBar < StyledPanel
   width: 48
 
 GameHealthLabel < StyledPanel
-  width: 80
+  height: 26
   margin: 1
-  padding: 6
-  color: #979797ff
   
 GameManaLabel < StyledPanel
-  width: 80
-  color: #979797ff
+  height: 26
   margin: 1
-  padding: 6
   
 GameManaBar < StyledPanel
   width: 48
   
 ExperienceBar < StyledPanel
   margin: 1
-  padding: 6
-  height: 20
+  width: 172
+  height: 21
 
 breathBarPanel < StyledPanel
   margin: 1
-  padding: 6
-  width: 20
-  height: 172
+  width: 172
+  height: 21
   
+StaminaBarPanel < StyledPanel
+  margin: 1
+  width: 172
+  height: 21
+  
+EnableConsoleBufferButton < ButtonRounded
+  size: 20 20
+  icon-source: /images/game/console/buffer
+  icon-size: 18 18
+  icon-offset-x: 1
+  icon-offset-y: 1
+  icon-color: #888888dd
+  image-color: #ffffffff
+  
+  $!disabled !hover:
+    image-clip: 0 0 20 20
+    image-color: #ffffffff
+
 UIWidget
   id: gameRootPanel
-  anchors.fill: parent
+  anchors.bottom: parent.bottom
+  anchors.left: parent.left
+  anchors.right: parent.right
+  anchors.top: topMenuPanel.bottom
 
   GameMapPanel
-    id: gameMapPanel
+    id: gameMapPanel    
     anchors.left: gameHealthBarPanel.right
     anchors.right: gameManaBarPanel.left
     anchors.bottom: gameExperienceBar.top
-    anchors.top: gameInfoPlayerPanel.bottom        
-    TopArrowButton
-      id: gameTopArrow
-      anchors.horizontalcenter: parent.horizontalcenter
-      anchors.bottom: parent.bottom
-      @onClick: ShowHotkeyPanel()
+    anchors.top: gameInfoPlayerPanel.bottom
     BottomArrowButton      
       id: gameBottomArrow
       anchors.horizontalcenter: parent.horizontalcenter
       anchors.bottom: parent.bottom
       @onClick: HideHotkeyPanel()   
-    NextButton
-      id: gameArrowRightTypeRight
-      anchors.right: parent.right
-      anchors.verticalcenter: parent.verticalcenter
-      @onClick: HideRightPanel()   
-    PreviousButton
-      id: gameArrowRightTypeLeft
-      anchors.right: parent.right
-      anchors.verticalcenter: parent.verticalcenter
-      @onClick: ShowRightPanel() 
-      visible: false
-    PreviousButton
-      id: gameArrowLeftTypeLeft
-      anchors.left: parent.left
-      anchors.verticalcenter: parent.verticalcenter
-      @onClick: HideLeftPanel() 
-    NextButton
-      id: gameArrowLeftTypeRight
-      anchors.left: parent.left
-      anchors.verticalcenter: parent.verticalcenter
-      @onClick: ShowLeftPanel() 
-      visible: false
+      background-color: #ff0000ff
+      image-color: #ff0000ff
   
-  GameBottomPanel
-    id: gameBottomPanel
-    anchors.right: gameRightPanel.left
-    anchors.bottom: parent.bottom
-    anchors.left: gameBreathBarPanel.right
-
-  GameSidePanel
-    id: gameLeftPanel
-    anchors.left: parent.left
-    anchors.top: parent.top
-    anchors.bottom: parent.bottom
-    focusable: false
-    visible: true
-    on: true
+  GameHelpPanel
+    id: gameHelpPanel
+    image-color: alpha
   
-  GameSidePanel
-    id: gameRightPanel
+  GameTextChat
+    id: gameTextChatPanel
     anchors.right: parent.right
-    anchors.top: parent.top
-    anchors.bottom: parent.bottom
-    focusable: false
-    on: true
-    
+    anchors.left: gameConsoleBufferButton.right
+    anchors.bottom: parent.bottom 
+    margin-left: 1
+  
+  Panel
+    id: gameBottomPanel
+
   GameMagicPanel
     id: gameSpellPanel
     height: 48
@@ -171,26 +254,27 @@ UIWidget
   
   GameHealthBar
     id: gameHealthBarPanel
-    anchors.left: gameLeftPanel.right
-    anchors.bottom: gameExperienceBar.top
+    anchors.left: parent.left
+    anchors.bottom: gameStaminaBarPanel.top
     anchors.top: parent.top
   
   GameManaBar
     id: gameManaBarPanel
-    anchors.right: gameRightPanel.left
-    anchors.bottom: gameExperienceBar.top
+    anchors.right: parent.right
+    anchors.bottom: gameBreathBarPanel.top
     anchors.top: parent.top   
   
   GameInfoPlayerPanel
     id: gameInfoPlayerPanel
     anchors.right: gameManaLabel.left
     anchors.left: gameHealthLabel.right
-    anchors.top: parent.top 
+    anchors.top: parent.top    
     Panel
+      padding: 0
       anchors.horizontalcenter: parent.horizontalcenter
       anchors.verticalcenter: parent.verticalcenter
       width: 64
-      height: 18
+      height: 16
       id: conditionPanel
       layout:
         type: horizontalBox
@@ -198,26 +282,38 @@ UIWidget
   
   GameHealthLabel
     id: gameHealthLabel
-    height: 28
     anchors.left: gameHealthBarPanel.right
     anchors.top: parent.top
   
   GameManaLabel
     id: gameManaLabel
-    height: 28
     anchors.right: gameManaBarPanel.left
     anchors.top: parent.top
   
   ExperienceBar
     id: gameExperienceBar
-    anchors.left: gameLeftPanel.right
-    anchors.right: gameRightPanel.left
-    anchors.bottom: gameBottomPanel.top
+    anchors.left: gameBreathBarPanel.right
+    anchors.right: gameStaminaBarPanel.left
+    anchors.bottom: gameTextChatPanel.top
   
   breathBarPanel 
     id: gameBreathBarPanel
-    anchors.left: gameLeftPanel.right
+    anchors.left: parent.left
+    anchors.bottom: gameTextChatPanel.top
+  
+  StaminaBarPanel 
+    id: gameStaminaBarPanel
+    anchors.bottom: gameTextChatPanel.top
+    anchors.right: parent.right
+  
+  GameChatPanel
+    id: gameChatPanel
+    anchors.left: gameMapPanel.left
+    anchors.bottom: gameMapPanel.bottom
+    phantom: false
+  
+  EnableConsoleBufferButton
+    id: gameConsoleBufferButton
     anchors.bottom: parent.bottom
+    anchor.left: parent.left
   
-  
-

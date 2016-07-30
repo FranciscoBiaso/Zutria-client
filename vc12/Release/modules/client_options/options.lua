@@ -14,7 +14,7 @@ local defaultOptions = {
   showLevelsInConsole = true,
   showPrivateMessagesInConsole = true,
   showPrivateMessagesOnScreen = true,
-  showLeftPanel = true,
+  showLeftPanel = false,
   foregroundFrameRate = 30,
   backgroundFrameRate = 60,
   painterEngine = 0,
@@ -185,19 +185,19 @@ function setOption(key, value, force)
   elseif key == 'fullscreen' then
     g_window.setFullscreen(value)
   elseif key == 'enableAudio' then
-    g_sounds.setAudioEnabled(value)
+    --g_sounds.setAudioEnabled(value)
     if value then
       audioButton:setIcon('/images/topbuttons/audio')
     else
       audioButton:setIcon('/images/topbuttons/audio_mute')
     end
   elseif key == 'enableMusicSound' then
-    g_sounds.getChannel(SoundChannels.Music):setEnabled(value)
+    --g_sounds.getChannel(SoundChannels.Music):setEnabled(value)
   elseif key == 'musicSoundVolume' then
-    g_sounds.getChannel(SoundChannels.Music):setGain(value/100)
-    audioPanel:getChildById('musicSoundVolumeLabel'):setText(tr('Music volume: %d', value))
+    --g_sounds.getChannel(SoundChannels.Music):setGain(value/100)
+    --audioPanel:getChildById('musicSoundVolumeLabel'):setText(tr('Music volume: %d', value))
   elseif key == 'showLeftPanel' then
-    modules.game_interface.getLeftPanel():setOn(value)
+    --modules.game_interface.getLeftPanel():setOn(value)
   elseif key == 'backgroundFrameRate' then
     local text, v = value, value
     if value <= 0 or value >= 201 then text = 'max' v = 0 end
@@ -226,7 +226,7 @@ function setOption(key, value, force)
     gameMapPanel:setDrawTexts(value)
   elseif key == 'dontStretchShrink' then
     addEvent(function()
-      modules.game_interface.updateStretchShrink()
+      --modules.game_interface.updateStretchShrink()
     end)
   end
 

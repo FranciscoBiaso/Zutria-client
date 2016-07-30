@@ -1,0 +1,37 @@
+TextMessageLabel < UILabel
+  font: styled-32px
+  text-align: center
+  text-wrap: true
+  text-auto-resize: true
+  margin-bottom: 2
+  visible: false
+
+Panel
+  id: textMsgPanel
+  anchors.top: gameMapPanel.top
+  anchors.left: gameMapPanel.left
+  anchors.right: gameMapPanel.right
+  anchors.bottom: gameMapPanel.bottom
+  border: 0 #12121212
+  focusable: false
+
+  TextMessageLabel
+    id: middleCenterLabel
+    font: styled-16px
+    anchors.left: parent.left
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 150
+    margin-left: 20
+    margin-right: 20
+    backgroundColor: #12121223
+
+  TextMessageLabel
+    id: bottomLabel
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-left: 150
+    margin-right: 150
+    border: 0 #12121212
+    backgroundColor: #12121223

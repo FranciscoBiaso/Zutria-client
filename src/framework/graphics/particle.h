@@ -29,18 +29,18 @@
 class Particle : public stdext::shared_object
 {
 public:
-    Particle(const Point& pos, const Size& startSize, const Size& finalSize, const PointF& velocity, const PointF& acceleration, float duration, float ignorePhysicsAfter, const std::vector<Color>& colors, const std::vector<float>& colorsStops, Painter::CompositionMode compositionMode = Painter::CompositionMode_Normal, TexturePtr texture = nullptr);
+    Particle(const Point& pos, const Size& startSize, const Size& finalSize, const Point& velocity, const Point& acceleration, float duration, float ignorePhysicsAfter, const std::vector<Color>& colors, const std::vector<float>& colorsStops, Painter::CompositionMode compositionMode = Painter::CompositionMode_Normal, TexturePtr texture = nullptr);
 
     void render();
     void update(float elapsedTime);
 
     bool hasFinished() { return m_finished; }
 
-    PointF getPosition() { return m_position; }
-    PointF getVelocity() { return m_velocity; }
+    Point getPosition() { return m_position; }
+    Point getVelocity() { return m_velocity; }
 
-    void setPosition(const PointF& position) { m_position = position; }
-    void setVelocity(const PointF& velocity) { m_velocity = velocity; }
+    void setPosition(const Point& position) { m_position = position; }
+    void setVelocity(const Point& velocity) { m_velocity = velocity; }
 
 private:
     void updateColor();
@@ -51,9 +51,9 @@ private:
     std::vector<Color> m_colors;
     std::vector<float> m_colorsStops;
     TexturePtr m_texture;
-    PointF m_position;
-    PointF m_velocity;
-    PointF m_acceleration;
+    Point m_position;
+    Point m_velocity;
+    Point m_acceleration;
     Size m_size, m_startSize, m_finalSize;
     Rect m_rect;
     Painter::CompositionMode m_compositionMode;

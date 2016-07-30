@@ -1,9 +1,8 @@
 TopMenuPanel
   id: topMenuPanel
-  color: #C0C0C0
   anchors.top: parent.top
   anchors.left: parent.left
-  anchors.right: parent.right
+  anchors.right: parent.right  
 
   TopMenuButtonsPanel
     id: leftButtonsPanel
@@ -16,14 +15,15 @@ TopMenuPanel
     anchors.top: parent.top
     anchors.bottom: parent.bottom
     anchors.left: prev.right
-    visible: false
+    visible: false    
 
   TopMenuFrameCounterLabel
     id: fpsLabel
     text-auto-resize: true
-    anchors.top: parent.top
+    anchors.verticalcenter: parent.verticalcenter
     anchors.left: leftGameButtonsPanel.right
-    font: styled-16px
+    font: verdana-11px-antialised
+    color: #886f51ff
 
   TopMenuPingLabel
     color: white
@@ -44,4 +44,4 @@ TopMenuPanel
     anchors.top: parent.top
     anchors.bottom: parent.bottom
     anchors.right: prev.left
-    visible: false
+    visible: true

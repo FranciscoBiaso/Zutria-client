@@ -17,6 +17,7 @@ FlatLabel < UILabel
     color: #aaaaaa88
 
 MenuLabel < Label
+  color:#886f51ff
 
 GameLabel < UILabel
   font: verdana-11px-antialised

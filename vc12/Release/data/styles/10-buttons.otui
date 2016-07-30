@@ -1,44 +1,51 @@
 Button < UIButton
   font: verdana-11px-antialised
-  color: #f0ad4dff
-  size: 106 22
-  text-offset: 0 0
-  image-source: /images/ui/button_rounded
-  image-color: white
+  color: #886f51ff
+  size: 76 17
+  text-offset: 0 2
+  image-source: /images/ui/styled/button
+  image-clip: 0 0 76 17
+  image-border: 4
+
+  $hover:
+    image-color: #abcdabff  
+    
+  $!hover:
+    image-color: #ffffffff 
+
+  $pressed:
+    image-color: #ffffffcc  
+    text-offset: 1 3
+
+  $disabled:
+    color: #ffffff00
+
+ButtonRounded < UIButton
+  font: verdana-11px-antialised
+  size: 20 60
+  text-offset: 0 2
+  image-source: /images/ui/styled/button_rounded
+  image-border: 2
+  border: 0 #aa000011
   image-clip: 0 0 20 20
-  image-border: 3
-  padding: 5 10 5 10
 
   $hover !disabled:
     image-clip: 0 20 20 20
-
-  $pressed:
-    image-clip: 0 40 20 20
-    text-offset: 1 1
-
+    image-color: #cc333388
+  
+  $!hover:
+    image-clip: 0 0 20 20
+    
   $disabled:
-    color: #f0ad4d88
-
-TabButton < UIButton
-  size: 20 20
-  image-source: /images/ui/tabbutton_rounded
-  image-color: white
-  image-clip: 0 0 20 20
-  image-border: 3
-  icon-color: white
-  color: #aaaaaa
-
-  $hover !on:
-    image-clip: 0 20 20 20
-    color: white
-
-  $disabled:
-    image-color: #ffffff66
-    icon-color: #888888
-
-  $on:
+    image-color: #12121233
     image-clip: 0 40 20 20
-    color: #80c7f8
+  
+  $!disabled !hover:
+    image-clip: 0 0 20 20
+    image-color: #ffffff88
+
+TabButton < ButtonRounded
+  size: 20 20 
 
 NextButton < UIButton
   size: 12 21

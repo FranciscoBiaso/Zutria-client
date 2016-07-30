@@ -3,6 +3,7 @@ Panel
   image-source: /images/background
   image-smooth: true
   image-fixed-ratio: true
+  image-color: #cfcfcfff
   anchors.top: topMenu.bottom
   anchors.left: parent.left
   anchors.right: parent.right
@@ -21,3 +22,4 @@ Panel
     padding: 2
     color: #ffffff
     font: verdana-11px-antialised
+    visible: false

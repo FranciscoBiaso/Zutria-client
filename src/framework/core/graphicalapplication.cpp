@@ -32,9 +32,9 @@
 #include <framework/graphics/painter.h>
 #include <framework/input/mouse.h>
 
-#ifdef FW_SOUND
-#include <framework/sound/soundmanager.h>
-#endif
+//#ifdef FW_SOUND
+//#include <framework/sound/soundmanager.h>
+//#endif
 
 GraphicalApplication g_app;
 
@@ -60,10 +60,10 @@ void GraphicalApplication::init(std::vector<std::string>& args)
     // fire first resize event
     resize(g_window.getSize());
 
-#ifdef FW_SOUND
-    // initialize sound
-    g_sounds.init();
-#endif
+//#ifdef FW_SOUND
+//    // initialize sound
+//    g_sounds.init();
+//#endif
 }
 
 void GraphicalApplication::deinit()
@@ -85,10 +85,10 @@ void GraphicalApplication::terminate()
     Application::terminate();
     m_terminated = false;
 
-#ifdef FW_SOUND
-    // terminate sound
-    g_sounds.terminate();
-#endif
+//#ifdef FW_SOUND
+//    // terminate sound
+//    g_sounds.terminate();
+//#endif
 
     g_mouse.terminate();
 
@@ -205,9 +205,9 @@ void GraphicalApplication::run()
 
 void GraphicalApplication::poll()
 {
-#ifdef FW_SOUND
-    g_sounds.poll();
-#endif
+//#ifdef FW_SOUND
+//    g_sounds.poll();
+//#endif
 
     // poll window input events
     g_window.poll();

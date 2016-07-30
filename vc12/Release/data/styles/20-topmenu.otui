@@ -1,39 +1,12 @@
-TopButton < UIButton
+TopButton < Button
+  size: 26 26  
+  
+TopToggleButton < Button
   size: 26 26
-  image-source: /images/ui/button_top
-  image-clip: 0 0 26 26
-  image-border: 3
-  image-color: #ffffffff
-  icon-color: #ffffffff
-
-  $on:
-    image-source: /images/ui/button_top_blink
-
-  $hover !disabled:
-    image-color: #ffffff99
-    image-clip: 26 0 26 26
-
-  $pressed:
-    image-clip: 52 0 26 26
-
-  $disabled:
-    image-color: #ffffff44
-    icon-color: #ffffff44
-
-TopToggleButton < UIButton
-  size: 26 26
-  image-source: /images/ui/button_topgame
-  image-clip: 26 0 26 26
-  image-color: #ffffffff
-  image-border: 3
-  icon-color: #ffffffff
-
-  $on:
-    image-clip: 0 0 26 26
-    image-color: #ffffffff
-    icon-color: #ffffffff
 
 TopMenuButtonsPanel < Panel
+  margin-top: 2
+  margin-bottom: 2
   layout:
     type: horizontalBox
     spacing: 4
@@ -42,12 +15,14 @@ TopMenuButtonsPanel < Panel
 
 TopMenuPanel < Panel
   height: 36
-  image-source: /images/ui/panel_top
+  image-source: /images/ui/styled/panel_top
   image-repeated: true
+  image-border-top: 8
+  image-border-bottom: 7
   focusable: false
 
 TopMenuFrameCounterLabel < Label
-  font: verdana-11px-rounded
+  font: verdana-11px-antialised
   color: white
   margin-top: 1
   margin-left: 5

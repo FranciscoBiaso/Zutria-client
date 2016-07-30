@@ -9,6 +9,7 @@ local enterGameButton
 local clientBox
 local protocolLogin
 local motdEnabled = true
+local accountNameTextEdit = nil
 
 -- private functions
 local function onError(protocol, message, errorCode)
@@ -99,6 +100,9 @@ function EnterGame.init()
   if g_app.isRunning() and not g_game.isOnline() then
     enterGame:show()
   end
+  
+  accountNameTextEdit = enterGame:getChildById('accountNameTextEdit')
+  accountNameTextEdit:focus()
 end
 
 function EnterGame.firstShow()
@@ -155,7 +159,7 @@ function EnterGame.doLogin()
   G.password = enterGame:getChildById('accountPasswordTextEdit'):getText()
 	
   G.authenticatorToken = ''
-  G.host = '189.83.36.108'
+  G.host = '127.0.0.1'
   G.port = 7171
   local clientVersion = 760
 	

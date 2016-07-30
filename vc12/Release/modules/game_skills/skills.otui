@@ -1,3 +1,9 @@
+StaminaBar < ProgressBar
+  id: staminaBar
+  margin: 0
+  anchors.fill: parent
+  background-color: #7F11FDff
+
 SkillFirstWidget < UIWidget
 
 SkillButton < UIButton
@@ -98,11 +104,13 @@ SkillValueLabel < GameLabel
   anchors.bottom: parent.bottom
   anchors.left: prev.right
   anchors.right: next.left
+  color: #cccc70ff
   
 SkillRightValueLabel < GameLabel
   id: value
   text-align: topright
   margin-right: 5
+  color: #cccc70ff
   font: verdana-11px-antialised
   anchors.right: parent.right
   anchors.top: parent.top
@@ -124,7 +132,7 @@ SkillPercentPanel < ProgressBar
 MiniWindow
   id: skillWindow
   !text: tr('Atributos')
-  height: 150
+  height: 330
   icon: /images/topbuttons/skills
   @onClose: modules.game_skills.onMiniWindowClose()
   &save: true
@@ -141,7 +149,7 @@ MiniWindow
       IconSkillExperience
       SkillNameLabel
         !text: tr('Experiência')
-        color: #D3D3D3ff
+        color: #888800ff
       SkillRightValueLabel      
     
     SkillButton
@@ -150,19 +158,26 @@ MiniWindow
       height: 23
       SkillNameLabel
         !text: tr('Nível')
-        color: #D3D3D3ff
+        color: #888800ff
       SkillRightValueLabel
     
+    UILabel
+      margin-top: 3
+      margin-bottom: 1
+      text: ativos
+      text-align: center
+      color: #707070ff
+      
     HorizontalSeparator
       margin-bottom: 6
-    
+      
     SkillButton
       id: vitality
       height: 15
       IconSkillBlood
       SkillNameLabel
         !text: tr('vitalidade')
-        color: #F0E68Cff
+        color: #bb3333FF
       SkillValueLabel
       AddSkillButton
       
@@ -172,7 +187,7 @@ MiniWindow
       IconSkillStrength
       SkillNameLabel
         !text: tr('força')
-        color: #F0E68Cff
+        color: #FF9933FF
       SkillValueLabel
       AddSkillButton
     
@@ -182,7 +197,7 @@ MiniWindow
       IconSkillShield
       SkillNameLabel
         !text: tr('agilidade')
-        color: #F0E68Cff
+        color: #00bb00ff
       SkillValueLabel
       AddSkillButton
 
@@ -192,7 +207,7 @@ MiniWindow
       IconSkillWeight
       SkillNameLabel
         !text: tr('inteligência')
-        color: #F0E68Cff
+        color: #6666FFFF
       SkillValueLabel
       AddSkillButton      
       
@@ -202,7 +217,7 @@ MiniWindow
       IconSkillMana
       SkillNameLabel
         !text: tr('concentração')
-        color: #00FFFFff
+        color: #00ccccff
       SkillValueLabel
       AddSkillButton       
       
@@ -212,17 +227,27 @@ MiniWindow
       IconSkillMagicAttack
       SkillNameLabel
         !text: tr('energia')
-        color: #00FFFFff
+        color: #cc77ffff
       SkillValueLabel
       AddSkillButton
-
+    
+    UILabel
+      margin-top: 3
+      margin-bottom: 1
+      text: passivos
+      text-align: center
+      color: #707070ff
+      
+    HorizontalSeparator
+      margin-bottom: 6
+    
     SkillButton
       id: distance      
       height: 15
       IconSkillMagicDeffense
       SkillNameLabel
         !text: tr('distância')
-        color: #00FFFFff
+        color: #888888ff
       SkillValueLabel
       AddSkillButton
     
@@ -232,7 +257,7 @@ MiniWindow
       IconSkillMagicPoints
       SkillNameLabel
         !text: tr('corpo a corpo')
-        color: #00FFFFff
+        color: #888888ff
       SkillValueLabel
       AddSkillButton    
       
@@ -242,7 +267,7 @@ MiniWindow
       IconSkillSpeed
       SkillNameLabel
         !text: tr('mentalidade')
-        color: #00cc00ff
+        color: #888888ff
       SkillValueLabel
       AddSkillButton            
     
@@ -252,7 +277,7 @@ MiniWindow
       IconSkillHands
       SkillNameLabel
         !text: tr('adestradora')
-        color: #00cc00ff
+        color: #888888ff
       SkillValueLabel
       AddSkillButton
 
@@ -262,9 +287,9 @@ MiniWindow
       IconSkillCooldown
       SkillNameLabel
         !text: tr('defensora')
-        color: #00cc00ff
+        color: #888888ff
       SkillValueLabel
-      AddSkillButton
+      AddSkillButton    
     
     HorizontalSeparator
       margin-top: 3
@@ -277,6 +302,6 @@ MiniWindow
       IconSkillLevelPoints
       SkillNameLabel
         !text: tr('Pontos de nível')
-        color: #cc77ffff
+        color: #12cc12FF
       SkillRightValueLabel 
       

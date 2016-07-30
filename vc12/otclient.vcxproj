@@ -129,7 +129,7 @@
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0501;BOT_PROTECTION;CLIENT;CRASH_HANDLER;FW_GRAPHICS;FW_NET;FW_SOUND;FW_XML;BUILD_TYPE="RelWithDebInfo";BUILD_COMMIT="devel";BUILD_REVISION="0";VERSION="0.6.3";_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)\$(Platform)\src\%(RelativeDir)\</ObjectFileName>
-      <AdditionalIncludeDirectories>C:\Users\Francisco\Documents\ot client libs\zlib-1.2.5\include;C:\Users\Francisco\Documents\ot client libs\physfs-2.0.3\include;C:\Users\Francisco\Documents\ot client libs\OpenSSL-1.0.1e\include;C:\Users\Francisco\Documents\ot client libs\OpenAL\include;C:\Users\Francisco\Documents\ot client libs\LuaJIT-2.0.2\include;C:\Users\Francisco\Documents\ot client libs\libvorbis-1.3.3\include;C:\Users\Francisco\Documents\ot client libs\libogg-1.3.1\include;C:\Users\Francisco\Documents\ot client libs\glew-1.10.0\include;C:\local\boost_1_60_0;C:\Users\Francisco\Desktop\Zutria-client\src;C:\Users\Francisco\Desktop\Zutria-client\vc12;C:\Users\Francisco\Documents\github\Zutria-client\src\framework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Francisco\Documents\ot client libs\zlib-1.2.5\include;C:\Users\Francisco\Documents\ot client libs\physfs-2.0.3\include;C:\Users\Francisco\Documents\ot client libs\OpenSSL-1.0.1e\include;C:\Users\Francisco\Documents\ot client libs\OpenAL\include;C:\Users\Francisco\Documents\ot client libs\LuaJIT-2.0.2\include;C:\Users\Francisco\Documents\ot client libs\glew-1.10.0\include;C:\local\boost_1_60_0;C:\Users\Francisco\Desktop\Zutria-client\src;C:\Users\Francisco\Desktop\Zutria-client\vc12;C:\Users\Francisco\Documents\github\Zutria-client\src\framework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <CompileAsWinRT>false</CompileAsWinRT>
     </ClCompile>
@@ -137,12 +137,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glew32.lib;zlib1.lib;libeay32MD.lib;physfs.lib;openal32.lib;luajit.lib;libogg_static.lib;libvorbisfile_static.lib;libvorbis_static.lib;opengl32.lib;dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;zlib1.lib;libeay32MD.lib;physfs.lib;openal32.lib;luajit.lib;opengl32.lib;dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
       <LargeAddressAware>true</LargeAddressAware>
-      <AdditionalLibraryDirectories>C:\Users\Francisco\Documents\ot client libs\zlib-1.2.5\lib;C:\Users\Francisco\Documents\ot client libs\physfs-2.0.3\lib;C:\Users\Francisco\Documents\ot client libs\OpenSSL-1.0.1e\lib\VC;C:\Users\Francisco\Documents\ot client libs\OpenAL\lib;C:\Users\Francisco\Documents\ot client libs\LuaJIT-2.0.2\lib;C:\Users\Francisco\Documents\ot client libs\libvorbis-1.3.3\lib;C:\Users\Francisco\Documents\ot client libs\libogg-1.3.1\lib;C:\Users\Francisco\Documents\ot client libs\glew-1.10.0\lib;C:\local\boost_1_60_0\lib32-msvc-14.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Francisco\Documents\ot client libs\zlib-1.2.5\lib;C:\Users\Francisco\Documents\ot client libs\physfs-2.0.3\lib;C:\Users\Francisco\Documents\ot client libs\OpenSSL-1.0.1e\lib\VC;C:\Users\Francisco\Documents\ot client libs\OpenAL\lib;C:\Users\Francisco\Documents\ot client libs\LuaJIT-2.0.2\lib;C:\Users\Francisco\Documents\ot client libs\glew-1.10.0\lib;C:\local\boost_1_60_0\lib32-msvc-14.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -281,14 +281,6 @@
     <ClCompile Include="..\src\framework\platform\win32crashhandler.cpp" />
     <ClCompile Include="..\src\framework\platform\win32platform.cpp" />
     <ClCompile Include="..\src\framework\platform\win32window.cpp" />
-    <ClCompile Include="..\src\framework\sound\combinedsoundsource.cpp" />
-    <ClCompile Include="..\src\framework\sound\oggsoundfile.cpp" />
-    <ClCompile Include="..\src\framework\sound\soundbuffer.cpp" />
-    <ClCompile Include="..\src\framework\sound\soundchannel.cpp" />
-    <ClCompile Include="..\src\framework\sound\soundfile.cpp" />
-    <ClCompile Include="..\src\framework\sound\soundmanager.cpp" />
-    <ClCompile Include="..\src\framework\sound\soundsource.cpp" />
-    <ClCompile Include="..\src\framework\sound\streamsoundsource.cpp" />
     <ClCompile Include="..\src\framework\stdext\demangle.cpp" />
     <ClCompile Include="..\src\framework\stdext\math.cpp" />
     <ClCompile Include="..\src\framework\stdext\net.cpp" />
@@ -439,15 +431,6 @@
     <ClInclude Include="..\src\framework\platform\platformwindow.h" />
     <ClInclude Include="..\src\framework\platform\win32window.h" />
     <ClInclude Include="..\src\framework\resource.h" />
-    <ClInclude Include="..\src\framework\sound\combinedsoundsource.h" />
-    <ClInclude Include="..\src\framework\sound\declarations.h" />
-    <ClInclude Include="..\src\framework\sound\oggsoundfile.h" />
-    <ClInclude Include="..\src\framework\sound\soundbuffer.h" />
-    <ClInclude Include="..\src\framework\sound\soundchannel.h" />
-    <ClInclude Include="..\src\framework\sound\soundfile.h" />
-    <ClInclude Include="..\src\framework\sound\soundmanager.h" />
-    <ClInclude Include="..\src\framework\sound\soundsource.h" />
-    <ClInclude Include="..\src\framework\sound\streamsoundsource.h" />
     <ClInclude Include="..\src\framework\stdext\any.h" />
     <ClInclude Include="..\src\framework\stdext\boolean.h" />
     <ClInclude Include="..\src\framework\stdext\cast.h" />

@@ -22,10 +22,80 @@ ContentPanel < Panel
   image-source: /images/ui/panel_content
   image-border: 1
   
-StyledPanel < UIStyledPanel
+StyledPanel < Panel
+  image-source: /images/ui/styled/panel
+  image-border: 5
+  margin: 0
+  padding: 5
+  padding-left: 9
+  padding-right: 9
+  height: 21
+  color: #886f51ff
+  UIWidget
+    margin-left: -9
+    margin-top: -5
+    anchors.left: parent.left
+    anchors.top: parent.top
+    image-source: /images/ui/styled/panel_c_lefttop
+    size: 21 21
+  UIWidget
+    margin-right: -9
+    margin-top: -5
+    anchors.right: parent.right
+    anchors.top: parent.top
+    image-source: /images/ui/styled/panel_c_righttop
+
+ChatStyledPanel < Panel
+  font: verdana-11px-antialised
+  color: #996f51ff
+  size: 180 20
+  text-offset: 0 3
+  padding: 3
+  background-color: #12121222
+  image-source: /images/ui/styled/chat
+  image-border: 2
+  UIWidget
+    margin-left: -2
+    margin-top: -2
+    anchors.left: parent.left
+    anchors.top: parent.top
+    image-source: /images/ui/styled/panel_c_lefttop
+    size: 21 21
+  UIWidget
+    margin-right: -2
+    margin-top: -2
+    anchors.right: parent.right
+    anchors.top: parent.top
+    image-source: /images/ui/styled/panel_c_righttop
+  UIWidget
+    margin-left: -2
+    margin-bottom: -1
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    image-source: /images/ui/styled/panel_c_leftbottom
+  UIWidget
+    margin-right: -2
+    margin-bottom: -1
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    image-source: /images/ui/styled/panel_c_rightbottom
+  
+MapPanel < Panel
   image-source: /images/ui/panel_map
   image-border: 4
   margin: 1
   padding: 2
   height: 62
+  
+SkullPanel < Panel
+  image-source: /images/ui/skull_panel
+  background-color: #010101ff
+  image-repeated: false
+  image-auto-resize: true
+  image-border: 4
+  margin: 1
+  padding: 2
+  image-height: 72
+  image-width: 581
+  anchors.left: parent.horizontalcenter
   

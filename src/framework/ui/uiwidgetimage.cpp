@@ -175,7 +175,7 @@ void UIWidget::drawImage(const Rect& screenCoords)
     }
 
     // smooth is now enabled by default for all textures
-    //m_imageTexture->setSmooth(m_imageSmooth);
+    m_imageTexture->setSmooth(m_imageSmooth);
 
     g_painter->setColor(m_imageColor);
     g_painter->drawTextureCoords(m_imageCoordsBuffer, m_imageTexture);

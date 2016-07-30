@@ -1,32 +1,23 @@
 MoveableTabBar < UIMoveableTabBar
   size: 80 20
 MoveableTabBarPanel < Panel
-MoveableTabBarButton < UIButton
-  size: 20 20
-  image-source: /images/ui/tabbutton_square
-  image-color: white
-  image-clip: 0 0 20 20
-  image-border: 3
-  icon-color: white
-  color: #aaaaaa
+MoveableTabBarButton < ButtonRounded
+  height: 20
   anchors.top: parent.top
   anchors.left: parent.left
-  padding: 5
-
-  $hover !checked:
-    image-clip: 0 20 20 20
-    color: white
-
-  $disabled:
-    image-color: #ffffff66
-    icon-color: #888888
-
+  
   $checked:
-    image-clip: 0 40 20 20
-    color: #D8E7F0
+    color: #44ff44dd
+    image-color: #ff343499
+    image-clip: 0 0 20 20
 
   $on !checked:
-    color: #F55E5E
+    color: #996f51ff
+  
+  $!disabled !hover:
+    image-clip: 0 0 20 20
+    image-color: #ffffff44
+    color: #efefefee
 
 TabBar < UITabBar
   size: 80 20
@@ -56,8 +47,8 @@ TabBarButton < UIButton
     image-clip: 0 20 20 20
     color: white
 
-  $disabled:
-    image-color: #ffffff66
+  $!disabled:
+    image-color: #ffffff77
     icon-color: #888888
 
   $checked:

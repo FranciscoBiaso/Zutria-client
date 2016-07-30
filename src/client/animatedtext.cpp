@@ -33,6 +33,10 @@ AnimatedText::AnimatedText()
 	m_cachedText.setFont(g_fonts.getFont("verdana-11px-rounded"));
     m_cachedText.setAlign(Fw::AlignLeft);
 	m_durantion = Otc::ANIMATED_TEXT_DURATION;
+
+	m_cachedTextTwo.setFont(g_fonts.getFont("verdana-11px-rounded"));
+	m_cachedTextTwo.setAlign(Fw::AlignLeft);
+	m_durantion = Otc::ANIMATED_TEXT_DURATION;
 }
 
 void AnimatedText::drawText(const Point& dest, const Rect& visibleRect)
@@ -40,7 +44,7 @@ void AnimatedText::drawText(const Point& dest, const Rect& visibleRect)
 	static float tf = m_durantion;
 	static float tftf = m_durantion * m_durantion;
 
-    Point p = dest;
+	Point p = dest;
 	Size textSize = m_cachedText.getTextSize();
     float t = m_animationTimer.ticksElapsed();
     p.x += (24 - textSize.width() / 2);
@@ -66,6 +70,49 @@ void AnimatedText::drawText(const Point& dest, const Rect& visibleRect)
             g_painter->setColor(m_color);
         m_cachedText.draw(rect);
     }
+}
+
+void AnimatedText::drawTexts(const Point& dest, const Rect& visibleRect)
+{
+	static float tf = m_durantion;
+	static float tftf = m_durantion * m_durantion;
+
+	Point p = dest;
+	Size textSize = m_cachedText.getTextSize();
+	Size textRightSize = m_cachedTextTwo.getTextSize();
+	float t = m_animationTimer.ticksElapsed();
+	p.x += (24 - textSize.width() / 2);
+
+	//diagonal text
+	/*if(1) {
+	p.x -= (4 * t / tf) + (8 * t * t / tftf);
+	}*/
+
+	p.y += 8 + (-48 * t) / tf;
+	p += m_offset;
+	Rect rectLeft(p, textSize);
+	Rect rectRight(p + Point(textSize.width(),0), textRightSize);
+
+	if (visibleRect.contains(rectLeft)) {
+		//TODO: cache into a framebuffer
+		float t0 = tf / 1.2;
+		if (t > t0) 
+		{
+
+			Color color = m_color;
+			color.setAlpha((float)(1 - (t - t0) / (tf - t0)));
+			g_painter->setColor(color);
+			m_cachedText.draw(rectLeft);
+			m_cachedTextTwo.draw(rectRight);
+		}
+		else
+		{
+			g_painter->setColor(m_color);
+			m_cachedText.draw(rectLeft);
+			g_painter->setColor(m_colorTwo);
+			m_cachedTextTwo.draw(rectRight);
+		}
+	}
 }
 
 void AnimatedText::onAppear()
@@ -100,9 +147,21 @@ void AnimatedText::setColor(int color)
 	m_color = Color::from8bit(color);
 }
 
+void AnimatedText::setColors(int color, int colorTwo)
+{
+	m_color = Color::from8bit(color);
+	m_colorTwo = Color::from8bit(colorTwo);
+}
+
 void AnimatedText::setText(const std::string& text)
 {
     m_cachedText.setText(text);
+}
+
+void AnimatedText::setTexts(const std::string& text, const std::string& textTwo)
+{
+	m_cachedText.setText(text);
+	m_cachedTextTwo.setText(textTwo);
 }
 
 
@@ -137,4 +196,22 @@ bool AnimatedText::merge(const AnimatedTextPtr& other)
     catch(...) {
         return false;
     }
+}
+
+
+bool AnimatedText::mergeTexts(const AnimatedTextPtr& other)
+{
+	if (other->getCachedText()->getFont() != m_cachedText.getFont())
+		return false;
+
+	if (m_animationTimer.ticksElapsed() > Otc::ANIMATED_TEXT_DURATION / 2.5)
+		return false;
+
+	try {		
+		m_cachedText.setText(m_cachedText.getText() + other->getCachedText()->getText());
+		return true;
+	}
+	catch (...) {
+		return false;
+	}
 }

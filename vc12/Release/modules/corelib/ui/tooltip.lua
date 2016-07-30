@@ -78,12 +78,12 @@ function g_tooltip.display(text)
   toolTipLabel:show()
   toolTipLabel:raise()
   toolTipLabel:enable()
-  g_effects.fadeIn(toolTipLabel, 100)
+  g_effects.fadeIn(toolTipLabel, 300)
   moveToolTip(true)
 end
 
 function g_tooltip.hide()
-  g_effects.fadeOut(toolTipLabel, 100)
+  g_effects.fadeOut(toolTipLabel, 300)
 end
 
 
@@ -101,6 +101,7 @@ end
 function UIWidget:getTooltip()
   return self.tooltip
 end
+
 
 -- @}
 

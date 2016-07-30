@@ -35,11 +35,14 @@ public:
     AnimatedText();
 
     void drawText(const Point& dest, const Rect& visibleRect);
+	void drawTexts(const Point& dest, const Rect& visibleRect);
 
 	void setFont(std::string font);
 	void setColor32(uint32 color);
 	void setColor(int color);
-    void setText(const std::string& text);
+	void setColors(int color, int colorTwo);
+	void setText(const std::string& text);
+	void setTexts(const std::string& text, const std::string& textTwo);
 	void setOffset(const Point& offset) { m_offset = offset; }
 	void setDuration(float duration){ m_durantion = duration; }
 	void addMessage(std::string creatureName, uint8 mode, const std::string& text);
@@ -50,6 +53,7 @@ public:
     Timer getTimer() { return m_animationTimer; }
 
     bool merge(const AnimatedTextPtr& other);
+	bool mergeTexts(const  AnimatedTextPtr& other);
 
     AnimatedTextPtr asAnimatedText() { return static_self_cast<AnimatedText>(); }
     bool isAnimatedText() { return true; }
@@ -58,10 +62,12 @@ protected:
     virtual void onAppear();
 
 private:
-    Color m_color;
+	Color m_color;
+	Color m_colorTwo;
     Timer m_animationTimer;
-    CachedText m_cachedText;
-    Point m_offset;
+	CachedText m_cachedText;
+	CachedText m_cachedTextTwo;
+	Point m_offset;
 	float m_durantion;
 };
 

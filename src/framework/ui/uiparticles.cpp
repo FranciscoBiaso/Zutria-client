@@ -25,7 +25,7 @@
 
 UIParticles::UIParticles()
 {
-    m_referencePos = PointF(-1,-1);
+    m_referencePos = Point(-1,-1);
 }
 
 void UIParticles::drawSelf(Fw::DrawPane drawPane)
@@ -64,7 +64,7 @@ void UIParticles::onStyleApply(const std::string& styleName, const OTMLNodePtr& 
         if(node->tag() == "effect")
             addEffect(node->value());
         else if(node->tag() == "reference-pos")
-            setReferencePos(node->value<PointF>());
+            setReferencePos(node->value<Point>());
     }
 }
 

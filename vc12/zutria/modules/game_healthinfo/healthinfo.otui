@@ -1,0 +1,40 @@
+HealthBar < VerticalProgressBar
+  id: healthBar
+  anchors.fill: parent
+  image-source: /images/ui/greenvprogressbar
+  margin: 1
+
+ManaBar < VerticalProgressBar
+  id: manaBar  
+  image-source: /images/ui/bluevprogressbar
+  margin: 1
+  anchors.fill: parent
+
+ExperienceBar < ProgressBar
+  id: experienceBar
+  margin: 1
+  anchors.fill: parent
+  background-color: #ffff00DD
+
+CapLabel < GameLabel
+  id: capLabel
+  color: white
+  font: verdana-11px-rounded
+  anchors.bottom: parent.bottom
+  anchors.left: parent.left
+  anchors.right: parent.horizontalCenter
+  margin-top: 5
+  margin-left: 3
+  on: true
+
+  $!on:
+    visible: false
+    margin-top: 0
+    height: 0
+
+ConditionWidget < UIWidget
+  size: 18 18
+  
+  $!first:
+    margin-left: 2
+

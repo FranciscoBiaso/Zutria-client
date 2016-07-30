@@ -24,12 +24,12 @@
 #include "graphics.h"
 #include <framework/core/clock.h>
 
-Particle::Particle(const Point& pos, const Size& startSize, const Size& finalSize, const PointF& velocity, const PointF& acceleration, float duration, float ignorePhysicsAfter, const std::vector<Color>& colors, const std::vector<float>& colorsStops, Painter::CompositionMode compositionMode, TexturePtr texture)
+Particle::Particle(const Point& pos, const Size& startSize, const Size& finalSize, const Point& velocity, const Point& acceleration, float duration, float ignorePhysicsAfter, const std::vector<Color>& colors, const std::vector<float>& colorsStops, Painter::CompositionMode compositionMode, TexturePtr texture)
 {
     m_colors = colors;
     m_colorsStops = colorsStops;
 
-    m_position = PointF(pos.x, pos.y);
+    m_position = Point(pos.x, pos.y);
     m_startSize = startSize;
     m_finalSize = finalSize;
     m_velocity = velocity;
@@ -74,10 +74,10 @@ void Particle::updatePosition(float elapsedTime)
 {
     if(m_ignorePhysicsAfter < 0 || m_elapsedTime < m_ignorePhysicsAfter ) {
         // update position
-        PointF delta = m_velocity * elapsedTime;
+        Point delta = m_velocity * elapsedTime;
         delta.y *= -1; // painter orientate Y axis in the inverse direction
 
-        PointF position = m_position + delta;
+        Point position = m_position + delta;
 
         if(m_position != position) {
             m_position += delta;

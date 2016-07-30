@@ -49,7 +49,7 @@ public:
 
 private:
     void drawGlobalLight(const Light& light);
-    void drawLightSource(const Point& center, const Color& color, int radius);
+    void drawLightSource(const  Point& center, const Color& color, int radius);
     TexturePtr generateLightBubble(float centerFactor);
 
     Painter::BlendEquation m_blendEquation;

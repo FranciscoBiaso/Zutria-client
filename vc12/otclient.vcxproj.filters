@@ -45,9 +45,6 @@
     <Filter Include="Source Files\framework\platform">
       <UniqueIdentifier>{e829c892-b1f1-4c9a-9bcb-e891daed8b33}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\framework\sound">
-      <UniqueIdentifier>{8e08379a-c5cd-4d00-8a70-a11968e9bf8e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\framework\stdext">
       <UniqueIdentifier>{268f4929-8e27-4e1c-94c5-ed3a5507aa52}</UniqueIdentifier>
     </Filter>
@@ -86,9 +83,6 @@
     </Filter>
     <Filter Include="Header Files\framework\stdext">
       <UniqueIdentifier>{4120018d-b392-4e0f-b40f-dbc369cffa88}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\framework\sound">
-      <UniqueIdentifier>{53753fca-bd19-4f50-9eec-792b255af37b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\framework\platform">
       <UniqueIdentifier>{a2aecb33-5ff7-48e7-a4b2-3e9a03e726ba}</UniqueIdentifier>
@@ -298,30 +292,6 @@
     </ClCompile>
     <ClCompile Include="..\src\framework\platform\win32window.cpp">
       <Filter>Source Files\framework\platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\framework\sound\combinedsoundsource.cpp">
-      <Filter>Source Files\framework\sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\framework\sound\oggsoundfile.cpp">
-      <Filter>Source Files\framework\sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\framework\sound\soundbuffer.cpp">
-      <Filter>Source Files\framework\sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\framework\sound\soundchannel.cpp">
-      <Filter>Source Files\framework\sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\framework\sound\soundfile.cpp">
-      <Filter>Source Files\framework\sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\framework\sound\soundmanager.cpp">
-      <Filter>Source Files\framework\sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\framework\sound\soundsource.cpp">
-      <Filter>Source Files\framework\sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\framework\sound\streamsoundsource.cpp">
-      <Filter>Source Files\framework\sound</Filter>
     </ClCompile>
     <ClCompile Include="..\src\framework\stdext\demangle.cpp">
       <Filter>Source Files\framework\stdext</Filter>
@@ -762,33 +732,6 @@
     </ClInclude>
     <ClInclude Include="..\src\framework\platform\win32window.h">
       <Filter>Header Files\framework\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\framework\sound\combinedsoundsource.h">
-      <Filter>Header Files\framework\sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\framework\sound\declarations.h">
-      <Filter>Header Files\framework\sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\framework\sound\oggsoundfile.h">
-      <Filter>Header Files\framework\sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\framework\sound\soundbuffer.h">
-      <Filter>Header Files\framework\sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\framework\sound\soundchannel.h">
-      <Filter>Header Files\framework\sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\framework\sound\soundfile.h">
-      <Filter>Header Files\framework\sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\framework\sound\soundmanager.h">
-      <Filter>Header Files\framework\sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\framework\sound\soundsource.h">
-      <Filter>Header Files\framework\sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\framework\sound\streamsoundsource.h">
-      <Filter>Header Files\framework\sound</Filter>
     </ClInclude>
     <ClInclude Include="..\src\framework\stdext\any.h">
       <Filter>Header Files\framework\stdext</Filter>

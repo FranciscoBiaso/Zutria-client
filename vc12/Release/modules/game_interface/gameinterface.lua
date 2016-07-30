@@ -5,6 +5,8 @@ gameMapPanel = nil
 gameRightPanel = nil
 gameLeftPanel = nil
 gameBottomPanel = nil
+gameChatPanel = nil
+gameTextChatPanel = nil
 gameSpellPanel = nil
 gameHealthBarPanel = nil
 gameManaBarPanel = nil
@@ -13,7 +15,9 @@ gameHealthLabel = nil
 gameExperienceBar = nil
 gameManaLabel = nil
 gameBreathBarPanel = nil
+gameStaminaBarPanel = nil
 logoutButton = nil
+consoleBufferButton = nil
 mouseGrabberWidget = nil
 countWindow = nil
 logoutWindow = nil
@@ -61,17 +65,21 @@ function init()
 
   --bottomSplitter = gameRootPanel:getChildById('bottomSplitter')
   gameMapPanel = gameRootPanel:getChildById('gameMapPanel')
+  gameMapPanel.onUpdateMapSize = onUpdateMapSize
   local gameBottomArrow = gameMapPanel:getChildById('gameBottomArrow')
   gameBottomArrow:hide()
   
    g_keyboard.bindKeyDown('ctrl + h', hideShowArrows)
    
-  gameRightPanel = gameRootPanel:getChildById('gameRightPanel')
-  gameLeftPanel = gameRootPanel:getChildById('gameLeftPanel')
+  --gameRightPanel = gameRootPanel:getChildById('gameRightPanel')
+  --gameLeftPanel = gameRootPanel:getChildById('gameLeftPanel')
   gameBottomPanel = gameRootPanel:getChildById('gameBottomPanel')
+  gameChatPanel = gameRootPanel:getChildById('gameChatPanel')
+  gameTextChatPanel = gameRootPanel:getChildById('gameTextChatPanel')
+  --gameTextChatPanel:lock()
   gameSpellPanel = gameRootPanel:getChildById('gameSpellPanel')    
   gameSpellPanel:hide()
-  connect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
+  --connect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
   
   gameHealthBarPanel =  gameRootPanel:getChildById('gameHealthBarPanel')
   gameManaBarPanel = gameRootPanel:getChildById('gameManaBarPanel') 
@@ -80,10 +88,17 @@ function init()
   gameManaLabel = gameRootPanel:getChildById('gameManaLabel')
   gameExperienceBar = gameRootPanel:getChildById('gameExperienceBar')
   gameBreathBarPanel = gameRootPanel:getChildById('gameBreathBarPanel')
+  gameStaminaBarPanel =  gameRootPanel:getChildById('gameStaminaBarPanel')
   
   logoutButton = modules.client_topmenu.addLeftButton('logoutButton', tr('Exit'),
     '/images/topbuttons/logout', tryLogout, true)
 
+  consoleBufferButton =  gameRootPanel:getChildById('gameConsoleBufferButton')
+  consoleBufferButton.onMouseRelease = toggleGameConsoleBuffer  
+  consoleBufferButton:setTooltip('Exibe o painel de conversacão (shit + enter)')
+  g_keyboard.bindKeyDown('Shift + Enter', toggleGameConsoleBuffer)
+  g_keyboard.bindKeyDown('Enter', toggleTextEdit)
+  
   setupViewMode(0)
 
   bindKeys()
@@ -93,6 +108,41 @@ function init()
   end
   
   g_mouse.pushCursor('default')
+end
+
+function toggleTextEdit()
+  -- if text edit has focus
+  if gameTextChatPanel:isFocused() then
+    --map panel get focus
+    gameMapPanel:focus()  
+  -- if not has
+  else
+    -- text edit now has a focus
+    gameTextChatPanel:focus()
+  end
+end
+
+
+function toggleGameConsoleBuffer()
+  local contentPanelChat = gameChatPanel:getChildById('consoleContentPanel')
+  local closeChannelButton = gameChatPanel:getChildById('closeChannelButton')
+    
+  if contentPanelChat:isVisible() then  
+    g_effects.fadeOut(contentPanelChat, 1300)
+    scheduleEvent(function()      
+      contentPanelChat:setVisible(false)
+      gameChatPanel:setHeight(28)
+    closeChannelButton:setIconColor('#7e7e7eff')
+      closeChannelButton:setIcon('/images/game/console/toparrow')
+    end, 1300)
+  else
+    gameChatPanel:setHeight(168)
+    gameChatPanel:setVisible(true)         
+    contentPanelChat:setVisible(true)
+    closeChannelButton:setIconColor('#ff7e7eff')
+    closeChannelButton:setIcon('/images/game/console/closechannel')
+    g_effects.fadeIn(contentPanelChat, 1300)   
+  end
 end
 
 function bindKeys()
@@ -155,19 +205,25 @@ function terminate()
     onLoginAdvice = onLoginAdvice
   })  
 
-  disconnect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
+  --disconnect(gameLeftPanel, { onVisibilityChange = onLeftPanelVisibilityChange })
 
   logoutButton:destroy()
   gameRootPanel:destroy()
 end
 
-function updateStretchShrink()
-  -- if modules.client_options.getOption('dontStretchShrink') and not alternativeView then
-   gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
+function onUpdateMapSize(UIGameMap, UIGamepMapHeight, mapHeight, UIGameMapWidth, mapWidth)  
+  gameChatPanel:setMarginBottom((UIGamepMapHeight - mapHeight)/2 + 5) -- 5 is adjustment
+  gameChatPanel:setMarginLeft((UIGameMapWidth - mapWidth)/2 + 5)
+  --gameChatPanel:setWidth(mapWidth - 20) -- 20 is the margin from sides  
+end
+
+function updateStretchShrink(UIMap, oldRect, newRect)
+  -- if modules.client_options.getOption('dontStretchShrink') and not alternativeView then 
 
     -- -- Set gameMapPanel size to height = 11 * 32 + 2
     -- bottomSplitter:setMarginBottom(bottomSplitter:getMarginBottom() + (gameMapPanel:getHeight() - 32 * 11) - 10)
   -- end
+  --gameChatPanel:setWidth(gameMapPanel:getWidth()/2)  
 end
 
 function onGameStart()
@@ -181,7 +237,8 @@ function onGameStart()
   end
     -- with you change setMapAwareRange values you need to change
     -- AddMapDescription function values on server side
-  --g_game.setMapAwareRange(8,6,9,7)
+  --g_game.setMapAwareRange(8, 6, 7, 9)
+  
 end
 
 function onGameEnd()
@@ -196,18 +253,8 @@ function show()
   gameRootPanel:focus()
   gameMapPanel:followCreature(g_game.getLocalPlayer())
   setupViewMode(0)  
-  updateStretchShrink()
+  --updateStretchShrink()
   logoutButton:setTooltip(tr('Logout'))
-
-  addEvent(function()
-    if not limitedZoom or g_game.isGM() then
-      gameMapPanel:setMaxZoomOut(513)
-      gameMapPanel:setLimitVisibleRange(false)
-    else
-      gameMapPanel:setMaxZoomOut(11)
-      gameMapPanel:setLimitVisibleRange(true)
-    end
-  end)
 end
 
 function hide()
@@ -243,6 +290,9 @@ function load()
       -- bottomSplitter:setMarginBottom(settings.splitterMarginBottom)
     -- end
   -- end
+  
+  
+  
 end
 
 function onLoginAdvice(message)
@@ -872,12 +922,24 @@ function getBreathBarPanel()
   return gameBreathBarPanel
 end
 
+function getStaminaBarPanel()
+  return gameStaminaBarPanel
+end
+
 function getConditionPanel()
   return gameInfoPlayerPanel:getChildById('conditionPanel')
 end
 
 function getSpellPanel()
   return gameSpellPanel
+end
+
+function getGameChatPanel()
+  return gameChatPanel
+end
+
+function getGameTextChatPanel()
+  return gameTextChatPanel
 end
 
 function getChildSpellPanel()
@@ -898,32 +960,36 @@ function nextViewMode()
 end
 
 function setupViewMode(mode)
-    gameRootPanel:fill('parent')
+    --gameRootPanel:fill('parent')
     --g_game.changeMapAwareRange(36, 28)
     
-    gameMapPanel:setVisibleDimension({ width = 15, height = 11 })
-    --gameMapPanel:fill('parent')    
-    --gameMapPanel:setOn(true)    
+    --gameMapPanel:setVisibleDimension({ width = 4, height = 3 })
+    --gameMapPanel:setLimitVisibleRange(true)
+
+      --gameMapPanel:setMaxZoomOut(11)
+    gameMapPanel:setOn(true)  
+   
+    --gameMapPanel:setLimitVisibleRange(true)
+    gameMapPanel:setKeepAspectRatio(true)
+    --gameMapPanel:setZoom(11)
+    gameMapPanel:setVisibleDimension({ width = 23, height = 13 })  
     
-    
-    
-    gameMapPanel:setZoom(11) 
     --gameMapPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())
     
-    gameLeftPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop())
-    gameLeftPanel:setOn(true)
-    gameLeftPanel:setVisible(true)
+--gameLeftPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop())
+   -- gameLeftPanel:setOn(true)
+    --gameLeftPanel:setVisible(true)
         
-    gameRightPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop())    
-    gameRightPanel:setOn(true)
-    gameRightPanel:setVisible(true)
+   -- gameRightPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight() - gameLeftPanel:getPaddingTop())    
+   -- gameRightPanel:setOn(true)
+    --gameRightPanel:setVisible(true)
     
-    gameHealthBarPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
-    gameManaBarPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
+    --gameHealthBarPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
+    --gameManaBarPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
     
-    gameInfoPlayerPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
-    gameHealthLabel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
-    gameManaLabel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
+    --gameInfoPlayerPanel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
+    --gameHealthLabel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
+    --gameManaLabel:setMarginTop(modules.client_topmenu.getTopMenu():getHeight())  
     --gameMiniMapPanel:setImageColor('alpha')
     --gameMiniMapPanel:setOn(true)
     --gameMiniMapPanel:setVisible(true)

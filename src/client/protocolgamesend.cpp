@@ -817,7 +817,6 @@ void ProtocolGame::sendAddSkillPoints(int creatureId, uint8_t skillId, uint8_t v
 	msg->addU8(Proto::ClientAddSkillPoints);
 	msg->addU32(creatureId);
 	msg->addU8(skillId);
-	msg->addU8(valueToAdd);
 	send(msg);
 }
 

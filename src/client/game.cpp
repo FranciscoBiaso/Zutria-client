@@ -1459,8 +1459,8 @@ void Game::setMapAwareRange(int left, int top, int right, int bottom)
 	AwareRange range;
 	range.left = left;
 	range.top = top;
-	range.bottom = bottom;
 	range.right = right;
+	range.bottom = bottom;	
 
 	g_map.setAwareRange(range); 
 }
