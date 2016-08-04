@@ -43,6 +43,24 @@ ButtonRounded < UIButton
   $!disabled !hover:
     image-clip: 0 0 20 20
     image-color: #ffffff88
+    
+StyledButtonRounded < UIButton
+  font: verdana-11px-antialised
+  size: 128 123
+  text-offset: 0 2
+  image-source: /images/ui/styled/button_rounded_2
+  image-border: 12
+  border: 0 #aa000011
+  image-clip: 0 0 128 123
+
+StyledMiniButtonRounded < UIButton
+  font: verdana-11px-antialised
+  size: 17 17
+  text-offset: 0 2
+  image-source: /images/ui/styled/button_rounded_2
+  image-border: 3
+  border: 0 #aa000011
+  image-clip: 0 0 17 17
 
 TabButton < ButtonRounded
   size: 20 20 

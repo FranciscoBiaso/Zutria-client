@@ -158,7 +158,7 @@ public:
 private:
     stdext::boolean<false> m_updateEventScheduled;
     stdext::boolean<false> m_loadingStyle;
-
+	
 
 // state managment
 protected:

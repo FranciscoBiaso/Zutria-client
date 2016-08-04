@@ -28,17 +28,23 @@ function init()
   })
   connect(g_game, { onGameStart = refresh })
   
-  inventoryButton = modules.client_topmenu.addRightGameToggleButton('InventoryButton', tr('equipamentos') .. ' (ctrl + I)', '/images/topbuttons/equipament', toggle)
+  inventoryButton = modules.client_topmenu.addRightGameToggleButton('InventoryButton', tr('equipamentos') .. ' (ctrl + E)', '/images/topbuttons/equipament', toggle)
   inventoryButton:setOn(true)
   
-  g_keyboard.bindKeyDown('ctrl + I', toggle)
+  g_keyboard.bindKeyDown('ctrl + E', toggle)
 
-  inventoryWindow = g_ui.loadUI('inventory', modules.game_interface.getRightPanel())
-  inventoryPanel = inventoryWindow:getChildById('contentsPanel') 
-  inventoryWindow:disableResize()
+  inventoryWindow = g_ui.loadUI('inventory', modules.game_interface.getRootPanel())
+  inventoryPanel = inventoryWindow:getChildById('inventoryPanel') 
+  --inventoryWindow:disableResize()
+  
+  local topSetPanel = inventoryWindow:getChildById('topSet')
+  local circlePanel = topSetPanel:getChildById('circle')
+  circlePanel:setIcon('/images/game/slots/armor')
+  circlePanel:setIconColor('#ffffffbb')
+  
   
   refresh()
-  inventoryWindow:setup()
+  --inventoryWindow:setup()
 end
 
 function terminate()
@@ -73,10 +79,10 @@ end
 
 function toggle()
   if inventoryButton:isOn() then
-    inventoryWindow:close()
+    inventoryWindow:hide()
     inventoryButton:setOn(false)
   else
-    inventoryWindow:open()
+    inventoryWindow:show()
     inventoryButton:setOn(true)
   end
 end
@@ -92,17 +98,14 @@ function onInventoryChange(player, slot, item, oldItem)
   slotPanel = inventoryPanel:getChildById('slot' .. slot)
   itemWidget = slotPanel:getChildById('itemSlot' .. slot)
   if item then
-    slotPanel:setImageColor('#66666655')
+    slotPanel:setImageColor('#ffffffff')
     itemWidget:setImageColor('#ffffff00')
     itemWidget:setItem(item)
   else
-    slotPanel:setImageColor('#cccccccc')
-    slotPanel:setBorderWidth(1)
-    slotPanel:setBorderColor('#010101ff')
+    slotPanel:setImageColor('#ffffffff')
     itemWidget:setImageClip(InventorySlots[slot][2][1] .. ' ' .. InventorySlots[slot][2][2] .. ' ' .. 32 .. ' ' .. 32)  
        
-    itemWidget:setImageColor('#565656ff') 
-    itemWidget:setBorderWidth(0)
+    itemWidget:setImageColor('#454545ff') 
     itemWidget:setItem(nil)
   end
 end
@@ -110,18 +113,30 @@ end
 function onFreeCapacityChange(player, freeCapacity)
   capacityValueLabel = inventoryPanel:getChildById('capacityValueLabel')
   totalCapacityValue = player:getSkillValue(3)/100
-  capPercentage = (freeCapacity/totalCapacityValue) * 100
-  capacityBar = inventoryPanel:getChildById('capacityBar')
+  capPercentage = (freeCapacity/totalCapacityValue)
+  capBar = inventoryPanel:recursiveGetChildById('capBar')
   
-  if capPercentage >= 50 then
-    --capacityValueLabel:setColor('#' .. DEC_HEX(255.0 * (50-(capPercentage-50))/50.0) .. 'ff00ff')
-    capacityBar:setBackgroundColor('#' .. DEC_HEX(255.0 * (50-(capPercentage-50))/50.0) .. 'ff00ff')
+  color = nil
+  if capPercentage * 100 >= 50 then
+    capacityValueLabel:setColor('#' .. DEC_HEX(255.0 * (50-(100 * capPercentage-50))/50.0) .. 'ff00ff')
+    color = '#' .. DEC_HEX(255.0 * (50-(100 * capPercentage-50))/50.0) .. 'ff00ff'
+    --capacityBar:setBackgroundColor('#' .. DEC_HEX(255.0 * (50-(capPercentage-50))/50.0) .. 'ff00ff')
   else    
-    --capacityValueLabel:setColor('#ff' .. DEC_HEX(255.0 * capPercentage / 50.0) .. '00ff')
-    capacityBar:setBackgroundColor('#ff' .. DEC_HEX(255.0 * capPercentage / 50.0) .. '00ff')
+    capacityValueLabel:setColor('#ff' .. DEC_HEX(255.0 * 100 * capPercentage / 50.0) .. '00ff')
+    color = '#ff' .. DEC_HEX(255.0 * 100 * capPercentage / 50.0) .. '00ff'
+    --capacityBar:setBackgroundColor('#ff' .. DEC_HEX(255.0 * capPercentage / 50.0) .. '00ff')
   end
-  capacityValueLabel:setText(freeCapacity .. ' izis')
+  capacityValueLabel:setText('! ' .. freeCapacity .. ' izis')
   
-  capacityBar:setPercent(100 - capPercentage)
+  local height = 32 - capPercentage * 32
+  --capacityBar:setPercent(100 - capPercentage) 
+  capBar:setHeight(height)  
+  --modules.game_interface.getGameTextChatPanel():setText(height)
   
+  capBar:setIconClip({x = 0, y = 32 - height, width = 32,height = height })
+  capBar:setIconColor(color)
+end
+
+function getInventoryWindow()
+  return inventoryWindow
 end

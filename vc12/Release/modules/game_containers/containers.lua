@@ -1,3 +1,5 @@
+local containerList = List()
+
 function init()
   g_ui.importStyle('container')
 
@@ -8,6 +10,7 @@ function init()
   connect(Game, { onGameEnd = clean() })
 
   reloadContainers()
+   
 end
 
 function terminate()
@@ -45,69 +48,58 @@ function refreshContainerItems(container)
     itemWidget:setItem(container:getItem(slot))
   end
 
-  if container:hasPages() then
-    refreshContainerPages(container)
-  end
-end
-
-function toggleContainerPages(containerWindow, pages)
-  containerWindow:getChildById('miniwindowScrollBar'):setMarginTop(pages and 42 or 22)
-  containerWindow:getChildById('contentsPanel'):setMarginTop(pages and 42 or 22)
-  containerWindow:getChildById('pagePanel'):setVisible(pages)
-end
-
-function refreshContainerPages(container)
-  local currentPage = 1 + math.floor(container:getFirstIndex() / container:getCapacity())
-  local pages = 1 + math.floor(math.max(0, (container:getSize() - 1)) / container:getCapacity())
-  container.window:recursiveGetChildById('pageLabel'):setText(string.format('Page %i of %i', currentPage, pages))
-
-  local prevPageButton = container.window:recursiveGetChildById('prevPageButton')
-  if currentPage == 1 then
-    prevPageButton:setEnabled(false)
-  else
-    prevPageButton:setEnabled(true)
-    prevPageButton.onClick = function() g_game.seekInContainer(container:getId(), container:getFirstIndex() - container:getCapacity()) end
-  end
-
-  local nextPageButton = container.window:recursiveGetChildById('nextPageButton')
-  if currentPage >= pages then
-    nextPageButton:setEnabled(false)
-  else
-    nextPageButton:setEnabled(true)
-    nextPageButton.onClick = function() g_game.seekInContainer(container:getId(), container:getFirstIndex() + container:getCapacity()) end
-  end
 end
 
 function onContainerOpen(container, previousContainer)
-  local containerWindow
-  if previousContainer then
-    containerWindow = previousContainer.window
-    previousContainer.window = nil
-    previousContainer.itemsPanel = nil
+  
+  local localPlayer = g_game.getLocalPlayer()
+  local item = localPlayer:getInventoryItem(InventorySlotBack)
+  
+  local childPanel = modules.game_interface.getRootPanel():getChildByPos(modules.game_interface.getMousePos())
+  local isPlayerInventory = false
+  
+  local containerWindow = nil
+  local insert = false
+  -- is a container from game scenario not player inventory
+  if not item then
+    containerWindow = g_ui.createWidget('GameContainerWindow', modules.game_interface.getRootPanel())  
+    -- is a container of player inventory
+    insert = true
+   
+  elseif  childPanel:getId() == "inventoryWindow" then
+    isPlayerInventory = true
+    containerWindow = g_ui.createWidget('ContainerWindow', modules.game_interface.getRootPanel())  
+    local topSetPanel = containerWindow:getChildById('topSet')
+    local circlePanel = topSetPanel:getChildById('circle')
+    circlePanel:setIcon('/images/game/slots/backpack')
+    circlePanel:setIconColor('#ffffffbb')
   else
-    containerWindow = g_ui.createWidget('ContainerWindow', modules.game_interface.getRightPanel())
+    containerWindow = g_ui.createWidget('GameContainerWindow', modules.game_interface.getRootPanel()) 
+    insert = true    
+  end  
+  
+  --modules.game_interface.getGameTextChatPanel():setText(countContainersScenarioOpened)
+  
+  if isPlayerInventory then
+    containerWindow:setHeight(math.ceil(container:getCapacity()/9) * 44 + 102)
+  else
+    containerWindow:setHeight(math.ceil(container:getCapacity()/11) * 44 + 24)   
   end
+  
+  
   containerWindow:setId('container' .. container:getId())
   local containerPanel = containerWindow:getChildById('contentsPanel')
   local containerItemWidget = containerWindow:getChildById('containerItemWidget')
+  
   containerWindow.onClose = function()
     g_game.close(container)
-    containerWindow:hide()
   end
 
-  -- this disables scrollbar auto hiding
-  local scrollbar = containerWindow:getChildById('miniwindowScrollBar')
-  scrollbar:mergeStyle({ ['$!on'] = { }})
-
-  local upButton = containerWindow:getChildById('upButton')
-  upButton.onClick = function()
-    g_game.openParent(container)
-  end
-  upButton:setVisible(container:hasParent())
-
+  local containerLabel = containerWindow:getChildById('containerLabel')
+  
   local name = container:getName()
   name = name:sub(1,1):upper() .. name:sub(2)
-  containerWindow:setText(name)
+  containerLabel:setText(name)
 
   containerItemWidget:setItem(container:getContainerItem())
 
@@ -116,7 +108,8 @@ function onContainerOpen(container, previousContainer)
     local itemWidget = g_ui.createWidget('Item', containerPanel)
     itemWidget:setId('item' .. slot)
     itemWidget:setItem(container:getItem(slot))
-    itemWidget:setMargin(0)
+    itemWidget:setMarginRight(2)
+    itemWidget:setPadding(3)
     itemWidget.position = container:getSlotPosition(slot)
 
     if not container:isUnlocked() then
@@ -126,25 +119,33 @@ function onContainerOpen(container, previousContainer)
 
   container.window = containerWindow
   container.itemsPanel = containerPanel
-
-  toggleContainerPages(containerWindow, container:hasPages())
-  refreshContainerPages(container)
-
-  local layout = containerPanel:getLayout()
-  local cellSize = layout:getCellSize()
-  containerWindow:setContentMinimumHeight(cellSize.height)
-  containerWindow:setContentMaximumHeight(cellSize.height*layout:getNumLines())
-
-  if not previousContainer then
-    local filledLines = math.max(math.ceil(container:getItemsCount() / layout:getNumColumns()), 1)
-    containerWindow:setContentHeight(filledLines*cellSize.height)
+  
+  if insert == true then
+    containerList.add(container)
   end
+  
+  --modules.game_interface.getGameTextChatPanel():setText(tostring(container))
+  ajusteScenarioContainers(containerList.getList())
+end
 
-  containerWindow:setup()
+function ajusteScenarioContainers(list)
+  local List = list
+  local counter = 0
+  while List do    
+    List.value.window:setMarginBottom(counter * 25)
+    List.value.window:setMarginLeft(counter * 25)
+    List = List.next
+    counter = counter + 1
+  end
+  
 end
 
 function onContainerClose(container)
   destroy(container)
+  containerList.del(container)
+  
+ --ajusteScenarioContainers(l)
+ ajusteScenarioContainers(containerList.getList())
 end
 
 function onContainerChangeSize(container, size)
@@ -156,4 +157,10 @@ function onContainerUpdateItem(container, slot, item, oldItem)
   if not container.window then return end
   local itemWidget = container.itemsPanel:getChildById('item' .. slot)
   itemWidget:setItem(item)
+end
+
+function closeContainer() 
+  local childPanel = modules.game_interface.getRootPanel():getChildByPos(modules.game_interface.getMousePos())
+  childPanel.onClose()
+  childPanel:destroy()  
 end

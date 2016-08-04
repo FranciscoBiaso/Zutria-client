@@ -52,6 +52,7 @@ public:
 
     void setId(uint32 id) { m_id = id; }
     void setName(const std::string& name);
+	void Creature::setCachedName(const std::string & name);
     void setHealthPercent(uint8 healthPercent);
     void setDirection(Otc::Direction direction);
     void setOutfit(const Outfit& outfit);
@@ -65,6 +66,7 @@ public:
     void setIcon(uint8 icon);
 	void setSquareTexture(const std::string& filename);
     void setSkullTexture(const std::string& filename);
+	void setHealthBarTexture(const std::string & filename);
     void setShieldTexture(const std::string& filename, bool blink);
     void setEmblemTexture(const std::string& filename);
     void setIconTexture(const std::string& filename);
@@ -131,7 +133,6 @@ public:
     virtual void onAppear();
     virtual void onDisappear();
     virtual void onDeath();
-
 protected:
     virtual void updateWalkAnimation(int totalPixelsWalked);
     virtual void updateWalkOffset(int totalPixelsWalked);
@@ -157,6 +158,7 @@ protected:
     uint8 m_icon;
 	TexturePtr m_squareTexture;
     TexturePtr m_skullTexture;
+	TexturePtr m_healthBarTexture;
     TexturePtr m_shieldTexture;
     TexturePtr m_emblemTexture;
     TexturePtr m_iconTexture;

@@ -2,19 +2,28 @@ PageButton < Button
   size: 30 18
   margin: 1
 
-
-ContainerWindow < MiniWindow
-  height: 150
-
+ContainerWindow < StyledWindow
+  width: 460
+  image-color: #ffffffbb
+  anchors.top: inventoryWindow.bottom
+  anchors.left: inventoryWindow.left
+  
   UIItem
     id: containerItemWidget
     virtual: true
     size: 16 16
     anchors.top: parent.top
     anchors.left: parent.left
-    margin-top: 4
+    margin-top: 0
     margin-left: 4
 
+  UILabel
+    id: containerLabel
+    margin-left: 4
+    color: #996f51cc
+    anchors.left: containerItemWidget.right
+    anchors.verticalcenter: containerItemWidget.verticalcenter
+    
   UIButton
     id: upButton
     anchors.top: minimizeButton.top
@@ -23,6 +32,7 @@ ContainerWindow < MiniWindow
     size: 14 14
     image-source: /images/ui/miniwindow_buttons
     image-clip: 42 0 14 14
+    visible: false
 
     $hover:
       image-clip: 42 14 14 14
@@ -30,38 +40,102 @@ ContainerWindow < MiniWindow
     $pressed:
       image-clip: 42 28 14 14
 
-  Panel
-    id: pagePanel
-    anchors.left: parent.left
-    anchors.right: parent.right
-    anchors.top: miniwindowTopBar.bottom
-    height: 20
-    margin: 2 3 0 3
-    background: #00000066
-    visible: false
-
-    Label
-      id: pageLabel
-      anchors.top: parent.top
-      anchors.horizontalCenter: parent.horizontalCenter
-      margin-top: 2
-      text-auto-resize: true
-
-    PageButton
-      id: prevPageButton
-      text: <
-      anchors.top: parent.top
-      anchors.left: parent.left
-
-    PageButton
-      id: nextPageButton
-      text: >
-      anchors.top: parent.top
-      anchors.right: parent.right
-
   MiniWindowContents
     padding-right: 0
     layout:
       type: grid
-      cell-size: 34 34
+      cell-size: 40 40
       flow: true
+
+  VerticalScrollBar
+    id: miniwindowScrollBar
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    step: 14
+    margin-top: 22
+    margin-right: 3
+    margin-bottom: 3
+    pixels-scroll: true
+    visible: false
+
+    $!on:
+      width: 0
+
+GameContainerWindow < BasicWindow
+  width: 460
+  margin-bottom: 3
+  image-color: #ffffffbb
+  anchors.bottom: gameChatPanel.top
+  anchors.left: gameChatPanel.left
+  
+  StyledMiniButtonRounded
+    icon-source: /images/ui/styled/icon_close
+    anchors.right: parent.right
+    anchors.top: parent.top
+    margin-top: 3
+    margin-right: 4
+    @onClick: modules.game_containers.closeContainer()
+    
+    $hover:
+      image-color: #ffff33aa
+      
+    $!hover:
+      image-color: #ffffffff
+      
+    $pressed:
+      image-color: #ffff0088
+  
+  MiniWindowContents
+    padding-right: 0
+    layout:
+      type: grid
+      cell-size: 40 40
+      flow: true
+  
+  VerticalScrollBar
+    id: miniwindowScrollBar
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    step: 14
+    margin: 0
+    pixels-scroll: true
+    visible: false
+    enable: false
+    size: 0 0
+
+    $!on:
+      width: 0
+  UIItem
+    id: containerItemWidget
+    virtual: true
+    size: 16 16
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 4
+    margin-left: 5
+
+  UILabel
+    id: containerLabel
+    margin-left: 4
+    color: #996f51cc
+    anchors.left: containerItemWidget.right
+    anchors.verticalcenter: containerItemWidget.verticalcenter
+    
+  UIButton
+    id: upButton
+    anchors.top: minimizeButton.top
+    anchors.right: minimizeButton.left
+    margin-right: 3
+    size: 14 14
+    image-source: /images/ui/miniwindow_buttons
+    image-clip: 42 0 14 14
+    visible: false
+
+    $hover:
+      image-clip: 42 14 14 14
+
+    $pressed:
+      image-clip: 42 28 14 14
+

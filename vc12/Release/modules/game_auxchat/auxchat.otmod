@@ -1,0 +1,9 @@
+Module
+  name: game_auxchat
+  description: 
+  author:  
+  website: 
+  sandboxed: true 
+  scripts: [ auxchat ]
+  @onLoad: init()
+  @onUnload: terminate()

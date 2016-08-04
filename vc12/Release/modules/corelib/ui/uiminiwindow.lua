@@ -174,8 +174,8 @@ function UIMiniWindow:onVisibilityChange(visible)
 end
 
 function UIMiniWindow:onDragEnter(mousePos)
-  modules.game_interface.getRightPanel():setImageColor('#FFAAAAFF')
-  modules.game_interface.getLeftPanel():setImageColor('#FFAAAAFF')
+  --modules.game_interface.getRightPanel():setImageColor('#FFAAAAFF')
+ -- modules.game_interface.getLeftPanel():setImageColor('#FFAAAAFF')
   currentColor = self:getImageColor()
   self:setImageColor('#AAFFAAFF')
   local parent = self:getParent()
@@ -196,8 +196,8 @@ function UIMiniWindow:onDragEnter(mousePos)
 end
 
 function UIMiniWindow:onDragLeave(droppedWidget, mousePos)
-  modules.game_interface.getRightPanel():setImageColor('#ffffffff')
-  modules.game_interface.getLeftPanel():setImageColor('#ffffffff')
+ -- modules.game_interface.getRightPanel():setImageColor('#ffffffff')
+  --modules.game_interface.getLeftPanel():setImageColor('#ffffffff')
   self:setImageColor(currentColor)
   if self.movedWidget then
     self.setMovedChildMargin(self.movedOldMargin or 0)

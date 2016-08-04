@@ -33,7 +33,7 @@ CapLabel < GameLabel
     height: 0
 
 ConditionWidget < UIWidget
-  size: 18 18
+  size: 16 16
   
   $!first:
     margin-left: 2

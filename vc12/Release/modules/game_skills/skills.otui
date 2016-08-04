@@ -6,10 +6,10 @@ StaminaBar < ProgressBar
 
 SkillFirstWidget < UIWidget
 
-SkillButton < UIButton
+SkillPanel < Panel
   height: 21
   margin-bottom: 2
-  &onClick: onSkillButtonClick
+  &onClick: onSkillPanelClick
 
 AddSkillButton < UIButton
   size: 16 16
@@ -86,9 +86,9 @@ IconSkillLevelPoints < IconSkill
   image-source: /images/game/skills/level points 
   
 SkillNameLabel < GameLabel
-  id: name
+  id: skillName
   text-align: topleft
-  width: 108
+  width: 113
   margin-left: 4
   font: verdana-11px-antialised
   anchors.top: parent.top
@@ -105,6 +105,7 @@ SkillValueLabel < GameLabel
   anchors.left: prev.right
   anchors.right: next.left
   color: #cccc70ff
+  visible: false
   
 SkillRightValueLabel < GameLabel
   id: value
@@ -129,20 +130,32 @@ SkillPercentPanel < ProgressBar
   phantom: false
   visible: true
 
-MiniWindow
+SkillBar < ProgressBar
+  id: skillBar
+  anchors.left: prev.right
+  anchors.verticalcenter: prev.verticalcenter
+  height: 8
+  width: 160
+
+StyledWindow
   id: skillWindow
   !text: tr('Atributos')
-  height: 330
-  icon: /images/topbuttons/skills
+  height: 390
+  width: 400
   @onClose: modules.game_skills.onMiniWindowClose()
   &save: true
+  image-color: #ffffffcc
+  border: 1 #121212cc
+  
 
-  MiniWindowContents
+  Panel
+    id: skillChildPanel
+    anchors.fill: parent
     padding-left: 5
     padding-right: 5
     layout: verticalBox
 
-    SkillButton
+    SkillPanel
       margin-top: 5
       id: experience
       height: 15
@@ -152,7 +165,7 @@ MiniWindow
         color: #888800ff
       SkillRightValueLabel      
     
-    SkillButton
+    SkillPanel
       id: level    
       IconSkillLevel
       height: 23
@@ -171,63 +184,75 @@ MiniWindow
     HorizontalSeparator
       margin-bottom: 6
       
-    SkillButton
+    SkillPanel
       id: vitality
       height: 15
       IconSkillBlood
       SkillNameLabel
         !text: tr('vitalidade')
-        color: #bb3333FF
+        color: #bb4444FF
+      SkillBar
+        background-color: #bb4444bb
       SkillValueLabel
       AddSkillButton
       
-    SkillButton
+    SkillPanel
       id: force
       height: 15
       IconSkillStrength
       SkillNameLabel
         !text: tr('força')
         color: #FF9933FF
+      SkillBar
+        background-color: #FF9933bb
       SkillValueLabel
       AddSkillButton
     
-    SkillButton
+    SkillPanel
       id: agility      
       height: 15
       IconSkillShield
       SkillNameLabel
         !text: tr('agilidade')
         color: #00bb00ff
+      SkillBar
+        background-color: #00bb00bb
       SkillValueLabel
       AddSkillButton
 
-    SkillButton
+    SkillPanel
       id: intelligence
       height: 15
       IconSkillWeight
       SkillNameLabel
         !text: tr('inteligência')
         color: #6666FFFF
+      SkillBar
+        background-color: #6666FFbb
       SkillValueLabel
       AddSkillButton      
       
-    SkillButton
+    SkillPanel
       id: concentration
       height: 15      
       IconSkillMana
       SkillNameLabel
         !text: tr('concentração')
         color: #00ccccff
+      SkillBar
+        background-color: #00ccccbb
       SkillValueLabel
       AddSkillButton       
       
-    SkillButton
+    SkillPanel
       id: stamina      
       height: 15
       IconSkillMagicAttack
       SkillNameLabel
         !text: tr('energia')
         color: #cc77ffff
+      SkillBar
+        background-color: #cc77ffbb
       SkillValueLabel
       AddSkillButton
     
@@ -241,53 +266,63 @@ MiniWindow
     HorizontalSeparator
       margin-bottom: 6
     
-    SkillButton
+    SkillPanel
       id: distance      
       height: 15
       IconSkillMagicDeffense
       SkillNameLabel
         !text: tr('distância')
         color: #888888ff
+      SkillBar
+        background-color: #888888bb
       SkillValueLabel
       AddSkillButton
     
-    SkillButton
+    SkillPanel
       id: melee      
       height: 15
       IconSkillMagicPoints
       SkillNameLabel
         !text: tr('corpo a corpo')
         color: #888888ff
+      SkillBar
+        background-color: #888888bb
       SkillValueLabel
       AddSkillButton    
       
-    SkillButton
+    SkillPanel
       id: mentality
       height: 15
       IconSkillSpeed
       SkillNameLabel
         !text: tr('mentalidade')
         color: #888888ff
+      SkillBar
+        background-color: #888888bb
       SkillValueLabel
       AddSkillButton            
     
-    SkillButton
+    SkillPanel
       id: trainer      
       height: 15
       IconSkillHands
       SkillNameLabel
         !text: tr('adestradora')
         color: #888888ff
+      SkillBar
+        background-color: #888888bb
       SkillValueLabel
       AddSkillButton
 
-    SkillButton
+    SkillPanel
       id: defense      
       height: 15
       IconSkillCooldown
       SkillNameLabel
         !text: tr('defensora')
         color: #888888ff
+      SkillBar
+        background-color: #888888bb
       SkillValueLabel
       AddSkillButton    
     
@@ -295,13 +330,14 @@ MiniWindow
       margin-top: 3
       margin-bottom: 2
     
-    SkillButton
+    SkillPanel
       id: levelPoints      
       margin-top: 5
       height: 15
       IconSkillLevelPoints
       SkillNameLabel
-        !text: tr('Pontos de nível')
-        color: #12cc12FF
+        width: 130
+        !text: tr('Pontos distribuíveis')
+        color: #e7e7e7FF
       SkillRightValueLabel 
       

@@ -118,8 +118,9 @@ function getIconImagePath(iconId)
   return path
 end
 
-function Creature:onCreate(squareId)
+function Creature:onCreate()
    self:setSquareTexture('/images/game/states/square')
+   self:setHealthBarTexture('/images/ui/styled/health_bar')
 end
 
 function Creature:onSkullChange(skullId)

@@ -464,6 +464,7 @@ void Client::registerLuaFunctions()
     g_lua.bindClassMemberFunction<Creature>("setDirection", &Creature::setDirection);
 	g_lua.bindClassMemberFunction<Creature>("setSquareTexture", &Creature::setSquareTexture);
     g_lua.bindClassMemberFunction<Creature>("setSkullTexture", &Creature::setSkullTexture);
+	g_lua.bindClassMemberFunction<Creature>("setHealthBarTexture", &Creature::setHealthBarTexture);
     g_lua.bindClassMemberFunction<Creature>("setShieldTexture", &Creature::setShieldTexture);
     g_lua.bindClassMemberFunction<Creature>("setEmblemTexture", &Creature::setEmblemTexture);
     g_lua.bindClassMemberFunction<Creature>("setIconTexture", &Creature::setIconTexture);
@@ -556,7 +557,6 @@ void Client::registerLuaFunctions()
     g_lua.bindClassMemberFunction<Item>("addContainerItemIndexed", &Item::addContainerItemIndexed);
     g_lua.bindClassMemberFunction<Item>("removeContainerItem", &Item::removeContainerItem);
     g_lua.bindClassMemberFunction<Item>("clearContainerItems", &Item::clearContainerItems);
-    g_lua.bindClassMemberFunction<Item>("getContainerItem", &Item::getContainerItem);
     g_lua.bindClassMemberFunction<Item>("setCount", &Item::setCount);
     g_lua.bindClassMemberFunction<Item>("getCount", &Item::getCount);
     g_lua.bindClassMemberFunction<Item>("getSubType", &Item::getSubType);

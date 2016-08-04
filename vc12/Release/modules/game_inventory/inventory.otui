@@ -1,41 +1,35 @@
 InventoryItem < Item
-  size: 32 32
   image-auto-resize: false
   image-source: /images/game/slots/inventory
   image-color: #ffffffff  
-  border: 1 #878787cc
+  border: 0 #878787cc
 
 InventoryBackgroundItemPanel < Panel  
-  size: 40 40
-  image-color: #878787ff
-  image-source: /images/ui/item-blessed
-  border: 1 #878787cc
-  padding: 4  
+  size: 43 43
+  image-source: /images/ui/styled/slot
+  padding: 5  
   
 InfoLabel < UILabel
-  color: #cdcdcdff
 
 ValueLabel < UILabel
   color: #34aa34ff
   
-infoBar < ProgressBar
-  background-color: #B6E866
-  height: 6
-  margin-left: 5
-  margin-right: 5
-  margin-top: 2
-  visible: true
+infoBar < Panel
+  width: 32
+  height: 32
   
-MiniWindow
+StyledWindow
   id: inventoryWindow
-  !text: tr('Equipamentos')
+  image-color: #ffffff77
+  border: 1 #121212cc
+  size: 290 310
   &save: true
-  icon: /images/topbuttons/skills
-  &save: true
-  height: 240
   @onClose: onInventoryWindowClose()
 
-  MiniWindowContents 
+  Panel
+    id: inventoryPanel
+    anchors.fill: parent
+    margin-top: 15
     InventoryBackgroundItemPanel  
       id: slot1
       anchors.top: parent.top
@@ -140,6 +134,7 @@ MiniWindow
       margin-top: 3
       InventoryItem
         id: itemSlot13
+      visible: false
     
     InventoryBackgroundItemPanel 
       id: slot14
@@ -156,24 +151,43 @@ MiniWindow
       InventoryItem
         id: itemSlot15
     
+    Panel
+      id: moneyPanel
+      size: 43 43
+      anchors.top: slot12.bottom
+      anchors.horizontalCenter: slot12.horizontalCenter
+      icon-source: /images/game/slots/coins
+    
     InfoLabel
-      id: capacityLabel
+      id: moneyLabel
+      font: verdana-11px-rounded
       margin-left: 5
-      margin-top: 8
-      anchors.left: slot13.right
-      anchors.top: slot13.top
-      text: "capacidade atual: "
-      
+      anchors.left: moneyPanel.right
+      anchors.verticalCenter: moneyPanel.verticalCenter
+      text: "$ 00.0"
+      color: #cdcd33bb  
+    
+    Panel
+      id: capPanel
+      size: 43 43
+      margin-left: 5
+      anchors.top: moneyPanel.top
+      anchors.left: moneyLabel.right
+      icon-source: /images/game/slots/weight
+      infoBar
+        id: capBar
+        icon-source: /images/game/slots/mask-weight
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        margin-bottom: 5    
+        icon-clip: 0 0 32 32        
+    
     ValueLabel
-      id: capacityValueLabel
-      anchors.left: prev.right
-      anchors.right: parent.right
-      anchors.top: capacityLabel.top
-      text: 20
-      
-    infoBar
-      id: capacityBar
-      anchors.left: slot13.right
-      anchors.top: prev.bottom
-      anchors.right: parent.right
-      width: 150
+      font: verdana-11px-rounded
+      width: 60
+      id: capacityValueLabel      
+      anchors.left: capPanel.right      
+      anchors.verticalCenter: capPanel.verticalCenter
+      margin-left: 5
+      text: "! 00.0"
+

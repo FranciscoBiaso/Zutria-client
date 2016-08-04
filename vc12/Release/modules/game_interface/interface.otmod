@@ -35,5 +35,6 @@ Module
     - game_look
     - game_npc
     - game_shaders
+    - game_auxchat
   @onLoad: init()
   @onUnload: terminate()

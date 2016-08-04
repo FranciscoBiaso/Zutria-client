@@ -1,0 +1,36 @@
+StyledWindow
+  size: 280 320
+  image-color: #ffffff77
+  border: 1 #121212cc
+  visible: false
+  
+  ButtonRounded
+    id: auxchatFindButton
+    margin-top: 15
+    size: 32 32
+    anchors.left: parent.left
+    anchors.top: parent.top
+    icon-source: /images/game/auxchat/find
+    icon-offset: 2 2
+    icon-size: 28 28
+    
+  TextEdit
+    id: auxchatTextEdit
+    margin-left: 6
+    anchors.left: auxchatFindButton.right
+    anchors.verticalcenter: auxchatFindButton.verticalcenter    
+    width: 160
+    
+  Label
+    font: verdana-11px-rounded
+    margin-top: 15
+    anchors.horizontalcenter: parent.horizontalcenter
+    anchors.top: prev.bottom
+    text: Lista Jogadores
+    color: #abababff
+    
+  StyledHorizontalSeparator
+    margin-top: 2
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    anchors.right: parent.right

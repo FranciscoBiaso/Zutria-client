@@ -61,7 +61,6 @@ Creature::Creature() : Thing()
     m_speedFormula.fill(-1);
     m_outfitColor = Color::white;
 
-
 	callLuaField("onCreate");
 }
 
@@ -243,54 +242,28 @@ void Creature::drawInformation(const Point& Point, bool useGray, const Rect& par
     if(!useGray)
         fillColor = m_informationColor;
 	bool l_isPlayer = isPlayer();
-	Rect backgroundRect;
-	Rect manabackgroundRect;
-	if (l_isPlayer)
-	{
-		// calculate main rects
-		backgroundRect = Rect(Point.x - 15 , Point.y - 1, 32, 4);
-		manabackgroundRect = Rect(Point.x - 15, Point.y + 5, 32, 3);
-		manabackgroundRect.bind(parentRect);
-	}
-	else
-	{
-		backgroundRect = Rect(Point.x - 13.5, Point.y, 27, 4);
-	}
+	LocalPlayerPtr localPlayer = g_game.getLocalPlayer();
+	Rect backgroundRect(Point.x - 30, Point.y - 24, 60, 11);
 	backgroundRect.bind(parentRect);
-
-    Size nameSize = m_nameCache.getTextSize();
+	Size nameSize = m_nameCache.getTextSize();
+	
 	Rect textRect;
-	if (l_isPlayer)
-	{
-		textRect = Rect(Point.x - nameSize.width() / 2.0, Point.y - 12 - 1, nameSize);
-	}
-	else
-	{
-		textRect = Rect(Point.x - nameSize.width() / 2.0, Point.y - 12, nameSize);
-	}
+	textRect = Rect(Point.x - nameSize.width() / 2.0, Point.y - 12 - 1, nameSize);
     textRect.bind(parentRect);
 
     // distance them
     if(textRect.top() == parentRect.top())
         backgroundRect.moveTop(textRect.top() + 12);
     if(backgroundRect.bottom() == parentRect.bottom())
-        textRect.moveTop(backgroundRect.top() - 32);
+        textRect.moveTop(backgroundRect.top() - 32);	
 
     // health rect is based on background rect, so no worries
-    Rect healthRect = backgroundRect.expanded(-1);
+    Rect healthRect = backgroundRect.expanded(-3);
+	Rect healthRectBg = backgroundRect.expanded(-3);
 	if (l_isPlayer)
 		healthRect.setWidth((m_healthPercent / 100.0) * 28);
 	else
 		healthRect.setWidth((m_healthPercent / 100.0) * 25);
-
-	Rect manaRect = manabackgroundRect.expanded(-1);
-	LocalPlayerPtr localPlayer;
-	if (l_isPlayer)
-	{
-		localPlayer = g_game.getLocalPlayer();
-		manaRect.setWidth((localPlayer->getMana() / localPlayer->getMaxMana()) * 28);
-	}
-	
 
     // draw
 	if (isNpc())
@@ -301,26 +274,14 @@ void Creature::drawInformation(const Point& Point, bool useGray, const Rect& par
 		fillColor = Color(0x80,0xFF,0x00);
 
     if(drawFlags & Otc::DrawBars && (!isNpc() || !g_game.getFeature(Otc::GameHideNpcNames))) {
-		g_painter->setColor(Color("#880000ff"));
-		g_painter->drawFilledRect(backgroundRect);
-		g_painter->setColor(Color("#101010dd"));
-		g_painter->drawBoundingRect(backgroundRect);
-		if (l_isPlayer)
-		{
+		g_painter->setColor(Color(0xee, 0x12, 0x12, 0x55));
+		g_painter->drawFilledRect(healthRectBg);
+		
+		g_painter->setColor(Color(0xff, 0x00, 0x00, 0xff));
+		g_painter->drawFilledRect(healthRect);		
 
-			g_painter->setColor(Color("#0055ccff"));
-			g_painter->drawFilledRect(manabackgroundRect);
-			g_painter->setColor(Color("#202020dd"));
-			g_painter->drawBoundingRect(manabackgroundRect);
-		}
-
-		g_painter->setColor(Color(0xf6, 0x1d, 0x48));
-		g_painter->drawFilledRect(healthRect);
-		if (l_isPlayer)
-		{
-			g_painter->setColor(Color(0x00,0x30,0xff));
-			g_painter->drawFilledRect(manaRect);
-		}
+		g_painter->setColor(Color::white);
+		g_painter->drawTexturedRect(backgroundRect, m_healthBarTexture);
     }
 
     if(drawFlags & Otc::DrawNames) {
@@ -328,7 +289,7 @@ void Creature::drawInformation(const Point& Point, bool useGray, const Rect& par
         m_nameCache.draw(textRect);
     }
 
-    if(m_skull != Otc::SkullNone && m_skullTexture && (((g_clock.millis() % (500 * 2)) / 500) % 2)) {
+    if(m_skull != Otc::SkullNone && m_skullTexture) {
         g_painter->setColor(Color::white);
         Rect skullRect = Rect(backgroundRect.x() + backgroundRect.width() + 1, Point.y - 1, m_skullTexture->getSize());
         g_painter->drawTexturedRect(skullRect, m_skullTexture);
@@ -659,8 +620,12 @@ void Creature::terminateWalk()
 
 void Creature::setName(const std::string& name)
 {
-    m_nameCache.setText(name);
     m_name = name;
+}
+
+void Creature::setCachedName(const std::string & name)
+{
+	m_nameCache.setText(name);
 }
 
 void Creature::setHealthPercent(uint8 healthPercent)
@@ -791,6 +756,11 @@ void Creature::setSquareTexture(const std::string& filename)
 void Creature::setSkullTexture(const std::string& filename)
 {
     m_skullTexture = g_textures.getTexture(filename);
+}
+
+void Creature::setHealthBarTexture(const std::string & filename)
+{
+	m_healthBarTexture = g_textures.getTexture(filename);
 }
 
 void Creature::setShieldTexture(const std::string& filename, bool blink)

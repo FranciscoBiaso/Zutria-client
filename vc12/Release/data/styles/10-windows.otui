@@ -6,15 +6,16 @@ Window < UIWindow
   text-offset: 0 3
   text-align: top
   image-source: /images/ui/styled/window
-  image-border-top: 29
-  image-border-left: 29
-  image-border-right: 29
-  image-border-bottom: 30
+  image-border-top: 27
+  image-border-left: 30
+  image-border-right: 30
+  image-border-bottom: 27
   padding-top: 42
   padding-left: 39
   padding-right: 39
   padding-bottom: 39
   UIWidget
+    id: lefttopCorner
     margin-left: -40
     margin-top: -41
     anchors.left: parent.left
@@ -22,6 +23,7 @@ Window < UIWindow
     image-source: /images/ui/styled/window_c_lefttop
     size: 93 92
   UIWidget
+    id: righttopCorner
     margin-right: -40
     margin-top: -41
     anchors.right: parent.right
@@ -29,6 +31,7 @@ Window < UIWindow
     image-source: /images/ui/styled/window_c_righttop
     size: 93 92
   UIWidget
+    id: rightbottomCorner
     margin-right: -40
     margin-bottom: -39
     anchors.right: parent.right
@@ -36,6 +39,7 @@ Window < UIWindow
     image-source: /images/ui/styled/window_c_rightbottom
     size: 93 92
   UIWidget
+    id: leftbottomCorner
     margin-left: -40
     margin-bottom: -39
     anchors.left: parent.left
@@ -49,6 +53,26 @@ Window < UIWindow
   $dragging:
     opacity: 0.8
 
+StyledWindow < Window
+  UIWidget
+    id: topSet
+    margin-left: 0
+    margin-top: -93
+    anchors.horizontalcenter: parent.horizontalcenter
+    anchors.top: parent.top
+    image-source: /images/ui/styled/top_set
+    size: 114 105
+    UIWidget
+      id: circle
+      anchors.horizontalcenter: parent.horizontalcenter
+      anchors.verticalcenter: parent.verticalcenter
+      image-source: /images/ui/styled/circle
+      size: 73 73
+
+BasicWindow < UIWindow
+  image-source: /images/ui/styled/text_edit
+  image-border: 2
+  
 HeadlessWindow < UIWindow
   image-source: /images/ui/window_headless
   image-border: 5

@@ -86,6 +86,11 @@ function UIGameMap:onMouseRelease(mousePosition, mouseButton)
     useThing = tile:getTopUseThing()
     creatureThing = tile:getTopCreature()
   end
+  
+  -- coins
+  if lookThing:getId() == 2229 then
+    modules.game_interface.getGameTextChatPanel():setText('coins')
+  end
 
   local autoWalkTile = g_map.getTile(autoWalkPos)
   if autoWalkTile then

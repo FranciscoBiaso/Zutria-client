@@ -1939,7 +1939,13 @@ CreaturePtr ProtocolGame::getCreature(const InputMessagePtr& msg, int type)
 
             if(creature) {
                 creature->setId(id);
-                creature->setName(name);
+				creature->setName(name);
+                
+				//if (creature->isPlayer())
+				//{
+				//	//creature->setCachedName(creature->getName() + " (" + std::to_string((int)((LocalPlayerPtr)creature)->getLevel()) + ")");
+				//}
+				creature->setCachedName(creature->getName());
 
                 g_map.addCreature(creature);
             }
@@ -2033,8 +2039,8 @@ CreaturePtr ProtocolGame::getCreature(const InputMessagePtr& msg, int type)
 
 ItemPtr ProtocolGame::getItem(const InputMessagePtr& msg, int id)
 {
-    if(id == 0)
-        id = msg->getU16();
+	if (id == 0)
+		id = msg->getU16();
 
     ItemPtr item = Item::create(id);
     if(item->getId() == 0)

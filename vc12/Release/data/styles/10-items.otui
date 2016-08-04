@@ -1,12 +1,6 @@
 Item < UIItem
-  size: 34 34
-  padding: 1
-  margin-right: 3
-  margin-bottom: 3
-  image-source: /images/ui/item
+  size: 32 32
+  image-source: /images/ui/styled/slot
   font: verdana-11px-rounded
   border-color: white
   color: white
-
-  $disabled:
-    color: #454545

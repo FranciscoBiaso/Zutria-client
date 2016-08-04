@@ -1,6 +1,7 @@
 skillsWindow = nil
 skillsButton = nil
 StaminaBar = nil
+local maxSkillValue = 0
 
 function init()
   connect(LocalPlayer, {
@@ -15,11 +16,18 @@ function init()
     onGameEnd = offline,    
   })
 
-  skillsButton = modules.client_topmenu.addRightGameToggleButton('skillsButton', tr('Atributos') .. ' (Ctrl+S)', '/images/topbuttons/skills', toggle)
+  skillsButton = modules.client_topmenu.addRightGameToggleButton('skillsButton', tr('Atributos') .. ' (Ctrl + A)', '/images/topbuttons/skills', toggle)
   skillsButton:setOn(true)
-  skillsWindow = g_ui.loadUI('skills', modules.game_interface.getRightPanel())
+  skillsWindow = g_ui.loadUI('skills', modules.game_interface.getRootPanel())
 
-  g_keyboard.bindKeyDown('Ctrl+S', toggle)
+  local topSetPanel = skillsWindow:getChildById('topSet')
+  local circlePanel = topSetPanel:getChildById('circle')
+  circlePanel:setIcon('/images/game/spells/physics')
+  circlePanel:setIconSize({width = 57, height = 57})
+  circlePanel:setIconOffset({x = 8, y = 9})
+  circlePanel:setIconColor('#ffffff55')
+  
+  g_keyboard.bindKeyDown('Ctrl + A', toggle)
 
   
   local staminaPanel = modules.game_interface.getStaminaBarPanel()
@@ -27,7 +35,7 @@ function init()
   StaminaBar:setValue(100,0,100)
   
   refresh()
-  skillsWindow:setup()
+  --skillsWindow:setup()
 
 end
 
@@ -140,17 +148,17 @@ function refresh()
   local player = g_game.getLocalPlayer()
   if not player then return end
   
-  local contentsPanel = skillsWindow:getChildById('contentsPanel')
-  skillsWindow:setContentMinimumHeight(44)
-  skillsWindow:setContentMaximumHeight(330)
+  --local contentsPanel = skillsWindow:getChildById('contentsPanel')
+  --skillsWindow:setContentMinimumHeight(44)
+ -- skillsWindow:setContentMaximumHeight(330)
 end
 
 function toggle()
   if skillsButton:isOn() then
-    skillsWindow:close()
+    skillsWindow:hide()
     skillsButton:setOn(false)
   else
-    skillsWindow:open()
+    skillsWindow:show()
     skillsButton:setOn(true)
   end
 end
@@ -178,7 +186,7 @@ function onAddSkillButtonClick(button)
   local widgetParent = button:getParent()
   local idLabel = widgetParent:getId()
   local playerId = player:getId()
-   g_game.addSkillPoint(playerId, GameSkills[idLabel], 1)  
+  g_game.addSkillPoint(playerId, GameSkills[idLabel], 1)  
 end
 
 function onExperienceChange(localPlayer, value)
@@ -215,8 +223,37 @@ end
 
 function onSkillChange(localPlayer, id, skill, oldskill)
     setSkillValue(GameSkills[id + 1], skill)
+    if skill > maxSkillValue then
+      maxSkillValue = skill
+    end
+    
+    drawBars()
 end
 
 function onLevelPointsChange(localPlayer, levelPoints)
   setSkillValue('levelPoints', levelPoints)
+end
+
+function drawBars()
+  childPanel = skillsWindow:getChildById('skillChildPanel')
+  childrenList = childPanel:recursiveGetChildren()  
+  for i,v in ipairs(childrenList) do 
+    local barPanel = v:getChildById('skillBar')
+    
+    if barPanel then
+      local skillValue = v:getChildById('value')
+      local value = tonumber(skillValue:getText())
+      local skillName = v:getChildById('skillName')
+      local textName = skillName:getText()
+      local i,j = string.find(textName, " %(")       
+      if i then
+        textName = string.sub(textName,0 , i - 1)
+      end
+      if value then
+        barPanel:setValue(value,0, maxSkillValue)
+        skillName:setText(textName .. ' (' .. tostring(value) .. ')')
+      end
+    end
+    --child:setBackgroundColor('#ff0000ff')
+  end
 end

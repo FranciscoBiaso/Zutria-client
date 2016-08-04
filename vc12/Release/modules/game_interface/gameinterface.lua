@@ -31,6 +31,8 @@ walkFunction = nil
 hookedMenuOptions = {}
 spellCursorActived = false
 
+mousePos = {x = 0, y = 0}
+
 local arrowsVisibility = {left = false,top = false,right = false,bottom = false}
 local arrowsVisible = true
 
@@ -57,15 +59,15 @@ function init()
   gameRootPanel:hide()
   gameRootPanel:lower()
   gameRootPanel.onGeometryChange = updateStretchShrink
-  gameRootPanel.onFocusChange = stopSmartWalk
-
+  gameRootPanel.onFocusChange = stopSmartWalk  
+  
   mouseGrabberWidget = gameRootPanel:getChildById('mouseGrabber')
-  mouseGrabberWidget.onMouseRelease = onMouseGrabberRelease
-  --mouseGrabberWidget.onMouseMove = onMouseGrabberMove
+  
 
   --bottomSplitter = gameRootPanel:getChildById('bottomSplitter')
   gameMapPanel = gameRootPanel:getChildById('gameMapPanel')
   gameMapPanel.onUpdateMapSize = onUpdateMapSize
+  gameMapPanel.onMouseMove = onMouseMove
   local gameBottomArrow = gameMapPanel:getChildById('gameBottomArrow')
   gameBottomArrow:hide()
   
@@ -108,6 +110,14 @@ function init()
   end
   
   g_mouse.pushCursor('default')
+end
+
+function onMouseMove(root, mouPos, mouseMoved)
+  mousePos = mouPos
+end
+
+function getMousePos()
+  return mousePos
 end
 
 function toggleTextEdit()

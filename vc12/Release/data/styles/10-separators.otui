@@ -11,3 +11,10 @@ VerticalSeparator < UIWidget
   width: 2
   phantom: true
   focusable: false
+
+StyledHorizontalSeparator < UIWidget
+  image-source: /images/ui/styled/horizontal_separator
+  image-border-top: 0
+  height: 4
+  phantom: true
+  focusable: false

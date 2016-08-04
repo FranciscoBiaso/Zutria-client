@@ -422,6 +422,8 @@ void LocalPlayer::setLevel(double level, double levelPercent)
 
         callLuaField("onLevelChange", level, levelPercent, oldLevel, oldLevelPercent);
     }
+
+	setCachedName(getName() + " (" + std::to_string((int)getLevel()) + ")");
 }
 
 

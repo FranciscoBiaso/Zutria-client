@@ -4,7 +4,6 @@ function UIItem:onDragEnter(mousePos)
   local item = self:getItem()
   if not item then return false end
 
-  self:setBorderWidth(1)
   self.currentDragThing = item
   g_mouse.pushCursor('target')
   
@@ -14,8 +13,7 @@ end
 function UIItem:onDragLeave(droppedWidget, mousePos)
   if self:isVirtual() then return false end
   self.currentDragThing = nil
-  g_mouse.popCursor('target')
-  self:setBorderWidth(0)
+  g_mouse.popCursor('target')  
   self.hoveredWho = nil
   return true
 end
@@ -41,7 +39,6 @@ function UIItem:onDrop(widget, mousePos)
     g_game.move(item, toPos, 1)
   end
 
-  self:setBorderWidth(0)
   return true
 end
 
@@ -65,7 +62,7 @@ function UIItem:onHoverChange(hovered)
     local gotMap = draggingWidget:getClassName() == 'UIGameMap'
     local gotItem = draggingWidget:getClassName() == 'UIItem' and not draggingWidget:isVirtual()
     if hovered and (gotItem or gotMap) then
-      self:setBorderWidth(1)
+      --self:setBorderWidth(1)
       draggingWidget.hoveredWho = self
     else
       self:setBorderWidth(0)

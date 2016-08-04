@@ -10,11 +10,7 @@ MiniWindow < UIMiniWindow
   image-source: /images/ui/miniwindow
   image-border: 4
   image-border-top: 23
-  focusable: false
-  &minimizedHeight: 24
-  margin-top: 4
-  margin-right:4
-  margin-left:4
+  &minimizedHeight: 24  
   
   $on:
     image-border-bottom: 2
