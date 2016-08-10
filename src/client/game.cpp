@@ -1102,6 +1102,13 @@ void Game::sendNpcButtonId(uint8 buttonId)
 	m_protocolGame->sendNpcButtonId(buttonId);
 }
 
+void Game::sendToPlayerAddLocalMoney(const ThingPtr& thing)
+{
+	if (!canPerformGameAction())
+		return;
+	m_protocolGame->sendToPlayerAddLocalMoney(thing->getPosition(),thing->getId(),thing->getStackPos());
+}
+
 
 void Game::partyInvite(int creatureId)
 {

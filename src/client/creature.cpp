@@ -132,13 +132,13 @@ void Creature::internalDrawOutfit(Point dest, float scaleFactor, bool animateWal
 			xPattern = direction;
 
 		int zPattern = 0;
-		if (m_outfit.getMount() != 0) {
+		/*if (m_outfit.getMount() != 0) {
 			auto datType = g_things.rawGetThingType(m_outfit.getMount(), ThingCategoryCreature);
 			dest -= datType->getDisplacement() * scaleFactor;
 			datType->draw(dest, scaleFactor, 0, xPattern, 0, 0, animationPhase, lightView);
 			dest += getDisplacement() * scaleFactor;
 			zPattern = std::min<int>(1, getNumPatternZ() - 1);
-		}
+		}*/
 
 		PointF jumpOffset = m_jumpOffset * scaleFactor;
 		dest -= Point(stdext::round(jumpOffset.x), stdext::round(jumpOffset.y));
@@ -152,6 +152,7 @@ void Creature::internalDrawOutfit(Point dest, float scaleFactor, bool animateWal
 
 			auto datType = rawGetThingType();
 			datType->draw(dest, scaleFactor, 0, xPattern, yPattern, zPattern, animationPhase, yPattern == 0 ? lightView : nullptr);
+			
 
 			if (getLayers() > 1) {
 				Color oldColor = g_painter->getColor();
@@ -166,6 +167,18 @@ void Creature::internalDrawOutfit(Point dest, float scaleFactor, bool animateWal
 				g_painter->setColor(m_outfit.getFeetColor());
 				datType->draw(dest, scaleFactor, SpriteMaskBlue, xPattern, yPattern, zPattern, animationPhase);
 				g_painter->setColor(oldColor);
+				g_painter->setCompositionMode(oldComposition);
+			}
+
+			auto moita = g_things.getThingType(3133, ThingCategoryItem);
+			
+			if(animationPhase == 0)
+				moita->draw(dest, scaleFactor, 0, 0, 0, 0, 0);
+			else
+			{
+				Painter::CompositionMode oldComposition = g_painter->getCompositionMode();
+				g_painter->setCompositionMode(Painter::CompositionMode_Multiply);
+				moita->draw(dest, scaleFactor, 0, 0, 0, 0, 0);
 				g_painter->setCompositionMode(oldComposition);
 			}
 		}
@@ -274,7 +287,7 @@ void Creature::drawInformation(const Point& Point, bool useGray, const Rect& par
 		fillColor = Color(0x80,0xFF,0x00);
 
     if(drawFlags & Otc::DrawBars && (!isNpc() || !g_game.getFeature(Otc::GameHideNpcNames))) {
-		g_painter->setColor(Color(0xee, 0x12, 0x12, 0x55));
+		g_painter->setColor(Color(0x80, 0x80, 0x80, 0x80));
 		g_painter->drawFilledRect(healthRectBg);
 		
 		g_painter->setColor(Color(0xff, 0x00, 0x00, 0xff));

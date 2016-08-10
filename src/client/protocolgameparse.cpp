@@ -234,6 +234,11 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
 				case Proto::GameServerPlayerModes:
 					parsePlayerModes(msg);
 					break;
+				
+				case Proto::GameServerUpdateBalance:
+					parseUpdateBalance(msg);
+					break;
+
 				case Proto::GameServerTalk:
 					parseTalk(msg);
 					break;
@@ -1288,6 +1293,13 @@ void ProtocolGame::parsePlayerModes(const InputMessagePtr& msg)
         pvpMode = msg->getU8();
 
     g_game.processPlayerModes((Otc::FightModes)fightMode, (Otc::ChaseModes)chaseMode, safeMode, (Otc::PVPModes)pvpMode);
+}
+
+void ProtocolGame::parseUpdateBalance(const InputMessagePtr& msg)
+{
+	uint32_t localBalance = msg->getU32();
+
+	m_localPlayer->setLocalBalance(localBalance);
 }
 
 void ProtocolGame::parseSpellCooldown(const InputMessagePtr& msg)

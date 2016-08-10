@@ -862,6 +862,16 @@ void ProtocolGame::sendNpcButtonId(uint8 buttonId)
 	send(msg);
 }
 
+void ProtocolGame::sendToPlayerAddLocalMoney(const Position& pos, int thingId, int stackPos)
+{
+	OutputMessagePtr msg(new OutputMessage);
+	msg->addU8(Proto::ClientAddLocalMoney);
+	addPosition(msg, pos);
+	msg->addU16(thingId);
+	msg->addU8(stackPos);
+	send(msg);
+}
+
 void ProtocolGame::sendChangeMapAwareRange(int xrange, int yrange)
 {
     if(!g_game.getFeature(Otc::GameChangeMapAwareRange))

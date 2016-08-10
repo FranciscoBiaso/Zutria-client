@@ -122,6 +122,7 @@ public:
 	void sendBreath(uint8 breath);
 	void sendNpcLeftClick(std::string npcName);
 	void sendNpcButtonId(uint8 buttonId);
+	void sendToPlayerAddLocalMoney(const Position& pos, int thingId, int stackPos);
 
     // otclient only
     void sendChangeMapAwareRange(int xrange, int yrange);
@@ -205,6 +206,7 @@ private:
 	void parsePlayerNpcWindow(const InputMessagePtr& msg);
     void parsePlayerCancelAttack(const InputMessagePtr& msg);
     void parsePlayerModes(const InputMessagePtr& msg);
+	void parseUpdateBalance(const InputMessagePtr& msg);
     void parseSpellCooldown(const InputMessagePtr& msg);
     void parseSpellGroupCooldown(const InputMessagePtr& msg);
     void parseMultiUseCooldown(const InputMessagePtr& msg);

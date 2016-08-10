@@ -611,6 +611,29 @@ void LocalPlayer::setBlessings(int blessings)
     }
 }
 
+
+void LocalPlayer::setLocalBalance(uint32_t local_balance)
+{
+	if (local_balance != m_local_balance) 
+	{
+		int old_local_balance = m_local_balance;
+		m_local_balance = local_balance;
+
+		callLuaField("onUpdateLocalBalance", local_balance, old_local_balance);
+	}
+}
+
+void LocalPlayer::setGlobalBalance(uint32_t global_balance)
+{
+	if (global_balance != m_global_balance)
+	{
+		int old_global_balance = m_global_balance;
+		m_global_balance = global_balance;
+
+		callLuaField("onUpdateGlobalBalance", global_balance, old_global_balance);
+	}
+}
+
 // --
 void LocalPlayer::openNpcWindow(uint32 windowId)
 {

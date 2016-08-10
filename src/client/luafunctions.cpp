@@ -309,6 +309,7 @@ void Client::registerLuaFunctions()
 	g_lua.bindSingletonFunction("g_game", "sendBreath", &Game::sendSpell, &g_game);
 	g_lua.bindSingletonFunction("g_game", "sendNpcLeftClick", &Game::sendNpcLeftClick, &g_game);
 	g_lua.bindSingletonFunction("g_game", "sendNpcButtonId", &Game::sendNpcButtonId, &g_game);
+	g_lua.bindSingletonFunction("g_game", "sendToPlayerAddLocalMoney", &Game::sendToPlayerAddLocalMoney, &g_game);
 
     g_lua.registerSingletonClass("g_shaders");
     g_lua.bindSingletonFunction("g_shaders", "createShader", &ShaderManager::createShader, &g_shaders);

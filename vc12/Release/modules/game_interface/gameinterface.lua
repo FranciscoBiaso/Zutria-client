@@ -779,7 +779,11 @@ function processMouseAction(menuPosition, mouseButton, autoWalkPos, lookThing, u
         startUseWith(useThing)
         return true
       else
-        g_game.use(useThing)
+        if mouseButton == MouseRightButton and useThing:getId() == 2229 then
+          g_game.sendToPlayerAddLocalMoney(useThing)                   
+        else
+          g_game.use(useThing)
+        end
         return true
       end
       return true

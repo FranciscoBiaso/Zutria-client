@@ -120,10 +120,15 @@ namespace Proto {
         GameServerPlayerSkills              = 161,
         GameServerPlayerState               = 162,
         GameServerClearTarget               = 163,
-        GameServerPlayerModes               = 167,
         GameServerSpellDelay                = 164, // 870
         GameServerSpellGroupDelay           = 165, // 870
         GameServerMultiUseDelay             = 166, // 870
+		GameServerPlayerModes = 167,
+		
+		
+		GameServerUpdateBalance             = 168,
+
+
         GameServerTalk                      = 170,
         GameServerChannels                  = 171,
         GameServerOpenChannel               = 172,
@@ -243,7 +248,12 @@ namespace Proto {
         ClientInviteToOwnChannel            = 171,
         ClientExcludeFromOwnChannel         = 172,
         ClientCancelAttackAndFollow         = 190,
-        ClientUpdateTile                    = 201,
+		
+		
+		ClientAddLocalMoney                 = 191,
+        
+		
+		ClientUpdateTile                    = 201,
         ClientRefreshContainer              = 202,
         ClientBrowseField                   = 203,
         ClientSeekInContainer               = 204,

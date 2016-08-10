@@ -280,7 +280,7 @@ void MapView::draw(const Rect& rect)
 			p.x = p.x * horizontalStretchFactor;
 			p.y = p.y * verticalStretchFactor;
 			p += rect.topLeft();
-			animatedText->drawText(p, rect);
+			animatedText->drawTexts(p, rect);
 		}
 	}
 }

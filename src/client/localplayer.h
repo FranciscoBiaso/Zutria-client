@@ -89,6 +89,11 @@ public:
 	void setBreath(uint8 breath);
     void setBlessings(int blessings);
 
+	void setLocalBalance(uint32_t);
+	void setGlobalBalance(uint32_t);
+	uint32_t getGlobalBalance() const { return m_local_balance; }
+	uint32_t getLocalBalance() const { return m_global_balance; }
+
 	// --
 	void openNpcWindow(uint32 windowId);
 
@@ -183,6 +188,9 @@ private:
     int m_vocation;
     int m_blessings;
 	uint8 m_breath;
+
+	int m_local_balance;
+	int m_global_balance;
 
     double m_health;
     double m_maxHealth;

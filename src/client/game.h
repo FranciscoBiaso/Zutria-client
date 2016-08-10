@@ -214,6 +214,7 @@ public:
 	//interface
 	void addSkillPoint(int cid, uint8_t skillId, uint8_t valueToAdd);
 	void sendMsgTryToAddSpellLevel(uint8 spellId);
+	void sendToPlayerAddLocalMoney(const ThingPtr& toThing);
 
 	//player send
 	void sendSpell(uint8 spellId);

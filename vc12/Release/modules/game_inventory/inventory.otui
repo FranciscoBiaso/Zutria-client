@@ -164,6 +164,7 @@ StyledWindow
       margin-left: 5
       anchors.left: moneyPanel.right
       anchors.verticalCenter: moneyPanel.verticalCenter
+      width: 80
       text: "$ 00.0"
       color: #cdcd33bb  
     

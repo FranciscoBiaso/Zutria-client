@@ -111,7 +111,7 @@ function update()
   chaseModeButton:setChecked(chaseMode == ChaseOpponent)
 
   local safeFight = g_game.isSafeFight()
-  safeFightButton:setChecked(not safeFight)
+  safeFightButton:setChecked(true)
 
   if g_game.getFeature(GamePVPMode) then
     local pvpMode = g_game.getPVPMode()

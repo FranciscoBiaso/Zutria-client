@@ -25,6 +25,7 @@ function init()
   connect(LocalPlayer, {
     onInventoryChange = onInventoryChange,
     onFreeCapacityChange = onFreeCapacityChange,
+    onUpdateLocalBalance = onUpdateLocalBalance,
   })
   connect(g_game, { onGameStart = refresh })
   
@@ -139,4 +140,9 @@ end
 
 function getInventoryWindow()
   return inventoryWindow
+end
+
+function onUpdateLocalBalance(player, countMoneyChanged)
+  moneyLabel = inventoryPanel:getChildById('moneyLabel')
+  moneyLabel:setText('$ ' ..  tostring(countMoneyChanged) .. '.0')
 end

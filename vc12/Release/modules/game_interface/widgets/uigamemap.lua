@@ -81,17 +81,13 @@ function UIGameMap:onMouseRelease(mousePosition, mouseButton)
   local multiUseThing
   local attackCreature
   local tile = self:getTile(mousePosition)
+  local itens
   if tile then
     lookThing = tile:getTopLookThing()
     useThing = tile:getTopUseThing()
-    creatureThing = tile:getTopCreature()
+    creatureThing = tile:getTopCreature()    
   end
   
-  -- coins
-  if lookThing:getId() == 2229 then
-    modules.game_interface.getGameTextChatPanel():setText('coins')
-  end
-
   local autoWalkTile = g_map.getTile(autoWalkPos)
   if autoWalkTile then
     attackCreature = autoWalkTile:getTopCreature()
