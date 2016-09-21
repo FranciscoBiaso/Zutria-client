@@ -666,8 +666,8 @@ void Map::resetAwareRange()
 	AwareRange range;
 	range.left = 12;
 	range.top = 7;
-	range.bottom = 7;
-	range.right = 12;
+	range.bottom = 8;
+	range.right = 13;
 	setAwareRange(range);
 }
 

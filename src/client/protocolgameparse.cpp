@@ -100,7 +100,15 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
 					break;
 				case Proto::GameServerDeath:
 					parseDeath(msg);
-					break;            
+					break;     
+
+				case Proto::GameServerOnPlayerAttack:
+				{
+					uint32_t creatureId = msg->getU32();
+					g_game.onAttack(creatureId);
+				}
+					break;
+
 				case Proto::GameServerMapTopRow:
 					parseMapMoveNorth(msg);
 					break;
@@ -1017,11 +1025,14 @@ void ProtocolGame::parseCreatureLight(const InputMessagePtr& msg)
 void ProtocolGame::parseCreatureOutfit(const InputMessagePtr& msg)
 {
     uint id = msg->getU32();
-    Outfit outfit = getOutfit(msg);
+	Outfit outfit = getOutfit(msg);
+	uint attackOutfitId = msg->getU32();
 
     CreaturePtr creature = g_map.getCreatureById(id);
-    if(creature)
-        creature->setOutfit(outfit);
+	if (creature)
+	{
+		creature->setOutfit(outfit);
+	}
     else
         g_logger.traceError("could not get creature");
 }
@@ -1966,6 +1977,12 @@ CreaturePtr ProtocolGame::getCreature(const InputMessagePtr& msg, int type)
         int healthPercent = msg->getU8();
         Otc::Direction direction = (Otc::Direction)msg->getU8();
         Outfit outfit = getOutfit(msg);
+		Outfit AttackOutfit = outfit;
+		AttackOutfit.setId(msg->getU16());
+		Outfit breathOutfit = outfit;
+		breathOutfit.setId(msg->getU16());
+		Outfit walkAttackOutfit = outfit;
+		walkAttackOutfit.setId(msg->getU16());
 
         Light light;
         light.intensity = msg->getU8();
@@ -2011,6 +2028,9 @@ CreaturePtr ProtocolGame::getCreature(const InputMessagePtr& msg, int type)
             creature->setHealthPercent(healthPercent);
             creature->setDirection(direction);
             creature->setOutfit(outfit);
+			creature->setAttackOutfit(AttackOutfit);
+			creature->setBreathOutfit(breathOutfit);
+			creature->setWalkAttackOutfit(walkAttackOutfit);
             creature->setSpeed(speed);
             creature->setSkull(skull);
             creature->setShield(shield);

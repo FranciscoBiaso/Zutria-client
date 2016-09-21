@@ -37,6 +37,7 @@
 class Creature : public Thing
 {
 public:
+	
     enum {
         SHIELD_BLINK_TICKS = 500,
         VOLATILE_SQUARE_DURATION = 1000
@@ -45,8 +46,7 @@ public:
     Creature();
 
 	virtual void draw(const Point& dest, float scaleFactor, bool animate, LightView *lightView = nullptr);
-
-    void internalDrawOutfit(Point dest, float scaleFactor, bool animateWalk, bool animateIdle, Otc::Direction direction, LightView *lightView = nullptr);
+    void internalDrawOutfit(Point dest, float scaleFactor, bool animateWalk, bool animateIdle, Otc::Direction direction, LightView *lightView = nullptr);	
     void drawOutfit(const Rect& destRect, bool resize);
     void drawInformation(const Point& Point, bool useGray, const Rect& parentRect, int drawFlags);
 
@@ -56,6 +56,9 @@ public:
     void setHealthPercent(uint8 healthPercent);
     void setDirection(Otc::Direction direction);
     void setOutfit(const Outfit& outfit);
+	void setAttackOutfit(const Outfit& attackOutfit);
+	void setBreathOutfit(const Outfit& breathOutfit);
+	void setWalkAttackOutfit(const Outfit& walkAttackOutfit);
     void setOutfitColor(const Color& color, int duration);
     void setLight(const Light& light) { m_light = light; }
     void setSpeed(uint16 speed);
@@ -114,11 +117,10 @@ public:
     // walk related
     void turn(Otc::Direction direction);
     void jump(int height, int duration);
-    virtual void walk(const Position& oldPos, const Position& newPos);
     virtual void stopWalk();
     void allowAppearWalk() { m_allowAppearWalk = true; }
 
-    bool isWalking() { return m_walking; }
+    bool isWalking() { return false; }
     bool isRemoved() { return m_removed; }
     bool isInvisible() { return m_outfit.getCategory() == ThingCategoryEffect && m_outfit.getAuxId() == 13; }
     bool isDead() { return m_healthPercent <= 0; }
@@ -128,19 +130,18 @@ public:
 
     const ThingTypePtr& getThingType();
     ThingType *rawGetThingType();
+  
+	virtual void onPositionChange(const Position& newPos, const Position& oldPos);
+	virtual void onAppear();
+	virtual void onDisappear();
+	virtual void onDeath();
 
-    virtual void onPositionChange(const Position& newPos, const Position& oldPos);
-    virtual void onAppear();
-    virtual void onDisappear();
-    virtual void onDeath();
+	// Lua Script function queries
+	bool isAttacking(void);
+
 protected:
-    virtual void updateWalkAnimation(int totalPixelsWalked);
     virtual void updateWalkOffset(int totalPixelsWalked);
     void updateWalkingTile();
-    virtual void nextWalkUpdate();
-    virtual void updateWalk();
-    virtual void terminateWalk();
-
     void updateOutfitColor(Color color, Color finalColor, Color delta, int duration);
     void updateJump();
 
@@ -148,7 +149,7 @@ protected:
     std::string m_name;
 	uint8 m_healthPercent;
     Otc::Direction m_direction;
-    Outfit m_outfit;
+
     Light m_light;
     int m_speed;
     double m_baseSpeed;
@@ -179,31 +180,86 @@ protected:
 
     std::array<double, Otc::LastSpeedFormula> m_speedFormula;
 
+	//outfits
+	Outfit m_outfit;
+	Outfit m_attackOutfit;
+	Outfit m_breathingOutfit;
+	Outfit m_walkAttackOutfit;
+
     // walk related
-    int m_walkAnimationPhase;
     int m_walkedPixels;
     uint m_footStep;
-    Timer m_walkTimer;
     Timer m_footTimer;
     TilePtr m_walkingTile;
-    stdext::boolean<false> m_walking;
+
+	// jump related
+	float m_jumpHeight;
+	float m_jumpDuration;
+	PointF m_jumpOffset;
+	Timer m_jumpTimer;
+
     stdext::boolean<false> m_allowAppearWalk;
-    stdext::boolean<false> m_footStepDrawn;
-    ScheduledEventPtr m_walkUpdateEvent;
-    ScheduledEventPtr m_walkFinishAnimEvent;
     EventPtr m_disappearEvent;
     Point m_walkOffset;
     Otc::Direction m_walkTurnDirection;
     Otc::Direction m_lastStepDirection;
     Position m_lastStepFromPosition;
     Position m_lastStepToPosition;
-    Position m_oldPosition;
 
-    // jump related
-    float m_jumpHeight;
-    float m_jumpDuration;
-	PointF m_jumpOffset;
-    Timer m_jumpTimer;
+
+	/**************** FSM ****************/
+
+	// Timers
+	Timer m_attackTimer;
+	Timer m_breathTimer;
+	Timer m_walkTimer;
+	Timer m_walkAndAttackTimer;
+
+public:
+	// Init state functions -- used when enter in another state
+	virtual void onWalk();
+	virtual void onAttack();
+	virtual void onWalkAndAttack();
+	virtual void onBreath();
+	
+	// Possible creature states
+	enum CreatureState {
+		breathing = 1 << 0,
+		attacking = 1 << 1,
+		walking = 1 << 2,
+	};
+	
+	// Functions that control creature states
+	void setFSM(CreatureState state) { m_creatureState = state; }
+	CreatureState getCreatureState(void) const { return m_creatureState; }
+
+protected:
+	// Update (clycling) functions
+	virtual void updateWalk();
+	void updateAttack();
+	void updateWalkAndAttack();
+	void updateBreath();
+
+	// Terminate state functions -- used when leave state
+	virtual void terminateWalk();
+	void terminateAttack();
+	void terminateWalkAndAttack();
+	void terminateBreath();
+
+	// animation and events variables
+	int m_walkAnimationPhase;
+	ScheduledEventPtr m_walkUpdateEvent;
+	int m_attackAnimationPhase;
+	ScheduledEventPtr m_attackUpdateEvent;
+	int m_breathAnimationPhase;
+	ScheduledEventPtr m_breathUpdateEvent;
+	int m_walkAttackAnimationPhase;
+	ScheduledEventPtr m_walkAttackUpdateEvent;	
+
+protected:
+	CreatureState m_creatureState;
+
+	/**************** FSM ****************/
 };
 
 // @bindclass

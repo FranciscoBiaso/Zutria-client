@@ -568,42 +568,42 @@ bool Game::walk(Otc::Direction direction, bool dash)
         cancelFollow();
 
     // must cancel auto walking, and wait next try
-    if(m_localPlayer->isAutoWalking() || m_localPlayer->isServerWalking()) {
+    if(m_localPlayer->isAutoWalking()) 
+	{
         m_protocolGame->sendStop();
-        if(m_localPlayer->isAutoWalking())
-            m_localPlayer->stopAutoWalk();
+        m_localPlayer->stopAutoWalk();
         return false;
     }
+   
+    // check if we can walk and add new walk event if false
+    if(!m_localPlayer->canWalk(direction)) 
+	{
+        if(m_lastWalkDir != direction) 
+		{
+            // must add a new walk event
+            float ticks = m_localPlayer->getStepTicksLeft();
+            if(ticks <= 0) { ticks = 1; }
 
-    if(dash) {
-        if(m_localPlayer->isWalking() && m_dashTimer.ticksElapsed() < std::max<int>(m_localPlayer->getStepDuration(false, direction) - m_ping, 30))
-            return false;
-    }
-    else {
-        // check we can walk and add new walk event if false
-        if(!m_localPlayer->canWalk(direction)) {
-            if(m_lastWalkDir != direction) {
-                // must add a new walk event
-                float ticks = m_localPlayer->getStepTicksLeft();
-                if(ticks <= 0) { ticks = 1; }
-
-                if(m_walkEvent) {
-                    m_walkEvent->cancel();
-                    m_walkEvent = nullptr;
-                }
-                m_walkEvent = g_dispatcher.scheduleEvent([=] { walk(direction, false); }, ticks);
+            if(m_walkEvent) 
+			{
+                m_walkEvent->cancel();
+                m_walkEvent = nullptr;
             }
-            return false;
+            m_walkEvent = g_dispatcher.scheduleEvent([=] { walk(direction, false); }, ticks);
         }
+        return false;
     }
 
     Position toPos = m_localPlayer->getPosition().translatedToDirection(direction);
     TilePtr toTile = g_map.getTile(toPos);
     // only do prewalks to walkable tiles (like grounds and not walls)
-    if(toTile && toTile->isWalkable()) {
+    if(toTile && toTile->isWalkable()) 
+	{
         m_localPlayer->preWalk(direction);
     // check walk to another floor (e.g: when above 3 parcels)
-    } else {
+    }
+	else 
+	{
         // check if can walk to a lower floor
         auto canChangeFloorDown = [&]() -> bool {
             Position pos = toPos;
@@ -641,8 +641,6 @@ bool Game::walk(Otc::Direction direction, bool dash)
     g_lua.callGlobalField("g_game", "onWalk", direction, dash);
 
     forceWalk(direction);
-    if(dash)
-      m_dashTimer.restart();
 
     m_lastWalkDir = direction;
     return true;
@@ -922,8 +920,11 @@ void Game::attack(CreaturePtr creature)
         return;
 
     // cancel when attacking again
-    if(creature && creature == m_attackingCreature)
-        creature = nullptr;
+	if (creature && creature == m_attackingCreature)
+	{
+		creature = nullptr;
+		m_localPlayer->terminateAttack();
+	}
 
     if(creature && isFollowing())
         cancelFollow();
@@ -931,12 +932,14 @@ void Game::attack(CreaturePtr creature)
     setAttackingCreature(creature);
     m_localPlayer->stopAutoWalk();
 
-    if(m_protocolVersion >= 963) {
+	
+	if(m_protocolVersion >= 963) {
         if(creature)
             m_seq = creature->getId();
     } else
         m_seq++;
 
+	
     m_protocolGame->sendAttack(creature ? creature->getId() : 0, m_seq);
 }
 
@@ -979,6 +982,12 @@ void Game::cancelAttackAndFollow()
     m_protocolGame->sendCancelAttackAndFollow();
 
     g_lua.callGlobalField("g_game", "onCancelAttackAndFollow");
+}
+
+void Game::onAttack(uint32 creatureId)
+{
+	CreaturePtr creature = g_map.getCreatureById(creatureId);
+	creature->setFSM(Creature::CreatureState::attacking);
 }
 
 void Game::talk(const std::string& message)

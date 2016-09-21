@@ -140,8 +140,8 @@ SkillBar < ProgressBar
 StyledWindow
   id: skillWindow
   !text: tr('Atributos')
-  height: 390
-  width: 400
+  height: 590
+  width: 500
   @onClose: modules.game_skills.onMiniWindowClose()
   &save: true
   image-color: #ffffffcc
@@ -340,4 +340,50 @@ StyledWindow
         !text: tr('Pontos distribuíveis')
         color: #e7e7e7FF
       SkillRightValueLabel 
+    
+    SkillPanel
+      id: t      
+      margin-top: 5
+      height: 15
+      IconSkillLevelPoints
+      SkillNameLabel
+        width: 130
+        !text: tr('teste ui')
+        color: #e7e7e7FF
+      SkillRightValueLabel
+    
+    SkillPanel
+      height: 60
+      id: p
+      border: 1 #ff0000ff
+      UILabel
+        id: label
+        margin-right: 10
+        margin-top: 3
+        color: #ff0000ff
+        anchors.right: parent.right
+        anchors.top: parent.top
+        !text: tr('label')
+        background-color: #00ff0044
+      Button
+        id: b
+        size: 49 16
+        anchors.left: parent.left
+        anchors.top: parent.top
+        margin-left: 3
+        margin-top: 2
+        !text: ('ok')
+      Panel
+        size: 16 16
+        anchors.left: prev.right
+        margin-left: 3
+        background-color: #00ff0088
+      Button
+        id: d
+        size: 49 16
+        anchors.top: b.bottom
+        
+        margin-left: 3
+        margin-top: 2
+        !text: ('fail')
       

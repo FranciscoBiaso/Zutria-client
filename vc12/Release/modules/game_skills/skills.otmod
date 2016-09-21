@@ -1,7 +1,7 @@
 Module
   name: game_skills
   description: Manage skills window
-  author: baxnie, edubart
+  author: Francisco
   website: www.otclient.info
   sandboxed: true
   scripts: [ skills ]

@@ -125,6 +125,7 @@ public:
 
 protected:
     Position m_position;
+	Position m_oldPosition;
     uint16 m_datId;
 };
 #pragma pack(pop)

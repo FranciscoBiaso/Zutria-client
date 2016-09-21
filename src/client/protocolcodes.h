@@ -70,6 +70,8 @@ namespace Proto {
         // 51 - 99
         GameServerChangeMapAwareRange       = 51,
 
+		GameServerOnPlayerAttack            = 52,
+
         // original tibia ONLY
         GameServerMapTopRow                 = 101,
         GameServerMapRightRow               = 102,

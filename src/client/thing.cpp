@@ -38,9 +38,9 @@ void Thing::setPosition(const Position& position)
     if(m_position == position)
         return;
 
-    Position oldPos = m_position;
-    m_position = position;
-    onPositionChange(position, oldPos);
+    m_oldPosition = m_position;
+    m_position = position;	
+    onPositionChange(position, m_oldPosition);
 }
 
 int Thing::getStackPriority()

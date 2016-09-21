@@ -32,7 +32,8 @@ function init()
   
   local staminaPanel = modules.game_interface.getStaminaBarPanel()
   StaminaBar = g_ui.createWidget('StaminaBar',staminaPanel)
-  StaminaBar:setValue(100,0,100)
+  StaminaBar:setValue(80,0,100)
+  StaminaBar:setBackgroundColor('#ff0000ff')
   
   refresh()
   --skillsWindow:setup()

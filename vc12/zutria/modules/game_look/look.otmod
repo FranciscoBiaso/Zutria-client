@@ -1,9 +1,0 @@
-Module
-  name: game_look
-  description: show image of a object and a description when looked
-  author: Francisco
-  website: none.gmail.com
-  sandboxed: true
-  scripts: [ look.lua ]
-  @onLoad: init()
-  @onUnload: terminate()

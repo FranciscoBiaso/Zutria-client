@@ -129,7 +129,6 @@ public:
 
     bool hasSight(const Position& pos);
     bool isKnown() { return m_known; }
-    bool isPreWalking() { return m_preWalking; }
     bool isAutoWalking() { return m_autoWalkDestination.isValid(); }
     bool isServerWalking() { return m_serverWalking; }
     bool isPremium() { return m_premium; }
@@ -142,28 +141,23 @@ public:
     virtual void onAppear();
     virtual void onPositionChange(const Position& newPos, const Position& oldPos);
 
-protected:
-    void walk(const Position& oldPos, const Position& newPos);
-    void preWalk(Otc::Direction direction);
+protected:    
     void cancelWalk(Otc::Direction direction = Otc::InvalidDirection);
     void stopWalk();
 
     friend class Game;
 
 protected:
-    void updateWalkOffset(int totalPixelsWalked);
-    void updateWalk();
-    void terminateWalk();
 
 private:
-    // walk related
+
+	// walk related
     Position m_lastPrewalkDestination;
     Position m_autoWalkDestination;
     Position m_lastAutoWalkPosition;
     ScheduledEventPtr m_serverWalkEndEvent;
     ScheduledEventPtr m_autoWalkContinueEvent;
     ticks_t m_walkLockExpiration;
-    stdext::boolean<false> m_preWalking;
     stdext::boolean<true> m_lastPrewalkDone;
     stdext::boolean<false> m_secondPreWalk;
     stdext::boolean<false> m_serverWalking;

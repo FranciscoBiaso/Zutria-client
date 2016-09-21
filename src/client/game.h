@@ -195,6 +195,8 @@ public:
     void follow(CreaturePtr creature);
     void cancelFollow() { follow(nullptr); }
     void cancelAttackAndFollow();
+	//trying to hit another creature
+	void onAttack(uint32 creatureId);
 
     // talk related
     void talk(const std::string& message);

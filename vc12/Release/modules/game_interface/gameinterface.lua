@@ -159,9 +159,13 @@ function bindKeys()
   gameRootPanel:setAutoRepeatDelay(200)
 
   bindWalkKey('Up', North)
+  bindWalkKey('W', North)
   bindWalkKey('Right', East)
+  bindWalkKey('D', East)
   bindWalkKey('Down', South)
+  bindWalkKey('S', South)
   bindWalkKey('Left', West)
+  bindWalkKey('A', West)
   bindWalkKey('Numpad8', North)
   bindWalkKey('Numpad9', NorthEast)
   bindWalkKey('Numpad6', East)
@@ -189,9 +193,21 @@ function bindKeys()
 end
 
 function bindWalkKey(key, dir)
-  g_keyboard.bindKeyDown(key, function() changeWalkDir(dir) end, gameRootPanel, true)
-  g_keyboard.bindKeyUp(key, function() changeWalkDir(dir, true) end, gameRootPanel, true)
-  g_keyboard.bindKeyPress(key, function() smartWalk(dir) end, gameRootPanel)
+  g_keyboard.bindKeyDown(key, function()
+      if not g_game.getLocalPlayer():isAttacking() then
+        changeWalkDir(dir) 
+      end
+    end, gameRootPanel, true)
+  g_keyboard.bindKeyUp(key, function() 
+      if not g_game.getLocalPlayer():isAttacking() then
+        changeWalkDir(dir, true) 
+      end
+    end, gameRootPanel, true)
+  g_keyboard.bindKeyPress(key, function()
+      --if not g_game.getLocalPlayer():isAttacking() then
+        smartWalk(dir) 
+      --end
+    end, gameRootPanel)
 end
 
 function unbindWalkKey(key)

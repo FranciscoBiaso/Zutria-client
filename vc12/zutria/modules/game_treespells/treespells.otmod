@@ -1,9 +1,0 @@
-Module
-  name: game_treespells
-  description: Display a players spells with their appropriate information 
-  author: BeniS 
-  website: www.otclient.info
-  sandboxed: true 
-  scripts: [ spellsinfo, treespells ]
-  @onLoad: init()
-  @onUnload: terminate()
