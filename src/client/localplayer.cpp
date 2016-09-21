@@ -277,9 +277,7 @@ void LocalPlayer::setHealth(double health)
         callLuaField("onHealthChange", health, getMaxHealth());
 
         // cannot walk while dying
-        if(health == 0) {
-            if(isPreWalking())
-                stopWalk();
+        if(health == 0) {            
             lockWalk();
         }
     }

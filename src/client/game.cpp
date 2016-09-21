@@ -599,7 +599,6 @@ bool Game::walk(Otc::Direction direction, bool dash)
     // only do prewalks to walkable tiles (like grounds and not walls)
     if(toTile && toTile->isWalkable()) 
 	{
-        m_localPlayer->preWalk(direction);
     // check walk to another floor (e.g: when above 3 parcels)
     }
 	else 
@@ -676,8 +675,7 @@ void Game::autoWalk(std::vector<Otc::Direction> dirs)
 
     TilePtr toTile = g_map.getTile(m_localPlayer->getPosition().translatedToDirection(direction));
     if(toTile && toTile->isWalkable() && !m_localPlayer->isServerWalking()) {
-        m_localPlayer->preWalk(direction);
-
+      
         if(getFeature(Otc::GameForceFirstAutoWalkStep)) {
             forceWalk(direction);
             dirs.erase(it);
