@@ -16,7 +16,7 @@ function init()
   minimapWidget = minimapWindow:recursiveGetChildById('minimap')
   minimapWidget:setColor('#8686ab00')
   
-  minimapButton = modules.client_topmenu.addRightGameToggleButton('minimap', tr('mini mapa') .. ' (ctrl + M)', '/images/topbuttons/minimap', toggle)
+  -- minimapButton = modules.client_topmenu.addRightGameToggleButton('minimap', tr('mini mapa') .. ' (ctrl + M)', '/images/topbuttons/minimap', toggle)
   g_keyboard.bindKeyDown('ctrl + M', toggle)
   minimapButton:setOn(true)
   
